@@ -2,13 +2,13 @@
 
 ## São Paulo, Brasil
 ### Integrantes:
-- [@EdsonFelix](https://github.com/85ED)
-- [@FelipeLima](https://github.com/FelipeLima24)
-- [@HenriqueDourado](https://github.com/henriquedouradoo)
-- [@JoaoVTC](https://github.com/JoaoVtC)
-- [@LorenzoMeni](https://github.com/lorenzomeni)
-- [@LeoMont](https://github.com/LeoMont200)
-- [@OmarDahbur](https://github.com/OmarDahbur)
+- [@Edson Felix](https://github.com/85ED)
+- [@Felipe Lima](https://github.com/FelipeLima24)
+- [@Henrique Dourado](https://github.com/henriquedouradoo)
+- [@João Vitor](https://github.com/JoaoVtC)
+- [@Lorenzo Meni](https://github.com/lorenzomeni)
+- [@Leo Monteiro](https://github.com/LeoMont200)
+- [@Omar Dahbur](https://github.com/OmarDahbur)
 
 ---
 
