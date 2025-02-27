@@ -1,8 +1,8 @@
-# Monitoramento de Umidade e Temperatura em Vinícolas e Adegas
+# Monitoramento de Umidade e Temperatura em Vinícolas e Adegas 
 
 ## São Paulo, Brasil
 ### Integrantes:
-- [@Edson Felix](https://github.com/85ED)
+- [@Edson Felix](https://github.com/85ED) 
 - [@Felipe Lima](https://github.com/FelipeLima24)
 - [@Henrique Dourado](https://github.com/henriquedouradoo)
 - [@João Vitor](https://github.com/JoaoVtC)
