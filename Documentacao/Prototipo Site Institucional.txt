@@ -1,0 +1,3 @@
+O link a seguir apresenta o protótipo do site criado no Figma para o projeto Lofhel, que visa oferecer às vinícolas e adegas um monitoramento eficiente de temperatura e umidade, garantindo a conservação ideal dos vinhos e promovendo um futuro mais competitivo e sustentável no Brasil
+
+Link Figma: https://www.figma.com/design/LsAFaPaKQJvoe9p6ki66Zn/Lofhel?node-id=0-1&t=aj7kDkCuu40p8x6c-1
