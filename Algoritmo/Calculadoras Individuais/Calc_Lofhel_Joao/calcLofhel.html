@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <h2>Calculadora Financeira Lofhel</h2>
+    Total de Garrafas: <input id="iptGarrafas"> 
+    Preço das garrafas: <input id="iptPreco">  
+    <br>
+    <button onclick="mostrar()">Mostrar calculos</button> <br> <br>
+    <div id="divTxt"></div>
+
+</body>
+</html>
+<script>
+    // Variáveis de input
+    var totalGarrafasMes;
+    var precoGarrafasMes;
+   
+
+    // Variáveis de perda sem o uso da solução
+    var garrafasPerdidasMes;
+    var garrafasPerdidasSem;
+    var valorPerdidoMes;
+    var valorPerdidoSem;
+
+    // Variáveis de economia após o uso da solução
+    var garrafasEcoMes;
+    var garrafasEcoSem;
+    var valorEcoMes;
+    var valorEcoSem;
+    var ecoTotalMes;
+    var ecoTotalSem;
+
+    function calcularDesp(){
+        totalGarrafasMes = Number(iptGarrafas.value)
+        precoGarrafasMes = Number(iptPreco.value)
+
+        // Calculo da perca = 27% ao mes
+        garrafasPerdidasMes = totalGarrafasMes * 0.27
+        valorPerdidoMes = garrafasPerdidasMes * precoGarrafasMes
+
+        // Calculo de perca Semestre
+        garrafasPerdidasSem =  garrafasPerdidasMes * 6
+        valorPerdidoSem = garrafasPerdidasSem * precoGarrafasMes
+
+        
+        
+
+    }
+
+    function calcularEco(){
+        // Calculo da eco = 5% ao mes
+        garrafasEcoMes = totalGarrafasMes * 0.05
+        valorEcoMes = garrafasEcoMes * precoGarrafasMes
+
+        // Calculo de eco semestre
+        garrafasEcoSem =  garrafasEcoMes * 6
+        valorEcoSem = garrafasEcoSem * precoGarrafasMes
+
+        /*ecoTotalMes = valorPerdidoMes - valorEcoMes;
+        ecoTotalSem = valorPerdidoSem - ValorEcoSem;*/
+
+
+   }
+
+    function calcularSelic(){
+
+    }
+
+   
+
+    function mostrar() {
+        // Calcula o desperdicio via função
+        calcularDesp();
+
+        // Calcula a economia via função
+        calcularEco();
+
+        // Calculo o ganho via selic
+        divTxt.innerHTML = `Sem a nossa solução você pode perder em média 27% da sua produção por mês.<br> O que representa: <br> <br>
+
+                            <b>- ${garrafasPerdidasMes} garrafas perdidas por mes <br> 
+                            - R$ ${valorPerdidoMes} perdidos por mes <br>
+                            - ${garrafasPerdidasSem} garrafas perdidas por semestre <br> 
+                            - R$ ${valorPerdidoSem} perdidos por semestre </b> <br> <br>
+                            
+                            Nossa solução diminui essa perda em 5% por mês. <br>
+                            O que representa: <br> <br>
+
+                             <b>- ${garrafasEcoMes} garrafas perdidas por mes <br> 
+                            - R$ ${valorEcoMes} perdidos por mes <br>
+                            - ${garrafasEcoSem}  garrafas perdidas por semestre <br> 
+                            - R$ ${valorEcoSem} perdidos por semestre </b>
+
+                            Essa solução faz você economizar: <br> <br>
+                            <b>
+                                R$ ${ecoTotalMes} garrafa mês
+                                R$ ${ecoTotalSem} por semestre
+
+                                </b>
+                            `
+    }
+
+    /*
+            Ideias de funções
+    
+    function calcAumenPh(){
+
+    }
+
+    function calcDimAcido(){
+
+    }
+
+    function calcPercaGarrafa(){
+
+    }
+
+    function calcPercaFinanceira(){
+
+    }*/
+</script>
