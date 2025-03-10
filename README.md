@@ -41,5 +41,5 @@ Sistema para monitoramento contínuo de temperatura e umidade, com alertas preve
 
 ---
 
-**Contato:** Para dúvidas ou sugestões, entre em contato com os integrantes do projeto.
+**Contato:** Para dúvidas ou sugestões, entre em contato com os integrantes do projeto. 
 
