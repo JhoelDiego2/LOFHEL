@@ -1,46 +1,52 @@
--- Tabela Cadastro PI
+-- Tabela Cadastro PI  
+CREATE DATABASE lofhel;  
+USE lofhel;  
+CREATE TABLE cadastrolofhel( 
+    id INT PRIMARY KEY AUTO_INCREMENT, 
+    nome VARCHAR(45) NOT NULL, 
+    email VARCHAR(45) NOT NULL, 
+    senha VARCHAR(20) NOT NULL, 
+    dt_nascimento DATE NOT NULL, 
+    complemento VARCHAR(25) DEFAULT '', 
+    CEP CHAR(9) NOT NULL 
+);   
 
-Create database lofhel;
+CREATE TABLE clientes( 
+    id INT PRIMARY KEY AUTO_INCREMENT, 
+    nome VARCHAR(45) NOT NULL, 
+    nomeempresa VARCHAR(45) NOT NULL, 
+    email VARCHAR(45) NOT NULL, 
+    senha VARCHAR(20) NOT NULL, 
+    complemento VARCHAR(25) DEFAULT '', 
+    CEP CHAR(9) NOT NULL, 
+    cnpj CHAR(14) NOT NULL, 
+    telefone CHAR(11) 
+);  
 
-use lofhel;
+CREATE TABLE sensor( 
+    idSensor INT PRIMARY KEY AUTO_INCREMENT, 
+    nomeSensor VARCHAR(25), 
+    temperaturaCelsius FLOAT NOT NULL, 
+    umidade FLOAT NOT NULL, 
+    dtCadastro DATETIME DEFAULT CURRENT_TIMESTAMP, 
+    statusSensor VARCHAR(7) NOT NULL,  
+    CONSTRAINT chkStatus CHECK (statusSensor IN ('Ativo', 'Inativo')) 
+);  
 
-create table cadastroEmpresa(
-id INT primary key auto_increment,
-nome varchar(45) not null,
-email varchar(60) not null,
-senha varchar(60) not null,
-telefone char(11) default '',
-celular char(11) not null,
-cep char(8) not null,
-cnpj char(14) not null,
-complemento varchar(12) default ''
-);
+CREATE TABLE vinho( 
+    idVinho INT PRIMARY KEY AUTO_INCREMENT, 
+    tipoVinho VARCHAR(60), 
+    fermenVinho VARCHAR(25), 
+    tempMininima CHAR(2) NOT NULL, 
+    tempMaxima CHAR(2) NOT NULL, 
+    pais VARCHAR(60) DEFAULT '', 
+    produtor VARCHAR(60) 
+);  
 
-create table sensor(
-idSensor int primary key auto_increment,
-nomeSensor varchar(25),
-temperaturaCelsius float not null,
-umidade float not null,
-dtCadastro datetime default current_timestamp,
-statusSensor varchar(7) not null, 
-constraint chkStatus
-check (statusSensor in ( 'Ativo', 'Inativo'))
-);
-
-create table vinho(
-idVinho int primary key auto_increment,
-tipoVinho varchar(60),
-fermenVinho varchar (25),
-tempMininima char(2) not null,
-tempMaxima char(2) not null,
-pais varchar(60) default '',
-produtor varchar(60)
-);
-
-create table vinicola(
-idVinicola int primary key auto_increment,
-tipoArmazem varchar(60),
-estoqueAtual int,
-estoqueMaximo int,
-areaVinicola int
+CREATE TABLE vinicola( 
+    idVinicola INT PRIMARY KEY AUTO_INCREMENT, 
+    tipoArmazem VARCHAR(60), 
+    estoqueAtual INT, 
+    estoqueMaximo INT, 
+    areaVinicola INT
 );
