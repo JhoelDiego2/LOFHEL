@@ -26,6 +26,8 @@
             var ax_perdaV = ax_perdaG * ax_valor
             var ax_servico = ax_quantidade * 0.05
             var ax_economia = ax_perdaV - ax_servico
+            var ax_semestre = ax_economia * 6
+            var ax_ano = ax_economia * 12
             div_txt.innerHTML = `
             ${ax_nome}, estima-se que atualmente, existe uma perda considerável do produto
             no mercado de vinhos, cerca de 27% da mercadoria é perdida por conta da falta de controle
@@ -37,7 +39,14 @@
             <br> <br>
             
             Com a contratação de nossos serviços essa perda poderia diminuir para até 5% ao mês, (${ax_servico} garrafas) o que proporciona uma economia de
-            R$${ax_economia}.`  
+            R$${ax_economia}.<br> <br> <br>
+            
+            Em 6 meses você teria economizado R$${ax_semestre}. <br>
+            Em 1 ano você teria economizado R$${ax_ano}. <br>
+            
+            `  
+
+
 
 
 
