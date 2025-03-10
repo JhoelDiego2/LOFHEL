@@ -3,6 +3,7 @@
 CREATE DATABASE lofhel;  
 USE lofhel;  
 
+-- Criando Tabela Para Cadastro --
 
 CREATE TABLE cadastroLofhel( 
     id INT PRIMARY KEY AUTO_INCREMENT, 
@@ -13,6 +14,8 @@ CREATE TABLE cadastroLofhel(
     complemento VARCHAR(25) DEFAULT '', 
     CEP CHAR(9) NOT NULL 
 );   
+
+-- Criando Tabela Para Identificação de clientes --
 
 CREATE TABLE clientes( 
     id INT PRIMARY KEY AUTO_INCREMENT, 
@@ -27,6 +30,8 @@ CREATE TABLE clientes(
     dtCadastro DATETIME DEFAULT CURRENT_TIMESTAMP
 );  
 
+-- Criando Tabela Para o Sensor --
+
 CREATE TABLE sensor( 
     idSensor INT PRIMARY KEY AUTO_INCREMENT, 
     nomeSensor VARCHAR(25), 
@@ -37,6 +42,8 @@ CREATE TABLE sensor(
     CONSTRAINT chkStatus CHECK (statusSensor IN ('Ativo', 'Inativo')) 
 );  
 
+-- Criando Tabela para o Vinho --
+
 CREATE TABLE vinho( 
     idVinho INT PRIMARY KEY AUTO_INCREMENT, 
     tipoVinho VARCHAR(60), 
@@ -46,6 +53,8 @@ CREATE TABLE vinho(
     pais VARCHAR(60) DEFAULT '', 
     produtor VARCHAR(60) 
 );  
+
+-- Criando Tabela Para Vinícola --
 
 CREATE TABLE vinicola( 
     idVinicola INT PRIMARY KEY AUTO_INCREMENT, 
