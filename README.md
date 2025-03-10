@@ -7,7 +7,7 @@
 - [@Henrique Dourado](https://github.com/henriquedouradoo)
 - [@João Vitor](https://github.com/JoaoVtC)
 - [@Lorenzo Meni](https://github.com/lorenzomeni)
-- [@Leo Monteiro](https://github.com/LeoMont200)
+- [@Leonardo Monteiro](https://github.com/LeoMont200)
 - [@Omar Dahbur](https://github.com/OmarDahbur)
 
 ---
