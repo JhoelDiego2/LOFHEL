@@ -1,12 +1,15 @@
 -- Tabela Cadastro PI  
+
 CREATE DATABASE lofhel;  
 USE lofhel;  
-CREATE TABLE cadastrolofhel( 
+
+
+CREATE TABLE cadastroLofhel( 
     id INT PRIMARY KEY AUTO_INCREMENT, 
     nome VARCHAR(45) NOT NULL, 
     email VARCHAR(45) NOT NULL, 
     senha VARCHAR(20) NOT NULL, 
-    dt_nascimento DATE NOT NULL, 
+    dtNascimento DATE NOT NULL, 
     complemento VARCHAR(25) DEFAULT '', 
     CEP CHAR(9) NOT NULL 
 );   
@@ -14,13 +17,14 @@ CREATE TABLE cadastrolofhel(
 CREATE TABLE clientes( 
     id INT PRIMARY KEY AUTO_INCREMENT, 
     nome VARCHAR(45) NOT NULL, 
-    nomeempresa VARCHAR(45) NOT NULL, 
+    nomeEmpresa VARCHAR(45) NOT NULL, 
     email VARCHAR(45) NOT NULL, 
     senha VARCHAR(20) NOT NULL, 
     complemento VARCHAR(25) DEFAULT '', 
     CEP CHAR(9) NOT NULL, 
     cnpj CHAR(14) NOT NULL, 
-    telefone CHAR(11) 
+    telefone CHAR(11),
+    dtCadastro DATETIME DEFAULT CURRENT_TIMESTAMP
 );  
 
 CREATE TABLE sensor( 
