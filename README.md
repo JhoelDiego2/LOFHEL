@@ -18,7 +18,7 @@ Este projeto visa garantir a qualidade e conservação dos vinhos por meio do mo
 ---
 
 ## Contexto
-O Brasil tem se destacado na produção e consumo de vinhos, mas a falta de controle adequado na armazenagem causa perdas significativas. Cerca de 27% dos vinhos engarrafados são descartados devido a problemas com temperatura e umidade.
+O Brasil tem se destacado na produção e consumo de vinhos, mas a falta de controle adequado na armazenagem causa perdas significativas. Globalmente, cerca de 27% dos vinhos engarrafados são descartados ao mês devido a problemas com temperatura e umidade.
 
 ### Problema
 - Temperaturas elevadas alteram sabor, aroma e cor do vinho.
