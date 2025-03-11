@@ -59,8 +59,8 @@ Sistema para monitoramento contínuo de temperatura e umidade, com alertas preve
 ✅ Visão de Negócio (Diagrama)<br>
 
 ✅ Protótipo do Site Institucional<br>
-<img width="330" alt="Captura de Tela 2025-03-10 às 23 14 32" src="https://github.com/user-attachments/assets/58a4c344-0bf0-4dab-8cbb-57669678393f" />
-Link Figma: https://www.figma.com/design/LsAFaPaKQJvoe9p6ki66Zn/Lofhel?node-id=0-1&t=aj7kDkCuu40p8x6c-1
+<img width="330" alt="Captura de Tela 2025-03-10 às 23 14 32" src="https://github.com/user-attachments/assets/58a4c344-0bf0-4dab-8cbb-57669678393f" /> 
+https://www.figma.com/design/LsAFaPaKQJvoe9p6ki66Zn/Lofhel?node-id=0-1&t=aj7kDkCuu40p8x6c-1
 
 💻 Algoritmos<br>
 ✅ Tela de simulador financeiro<br>
@@ -81,6 +81,7 @@ Link Figma: https://www.figma.com/design/LsAFaPaKQJvoe9p6ki66Zn/Lofhel?node-id=0
 💻 Introd. Sistemas Operacionais<br>
 ✅ Linux instalado na VM Local<br>
 ![image](https://github.com/Lofhel/LOFHEL/blob/main/IntroSO/ambiente-funcionando.png)
+![image](https://github.com/Lofhel/LOFHEL/blob/main/IntroSO/comando-linux.png)
 
 **Contato:** Para dúvidas ou sugestões, entre em contato com os integrantes do projeto. 
 
