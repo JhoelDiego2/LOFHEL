@@ -15,7 +15,7 @@ CREATE TABLE cadastroLofhel(
     CEP CHAR(9) NOT NULL 
 );  
  
--- Inserindo dados na tabela de cadastro --
+-- Inserindo dados na tabela de cadastroLofhel--
 
 INSERT INTO cadastroLofhel (nome, email, senha, dtNascimento, complemento, CEP) VALUES
 ('João Silva', 'joao.silva@email.com', 'senha123', '1990-05-15', 'Apto 301', '12345-678'),
