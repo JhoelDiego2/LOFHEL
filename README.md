@@ -6,14 +6,15 @@
 ## São Paulo, Brasil
 ### Integrantes:
 
-- [@Edson Felix](https://github.com/85ED) <img width="296" alt="Captura de Tela 2025-03-10 às 22 49 29" src="https://github.com/user-attachments/assets/bf5e3eb3-2a1a-4216-8607-3dcb649e3dea" />
-
-- [@Felipe Lima](https://github.com/FelipeLima24)
+- [@Edson Felix](https://github.com/85ED)
 - [@Henrique Dourado](https://github.com/henriquedouradoo)
-- [@João Vitor](https://github.com/JoaoVtC)
-- [@Lorenzo Meni](https://github.com/lorenzomeni)
 - [@Leonardo Monteiro](https://github.com/LeoMont200)
+- [@Felipe Lima](https://github.com/FelipeLima24)
+- [@Lorenzo Meni](https://github.com/lorenzomeni)
 - [@Omar Dahbur](https://github.com/OmarDahbur)
+- [@João Vitor](https://github.com/JoaoVtC)
+-
+- <img width="296" alt="Captura de Tela 2025-03-10 às 22 49 29" src="https://github.com/user-attachments/assets/bf5e3eb3-2a1a-4216-8607-3dcb649e3dea" />
 
 ---
 
