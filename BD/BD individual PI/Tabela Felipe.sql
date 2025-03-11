@@ -1,9 +1,9 @@
--- Tabela Cadastro PI  
+-- Criação do database lofhel
 
 CREATE DATABASE lofhel;  
 USE lofhel;  
 
--- Criando Tabela Para Cadastro --
+-- Criando Tabela Para Cadastro dos integrantes da empresa --
 
 CREATE TABLE cadastroLofhel( 
     id INT PRIMARY KEY AUTO_INCREMENT, 
@@ -15,7 +15,7 @@ CREATE TABLE cadastroLofhel(
     CEP CHAR(9) NOT NULL 
 );  
  
--- Inserindo dados na tabela de cadastro --
+-- Inserindo dados na tabela cadastroLofhel --
 
 INSERT INTO cadastroLofhel (nome, email, senha, dtNascimento, complemento, CEP) VALUES
 ('João Silva', 'joao.silva@email.com', 'senha123', '1990-05-15', 'Apto 301', '12345-678'),
@@ -42,7 +42,7 @@ CREATE TABLE clientes(
     
 );
 
--- Inserindo dados na tabela de clientes--
+-- Inserindo dados na tabela clientes --
  
 INSERT INTO clientes (nome, nomeEmpresa, email, senha, CEP, complemento, cnpj, telefone, dtCadastro) VALUES
 ('Pedro Almeida', 'InovaTech', 'pedro.almeida@email.com', 'senha123', '12345-678', 'Apto 301', '12345678000195', '11987654321', '2025-03-10 08:30:00'),
@@ -52,8 +52,6 @@ INSERT INTO clientes (nome, nomeEmpresa, email, senha, CEP, complemento, cnpj, t
 ('Ricardo Lima', 'Lima Serviços', 'ricardo.lima@email.com', 'senha654', '56789-012', 'Bloco B, Apto 202', '78945612000140', '61987654321', '2025-03-06 12:20:00');
 
 SELECT * FROM clientes;
-
-DROP TABLE clientes;
 
 -- Criando Tabela Para o Sensor --
 
@@ -68,7 +66,7 @@ CREATE TABLE sensor(
 
 );  
 
--- Inserindo dados na tabela do sensor--
+-- Inserindo dados na tabela sensor--
 
 INSERT INTO sensor (nomeSensor, temperaturaCelsius, umidade, statusSensor, dtCadastro) VALUES
 ('Sensor A', 25.3, 60.5, 'Ativo', '2025-03-10 08:30:00'),
@@ -79,16 +77,12 @@ INSERT INTO sensor (nomeSensor, temperaturaCelsius, umidade, statusSensor, dtCad
 
 SELECT * FROM sensor;
 
-DROP TABLE sensor;
-
 -- Criando Tabela para o Vinho --
 
 CREATE TABLE vinho( 
     idVinho INT PRIMARY KEY AUTO_INCREMENT, 
     tipoVinho VARCHAR(60), 
     fermenVinho VARCHAR(25), 
-    tempMininima CHAR(2) NOT NULL, 
-    tempMaxima CHAR(2) NOT NULL, 
     pais VARCHAR(60), 
     produtor VARCHAR(60) 
 );  
@@ -103,8 +97,6 @@ INSERT INTO vinho (tipoVinho, fermenVinho, tempMininima, tempMaxima, pais, produ
 ('Sauvignon Blanc', 'Fermentação Malolática', '10', '32', 'Nova Zelândia', 'Cloudy Bay');
 
 SELECT * FROM vinho;
-
-DROP TABLE vinho;
 
 -- Criando Tabela Para Vinícola --
 
@@ -127,4 +119,7 @@ INSERT INTO vinicola (tipoArmazem, estoqueAtual, estoqueMaximo, areaVinicola)VAL
 
 SELECT * FROM vinicola;
 
-DROP TABLE vinicola;
+-- Dropando o database lofhel
+
+DROP DATABASE lofhel;
+
