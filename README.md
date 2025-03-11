@@ -1,6 +1,6 @@
 # Monitoramento de Umidade e Temperatura em Vinícolas e Adegas 
 
-![Logo da Lofhel](https://github.com/Lofhel/LOFHEL/blob/main/Imagens/lofhel_logo_1.png?raw=true)
+<img src="https://github.com/Lofhel/LOFHEL/blob/main/Imagens/lofhel_logo_1.png?raw=true" alt="Logo do Projeto" width="150" align="left">
 
 
 ## São Paulo, Brasil
