@@ -63,6 +63,8 @@ Sistema para monitoramento contínuo de temperatura e umidade, com alertas preve
 
 💻 Algoritmos<br>
 ✅ Tela de simulador financeiro<br>
+<img width="1440" alt="Captura de Tela 2025-03-10 às 23 23 29" src="https://github.com/user-attachments/assets/057fac6c-fae6-4d18-84b7-2a175be3a48f" />
+
 
 🌐 TI – Tecnologia da Informação<br>
 ✅ Ferramenta de Gestão de Projeto configurada<br>
