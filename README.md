@@ -27,7 +27,7 @@ Este projeto visa garantir a qualidade e conservação dos vinhos por meio do mo
 ---
 
 ## Contexto
-O Brasil tem se destacado na produção e consumo de vinhos, mas a falta de controle adequado na armazenagem causa perdas significativas. Globalmente, cerca de 27% dos vinhos engarrafados são descartados ao mês devido a problemas com temperatura e umidade.
+🍇 O Brasil tem se destacado na produção e consumo de vinhos, mas a falta de controle adequado na armazenagem causa perdas significativas. Globalmente, cerca de 27% dos vinhos engarrafados são descartados ao mês devido a problemas com temperatura e umidade.
 
 ### Problema
 - Temperaturas elevadas alteram sabor, aroma e cor do vinho.
@@ -49,6 +49,13 @@ Sistema para monitoramento contínuo de temperatura e umidade, com alertas preve
 - **Umidade ideal**: 50% a 80%
 
 ---
+
+<h2>📅 Entregas<br> <h2>
+🌐 Pesquisa & Inovação<br>
+✅ Projeto criado e configurado no GitHub<br>
+<img width="997" alt="Captura de Tela 2025-03-10 às 23 09 37" src="https://github.com/user-attachments/assets/32425479-23e2-4cf6-a18e-ecf94cb510ed" />
+
+
 
 **Contato:** Para dúvidas ou sugestões, entre em contato com os integrantes do projeto. 
 
