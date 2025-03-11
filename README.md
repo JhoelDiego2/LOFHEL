@@ -61,7 +61,22 @@ Sistema para monitoramento contínuo de temperatura e umidade, com alertas preve
 ✅ Protótipo do Site Institucional<br>
 <img width="330" alt="Captura de Tela 2025-03-10 às 23 14 32" src="https://github.com/user-attachments/assets/58a4c344-0bf0-4dab-8cbb-57669678393f" />
 
+💻 Algoritmos<br>
+✅ Tela de simulador financeiro<br>
 
+🌐 TI – Tecnologia da Informação<br>
+✅ Ferramenta de Gestão de Projeto configurada<br>
+<img width="1427" alt="Captura de Tela 2025-03-10 às 23 17 55" src="https://github.com/user-attachments/assets/c1946305-f5ee-4c32-bc26-e78841b5c0c3" />
+
+📚 Banco de Dados<br>
+✅ Tabelas criadas no MySQL<br>
+![image](https://github.com/user-attachments/assets/f377dea7-1367-453e-b9be-81d975126f83)
+
+🤖 Arquitetura de Computadores<br>
+✅ Instalação e Configuração IDE Arduíno<br>
+
+💻 Introd. Sistemas Operacionais<br>
+✅ Linux instalado na VM Local<br>
 
 **Contato:** Para dúvidas ou sugestões, entre em contato com os integrantes do projeto. 
 
