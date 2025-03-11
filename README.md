@@ -79,6 +79,7 @@ Sistema para monitoramento contínuo de temperatura e umidade, com alertas preve
 
 💻 Introd. Sistemas Operacionais<br>
 ✅ Linux instalado na VM Local<br>
+![image](https://github.com/Lofhel/LOFHEL/blob/main/IntroSO/ambiente-funcionando.png)
 
 **Contato:** Para dúvidas ou sugestões, entre em contato com os integrantes do projeto. 
 
