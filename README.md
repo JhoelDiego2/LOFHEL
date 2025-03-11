@@ -1,8 +1,13 @@
 # Monitoramento de Umidade e Temperatura em Vinícolas e Adegas 
 
+![Logo da Lofhel](https://github.com/Lofhel/LOFHEL/blob/main/Imagens/lofhel_logo_1.png?raw=true)
+
+
 ## São Paulo, Brasil
 ### Integrantes:
-- [@Edson Felix](https://github.com/85ED) 
+
+- [@Edson Felix](https://github.com/85ED) <img width="296" alt="Captura de Tela 2025-03-10 às 22 49 29" src="https://github.com/user-attachments/assets/bf5e3eb3-2a1a-4216-8607-3dcb649e3dea" />
+
 - [@Felipe Lima](https://github.com/FelipeLima24)
 - [@Henrique Dourado](https://github.com/henriquedouradoo)
 - [@João Vitor](https://github.com/JoaoVtC)
