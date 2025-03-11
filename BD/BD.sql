@@ -1,4 +1,4 @@
--- Tabela Cadastro PI  
+-- Criação do database lofhel
 
 CREATE DATABASE lofhel;  
 USE lofhel;  
@@ -53,8 +53,6 @@ INSERT INTO clientes (nome, nomeEmpresa, email, senha, CEP, complemento, cnpj, t
 
 SELECT * FROM clientes;
 
-DROP TABLE clientes;
-
 -- Criando Tabela Para o Sensor --
 
 CREATE TABLE sensor( 
@@ -79,16 +77,12 @@ INSERT INTO sensor (nomeSensor, temperaturaCelsius, umidade, statusSensor, dtCad
 
 SELECT * FROM sensor;
 
-DROP TABLE sensor;
-
 -- Criando Tabela para o Vinho --
 
 CREATE TABLE vinho( 
     idVinho INT PRIMARY KEY AUTO_INCREMENT, 
     tipoVinho VARCHAR(60), 
     fermenVinho VARCHAR(25), 
-    tempMininima CHAR(2) NOT NULL, 
-    tempMaxima CHAR(2) NOT NULL, 
     pais VARCHAR(60), 
     produtor VARCHAR(60) 
 );  
@@ -103,8 +97,6 @@ INSERT INTO vinho (tipoVinho, fermenVinho, tempMininima, tempMaxima, pais, produ
 ('Sauvignon Blanc', 'Fermentação Malolática', '10', '32', 'Nova Zelândia', 'Cloudy Bay');
 
 SELECT * FROM vinho;
-
-DROP TABLE vinho;
 
 -- Criando Tabela Para Vinícola --
 
@@ -127,4 +119,7 @@ INSERT INTO vinicola (tipoArmazem, estoqueAtual, estoqueMaximo, areaVinicola)VAL
 
 SELECT * FROM vinicola;
 
-DROP TABLE vinicola;
+-- Dropando o database lofhel
+
+DROP DATABASE lofhel;
+
