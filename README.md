@@ -1,25 +1,28 @@
 # Monitoramento de Umidade e Temperatura em Vinícolas e Adegas 
 
 <img src="https://github.com/Lofhel/LOFHEL/blob/main/Imagens/lofhel_logo_1.png?raw=true" alt="Logo do Projeto" width="150" align="left">
-<br>
 
-## São Paulo, Brasil
-### Integrantes:
-
-- [@Edson Felix](https://github.com/85ED)
-- [@Henrique Dourado](https://github.com/henriquedouradoo)
-- [@Leonardo Monteiro](https://github.com/LeoMont200)
-- [@Felipe Lima](https://github.com/FelipeLima24)
-- [@Lorenzo Meni](https://github.com/lorenzomeni)
-- [@Omar Dahbur](https://github.com/OmarDahbur)
-- [@João Vitor](https://github.com/JoaoVtC)
+<br><br><br><br>
 -
-- <img width="296" alt="Captura de Tela 2025-03-10 às 22 49 29" src="https://github.com/user-attachments/assets/bf5e3eb3-2a1a-4216-8607-3dcb649e3dea" />
+## São Paulo, Brasil
 
 ---
 
 ## Sobre o Projeto
 Este projeto visa garantir a qualidade e conservação dos vinhos por meio do monitoramento contínuo da umidade e temperatura em vinícolas e adegas.
+
+---
+### Integrantes:
+
+👤 [@Edson Felix](https://github.com/85ED)
+👤 [@Henrique Dourado](https://github.com/henriquedouradoo)
+👤 [@Leonardo Monteiro](https://github.com/LeoMont200)
+👤 [@Felipe Lima](https://github.com/FelipeLima24)
+👤 [@Lorenzo Meni](https://github.com/lorenzomeni)
+👤 [@Omar Dahbur](https://github.com/OmarDahbur)
+👤 [@João Vitor](https://github.com/JoaoVtC)
+
+<img width="296" alt="Captura de Tela 2025-03-10 às 22 49 29" src="https://github.com/user-attachments/assets/bf5e3eb3-2a1a-4216-8607-3dcb649e3dea" />
 
 ---
 
