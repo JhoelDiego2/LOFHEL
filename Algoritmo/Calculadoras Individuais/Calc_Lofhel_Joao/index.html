@@ -6,10 +6,10 @@
     <title>Calculadora</title>
 </head>
 <body>
-    <h2>Calculadora Financeira Lofhel</h2>
-    Total de Garrafas: <input id="iptGarrafas"> 
-    Preço das garrafas: <input id="iptPreco">  <!--Valores inseridos pelo usuário-->
-    <br>
+    <img src="lofhel logo 1.png" alt="logo lofhel" width="100px" height="100px"><h2>Calculadora Financeira Lofhel</h2> 
+    <i>Calcularemos a sua perda sem nossa solução</i> <br> <br>
+    Total de Garrafas: <input id="iptGarrafas">  
+    Preço das garrafas: <input id="iptPreco">  <br> <!--Valores inseridos pelo usuário-->
     <button onclick="mostrar()">Mostrar calculos</button> <br> <br> <!--Botão que executa a função mostrar do js--> 
     <div id="divTxt"></div> <!--div que receberá o texto do JS-->
 
@@ -86,7 +86,7 @@
         calcularSelic();
 
         // Mostra mensagem na tela para o usuário
-        divTxt.innerHTML = `Sem a nossa solução você pode perder em média 27% da sua produção por mês.<br> O que representa: <br> <br>
+        divTxt.innerHTML = `📈 Sem a nossa solução você pode perder em média 27% da sua produção por mês.<br> O que representa: <br> <br>
 
                             <b style="color:darkred">
                             - ${garrafasPerdidasMes} garrafas perdidas por mes <br> 
@@ -95,7 +95,7 @@
                             - R$ ${valorPerdidoSem} perdidos por semestre 
                             </b> <br> <br>
                             
-                            Nossa solução diminui essa perda em 5% por mês. <br>
+                            📉 Nossa solução diminui essa perda em 5% por mês. <br>
                             O que representa: <br> <br>
 
                              <b style="color: darkgreen">
@@ -105,7 +105,7 @@
                             - R$ ${valorEcoSem} perdidos por semestre 
                             </b> <br> <br>
 
-                            Essa solução faz você economizar: <br> <br>
+                            &#x1F4B0; Essa solução faz você economizar: <br> <br>
                             <b style="color:darkblue">
                                 - R$ ${ecoTotalMes} por mês <br>
                                 - R$ ${ecoTotalSem} por semestre 
