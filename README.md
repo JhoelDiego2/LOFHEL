@@ -75,7 +75,7 @@ https://www.figma.com/design/LsAFaPaKQJvoe9p6ki66Zn/Lofhel?node-id=0-1&t=aj7kDkC
 <img width="1427" alt="Captura de Tela 2025-03-10 às 23 17 55" src="https://github.com/user-attachments/assets/c1946305-f5ee-4c32-bc26-e78841b5c0c3" />
 
 ✅ Documentação do Projeto<br>
-![Documentação](https://bandteccom-my.sharepoint.com/:w:/g/personal/henrique_domingos_sptech_school/EaBy8Qm840dKiqncKYmFvHsBp04zdL9RU1_C7SN8ai8iTw?e=1D5UJJ)
+[Documentação](https://bandteccom-my.sharepoint.com/:w:/g/personal/henrique_domingos_sptech_school/EaBy8Qm840dKiqncKYmFvHsBp04zdL9RU1_C7SN8ai8iTw?e=1D5UJJ)
 
 📚 Banco de Dados<br>
 ✅ Tabelas criadas no MySQL<br>
