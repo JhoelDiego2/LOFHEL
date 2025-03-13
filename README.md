@@ -53,7 +53,6 @@ Sistema para monitoramento contínuo de temperatura e umidade, com alertas preve
 <h3>📅 Entregas:
 <br><br>
   
-🌐 Pesquisa & Inovação<br>
 ✅ Projeto criado e configurado no GitHub<br>
 <img width="997" alt="Captura de Tela 2025-03-10 às 23 09 37" src="https://github.com/user-attachments/assets/32425479-23e2-4cf6-a18e-ecf94cb510ed" />
 
