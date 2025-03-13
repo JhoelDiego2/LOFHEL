@@ -58,24 +58,26 @@ SELECT * FROM clientes;
 
 -- Criando Tabela Para o Sensor --
 
-CREATE TABLE sensor( 
-    idSensor INT PRIMARY KEY AUTO_INCREMENT, 
-    nomeSensor VARCHAR(25), 
-    temperaturaCelsius FLOAT NOT NULL, 
-    umidade FLOAT NOT NULL, 
-    statusSensor VARCHAR(7) NOT NULL,  
-    CONSTRAINT chkStatus CHECK (statusSensor IN ('Ativo', 'Inativo')) ,
-	dtCadastro DATETIME 
-	);  
+CREATE TABLE sensor (
+    idSensor INT PRIMARY KEY AUTO_INCREMENT,
+    nomeSensor VARCHAR(25),
+    temperaturaLocal FLOAT NOT NULL,
+    umidadeLocal FLOAT NOT NULL,
+    statusSensor VARCHAR(7) NOT NULL,
+    dtCadastro DATETIME,
+    CONSTRAINT chk_temperatura CHECK (temperaturaLocal >= 7 AND temperaturaLocal <= 18),
+    CONSTRAINT chk_umidade CHECK (umidadeLocal >= 50 AND umidadeLocal <= 80),
+    CONSTRAINT chk_status CHECK (statusSensor IN ('Ativo', 'Inativo'))
+);
 
 -- Inserindo dados na tabela sensor--
 
-INSERT INTO sensor (nomeSensor, temperaturaCelsius, umidade, statusSensor, dtCadastro) VALUES
-('Sensor A', 25.3, 60.5, 'Ativo', '2025-03-10 08:30:00'),
-('Sensor B', 28.1, 55.2, 'Ativo', '2025-03-10 09:00:00'),
-('Sensor C', 22.7, 70.0, 'Inativo', '2025-03-10 09:30:00'),
-('Sensor D', 19.5, 80.3, 'Ativo', '2025-03-10 10:00:00'),
-('Sensor E', 26.4, 65.8, 'Inativo', '2025-03-10 10:30:00');
+INSERT INTO sensor (nomeSensor, temperaturaLocal, umidadeLocal, statusSensor, dtCadastro) VALUES
+('Sensor A', 7.8, 60.5, 'Ativo', '2025-01-10 08:30:00'),
+('Sensor B', 17.5, 55.2, 'Ativo', '2025-03-10 09:00:00'),
+('Sensor C', 15.7, 70.0, 'Inativo', '2025-02-10 09:30:00'),
+('Sensor D', 12.1, 79.9, 'Ativo', '2025-01-17 10:00:00'),
+('Sensor E', 9.5, 65.8, 'Inativo', '2025-02-14 10:30:00');
 
 SELECT * FROM sensor;
 
@@ -129,8 +131,8 @@ email AS 'Email para contato' FROM cadastroLofhel ORDER BY nome;
 
 SELECT nomeEmpresa AS 'Clientes da empresa' FROM clientes ORDER BY nomeEmpresa;
 
-SELECT temperaturaCelsius AS 'Controle da temperatura', 
-umidade AS 'Controle da umidade' FROM sensor;
+SELECT temperaturaLocal AS 'Controle da temperatura', 
+umidadeLocal AS 'Controle da umidade' FROM sensor;
 
 SELECT nomeVinho AS 'Nome do vinho', 
 tipoVinho AS 'Tipo do vinho',fermenVinho AS 'Tipo de fermentação',
