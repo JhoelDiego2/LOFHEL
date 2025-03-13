@@ -63,7 +63,7 @@ Sistema para monitoramento contínuo de temperatura e umidade, com alertas preve
 ✅ Protótipo do Site Institucional<br>
 <img width="330" alt="Captura de Tela 2025-03-10 às 23 14 32" src="https://github.com/user-attachments/assets/58a4c344-0bf0-4dab-8cbb-57669678393f" /> 
 <br>
-Clique para ver o protótipo do site: <a href="https://www.figma.com/design/LsAFaPaKQJvoe9p6ki66Zn/Lofhel?node-id=0-1&t=aj7kDkCuu40p8x6c-1" target="_blank">Link</a>
+Clique para ver o protótipo do site 🔗 <a href="https://www.figma.com/design/LsAFaPaKQJvoe9p6ki66Zn/Lofhel?node-id=0-1&t=aj7kDkCuu40p8x6c-1" target="_blank">Link</a>
 
 💻 Algoritmos<br>
 ✅ Tela de simulador financeiro<br>
