@@ -58,6 +58,8 @@ Sistema para monitoramento contínuo de temperatura e umidade, com alertas preve
 ---
 
 ✅ Documento de Contexto de Negócio e Justificativa do Projeto<br>
+✅ Documentação do Projeto<br>
+[Documentação da Lofhel](https://bandteccom-my.sharepoint.com/:w:/g/personal/henrique_domingos_sptech_school/EaBy8Qm840dKiqncKYmFvHsBeoIxfh1rYJYm-Iw-t7POEQ) <br>
 
 ---
 
@@ -77,20 +79,24 @@ Clique para ver o protótipo do site 🔗 <a href="https://www.figma.com/design/
 ✅ Tela de simulador financeiro<br>
 <img width="1440" alt="Captura de Tela 2025-03-10 às 23 23 29" src="https://github.com/user-attachments/assets/057fac6c-fae6-4d18-84b7-2a175be3a48f" />
 
+---
 
 🌐 TI – Tecnologia da Informação<br>
 ✅ Ferramenta de Gestão de Projeto configurada<br>
 <img width="1427" alt="Captura de Tela 2025-03-10 às 23 17 55" src="https://github.com/user-attachments/assets/c1946305-f5ee-4c32-bc26-e78841b5c0c3" />
 
-✅ Documentação do Projeto<br>
-[Documentação da Lofhel](https://bandteccom-my.sharepoint.com/:w:/g/personal/henrique_domingos_sptech_school/EaBy8Qm840dKiqncKYmFvHsBeoIxfh1rYJYm-Iw-t7POEQ) <br>
+---
 
 📚 Banco de Dados<br>
 ✅ Tabelas criadas no MySQL<br>
 ![image](https://github.com/user-attachments/assets/f377dea7-1367-453e-b9be-81d975126f83)
 
+---
+
 🤖 Arquitetura de Computadores<br>
 ✅ Instalação e Configuração IDE Arduíno<br>
+
+---
 
 💻 Introd. Sistemas Operacionais<br>
 ✅ Linux instalado na VM Local<br>
