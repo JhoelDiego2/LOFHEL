@@ -23,7 +23,7 @@ void setup() {
 }
 
 void loop() {
-  float umidade = sensorDHT.readHumidity(); // variável que recebe os valores da umidade 
+  float umidade = sensorDHT.readHumidity() + 15; // variável que recebe os valores da umidade 
   float temperatura = sensorDHT.readTemperature() - 10; // variável que recebe os valores da temperatura
 
 
@@ -32,14 +32,38 @@ void loop() {
   } // Emite um alerta ao não coseguir capturar dados
   
   else {
-    Serial.print("Umidade: "); 
-    Serial.print(umidade);
-    Serial.print(" % ");
-    Serial.print("Temperatura: ");
+    // Label de temperatura
+    Serial.print ("Temperatura:"); 
     Serial.print(temperatura);
-    Serial.println(" °C"); // Exibe no terminal uma mensagem estruturada com os dados que foram detectados
-    // println pula a linha no terminal
+    Serial.print(" "); // E
+
+    // Label da temperatura maxima
+    Serial.print("TemperaturaMaxima:");
+    Serial.print(18);
+    Serial.print(" ");
+
+    // Label da temperatura minima
+    Serial.print("TemperaturaMinima:");
+    Serial.print(14);
+    Serial.print(" ");
+
+    // Label de umidade
+    Serial.print("Umidade:");
+    Serial.print(umidade);
+    Serial.print(" ");
+
+    // Label de umidade maxima
+    Serial.print("UmidadeMaxima:");
+    Serial.print(80);
+    Serial.print(" ");
+
+    // Label de umidade minima
+    Serial.print("UmidadeMinima:");
+    Serial.print(50);
+    Serial.println(" ");
   }
 
-  delay(1000); // delay de 1s para captura de dados
+  delay(500); // delay de 1s para captura de dados
+
+
 }
