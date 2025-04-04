@@ -1,12 +1,3 @@
-/*INTEGRANTES
-  João Vitor
-  Henrique Dourado
-  Edson Félix
-  Leonardo Monteiro
-  Lorenzo Meni
-  Felipe Queiroz
-  Omar Nidal
-*/
 
 #include "DHT.h" // adiciona a biblioteca DHT.h ao código
 
@@ -14,7 +5,6 @@
 const int PINO_SENSOR_DHT11 = A4; // define em qual pino o sensor está ligado
 
 DHT sensorDHT(PINO_SENSOR_DHT11, TIPO_SENSOR); // cria um objeto do sensor DHT11
-
 
 void setup() {
   Serial.begin(9600); // define a velocidade de transmissão

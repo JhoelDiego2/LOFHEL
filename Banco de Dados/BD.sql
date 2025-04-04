@@ -1,11 +1,9 @@
 -- Criação do database lofhel
-
 CREATE DATABASE lofhel;  
 USE lofhel;  
 
 
 -- Criando Tabela Para Cadastro dos integrantes da empresa --
-
 CREATE TABLE cadastroLofhel( 
     id INT PRIMARY KEY AUTO_INCREMENT, 
     nome VARCHAR(45) NOT NULL, 
@@ -18,7 +16,6 @@ CREATE TABLE cadastroLofhel(
 
  
 -- Inserindo dados na tabela cadastroLofhel --
-
 INSERT INTO cadastroLofhel (nome, email, senha, dtNascimento, complemento, CEP) VALUES
 ('Leonardo Monteiro', 'leonardo.monteiro@sptech.school', 'senha123', '1990-05-15', 'Apto 301', '12345-678'),
 ('João Vitor Carlos de Almeida Araujo', 'joao.varaujo@sptech.school', 'senha456', '1985-11-20', 'Casa', '23456-789'),
@@ -31,7 +28,6 @@ INSERT INTO cadastroLofhel (nome, email, senha, dtNascimento, complemento, CEP) 
 SELECT * FROM cadastroLofhel;
 
 -- Criando Tabela Para Identificação de clientes --
-
 CREATE TABLE clientes( 
     id INT PRIMARY KEY AUTO_INCREMENT, 
     nome VARCHAR(45) NOT NULL, 
@@ -46,7 +42,6 @@ CREATE TABLE clientes(
 	);
 
 -- Inserindo dados na tabela clientes --
- 
 INSERT INTO clientes (nome, nomeEmpresa, email, senha, CEP, complemento, cnpj, telefone, dtCadastro) VALUES
 ('Pedro Almeida', 'Casa Valduga', 'pedro.almeida@email.com', 'senha123', '12345-678', 'Apto 301', '12345678000195', '11987654321', '2025-03-10 08:30:00'),
 ('Luciana Rocha', 'Miolo Wine Group', 'luciana.rocha@email.com', 'senha456', '23456-789', 'Casa', '98765432000188', '21987654321', '2025-03-09 14:45:00'),
@@ -57,7 +52,6 @@ INSERT INTO clientes (nome, nomeEmpresa, email, senha, CEP, complemento, cnpj, t
 SELECT * FROM clientes;
 
 -- Criando Tabela Para o Sensor --
-
 CREATE TABLE sensor (
     idSensor INT PRIMARY KEY AUTO_INCREMENT,
     nomeSensor VARCHAR(25),
@@ -71,7 +65,6 @@ CREATE TABLE sensor (
 );
 
 -- Inserindo dados na tabela sensor--
-
 INSERT INTO sensor (nomeSensor, temperaturaLocal, umidadeLocal, statusSensor, dtCadastro) VALUES
 ('Sensor A', 7.8, 60.5, 'Ativo', '2025-01-10 08:30:00'),
 ('Sensor B', 17.5, 55.2, 'Ativo', '2025-03-10 09:00:00'),
@@ -82,7 +75,6 @@ INSERT INTO sensor (nomeSensor, temperaturaLocal, umidadeLocal, statusSensor, dt
 SELECT * FROM sensor;
 
 -- Criando Tabela para o Vinho --
-
 CREATE TABLE vinho( 
     idVinho INT PRIMARY KEY AUTO_INCREMENT, 
     nomeVinho VARCHAR(60), 
@@ -93,7 +85,6 @@ CREATE TABLE vinho(
 	);  
 
 -- Inserindo dados na tabela vinho --
-
 INSERT INTO vinho (nomeVinho, tipoVinho, fermenVinho, pais, produtor) VALUES
 ('Cabernet Sauvignon', 'Tinto', 'Fermentação Malolática', 'França', 'Château Margaux'),
 ('Merlot', 'Tinto', 'Fermentação Alcoólica', 'Estados Unidos', 'Robert Mondavi'),
@@ -104,7 +95,6 @@ INSERT INTO vinho (nomeVinho, tipoVinho, fermenVinho, pais, produtor) VALUES
 SELECT * FROM vinho;
 
 -- Criando Tabela Para Vinícola --
-
 CREATE TABLE vinicola( 
     idVinicola INT PRIMARY KEY AUTO_INCREMENT, 
     tipoArmazem VARCHAR(60), 
@@ -114,7 +104,6 @@ CREATE TABLE vinicola(
 );
 
 -- Inserindo dados na tabela vinicola --
-
 INSERT INTO vinicola (tipoArmazem, estoqueAtual, estoqueMaximo, areaVinicola)VALUES
 ('Armazém de Barris', 150, 500, 1000),
 ('Armazém de Garrafas', 200, 600, 1200),
@@ -122,10 +111,26 @@ INSERT INTO vinicola (tipoArmazem, estoqueAtual, estoqueMaximo, areaVinicola)VAL
 ('Armazém Climatizado', 120, 400, 800),
 ('Armazém Seco', 250, 800, 1100);
 
+CREATE TABLE funcionarios (
+    idFuncionario INT PRIMARY KEY AUTO_INCREMENT,
+    idCadastro INT,
+    cargo VARCHAR(45) NOT NULL,
+    salario DECIMAL(10,2) NOT NULL,
+    dataContratacao DATE NOT NULL,
+    FOREIGN KEY (idCadastro) REFERENCES cadastroLofhel(id) ON DELETE SET NULL
+);
+
+INSERT INTO funcionarios (idCadastro, cargo, salario, dataContratacao) VALUES
+(1, 'Gerente de Produção', 7500.00, '2023-05-10'),
+(2, 'Enólogo', 6200.00, '2022-08-20'),
+(3, 'Analista de Qualidade', 5400.00, '2021-11-15'),
+(4, 'Supervisor de Armazém', 5000.00, '2024-02-01'),
+(5, 'Técnico em Manutenção', 4800.00, '2023-07-12');
+
+
 SELECT * FROM vinicola;
 
 -- Renomeando as colunas
-
 SELECT nome AS 'Nome dos integrantes da Lofhel', 
 email AS 'Email para contato' FROM cadastroLofhel ORDER BY nome;
 
@@ -142,7 +147,9 @@ SELECT tipoArmazem AS 'Tipo de armazenamento',
 estoqueAtual AS 'Estoque atual',estoqueMaximo AS 'Capacidade máxima',
 areaVinicola AS 'Área da vinícola'FROM vinicola;
 
+SELECT f.idFuncionario, c.nome AS Nome, f.cargo, f.salario, f.dataContratacao 
+FROM funcionarios f
+LEFT JOIN cadastroLofhel c ON f.idCadastro = c.id;
+
 -- Dropando o database lofhel
-
 DROP DATABASE lofhel;
-
