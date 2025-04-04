@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+
+    <h2>Calcular Simulador Financeiro</h2>
+    Informe o total de garrafas produzidas no mês: <input id="garrafas"> <br>
+    Informe aproximadamente o valor de cada garrafa de vinho em R$: <input id="valor">
+    <button onclick="analisar()">Simular</button>
+    <div id="div_txt"></div>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function analisar() {
+        var ttlgarrafas = Number(garrafas.value);
+        var ttlvalor = Number(valor.value);
+
+        var perdas_garrafas = (ttlgarrafas * 0.27);
+
+        var valor_perdido = (perdas_garrafas * ttlvalor);
+
+        var perda_mensal = (ttlgarrafas * 0.10) * ttlvalor;
+
+
+        var perda_semestral = ((valor_perdido - perda_mensal) * 6);
+
+        var perda_anual = ((valor_perdido - perda_mensal) * 12);
+
+        div_txt.innerHTML = `<br> <span style= "color: red;"> De acordo com a perda comum das vinícolas no mercado, a estimativa de perda é de 27% e isso por conta da falta de controle de temperatura e umidade. <br>
+        A cada ${ttlgarrafas} produzidas, você perde por mês de forma aproximada, um quarto desse total e isso equivale a ${perdas_garrafas}, resultado em um prejuizo de R$${valor_perdido}. </span> <br>
+        `
+
+
+
+    }
+
+</script>

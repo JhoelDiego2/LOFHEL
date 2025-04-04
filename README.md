@@ -1,108 +1,149 @@
-# Monitoramento de Umidade e Temperatura em Vinícolas e Adegas 
+<h3 align="center">
+    <img src="public/assets/Sem%20título-5%20(3).png" alt="logo VitiSense" width="150">
 
-<img src="https://github.com/Lofhel/LOFHEL/blob/main/Imagens/lofhel_logo_1.png?raw=true" alt="Logo do Projeto" width="150" align="left">
+</h3>
 
-<br><br><br><br>
--
-## São Paulo, Brasil
+<b>MONITORAMENTO INTELIGENTE DE TEMPERATURA E UMIDADE PARA VINICOLAS E ADEGAS</b>
+<p>
+Um projeto inovador voltado para o monitoramento de temperatura e umidade em vinícolas e adegas, ajudando produtores a preservar a qualidade dos vinhos e reduzir perdas. A tecnologia empregada permite a análise precisa das condições ambientais, garantindo que os vinhos sejam armazenados nas condições ideais. Com o uso estratégico de sensores especializados, o sistema alerta os responsáveis sobre variações críticas, permitindo ações corretivas imediatas para evitar danos aos produtos.
 
----
+Além da preservação da qualidade, a lofhel contribui para a sustentabilidade do setor vinícola e para a rentabilidade dos negócios. A implementação dessa solução tecnológica assegura um gerenciamento mais inteligente dos estoques, promovendo produtos de maior valor agregado e reduzindo desperdícios financeiros.
 
-## Sobre o Projeto
-Este projeto visa garantir a qualidade e conservação dos vinhos por meio do monitoramento contínuo da umidade e temperatura em vinícolas e adegas.
 
----
-### Integrantes:
+<p align="left">
+    <a href="mailto:VitiSense@gmail">
+        <img 
+            alt="gmail" 
+            title="Link para enviar um email" 
+            src="https://custom-icon-badges.demolab.com/badge/-Lofhel@gmail-red?style=for-the-badge&logo=mention&logoColor=white"
+        />
+    </a> 
+     <a href="https://www.bing.com/maps?q=S%C3%A3o+Paulo&satid=id.sid%3Ac6cf2f6e-626c-4267-ae48-9e13ea74d2b9&FORM=KC2MAP&cp=-23.683231%7E-46.595678&lvl=10.7">
+        <img 
+           alt="Localização" 
+            title="Localização São Paulo - BR" 
+            src="https://custom-icon-badges.demolab.com/badge/S%C3%A3o%20Paulo-BR-green?style=for-the-badge&logo=location&logoColor=white"
+        />
+    </a>
+</p>
 
-👤 [@Edson Felix](https://github.com/85ED)
-👤 [@Henrique Dourado](https://github.com/henriquedouradoo)
-👤 [@Leonardo Monteiro](https://github.com/LeoMont200)
-👤 [@Felipe Lima](https://github.com/FelipeLima24)
-👤 [@Lorenzo Meni](https://github.com/lorenzomeni)
-👤 [@Omar Dahbur](https://github.com/OmarDahbur)
-👤 [@João Vitor](https://github.com/JoaoVtC)
-
-<img width="296" alt="Captura de Tela 2025-03-10 às 22 49 29" src="https://github.com/user-attachments/assets/bf5e3eb3-2a1a-4216-8607-3dcb649e3dea" />
-
----
-
-## Contexto
-🍇 O Brasil tem se destacado na produção e consumo de vinhos, mas a falta de controle adequado na armazenagem causa perdas significativas. Globalmente, cerca de 27% dos vinhos engarrafados são descartados ao mês devido a problemas com temperatura e umidade.
-
-### Problema
-- Temperaturas elevadas alteram sabor, aroma e cor do vinho.
-- Alta umidade pode causar oxidação e proliferação de fungos.
+## Problema 
+<p>
+- Temperaturas elevadas alteram sabor, aroma e cor do vinho. <br>
+- Alta umidade pode causar oxidação e proliferação de fungos. <br>
 - Falta de tecnologias modernas e investimento na área.
+</p>
 
-### Caso Real
-Um colecionador de vinhos na Austrália perdeu R$ 750 mil devido a uma falha na regulagem da temperatura de sua adega.
-🔗 [Leia mais](https://revistaadega.uol.com.br/artigo/empresa-que-fazia-manutencao-de-adega-e-processada_10409.html)
+## Caso Real
 
----
+Um colecionador de vinhos na Austrália perdeu R$ 750 mil devido a uma falha na regulagem da temperatura de sua adega. 🔗[Leia Mais](https://revistaadega.uol.com.br/artigo/empresa-que-fazia-manutencao-de-adega-e-processada_10409.html)
+
 
 ## Solução
+
+<p>
 Sistema para monitoramento contínuo de temperatura e umidade, com alertas preventivos e gráficos para análise de dados em tempo real.
 
-### Parâmetros ideais de armazenamento:
-- **Vinho Tinto**: 14°C a 18°C
-- **Vinho Branco e Rosé**: 7°C a 12°C
-- **Umidade ideal**: 50% a 80%
+<b>Parâmetros ideais de armazenamento:</b>
+- Vinho Tinto: 14°C a 18°C
+- Vinho Branco e Rosé: 7°C a 12°C
+- Umidade ideal: 50% a 80%
+</p>
 
----
+## 💻 Site Institucional
+Nosso site apresenta todas as informações sobre o monitoramento climático aplicado ao armazenamento de vinhos. Oferecemos detalhes sobre nossa tecnologia, benefícios e ferramentas de análise. Descubra como nossa solução pode revolucionar a gestão de sua vinícola ou adega, reduzindo perdas e mantendo a excelência dos produtos. 🔗[Veja o nosso protótipo completo](https://www.figma.com/design/pntvnv2NHZUNdnWBkgTeYH/Lofhel?node-id=0-1&t=MMDSh5qYm8k6MUkO-1)
+<img src="public/assets/Captura%20de%20pantalla%202025-04-04%20001154.png"/>
+<img src="public/assets/Captura%20de%20pantalla%202025-04-04%20001204.png"/>
+<img src="public/assets/Captura%20de%20pantalla%202025-04-03%20185232.png"/>
+<img src="public/assets/Captura%20de%20pantalla%202025-04-04%20001247.png"/>
 
-<h3>📅 Entregas:
-<br><br>
-  
-✅ Projeto criado e configurado no GitHub<br>
-<img width="997" alt="Captura de Tela 2025-03-10 às 23 09 37" src="https://github.com/user-attachments/assets/32425479-23e2-4cf6-a18e-ecf94cb510ed" />
 
----
+## 🔢 Calculadora
+<p>
+A calculadora financeira permite estimar o retorno do investimento ao implementar o LOFHEL, comparando cenários com e sem o sistema. A ferramenta ajuda a visualizar a redução de perdas e o aumento da eficiência operacional.
+</p>
+<img src="https://i.imgur.com/3GEurih.png"/>
 
-✅ Documento de Contexto de Negócio e Justificativa do Projeto<br>
-✅ Documentação do Projeto<br>
-[Documentação da Lofhel](https://bandteccom-my.sharepoint.com/:w:/g/personal/henrique_domingos_sptech_school/EaBy8Qm840dKiqncKYmFvHsBeoIxfh1rYJYm-Iw-t7POEQ) <br>
+## 📊 Diagrama de visão de negócio
 
----
+<img src="https://i.imgur.com/E02oRqm.png"/>
 
-✅ Visão de Negócio (Diagrama)<br>
-![image](https://github.com/Lofhel/LOFHEL/blob/main/Imagens/diagrama_visao_de_negocio_lofhel.png)
 
----
+## 🧱 Banco de Dados
+Consulte nossas tabelas nos repositorios
+## 🗒️ Tecnologias usadas no projeto
 
-✅ Protótipo do Site Institucional<br>
-<img width="330" alt="Captura de Tela 2025-03-10 às 23 14 32" src="https://github.com/user-attachments/assets/58a4c344-0bf0-4dab-8cbb-57669678393f" /> 
-<br>
-Clique para ver o protótipo do site 🔗 <a href="https://www.figma.com/design/LsAFaPaKQJvoe9p6ki66Zn/Lofhel?node-id=0-1&t=aj7kDkCuu40p8x6c-1" target="_blank">Link</a>
+<img 
+    align="left" 
+    alt="HTML"
+    title="HTML" 
+    width="50px" 
+    style="padding-right: 10px;" 
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" 
+/>
+<img 
+    align="left" 
+    alt="CSS" 
+    title="CSS"
+    width="50px" 
+    style="padding-right: 10px;" 
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" 
+/>
+<img 
+    align="left" 
+    alt="JavaScript" 
+    title="JavaScript"
+    width="50px" 
+    style="padding-right: 10px;" 
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" 
+/>
+<img 
+    align="left" 
+    alt="Git" 
+    title="Git"
+    width="50px" 
+    style="padding-right: 10px;" 
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" 
+/>
+<img
+    align="left"
+    alt="SQL"
+    title="SQL"
+    width="50px"
+    style="padding-rigth: 10px;"
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"
+/>
+<img
+    align="left"
+    alt="Gitnub"
+    title="Github"
+    width="50px"
+    style="padding-rigth: 10px;"
+    src="https://www.svgrepo.com/show/439171/github.svg"
+/>
+<img
+    align="C++"
+    alt="C++"
+    title="C++"
+    width="50px"
+    style="padding-rigth: 10px;"
+    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"
+/><br>
+## 👤 Equipe
+<table>
 
----
+<td  align="center"><a  href= "https://github.com/JhoelDiego2"><img src="https://i.imgur.com/SrytKsK.png" border-radius="50%"; height="120px"; width="100px;"/><br/><sub><b> Jhoel </b></sub></a><br /><a  href="https://github.com/JhoelDiego2" ><img  src="https://www.svgrepo.com/show/439171/github.svg"  width="20"/></a>
+</td>
 
-💻 Algoritmos<br>
-✅ Tela de simulador financeiro<br>
-<img width="1440" alt="Captura de Tela 2025-03-10 às 23 23 29" src="https://github.com/user-attachments/assets/057fac6c-fae6-4d18-84b7-2a175be3a48f" />
+<td  align="center"><a  href= "https://github.com/Beno-Goulart" ><img src="https://i.imgur.com/vd63gcA.png"  border-radius="50%"; height="120px"; width="100px;"/><br/><sub><b> Beno </b></sub></a><br /><a  href="https://github.com/Beno-Goulart" ><img  src="https://www.svgrepo.com/show/439171/github.svg"  width="20"/></a>
+</td>
 
----
+<td  align="center"><a  href="https://github.com/lucasealves" ><img src="https://i.imgur.com/7vymSTl.png" border-radius="50%"; height="120px"; width="100px;"/><br/><sub><b> Lucas </b></sub></a><br /><a  href="https://github.com/lucasealves" ><img  src="https://www.svgrepo.com/show/439171/github.svg"  width="20"/></a>
+</td>
 
-🌐 TI – Tecnologia da Informação<br>
-✅ Ferramenta de Gestão de Projeto configurada<br>
-<img width="1427" alt="Captura de Tela 2025-03-10 às 23 17 55" src="https://github.com/user-attachments/assets/c1946305-f5ee-4c32-bc26-e78841b5c0c3" />
+<td  align="center"><a  href="https://github.com/Gabby-M745" ><img  src="https://i.imgur.com/LUK69zv.png" border-radius="50%";  height="120px"; width="100px;"/><br/><sub><b> Gabrielly </b></sub></a><br /><a  href="https://github.com/Gabby-M745" ><img  src="https://www.svgrepo.com/show/439171/github.svg"  width="20"/></a>
+</td>
 
----
-
-📚 Banco de Dados<br>
-✅ Tabelas criadas no MySQL<br>
-![image](https://github.com/user-attachments/assets/f377dea7-1367-453e-b9be-81d975126f83)
-
----
-
-🤖 Arquitetura de Computadores<br>
-✅ Instalação e Configuração IDE Arduíno<br>
-
----
-
-💻 Introd. Sistemas Operacionais<br>
-✅ Linux instalado na VM Local<br>
-![image](https://github.com/Lofhel/LOFHEL/blob/main/IntroSO/ambiente-funcionando.png)
-![image](https://github.com/Lofhel/LOFHEL/blob/main/IntroSO/comando-linux.png)
-
-**Contato:** Para dúvidas ou sugestões, entre em contato com os integrantes do projeto. 
-
+<td  align="center"><a  href="https://github.com/Marialuizagoes31" ><img  src="https://i.imgur.com/6shbD82.png" border-radius="50%";  height="120px"; width="100px;"/><br/><sub><b> Maria </b></sub></a><br /><a  href="https://github.com/Marialuizagoes31" ><img  src="https://www.svgrepo.com/show/439171/github.svg"  width="20"/></a>
+</td>
+</table>

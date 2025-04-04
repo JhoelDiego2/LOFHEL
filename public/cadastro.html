@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <h2>Cadastro</h2>
+    <input type="text" id="user" placeholder="Usuário"><br>
+    <input type="password" id="senha" placeholder="Senha"><br>
+    <input type="password" id="resenha" placeholder="Repita a senha"><br>
+    <button onclick="registro()">Cadastrar</button>
+    <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+</body>
+
+</html>
+<script>
+    function registro(params) {
+        if (user.value == "" || senha.value == "" || resenha.value == "") {
+            alert("Por favor, preencha todos os campos!");
+            }else{
+        alert("Cadastro realizado!");}
+    }
+</script>

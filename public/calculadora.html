@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lofhel Calculadora financiera</title>
+</head>
+
+<body>
+    <img src="https://avatars.githubusercontent.com/u/204763019?s=400&u=713fcba602705110ee3c2d8412cc8a257160410d&v=4" alt="logo VitiSense">
+    <h2>Calculadora Financeira</h2>
+    <h4>Descubra quanto da sua produção pode ser preservado com o monitoramento eficaz de temperatura e umidade da
+        VitiSense. <br>
+        Insira seus dados e veja o impacto da solução na redução de perdas e na qualidade dos seus vinhos.
+    </h4> <br>
+
+    Informe seu nome: <br> <input id="dadoNome"><br> <br>
+    Total de Garrafas Produzidas de Vinho no mês: <br><input id="iptGarrafas"> <br><br>
+    Preço Médio de Cada Garrafa de Vinho em R$: <br><input id="iptPreco"> <br> <br>
+    <!--Valores inseridos pelo usuário-->
+
+    <h4>Descubra agora quantas perdas sua vinícola pode evitar, clique em simular!</h4>
+    <button onclick="mostrar()">Simular</button> <br> <br> <!--Botão que executa a função mostrar do js-->
+    <div id="divTxt"></div> <!--div que receberá o texto do JS-->
+
+
+</body>
+
+</html>
+<script>
+    // Variáveis de perda sem o uso da solução
+    var garrafasPerdidasMes = 0;
+    var valorPerdidoMes = 0;
+    var valorPerdidoSem = 0;
+
+    // Variáveis de economia após o uso da solução
+    var garrafasEcoMes = 0;
+    var valorEcoMes = 0;
+    var valorEcoSem = 0;
+    var ecoTotalAno = 0;
+    var ecoTotalSem = 0;
+    var selic = 0;
+    var rendeAno = 0;
+
+    // Função do calculo do desperdicio sem a solução
+    function calcularDesp() {
+
+        // Calculo da perca = 27% ao mes
+        garrafasPerdidasMes = Number(iptGarrafas.value) * 0.27
+        valorPerdidoMes = garrafasPerdidasMes * Number(iptPreco.value)
+
+        // Calculo de perca Semestre
+        valorPerdidoSem = garrafasPerdidasMes * 6 * Number(iptPreco.value)
+    }
+
+    // função do calculo do desperdicio com a solução
+    function calcularEco() {
+        // Calculo da eco = 5% ao mes
+        garrafasEcoMes = Number(iptGarrafas.value) * 0.17
+        valorEcoMes = garrafasEcoMes * Number(iptPreco.value)
+
+        // Calculo de eco semestre
+        valorEcoSem = garrafasEcoMes * 6 * Number(iptPreco.value)
+
+        // Calculo do lucro utilizando nossa solução
+        ecoTotalAno = valorPerdidoSem * 2 - valorEcoSem * 2;
+        ecoTotalSem = valorPerdidoSem - valorEcoSem;
+    }
+
+    // função do calculo do rendimento anual do selic
+    function calcularSelic() {
+        selic = 13.25;
+        rendeAno = ecoTotalAno * (1 + (selic / 100));
+    }
+
+
+    // Função que  mostra os dados calculados pelas outras funções
+    function mostrar() {
+        if (dadoNome.value == '' || iptGarrafas == '' || iptPreco.value == '') {
+            alert("Por favor, preencha todos os campos.")
+        } else {
+            // Calcula o desperdicio via função
+            calcularDesp();
+
+            // Calcula a economia via função
+            calcularEco();
+
+            // Calcula o rendimento do selic
+            calcularSelic();
+
+            // Mostra mensagem na tela para o usuário
+            divTxt.innerHTML = `Olá, ${dadoNome.value}!<br><br>
+
+            🍷 Estima-se que, no mercado de vinhos, haja uma perda considerável de 27% nas vinícolas devido à falta de controle de temperatura e umidade.<br><br>
+
+            📈 A cada ${iptGarrafas.value} garrafas produzidas, você pode perder mensalmente, em média, um pouco mais de um quarto desse total, o que equivale a ${garrafasPerdidasMes} garrafas, resultando em um prejuízo de R$ ${valorPerdidoMes}.<br><br>
+
+            📉 Com nossos sensores, essa perda diminuiria para apenas ${garrafasEcoMes} garrafas por mês, reduzindo a perda para R$ ${valorEcoMes} mensais. Nossa projeção é que as perdas mensais comuns podem chegar a 17%.<br><br>
+
+            <b>💰 Economia estimada:<br>
+            🔸 No semestre: R$ ${ecoTotalSem}<br>
+            🔸 No ano: R$ ${ecoTotalAno}<br>
+            🔸 Rendimento aplicando a economia mensal na SELIC de 13,25% ao ano: R$ ${rendeAno}</b>`
+        }
+
+    }
+
+</script>
