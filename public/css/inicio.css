@@ -66,7 +66,7 @@ a{
     margin-top: -10px;
 }
 #home {
-    background: linear-gradient(0deg, rgba(72, 10, 10, 0.126) 0%, rgba(83, 27, 27, 0.233) 100%), url("https://i.imgur.com/xASSqZb.png");
+    background-image: url("https://i.imgur.com/xASSqZb.png");
     background-size: cover;
     height: 100%;
     background-repeat: no-repeat;
@@ -92,4 +92,92 @@ a{
     margin-left: 80%;
     margin-top: 2rem;
     border-radius: 3rem;
+}
+.monitoramento .container {
+    display: flex;
+    margin-top: 2rem;
+}
+.monitoramento .column-1 {
+    padding: 3rem;
+    width: 80%;
+}
+.monitoramento .column-2{
+    width: 35%;
+}
+.monitoramento h2{
+    color: var(--marrom);
+    font-size: 54px;
+}
+.monitoramento img {
+    width: 40rem
+}
+.monitoramento p{
+    margin-top: 2rem;
+    font-size: 1.7rem;
+}
+.monitoramento button {
+    border: none;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 3rem;
+    background-color: var(--amarelo);
+    font-size: 1rem;
+}
+.titulo {
+    text-align: center;
+    color: var(--marrom);
+    font-size: 54px;
+}
+.titulo p {
+    font-size: 30px;
+}
+.servicos .container{
+    display: flex;
+    
+}
+.card{
+    background-color: var(--cinza);
+    padding: 40.37px;
+    border-radius: 17.94px;
+    margin: 50px;
+    font-size: 16.15px
+}
+.card h5{
+    font-size: 22.43px;
+    margin-top: 56px;
+}
+.diferentes .container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    column-gap: 2rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+.caixa {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 60px;
+    background-color: var(--cinza);
+    color: var(--marrom);
+    font-size: 20px;
+    text-align: center;
+}
+.caixa h4{
+    font-size: 28px;
+    margin-bottom: 3px;
+}
+#comece_hoje{
+    text-align: center;
+}
+#comece_hoje h5{
+    font-size: 2rem;
+    color: var(--marrom);
+}
+#comece_hoje button {
+    border: none;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 3rem;
+    background-color: var(--amarelo);
 }
