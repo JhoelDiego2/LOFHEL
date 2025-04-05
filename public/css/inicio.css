@@ -65,7 +65,7 @@ a{
     margin-top: -10px;
 }
 #home {
-    background-image: url("https://i.imgur.com/xASSqZb.png");
+    background-image: url("../assets/fundo.png");
     background-size: cover;
     height: 100%;
     background-repeat: no-repeat;
@@ -90,7 +90,7 @@ a{
     padding: 1rem;
     margin-left: 80%;
     margin-top: 2rem;
-    border-radius: 3rem;
+    border-radius: 2rem;
 }
 .monitoramento .container {
     display: flex;
@@ -182,7 +182,7 @@ a{
 }
 .feedback .container{
     display: flex;
-    background-image: url("file:///C:/Users/jhoel/Downloads/Group%2019.png");
+    background-image: url("../assets/Group%2019.png");
     align-items: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -203,4 +203,80 @@ a{
 }
 #seta {
     padding-left: 7rem;
+}
+.localizacao .container {
+    background-image: url("../assets/Captura%20de%20pantalla%202025-03-29%20151802%201.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 700px;
+    display: flex;
+}
+.localizacao .column-1{
+    width: 50%;
+}
+#contato{
+    background-color: var(--marrom_claro);
+    padding: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    font-weight: bolder ;
+    text-align: start;
+    margin-top: 13rem;
+    margin-left: 5rem;
+}
+#contato p{
+    font-size: 1.3rem;
+}
+input{
+    margin-top: 2px;
+    border-radius: 2px;
+    padding: 10px;
+    width: 100%;
+
+}
+#ipt_mensagem{
+    padding-bottom: 10rem;
+}
+.caixinha{
+    display: flex;
+}
+#contato button{
+    border: none;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    background-color: var(--marrom);
+    font-size: 1rem;
+    color: white;
+}
+.footer {
+    margin-top: 6rem;
+    background-color: #1E0F0F;
+    height: 300px;
+    display: flex;
+}
+.footer ul{
+    margin-top: 5rem;
+    color: white;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 23.6px;
+    letter-spacing: 1.5px;
+}
+.footer .column-2 p{
+    margin-top: 8rem;
+    text-align: end;
+    margin-right: 1rem;
+}
+.footer .column-1 p{
+    margin-top: -4rem;
+    font-size: 20px;
+    color: white;
+}
+.footer .column-1{
+    width: 40%;
+}
+.footer .column-2{
+    padding-left: 36rem;
 }
