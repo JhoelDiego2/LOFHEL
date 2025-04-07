@@ -1,10 +1,10 @@
--- Criação do database lofhel
+-- Criação do database VitiSense
 CREATE DATABASE lofhel;  
 USE lofhel;  
 
 
 -- Criando Tabela Para Cadastro dos integrantes da empresa --
-CREATE TABLE cadastroLofhel( 
+CREATE TABLE cadastrolofhel( 
     id INT PRIMARY KEY AUTO_INCREMENT, 
     nome VARCHAR(45) NOT NULL, 
     email VARCHAR(45) NOT NULL, 
@@ -16,16 +16,14 @@ CREATE TABLE cadastroLofhel(
 
  
 -- Inserindo dados na tabela cadastroLofhel --
-INSERT INTO cadastroLofhel (nome, email, senha, dtNascimento, complemento, CEP) VALUES
-('Leonardo Monteiro', 'leonardo.monteiro@sptech.school', 'senha123', '1990-05-15', 'Apto 301', '12345-678'),
-('João Vitor Carlos de Almeida Araujo', 'joao.varaujo@sptech.school', 'senha456', '1985-11-20', 'Casa', '23456-789'),
-('Lorenzo Meni Rodrigues', 'lorenzo.rodrigues@sptech.school', 'senha789', '2000-02-10', '', '34567-890'),
-('Henrique Dourado Domingos', 'henrique.domingos@sptech.school', 'senha321', '1995-08-25', 'Sala 502', '45678-901'),
-('Omar Nidal Nabih Dahbur', 'omar.dabuh@sptech.school', 'senha654', '1988-03-30', 'Bloco B, Apto 202', '56789-012'),
-('Edson Felix Marques', 'edson.marques@sptech.school', 'senha654', '1988-03-30', 'Bloco B, Apto 202', '56789-012'),
-('Felipe Queiroz de Lima', 'felipe.qlima@sptech.school', 'senha654', '1988-03-30', 'Bloco B, Apto 202', '56789-012');
+INSERT INTO cadastrolofhel(nome, email, senha, dtNascimento, complemento, CEP) VALUES
+('Jhoel Diego Mamani Mita', 'jhoel.mita@sptech.school', 'senha123', '1990-05-15', 'Apto 301', '12345-678'),
+('Gabrielly Marquez Sarzuri', 'gabrielly.marquez@sptech.school', 'senha456', '1985-11-20', 'Casa', '23456-789'),
+('Maria Luiza Costa Goes', 'maria.luiza@sptech.school', 'senha789', '2000-02-10', '', '34567-890'),
+('Beno Goulart Campos', 'beno.campos@sptech.school', 'senha321', '1995-08-25', 'Sala 502', '45678-901'),
+('Lucas Alves da silva', 'lucas.silva@sptech.school', 'senha654', '1988-03-30', 'Bloco B, Apto 202', '56789-012');
 
-SELECT * FROM cadastroLofhel;
+SELECT * FROM cadastrolofhel;
 
 -- Criando Tabela Para Identificação de clientes --
 CREATE TABLE clientes( 
@@ -151,5 +149,3 @@ SELECT f.idFuncionario, c.nome AS Nome, f.cargo, f.salario, f.dataContratacao
 FROM funcionarios f
 LEFT JOIN cadastroLofhel c ON f.idCadastro = c.id;
 
--- Dropando o database lofhel
-DROP DATABASE lofhel;
