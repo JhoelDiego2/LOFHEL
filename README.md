@@ -140,7 +140,7 @@ Consulte nossas tabelas nos repositorios
 
 <td  align="center"><a  href="https://github.com/lucasealves" ><img src="public/assets/lucas.jpg" border-radius="50%"; width="200px;"/><br/><b> Lucas </b></</a><br /><a  href="https://github.com/lucasealves" ><img  src="https://www.svgrepo.com/show/439171/github.svg"  width="20"/></a>
 </td>
-<td  align="center"><a  href="https://github.com/Gabby-M745" ><img src="public/assets/gaby.jpg" border-radius="50%"; width="200px;"/><br/><b> Gabrielly </b></</a><br /><a  href="https://github.com/Gabby-M745" ><img  src="https://www.svgrepo.com/show/439171/github.svg"  width="20"/></a>
+<td  align="center"><a  href="https://github.com/Gabby-M745" ><img src="public/assets/gaby.jpg" border-radius="50%"; width="200px;"/><br/><sub><b> Gabrielly </b></sub></</a><br /><a  href="https://github.com/Gabby-M745" ><img  src="https://www.svgrepo.com/show/439171/github.svg"  width="20"/></a>
 </td>
 <td  align="center"><a  href="https://github.com/Marialuizagoes31" ><img src="public/assets/maria%20luiza.jpg" border-radius="50%"; width="200px;"/><br/><b> Maria </b></</a><br /><a  href="https://github.com/Marialuizagoes31" ><img  src="https://www.svgrepo.com/show/439171/github.svg"  width="20"/></a>
 </td>
