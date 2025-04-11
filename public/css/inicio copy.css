@@ -1,53 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Italiana&family=Orbitron:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap');
 /*  font-family: "Playfair Display", serif;*/
 /*font-family: "Italiana", sans-serif;*/
-/* :root{
+:root{
     --amarelo: #F9C06A;
     --marrom: #603809;
     --cinza: #F4F4F4;
     --marrom_claro: #FFEED8;
     --fundo: #FFFEFC;
     --texto_irrelevante: #707070;
-}*/
-
+}
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 body {
     font-family: "Playfair Display", serif;
-    color: #707070;
-    background-color: #FFFEFC;
+    color: var(--texto_irrelevante);
+    height: 100%;
+    background-color: var(--fundo);
+    overflow-x: hidden ;
 }
-/*a{
+a{
     all: unset;
     cursor: pointer;
-}*/
-#header .nav {
+}
+#cabecalho .nav {
     width: 100%;
     height: 100px;
-    /*position: fixed;*/
-    /*background-color: #00000059;*/
-    background-color: #1E0F0F;
+    position: fixed;
+    background-color: #00000059;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    /*z-index: 2;*/
+    z-index: 2;
     color: #F4F4F4;
 }
 .nav img{
     width: 100px;
     margin-right: 15rem;
 }
-.nav-list1 .ul{
-    /*list-style: none;*/
+.nav-list1 ul{
+    list-style: none;
     display: flex;
     justify-content: flex-end;
     font-size: 14px;
     letter-spacing: 1.5px;
 }
-.nav-list2 .ul{
-    /*list-style: none;*/
+.nav-list2 ul{
+    list-style: none;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -55,7 +56,7 @@ body {
     letter-spacing: 1.5px;
 }
 #boton{
-    background-color:#F9C06A;
+    background-color: var(--amarelo);
     padding: 0.7rem;
     color: black;
     border-radius: 10px;
@@ -69,7 +70,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
-    color: #F4F4F4;
+    color: var(--cinza);
     font-size: 23px
 }
 #home .container{
@@ -85,7 +86,7 @@ body {
     font-size: 220px;
 }
 #home button {
-    border-color: #ffffff00;
+    border: none;
     padding: 1rem;
     margin-left: 80%;
     margin-top: 2rem;
@@ -103,7 +104,7 @@ body {
     width: 35%;
 }
 .monitoramento h2{
-    color: #603809;
+    color: var(--marrom);
     font-size: 54px;
 }
 .monitoramento img {
@@ -114,16 +115,16 @@ body {
     font-size: 1.7rem;
 }
 .monitoramento button {
-    border-color: rgba(255, 255, 255, 0);
+    border: none;
     padding: 1rem;
     margin-top: 2rem;
     border-radius: 3rem;
-    background-color:#F9C06A;
+    background-color: var(--amarelo);
     font-size: 1rem;
 }
 .titulo {
     text-align: center;
-    color: #603809;
+    color: var(--marrom);
     font-size: 54px;
     margin-top: 3rem;
 
@@ -136,7 +137,7 @@ body {
     
 }
 .card{
-    background-color: #F4F4F4;
+    background-color: var(--cinza);
     padding: 40.37px;
     border-radius: 17.94px;
     margin: 50px;
@@ -158,7 +159,7 @@ body {
     margin-top: 2rem;
     margin-bottom: 2rem;
     padding: 60px;
-    background-color: #F4F4F4;
+    background-color: var(--cinza);
     color: var(--marrom);
     font-size: 20px;
     text-align: center;
@@ -172,14 +173,14 @@ body {
 }
 #comece_hoje h5{
     font-size: 2rem;
-    color: #603809;
+    color: var(--marrom);
 }
 #comece_hoje button {
-    border-color: #ffffff00;
+    border: none;
     padding: 1rem;
     margin-top: 2rem;
     border-radius: 3rem;
-    background-color:#F9C06A;
+    background-color: var(--amarelo);
 }
 .feedback .container{
     display: flex;
@@ -216,7 +217,7 @@ body {
     width: 50%;
 }
 #contato{
-    background-color: #FFEED8;
+    background-color: var(--marrom_claro);
     padding: 2rem;
     padding-top: 1rem;
     padding-bottom: 2rem;
@@ -246,7 +247,7 @@ input{
     padding: 1rem;
     margin-top: 2rem;
     border-radius: 1rem;
-    background-color: #603809;
+    background-color: var(--marrom);
     font-size: 1rem;
     color: white;
 }
@@ -256,7 +257,7 @@ input{
     height: 300px;
     display: flex;
 }
-.footer .ul{
+.footer ul{
     margin-top: 3rem;
     color: white;
     list-style: none;

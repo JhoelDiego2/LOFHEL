@@ -1,8 +1,8 @@
-
+// Grupo 3 - LOFHEL - codigo modificado para usar com a api
 #include "DHT.h" // adiciona a biblioteca DHT.h ao código
 
 #define TIPO_SENSOR DHT11 // define o tipo de sensor
-const int PINO_SENSOR_DHT11 = A5; // define em qual pino o sensor está ligado
+const int PINO_SENSOR_DHT11 = A3; // define em qual pino o sensor está ligado
 
 DHT sensorDHT(PINO_SENSOR_DHT11, TIPO_SENSOR); // cria um objeto do sensor DHT11
 
@@ -22,14 +22,15 @@ void loop() {
   } // Emite um alerta ao não coseguir capturar dados
   
   else {
-
+    // Label de umidade
     Serial.print(umidade);
     Serial.print(";");
+    // Label de temperatura
     Serial.println(temperatura);
 
   }
 
-  delay(1000); // delay de 1s para captura de dados
+  delay(500); // delay de 0.5s para captura de dados
 
 
 }

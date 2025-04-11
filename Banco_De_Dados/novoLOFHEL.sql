@@ -1,4 +1,4 @@
-drop database lofhel;
+-- drop database lofhel;
 create database lofhel;
 use lofhel;
 
@@ -123,3 +123,6 @@ join dados_sensor d on s.idSensor = d.fkSensor;
 select t.tipo, t.quantidade, g.classe
 from tipo t
 join grupo g on t.fkGrupo = g.idGrupo;
+
+
+alter table dados_sensor modify column idDados_sensor int auto_increment;
