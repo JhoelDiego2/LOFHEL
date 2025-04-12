@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deshbord-Armazem 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/funcionarios.css">
+
+</head>
+
+<body>
+    <div class="side-bar">
+        <div class="nav">
+            <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
+
+            <p>Olá Fernanda Caramico, seja bem vinda</p>
+
+            <div class="nav-list">
+                <ul>
+                    <li><a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png"
+                                alt="icone"><span>Inicio</span></a></li>
+                    <li><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png" alt="icone">Perfil</a></li>
+                    <li><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
+                                alt="icone">Funcionarios</a></li>
+                    <li><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">armazens</a></li>
+                    <li><a href="suporte.html"><img src="../deshbord/imagens-deshbord/body.png" alt="icone">suporte</a></li>
+                    <li><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png" alt="icone">sair</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="header">
+            <div class="topo">
+                <div class="column-1">
+                    <p id="title">Funcionarios</p>
+                </div>
+                <div class="column-2">
+                    <div>
+                        <img src="../deshbord/imagens-deshbord/Ellipse%202.png" alt="picture" style="padding-right: 10px;">
+                        <p> Fernanda Caramico </p>
+                    </div>
+                    <div>
+                        <img src="../deshbord/imagens-deshbord/notifications.png" alt="icone">
+                    </div>
+                </div>
+            </div>
+            <div class="sub">
+
+                <div class="column-1">
+                    <p>Gestão</p>
+                    <p></p>
+                </div>
+ 
+            </div>
+
+        </div>
+        <div class="container">
+                <div class="column-1">
+                    <div class="card">
+                        <h6>Cadastrar Funcionario</h6>
+                        <p id="texto_nome"></p>
+                        <input type="text" id="ipt_nome" placeholder="Nome" oninput="digitando_nome()" >
+                        <p id="texto_email"></p>
+                        <input type="text" id="ipt_email" placeholder="Email"  oninput="digitando_cpf()">
+                        <p id="texto_telefone"></p>
+                        <input type="text" id="ipt_telefone" placeholder="Telefone"  oninput="digitando_telefone()">
+                        <p id="texto_cargo"></p>
+                        <select name="cargo" id="ipt_cargo" onclick="digitando_cargo()" >
+                            <option value="Gerente" >Gerente</option>
+                            <option value="Analista">Analista</option>
+                            <option value="Operacional">Operacional</option>
+                        </select>
+                        <p id="texto_senha"></p>
+                        <input type="text" id="ipt_senha" placeholder="Senha" oninput="digitando_senha()" >
+                        <button>Cadastrar</button>
+                    </div>
+                </div>
+                <div class="column-2">
+                    <div class="card">
+                        <h6>Atualizar Funcionario</h6>
+
+                        <p id="texto_email_atualizar"></p>
+                        <input type="text" id="ipt_email_atualizar" placeholder="Email"  oninput="digitando_email_atualizado()">
+                        <p id="texto_telefone_atualizar"></p>
+                        <input type="text" id="ipt_telefone_atualizar" placeholder="Telefone"  oninput="digitando_telefone_atualizado()">
+                        <p id="texto_cargo_atualizar"></p>
+                        <select name="cargo_atualizar" id="ipt_cargo_atualizar" onclick="digitando_cargo_atualizado()">
+                            <option value="Gerente">Gerente</option>
+                            <option value="Analista">Analista</option>
+                            <option value="Operacional">Operacional</option>
+                        </select>
+                        <button>Atualizar</button>
+                    </div>
+
+                </div>
+                <div class="column-3">
+                    <div class="card">
+                        <h6>Remover Funcionario</h6>
+
+                        <p id="texto_email_remover"></p>
+                        <input type="text" id="ipt_email_remover" placeholder="Email"  oninput="digitando_email_removendo()">
+                        <p id="texto_cargo_remover"></p>
+                        <select name="cargo" id="ipt_cargo_remover" onclick="digitando_cargo_removendo()">
+                            <option value="Gerente">Gerente</option>
+                            <option value="Analista">Analista</option>
+                            <option value="Operacional">Operacional</option>
+                        </select>
+                        <button>Remover</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    // card cadastrar mais na frente utilizar animações ou um procedimento
+    function digitando_nome() {
+        texto_nome.innerHTML = `Nome`
+        ipt_nome.style = " border-bottom-color: #0B0B0B"
+    }
+    function digitando_cpf() {
+        texto_email.innerHTML = `Senha`
+        ipt_email.style = " border-bottom-color: #0B0B0B"
+
+    }
+    function digitando_telefone() {
+        texto_telefone.innerHTML = `Telefone`
+        ipt_telefone.style = " border-bottom-color: #0B0B0B"
+
+    }
+    function digitando_cargo() {
+        texto_cargo.innerHTML = `Cargo`
+        ipt_cargo.style = " border-bottom-color: #0B0B0B"
+
+    }
+    function digitando_senha() {
+        texto_senha.innerHTML = `Senha`
+        ipt_senha.style = " border-bottom-color: #0B0B0B"
+
+    }
+    // card atualizar
+    function digitando_email_atualizado() {
+        texto_email_atualizar.innerHTML = `Email`
+        ipt_email_atualizar.style = " border-bottom-color: #0B0B0B"
+    }
+    function digitando_telefone_atualizado() {
+        texto_telefone_atualizar.innerHTML = `Telefone`
+        ipt_telefone_atualizar.style = " border-bottom-color: #0B0B0B"
+
+    }
+    function digitando_cargo_atualizado() {
+        texto_cargo_atualizar.innerHTML = `Cargo`
+        ipt_cargo_atualizar.style = " border-bottom-color: #0B0B0B"
+
+    }
+
+    // card remover
+    function digitando_email_removendo() {
+        texto_email_remover.innerHTML = `Email`
+        ipt_telefone_atualizar.style = " border-bottom-color: #0B0B0B"
+
+    }
+    function digitando_cargo_removendo() {
+        texto_cargo_remover.innerHTML = `Telefone`
+        ipt_cargo_remover.style = " border-bottom-color: #0B0B0B"
+
+    }
+
+</script>
+
