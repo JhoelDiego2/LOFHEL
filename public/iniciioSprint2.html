@@ -175,15 +175,15 @@
         </div>
         <div class="feedback">
             <div class="titulo">
-                <h2>Nossos Feedbacks</h2>
+                <h2 >Nossos Feedbacks</h2 >
                 <p>Os nossos clintes aprovaram a nossa solução</p>
                 <div class="container">
                     <div class="column-1">
-                        <img src="../public/assets/copia.png" alt="seta">
+                        <img src="../public/assets/copia.png" alt="seta" id="seta-esquerda" onclick="esquerda()">
                     </div>
                     <div class="column-2">
-                        <p id="textoVivian">
-                            <span>"</span><i>Gosto de apreciar um vinho enquanto
+                        <p class="textoVivian">
+                            <span>"</span><i id="texto_comentario">Gosto de apreciar um vinho enquanto
                                 corrijo as provas dos meus alunos.
                                 Sinto que consigo me concentrar mais e avaliar
                                 melhor se eles realmente
@@ -194,17 +194,17 @@
                                 torna a experiência ainda mais especial!
                             </i><span>"</span>
                         </p>
-                        <h4>Viviane Santos</h4>
-                        <p id="textoVivian">
+                        <h4 id="nome_comentario">Viviane Santos</h4>
+                        <p class="textoVivian" id="profissao">
                             Pofessora SPTech
                         </p>
                     </div>
                     <div class="column-3">
-                        <img src="../public/assets/Design%20sem%20nome%20(19).png" alt="Vivian"
+                        <img src="../public/assets/Design%20sem%20nome%20(19).png" alt="Vivian" id="imagem_comentario"
                             style="width: 31rem; margin-bottom: -1rem;">
                     </div>
                     <div class="column-4">
-                        <img src="../public/assets/Group%2016.png" alt="seta" id="seta">
+                        <img src="../public/assets/Group%2016.png" alt="seta" id="seta-direita" onclick="direita()" >
                     </div>
                 </div>
             </div>
@@ -250,9 +250,9 @@
     </div>
     <div class="footer">
         <div class="column-1">
-            <a href="inicio.html"> <img src="../public/assets/Sem%20título-5%20(3).png" alt="logotipo_lofhel"
-                    style="padding-left: 1rem;margin-top: -3rem;"></a>
-            <p style="margin-left: 1.7rem">
+            <img src="../public/assets/Sem%20título-5%20(3).png" alt="logotipo_lofhel"
+                    style="padding-left: 1rem;margin-top: -3rem;">
+            <p style="margin-left: 1.7rem; width: 100%;">
                 Na LOFHEL, acreditamos que um grande vinho merece um
                 armazenamento perfeito. Tecnologia precisa, paixão
                 inigualável.
@@ -278,9 +278,39 @@
                         Financieiro</p></p>
                 </div>
             </div>
-            <h6>© 2025 Lofhel. Todos os direitos reservados.</h6>
+            <p>© 2025 Lofhel. Todos os direitos reservados.</p>
         </div>
     </div>
 </body>
 
 </html>
+
+<script>
+    // carrosel usando coisas que o friza passou em aula e listas
+    function esquerda() {
+        imagem_comentario.src = "../public/assets/Design%20sem%20nome%20(19).png"
+        texto_comentario.innerHTML = `Gosto de apreciar um vinho enquanto
+                                corrijo as provas dos meus alunos.
+                                Sinto que consigo me concentrar mais e avaliar
+                                melhor se eles realmente
+                                absorveram o conteúdo. Aproveitar o vinho na
+                                temperatura certa é incrível
+                                — e saber que essa temperatura está sendo monitorada
+                                pelos próprios alunos
+                                torna a experiência ainda mais especial!`
+        nome_comentario.innerHTML = `Vivian Santos`
+        profissao.innerHTML = `Professora SPTech`
+    }
+    function direita() {
+        imagem_comentario.src = "../public/assets/foto%20do%20cara.png"
+        texto_comentario.innerHTML = `O sistema LOFHEL foi um grande avanço para nossa vinícola. Com ele,
+         conseguimos monitorar com precisão a temperatura e a umidade das nossas adegas, garantindo a qualidade
+          ideal para o envelhecimento dos vinhos. A interface é simples, o sistema é estável e o suporte técnico
+           da equipe foi excelente durante toda a implementação. Além disso, a possibilidade de integrar os dados 
+           a dashboards personalizados tem nos ajudado a tomar decisões mais rápidas e assertivas. É, sem dúvida, 
+           uma solução essencial para empresas que valorizam o controle ambiental e a excelência no armazenamento.`
+        nome_comentario.innerHTML = `Diogo Rafael Barborsa`
+        profissao.innerHTML = `Vinícola Dom Aurélio`
+    }
+
+</script>

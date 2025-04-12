@@ -26,9 +26,9 @@ body {
 #header .nav {
     width: 100%;
     height: 100px;
-    /*position: fixed;*/
+    position: fixed;
     /*background-color: #00000059;*/
-    background-color: #1E0F0F;
+    background-color: #1e0f0f75;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -198,9 +198,12 @@ body {
     padding: 4rem;
     padding-top: 7rem;
 }
-#textoVivian{
+.textoVivian{
     font-size: 1.3rem;
     text-align: start;
+}
+#texto_comentario {
+    font-size: 1.12rem;
 }
 #seta {
     padding-left: 7rem;
@@ -251,13 +254,13 @@ input{
     color: white;
 }
 .footer {
-    margin-top: 6rem;
+    margin-top: 4rem;
     background-color: #1E0F0F;
-    height: 300px;
+    height: 360px;
     display: flex;
 }
 .footer .ul{
-    margin-top: 3rem;
+    margin-top: -4rem;
     color: white;
     list-style: none;
     display: flex;
@@ -276,10 +279,10 @@ input{
     color: white;
 }
 .footer .column-1{
-    width: 40%;
+    width: 80%;
 }
 .footer .column-2{
-    padding-left: 36rem;
+    padding-left: 10rem;
 }
 #redes{
     margin-left: 2rem;
