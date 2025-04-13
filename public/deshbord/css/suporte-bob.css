@@ -75,93 +75,49 @@ body {
     border-bottom: solid 1px rgb(255, 255, 255);
 
 }
-.sub select{
-    background-color: #15191c00;
-    color: white;
-    border-color: #ffffff00;
-    padding:2% 0%;
-    width: 150px;
-    font-size: 1rem;
-}
-option {
-    background-color: #15191C;
-}
 .sub .column-1{
     display: flex;
-    gap: 5rem;
     align-items: center;
+    font-size: 2rem;
 }
-.sub .column-2{
-    display: flex;
-}
-.sub input{
-    padding: 10px 25px;
-}
+
+
 .container{
     display: flex;
     padding: 2rem ;
-
-}
-.container .column-1 {
-    display: flex;
-    gap: 30px;
-    width: 80%;
-    height: 400px;
-}
-.container .column-2 {
-    width: 20%;
-}
-/*comceco grafico*/
-.linhas{
-    background-color: white;
-    width: 50%;
-}
-.barras {
-    width: 50%;
-    background-color: rgb(255, 255, 255);
-    padding: 1rem;
-}
-/*acaba grafico*/
-.card-topo{
-    display: flex;
-    gap: 1rem;
     justify-content: space-between;
-    padding: 1.9rem;
-    padding-bottom: 0rem;
 }
-.card {
-    background-color: white;
-    border-radius: 10px;
-    color: #15191C;
-    width: 16%;
-    font-size: 2rem;
-    text-align: center;
-    padding: 1rem 1rem;
-}
-.card p{
-    font-size: 1.5rem;
-}
-.pouco_texto h2{
-    padding-top: 12%;
-}
-.notificacoes {
-    background-color: #2C343A;
-    padding: 1rem;
-    margin-left: 15px
-}
-.notificacoes span{
-    color: blue;
-}
-.notificacao {
+.column-2{
     display: flex;
-    font-size: 18px;
-    margin-top: 20px;
+    width: 80%;
 }
-.notificacao span{
-    color: #95999C;
-    font-size: 14px;
+.painel{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    color: #15191C;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 18rem;
 }
-.notificacao img{
-    height: 30px;
-    padding-right: 10px;
+.resposta {
+    padding: 2rem;
+}
+.resposta p {
+    background-color: #1D232A;
+    color: white;
+    padding: 2%;
+    border-radius: 1rem;
+    width: 30%;
+}
+.mensagem{
+    display: flex;
+    justify-content: center;
+}
+input{
+    width: 85%;
+    padding: 0.4rem 1rem;
+}
+#seta {
+    width: 30px;
 }

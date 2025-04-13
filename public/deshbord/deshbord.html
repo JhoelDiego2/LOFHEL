@@ -18,16 +18,23 @@
             <p>Olá Fernanda Caramico, seja bem vinda</p>
 
             <div class="nav-list">
-                <ul>
-                    <li><a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png"
-                                alt="icone"><span>Inicio</span></a></li>
-                    <li><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png" alt="icone">Perfil</a></li>
-                    <li><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
-                                alt="icone">Funcionarios</a></li>
-                    <li><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">armazens</a></li>
-                    <li><a href="suporte.html"><img src="../deshbord/imagens-deshbord/body.png" alt="icone">suporte</a></li>
-                    <li><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png" alt="icone">sair</a></li>
-                </ul>
+                <div id="atual">
+                    <a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Inicio</a>
+                </div>
+                <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png"
+                            alt="icone">Perfil</a>
+                </div>
+                <div><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
+                            alt="icone">Funcionarios</a>
+                </div>
+                <div><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a>
+                </div>
+                <div><a href="suporte-bob.html"><img src="../deshbord/imagens-deshbord/body.png"
+                            alt="icone">Suporte-BobIA</a>
+                </div>
+                <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
+                            alt="icone">sair</a>
+                </div>
             </div>
         </div>
     </div>
@@ -35,11 +42,13 @@
         <div class="header">
             <div class="topo">
                 <div class="column-1">
-                    <p id="title">Dashboard</p>
+                    <p id="title">Dashboard - <span id="nome_empresa">Vinícola Dom
+                            Aurélio</span></p>
                 </div>
                 <div class="column-2">
                     <div>
-                        <img src="../deshbord/imagens-deshbord/Ellipse%202.png" alt="picture" style="padding-right: 10px;">
+                        <img src="../deshbord/imagens-deshbord/Ellipse%202.png" alt="picture"
+                            style="padding-right: 10px;">
                         <p> Fernanda Caramico </p>
                     </div>
                 </div>
@@ -47,11 +56,15 @@
             <div class="sub">
 
                 <div class="column-1">
-                    <p>Armazem 1</p>
-                    <p>Grupo de VInhos</p>
+                    <select name="armazem" id="armazem1">
+                        <option value="geral">Geral</option>
+                        <option value="armazem1">Armazém1</option>
+                        <option value="armazem2">Armazém2</option>
+                        <option value="armazem3">Armazém3</option>
+                    </select>
                 </div>
                 <div class="column-2">
-                    <input type="date" name="Atual" id="Atualdia" >
+                    <input type="date" name="Atual" id="Atualdia">
                 </div>
             </div>
 
@@ -59,23 +72,23 @@
         <div class="card-topo">
             <div class="card pouco_texto">
                 <p>Total de armzaéns</p>
-                <h2>25</h2>
+                <h2>5</h2>
             </div>
             <div class="card">
-                <p>armzaéns fora da faixa ideal</p>
-                <h2>5</h2>
+                <p>Armzaéns fora da faixa ideal</p>
+                <h2>1</h2>
             </div>
             <div class="card pouco_texto">
                 <p>Alertas Ativos</p>
-                <h2>25</h2>
+                <h2>3</h2>
             </div>
             <div class="card">
                 <p>Total de alertas na semana</p>
-                <h2>25</h2>
+                <h2>14</h2>
             </div>
             <div class="card">
-                <p>Total de alertas na semana</p>
-                <h2>25</h2>
+                <p>Total de alertas na semana anterior</p>
+                <h2>16</h2>
             </div>
         </div>
         <div class="container">
@@ -92,27 +105,33 @@
                     <h4>Alertas Recentes <span>Ver todos</span></h4>
                     <div class="notificacao">
                         <img src="../deshbord/imagens-deshbord/notifications.png">
-                        <p>Armazém 1 <br> <span>Temperatura acima do recomendado</span></p>
+                        <p>Armazém 1 <br> <span>Temperatura acima do
+                                recomendado</span></p>
                     </div>
                     <div class="notificacao">
                         <img src="../deshbord/imagens-deshbord/notifications.png">
-                        <p>Armazém 2<br> <span>Temperatura acima do recomendado</span></p>
+                        <p>Armazém 2<br> <span>Temperatura acima do
+                                recomendado</span></p>
                     </div>
                     <div class="notificacao">
                         <img src="../deshbord/imagens-deshbord/notifications.png">
-                        <p>Armazém 3 <br><span>Temperatura acima do recomendado</span></p>
+                        <p>Armazém 3 <br><span>Temperatura acima do
+                                recomendado</span></p>
                     </div>
                     <div class="notificacao">
                         <img src="../deshbord/imagens-deshbord/notifications.png">
-                        <p>Armazém 4 <br><span>Temperatura acima do recomendado</span></p>
+                        <p>Armazém 4 <br><span>Temperatura acima do
+                                recomendado</span></p>
                     </div>
                     <div class="notificacao">
                         <img src="../deshbord/imagens-deshbord/notifications.png">
-                        <p>Armazém 5 <br><span>Temperatura acima do recomendado</span></p>
+                        <p>Armazém 5 <br><span>Temperatura acima do
+                                recomendado</span></p>
                     </div>
                     <div class="notificacao">
                         <img src="../deshbord/imagens-deshbord/notifications.png">
-                        <p>Armazém 6<br> <span>Temperatura acima do recomendado</span></p>
+                        <p>Armazém 6<br> <span>Temperatura acima do
+                                recomendado</span></p>
                     </div>
                 </div>
             </div>
@@ -125,8 +144,8 @@
 </html>
 <script>
     // so colocando valor no input
-     Atualdia.value = "2025-04-14"
-     //graficos com chart js
+    Atualdia.value = "2025-04-14"
+    //graficos com chart js
     const ctx = document.getElementById('myChart');
 
     new Chart(ctx, {

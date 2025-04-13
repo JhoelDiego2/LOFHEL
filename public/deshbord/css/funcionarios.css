@@ -27,14 +27,11 @@ body {
     background-color: var(--preto);
     min-height: 100vh;
 }
-li{
-    list-style: none;
-    align-content: center;
+#atual {
+    border-left: solid 8px rgb(255, 255, 255);
 }
 .nav-list{
-    padding-left: 10%;
     font-size: 16px; 
-    
 }
 .side-bar p{
     font-size: 1.5rem;
@@ -49,9 +46,6 @@ li{
     color: var(--cinza);
     font-size: 16px;
     padding: 10px 15px;
-}
-.nav-list #atual{
-    border: white;
 }
 .topo {
     display: flex;
