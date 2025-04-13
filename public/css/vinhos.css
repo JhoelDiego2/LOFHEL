@@ -12,14 +12,12 @@
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
 }
 body {
     font-family: "Playfair Display", serif;
     color: var(--texto_irrelevante);
     height: 100%;
     background-color: var(--fundo);
-    overflow-x: hidden ;
 }
 a{
     all: unset;
@@ -33,7 +31,6 @@ a{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    z-index: 2;
     color: #F4F4F4;
 }
 .nav img{
@@ -103,7 +100,7 @@ a{
 }
 #texto{
     padding-bottom: 3rem;
-    width: 60%;
+    width: 80%;
     font-size: 20px;
 }
 
@@ -117,18 +114,16 @@ h1 {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+    padding: 1rem 15rem
 }
 
 .vinho {
     text-align: center;
-    flex: 1;
     margin: 0 10px;
 }
 
 .vinho img {
-    width: 400px;
-    height: 350px;
- object-fit: cover; /* mantendo a proporção*/
+    width: 100%;
     border-radius: 5px;
 
    /* width: 150px;
@@ -136,9 +131,6 @@ h1 {
     border-radius: 5px; AJUSTANDO APENAS LARGURA E ALTURA auto*/
 }
 .garrafa {
-    width: 480px; /* Defina a largura desejada */
-    height: 350px; /* A altura será ajustada automaticamente */
-    object-fit: cover;
     border-radius: 5px; /* Se desejar bordas arredondadas */
 }
 h2 {
