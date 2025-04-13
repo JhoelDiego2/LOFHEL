@@ -65,7 +65,7 @@ a{
     margin-top: -10px;
 }
 #home {
-    background-image: url("../assets/AdobeStock_179767367.jpeg");
+    background-image: url("../assets/fundoVinho.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -107,11 +107,6 @@ a{
     font-size: 20px;
 }
 
-
-
-
-
-
 h1 {
     text-align: center;
     padding-bottom: 10px;
@@ -131,22 +126,32 @@ h1 {
 }
 
 .vinho img {
-    width: 150px;
-    height: auto;
+    width: 400px;
+    height: 350px;
+ object-fit: cover; /* mantendo a proporção*/
     border-radius: 5px;
-}
 
+   /* width: 150px;
+    height: auto;
+    border-radius: 5px; AJUSTANDO APENAS LARGURA E ALTURA auto*/
+}
+.garrafa {
+    width: 480px; /* Defina a largura desejada */
+    height: 350px; /* A altura será ajustada automaticamente */
+    object-fit: cover;
+    border-radius: 5px; /* Se desejar bordas arredondadas */
+}
 h2 {
     margin: 10px 0;
 }
 
-.footer {
+#baseboard {
     margin-top: 2rem;
     background-color: #1E0F0F;
     height: 300px;
     display: flex;
 }
-.footer ul{
+#baseboard ul{
     margin-top: 3rem;
     color: white;
     list-style: none;
@@ -155,20 +160,20 @@ h2 {
     font-size: 23.6px;
     letter-spacing: 1.5px;
 }
-.footer .column-2 p{
+#baseboard .column-2 p{
     margin-top: 8rem;
-    text-align: end;
-    margin-right: 1rem;
+    text-align: right; /*end*/
+    margin-right: 3rem;
 }
-.footer .column-1 p{
+#baseboard .column-1 p{
     margin-top: -4rem;
     font-size: 20px;
     color: white;
 }
-.footer .column-1{
+#baseboard .column-1{
     width: 40%;
 }
-.footer .column-2{
+#baseboard .column-2{
     padding-left: 36rem;
 }
 #redes{
