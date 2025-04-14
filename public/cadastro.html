@@ -1,27 +1,101 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <link rel="stylesheet" href="css/cadastro.css">
 </head>
 
+
 <body>
-    <h2>Cadastro</h2>
-    <input type="text" id="user" placeholder="Usuário"><br>
-    <input type="password" id="senha" placeholder="Senha"><br>
-    <input type="password" id="resenha" placeholder="Repita a senha"><br>
-    <button onclick="registro()">Cadastrar</button>
-    <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+
+    <div class="container">
+        <div class="left-content">
+            <div class="image">
+                <img class="logotipo01" src="./assets/logotipo01.png" alt="logotipo01">
+            </div>
+
+            <div class="title">
+                <h1>SEJA BEM-VINDO <br>
+                    _
+                </h1>
+            </div>
+
+            <div class="slogan">
+                <h3><b>Preservando a excelência do vinho através da tecnologia</b></h2>
+            </div>
+        </div>
+
+        <div class="right-content">
+            <div class="titulo-right">
+                <h3><b>Faça seu cadastro</b></h3>
+            </div>
+
+            <div>
+                Nome<br><input type="text" id="ipt_user" placeholder="Usuário"><br>
+            </div>
+
+            <div>
+                <input type="text" id="ipt_cnpj" placeholder="Cnpj"><br>
+            </div>
+
+            <div>
+                <input type="text" id="ipt_email" placeholder="Email"><br>
+            </div>
+
+            <div>
+                <input type="password" id="ipt_senha" placeholder="Senha"><br>
+            </div>
+
+            <div>
+                <input type="password" id="ipt_confirmarsenha" placeholder="Confirmar Senha"><br>
+            </div>
+
+            <div>
+                <button onclick="registro()">Cadastrar</button>
+            </div>
+
+            <div>
+                <span>
+                    <p>Já possui uma conta? <a class="txt-laranja" href="login.html">Faça login</a></p>
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+
 </body>
 
 </html>
+
+
 <script>
-    function registro(params) {
-        if (user.value == "" || senha.value == "" || resenha.value == "") {
-            alert("Por favor, preencha todos os campos!");
-            }else{
-        alert("Cadastro realizado!");}
+    function registro() {
+        var user = ipt_user.value;
+        var cnpj = ipt_cnpj.value;
+        var email = ipt_email.value;
+        var senha = ipt_senha.value;
+        var confirmarsenha = ipt_confirmarsenha.value;
+
+        if (user == "" || cnpj == "" || email == "" || senha == "" || confirmarsenha == "") {
+            alert("Preencha todos os campos!");
+        } else if (cnpj.length != 14) {
+            alert('CNPJ inválido (deve conter 14 dígitos)!');
+        } else if (!email.includes("@") || !email.endsWith(".com")) {
+            alert('Email inválido!')
+        } else if (senha.length < 8) {
+            alert('A senha deve ter pelo menos 8 caracteres!')
+        } else if (senha != confirmarsenha) {
+            alert('Erro.. As senhas estão diferentes.');
+        } else {
+            alert('Cadastro realizado com sucesso, até mais...')
+        }
     }
+
+       
+    
 </script>

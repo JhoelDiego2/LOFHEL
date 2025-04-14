@@ -4,25 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="css/cadastro.css">
 </head>
 <body>
-    <img src="https://avatars.githubusercontent.com/u/204763019?s=400&u=713fcba602705110ee3c2d8412cc8a257160410d&v=4" alt="logo VitiSense">
-    <h2>BEM-VINDO DE VOLTA!</h2>
-    <h4> Lofhel  monitora a temperatura e umidade em tempo real para vinícolas e adegas</h4>
-        <h2>Iniciar Sessão</h2>
-        <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p><br>
-        <input type="text" id="user" placeholder="Email"><br><br>
-        <input type="password" id="senha" placeholder="Senha"><br><br>
-        <button onclick="login()">Entrar</button> <br><br>
-        
-        <span>Esqueceu a senha?</span><span><a href="">Acesse aqui</a></span>
+   
+    <div class="container">
+        <div class="left-content">
+            <div class="image">
+                <img class="logotipo01" src="./assets/logotipo01.png" alt="logotipo01">
+            </div>
+
+            <div class="title">
+                <h1>BEM-VINDO DE VOLTA!<br>
+                    _
+                </h1>
+            </div>
+
+            <div class="slogan">
+                <h3><b>A Lofhel monitora a temperatura e umidade em tempos real para vinícolas e adegas</b></h2>
+            </div>
+        </div>
+
+        <div class="right-content">
+            <div class="txt-laranja">
+                <h3><b>Iniciar Sessão</b></h3>
+            </div>
+            <div>
+                <span>
+                    <p>Não possui uma conta? <a class="txt-laranja" href="cadastro.html">Acesse aqui</a></p>
+                </span>
+            </div>
+           
+            <div>
+                <input type="text" id="ipt_email" placeholder="Email"><br>
+            </div>
+
+            <div>
+                <input type="password" id="ipt_senha" placeholder="Senha"><br>
+            </div>
+            <div>
+                <button onclick="validar()">Entrar</button>
+            </div>
+            <div>
+                <span>
+                    <p>Esqueceu a senha? <a class="txt-laranja" href="">Acesse aqui</a></p>
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
 </html>
 <script>
-    function login() {
-        if (user.value == "" || senha.value == "") {
-            alert("Por favor, preencha todos os campos!");
-            }else{
-        alert("Login realizado!");}
+    function validar() {
+        var email = ipt_email.value;
+        var senha = ipt_senha.value;
+
+        if (email == "" || senha == "") {
+            alert("Preencha todos os campos!");
+        } else if (!email.includes("@") || !email.endsWith(".com")) {
+            alert('Email inválido!')
+        } else if (senha.length < 8) {
+            alert('A senha deve ter no mínimo 8 caracteres!')
+        } else {
+            alert('Bem-vindo')
+        }
     }
 </script>

@@ -1,0 +1,111 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+}
+
+
+.left-content,
+.right-content {
+    height: 100vh;
+    flex: 1;
+
+}
+
+
+.left-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url("../assets/fundo_login_cadastro.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Hind Vadodara', sans-serif;
+    color: #FFFF;
+
+
+}
+
+
+.right-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;    
+    align-items: center;    
+  
+    
+    background-color: #1D1D1D;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+.logotipo {
+
+    display: flex;
+    width: 50px;
+    height: 150px;
+}
+
+.txt {
+    color: white;
+}
+
+.image {
+    display: flex;
+    width: 1vh;
+    height: 50vh;
+}
+
+.txt-laranja {
+    color: #DEA976;
+}
+
+button {
+    width: 50vh;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #DEA976;
+    color: white;
+}
+
+input {
+    width: 50vh;
+    max-width: 300px;
+    padding: 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    font-size: 15px;
+    color: white;
+}
+
+.titulo-right {
+    display: flex;
+    margin-bottom: 1px;
+    color: #DEA976;
+}
+.subtitle {
+    disp
+}
+.title {
+    display: flex;
+    margin-bottom: 25vh;
+    align-items: center;
+    
+
+}
