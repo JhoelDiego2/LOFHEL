@@ -1,0 +1,118 @@
+
+/* funcionarios.css */
+
+.container-funcionarios {
+    display: flex;
+    padding: 2rem;
+    gap: 30px;
+}
+.card {
+    background-color: white;
+    color: #15191C;
+    padding: 1rem;
+    width: 90%;
+}
+.card input {
+    width: 100%;
+    padding: 10px 0px;
+    border: none;
+    border-bottom: 1px solid #8F8F8F;
+    margin-bottom: 20px;
+    color: #8F8F8F;
+}
+.card button {
+    background-color: #0B0B0B;
+    color: #8F8F8F;
+    width: 100%;
+    padding: 0.5rem 6rem;
+    font-size: 16.58px;
+    margin-top: 3rem;
+}
+.card h6 {
+    font-size: 1.8rem;
+    text-align: center;
+    padding-bottom: 2rem;
+}
+.card p {
+    color: #0B0B0B;
+}
+.card select {
+    width: 100%;
+    padding: 10px 0px;
+    border: none;
+    border-bottom: 1px solid #8F8F8F;
+    margin-bottom: 20px;
+    color: #8F8F8F;
+}
+/*ARMAZENS-CADASTRO*/
+.escolha {
+    display: flex;
+    gap: 40px;
+    text-align: center;
+}
+ /*perfil*/
+.container-perfil{
+    display: flex;
+    min-height: 70vh;
+    justify-content: center;
+}
+.container-perfil .column-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:2rem;
+    width: 35%;
+    text-align: center;
+}
+.container-perfil .column-1 div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container-perfil .column-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:2rem;
+    width: 65%;
+    
+}
+.container-perfil .card-perfil{
+    background-color: #ffffff;
+    color: #15191C;
+    border-radius: 10px;
+    width: 70%;
+    padding: 2rem;
+
+}
+#foto_perfil_perfil {
+    width: 19rem;
+    height: 19rem;
+    border: solid 2px white;
+    border-radius: 10rem;
+}
+.container-perfil .column-1 span{
+    font-size: 1.7rem;
+    font-weight: 800;
+}
+.container-perfil input{
+    width: 90%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-bottom: solid 2px rgb(95, 95, 95);
+    margin-bottom: 2%;
+}
+.container-perfil .card-perfil p{
+    color: white;
+}
+.container-perfil button {
+    background-color: #0B0B0B;
+    color: white;
+    padding: 1rem;
+    width: 98%;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 2%;
+}

@@ -43,7 +43,7 @@
         <div class="header">
             <div class="topo">
                 <div class="column-1">
-                    <p id="title">Dashboard - <span id="nome_empresa">Vinícola Dom
+                    <p id="title">Dashboard - Armazém 1 - <span id="nome_empresa">Vinícola Dom
                             Aurélio</span></p>
                 </div>
                 <div class="column-2">
@@ -58,8 +58,8 @@
 
                 <div class="column-1">
                     <select name="armazem" id="armazem1">
-                        <option value="geral">Geral</option>
                         <option value="armazem1">Armazém1</option>
+                        <option value="geral">Geral</option>
                         <option value="armazem2">Armazém2</option>
                         <option value="armazem3">Armazém3</option>
                         <option value="armazem3">Armazém4</option>
@@ -74,24 +74,79 @@
         </div>
         <div class="card-topo">
             <div class="card pouco_texto">
-                <p>Total de armzaéns</p>
-                <h2>5</h2>
+                <p>Temperatura Atual</p>
+                <h2>14.4°C</h2>
             </div>
-            <div class="card">
-                <p>Armzaéns fora da faixa ideal</p>
-                <h2>2</h2>
+            <div class="card pouco_texto">
+                <p>Umidade Atual</p>
+                <h2>60%</h2>
             </div>
             <div class="card pouco_texto">
                 <p>Alertas Ativos</p>
+                <h2>1</h2>
+            </div>
+            <div class="card">
+                <p>Quantidade de sensores</p>
                 <h2>4</h2>
             </div>
             <div class="card">
                 <p>Total de alertas na semana</p>
-                <h2>24</h2>
+                <h2>5</h2>
             </div>
-            <div class="card">
-                <p>Total de alertas na semana anterior</p>
-                <h2>25</h2>
+        </div>
+        <div class="card-parametros">
+            <div class="temperatura ">
+                <div class="critico parametro">
+                    <p>Temperatura - Critica</p>
+                    <h2>13°C</h2>
+                </div>
+                <div class="alerta parametro">
+                    <p>Temperatura - Alerta</p>
+                    <h2>15°C</h2>
+
+                </div>
+                <div class="ideal parametro">
+                    <p>Temperatura - Ideal</p>
+                    <h2>18°C</h2>
+
+                </div>
+                <div class="alerta parametro">
+                    <p>Temperatura - Alerta</p>
+                    <h2>21°C2</h2>
+
+                </div>
+                <div class="critico parametro">
+                    <p>Temperatura - Critica</p>
+                    <h2>23°C</h2>
+                    
+                </div>
+            </div>
+            <div class="umidade ">
+                <div class="critico parametro">
+                    <p>Umidade - Critica</p>
+                    <h2>40%</h2>
+
+                </div>
+                <div class="alerta parametro ">
+                    <p  class="pouco">Umidade - Alerta</p>
+                    <h2>44%</h2>
+
+                </div>
+                <div class="ideal parametro">
+                    <p class="pouco">Umidade - Ideal</p>
+                    <h2>52.5%</h2>
+
+                </div>
+                <div class="alerta parametro">
+                    <p class="pouco">Umidade - Alerta</p>
+                    <h2>61%</h2>
+
+                </div>
+                <div class="critico parametro">
+                    <p>Umidade - Critica</p>
+                    <h2>65%</h2>
+                    
+                </div>
             </div>
         </div>
         <div class="container">
@@ -99,8 +154,8 @@
 
             <div class="column-1">
                 <div class="grafico pizza">
-                    <h4>Distribuição de Status dos Armazéns (%)</h4>
-                    <canvas id="porcentagem_status" height=" "> </canvas>
+                    <h4>Tipos de Vinhos Sendo Monitorados (%)</h4>
+                    <canvas id="porcentagem_tipos_vinhos" height=" "> </canvas>
                 </div>
                 <div class="grafico donut">
                     <h4>Distribuição de Status dos Sensores (%)</h4>
@@ -113,18 +168,18 @@
 
             </div>
             <div class="column-2">
+                <div class="grafico linha">
+                    <h4>Variação na Temperatura nas Últimas 24h</h4>
+                    <canvas id="variacao_temperatura_atual" height="112rem"></canvas>
+                </div> 
+                <div class="grafico linha">
+                    <h4>Variação na Umidade nas Últimas 24h</h4>
+                    <canvas id="variacao_umidade_mensal" height="112rem"></canvas>
+                </div> 
                 <div class="grafico barras">
                     <h4>Alertas Ativos Em Cada Armazém</h4>
                     <canvas id="ranking_grafico" height="112rem"></canvas>
                 </div>
-                <div class="grafico linha">
-                    <h4>Variação da Temperatura Média (Últimos 30 dias)</h4>
-                    <canvas id="variacao_temperatura_mensal" height="112rem"></canvas>
-                </div> 
-                <div class="grafico linha">
-                    <h4>Variação da TUmidade Média (Últimos 30 dias)</h4>
-                    <canvas id="variacao_umidade_mensal" height="112rem"></canvas>
-                </div> 
                 <!--
                 <div class="grafico barras">
                     <canvas id="myChart"></canvas>
@@ -222,18 +277,18 @@
     /*Primero declaramos a data e depois criamos o grafico usando algo parecido a um procedimento e depois plotamos no html*/
     const data_pizza = {
         labels: [
-            'Dentro da faixa ideal',
-            'Alertas leves',
-            'Alertas críticos'
+            'Tinto Medio',
+            'Tinto Espumante',
+            'Fortificado'
         ],
         datasets: [{
-            label: 'Status dos Armazéns (%)',
+            label: 'Tipo de vinho (%)',
             data: [60, 20, 20],
 
             backgroundColor: [
-                'green', // Verde 
-                'yellow',  // Amarelo 
-                'red'   // Vermelho 
+                'orange', // Verde 
+                'red',  // Amarelo 
+                'black'   // Vermelho 
 
             ],
             hoverOffset: 5
@@ -258,7 +313,7 @@
     }
         
     };
-    const myChart_pizza = document.getElementById('porcentagem_status');
+    const myChart_pizza = document.getElementById('porcentagem_tipos_vinhos');
     new Chart(myChart_pizza, pizza);
     
     // grafico de donunts -------------------------------------------------------------
@@ -271,7 +326,7 @@ const data_status_sensores = {
   ],
   datasets: [{
     label: 'status',
-    data: [10, 1, 1],
+    data: [10, 0, 0],
     backgroundColor: [
       'green',
       'red',
@@ -322,72 +377,60 @@ new Chart(myChart_barra_status, {
     // grafico do tipo linha-------------------------------------------------------------
 
     const labels = [
-        '1',
-        '2',
-        '3',
-        '4',
-        '5',
-        '6',
-        '7',
-        '8',
-        '9',
-        '10',
-        '11',
-        '12',
-        '13',
-        '14',
-        '15',
-        '16',
-        '17',
-        '18',
-        '19',
-        '20',
-        '21',
-        '22',
-        '23',
-        '24',
-        '25',
-        '26',
-        '27',
-        '28',
-        '29',
-        '30',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+        '20:00',
+        '21:00',
+        '22:00',
+        '23:00',
+        '0:00',
+        '1:00',
+        '2:00',
+        '3:00',
+        '4:00',
+        '5:00',
+        '6:00',
+        '7:00',
+        '8:00',
+        '9:00',
+        '10:00',
+        '11:00',
+        '12:00'
     ]
     const data_var_temp = {
         labels: labels,
         datasets: [{
             label: 'Temperatura Média',
             data: 
-            [15.2,
-            15.5,
-            15.8,
-            16.1,
-            16.4,
-            16.7,
-            17.0,
-            16.8,
-            16.5,
-            16.2,
-            15.9,
-            15.6,
-            15.3,
-            15.0,
-            14.8,
-            14.5,
-            15.4,
-            14.1,
-            14.4,
-            14.7,
-            15.0,
-            15.3,
-            15.6,
-            15.9,
-            16.2,
-            16.5,
-            16.8,
-            17.1,
-            16.9,
-            16.6],
+            [14.5,
+                14.3,
+                14.1,
+                14.4,
+                14.7,
+                15.0,
+                14.7,
+                14.4,
+                14.8,
+                14.5,
+                14.3,
+                14.1,
+                14.4,
+                14.7,
+                15.0,
+                14.8,
+                14.5,
+                14.3,
+                14.1,
+                14.7,
+                14.7,
+                14.7,
+                14.7,
+                14.4],
 
 
 
@@ -403,7 +446,7 @@ new Chart(myChart_barra_status, {
         type: 'line',
         data: data_var_temp,
     };
-    const myChart_var_temp = document.getElementById('variacao_temperatura_mensal');
+    const myChart_var_temp = document.getElementById('variacao_temperatura_atual');
     new Chart(myChart_var_temp, config_var_temp);
 
        // grafico do tipo linha-------------------------------------------------------------
@@ -471,11 +514,11 @@ new Chart(myChart_barra_status, {
                 68,
                 69,
                 70,
-                71,
-                72,
-                73,
-                72,
-                71
+                68,
+                67,
+                64,
+                61,
+                60
             ],
 
 
@@ -506,7 +549,7 @@ new Chart(myChart_barra_status, {
         labels: ['Temperatura alta', 'Temperatura Baixa', 'Umidade Alta', 'Umidade Baixa', 'Falha de equipamento'],
         datasets: [{
             label: 'Tipo de alerta',
-            data: [7, 10, 2, 4, 1],
+            data: [0, 4, 0, 1, 1],
             backgroundColor: [
                 'rgb(255, 140, 0)',
                 'blue', 

@@ -18,6 +18,7 @@ body {
     background-color: var(--azul);
     color: white;
     display: flex;
+    
 }
 .main{
     width: 100%;
@@ -100,28 +101,25 @@ option {
 .container{
     display: flex;
     padding: 2rem ;
+    gap: 1.5rem;
 
 }
 .container .column-1 {
+    width: 19%;
     display: flex;
-    gap: 30px;
-    width: 80%;
-    height: 400px;
+    flex-direction: column;
+    gap: 1rem;
 }
 .container .column-2 {
+    width: 62%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.container .column-3 {
     width: 20%;
 }
-/*comceco grafico*/
-.linhas{
-    background-color: white;
-    width: 50%;
-}
-.barras {
-    width: 50%;
-    background-color: rgb(255, 255, 255);
-    padding: 1rem;
-}
-/*acaba grafico*/
+
 .card-topo{
     display: flex;
     gap: 1rem;
@@ -147,7 +145,6 @@ option {
 .notificacoes {
     background-color: #2C343A;
     padding: 1rem;
-    margin-left: 15px
 }
 .notificacoes span{
     color: blue;
@@ -164,4 +161,49 @@ option {
 .notificacao img{
     height: 30px;
     padding-right: 10px;
+}
+/*comceco grafico*/
+.grafico{
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    color: black;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+
+/*acaba grafico*/
+/* armazem1*/
+.card-parametros{
+    display: flex;
+    text-align: center;
+    padding-left: 2rem;
+}
+.card-parametros .temperatura , .umidade{
+    display: flex;
+    gap: 4px;
+    margin-top: 20px;
+}
+.critico {
+    background-color: #f70000;
+    width: 18%;
+    border-radius: 10px;
+
+}
+.alerta {
+    background-color: #d6d304;
+    width: 18%;
+    border-radius: 10px;
+}
+.ideal {
+    background-color: #09a309;
+    width: 18%;
+    border-radius: 10px;
+}
+.umidade .parametro {
+    width: 20%;
+}
+.pouco {
+    margin-top: 15%;
 }

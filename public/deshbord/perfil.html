@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOFHEL- Perfil</title>
+    <link rel="icon" href="../public/assets/Design%20sem%20nome%20(20).png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/geral.css">
+    <link rel="stylesheet" href="css/individuais.css">
+
+</head>
+
+<body>
+    <div class="side-bar">
+        <div class="nav">
+            <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
+
+            <p>Olá Fernanda Caramico, seja bem vinda</p>
+
+            <div class="nav-list">
+                <div =>
+                    <a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Inicio</a>
+                </div>
+                <div id="atual"><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png"
+                            alt="icone">Perfil</a>
+                </div>
+                <div ><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
+                            alt="icone">Funcionarios</a>
+                </div>
+                <div ><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a>
+                </div>
+                <div ><a href="suporte-bob.html"><img src="../deshbord/imagens-deshbord/body.png"
+                            alt="icone">Suporte-BobIA</a>
+                </div>
+                <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
+                            alt="icone">sair</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="header">
+            <div class="topo">
+                <div class="column-1">
+                    <p id="title">Armazéns - Vinicola </p>
+                </div>
+                <div class="column-2">
+                    <div>
+                        <img src="../deshbord/imagens-deshbord/person-circle.png" alt="picture" style="padding-right: 10px;">
+                        <p> Fernanda Caramico </p>
+                    </div>
+                    <div>
+                        <img src="../deshbord/imagens-deshbord/notifications.png" alt="icone">
+                    </div>
+                </div>
+            </div>
+            <div class="sub">
+
+                <div class="column-1">
+                    <p>Configuração do perfil</p>
+                    <p></p>
+                </div>
+ 
+            </div>
+
+        </div>
+        <div class="container-perfil">
+            <div class="column-1">
+                <div>
+                    <img src="../assets/foto do cara.png" alt="foto_perfil" id="foto_perfil_perfil">
+                </div>
+                <div>
+                    <p id="cargo">
+                        <span>Cargo: </span>
+                        Gerente
+                    </p>
+                </div>
+            </div>
+            <div class="column-2">
+                <div class="card-perfil">
+                    <div>
+                        <p id="texto_nome">Nome</p>
+                        <input type="text" id="ipt_nome" placeholder="Nome" onclick="digitando_nome()" >
+                        <p id="texto_email">Email</p>
+                        <input type="text" id="ipt_email" placeholder="Email"  onclick="digitando_email()">
+                        <p id="texto_telefone">Telefone</p>
+                        <input type="text" id="ipt_telefone" placeholder="Telefone"  onclick="digitando_telefone()">
+                        <p id="texto_senha">Senha</p>
+                        <input type="text" id="ipt_senha" placeholder="Senha" onclick="digitando_senha()" >
+                        <p id="texto_conf_senha">Confirmar Senha</p>
+                        <input type="text" id="ipt_conf_senha" placeholder="Confirmar Senha" onclick="digitando_conf_senha()" >
+                        <button onclick="atualizar_perfil()">Atualizar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+    // card cadastrar mais na frente utilizar animações ou um procedimento
+    function digitando_nome() {
+        texto_nome.style = "color: black"
+        ipt_nome.style = " border-bottom-color: #0B0B0B"
+    }
+    function digitando_email() {
+        texto_email.style = "color: black"
+        ipt_email.style = " border-bottom-color: #0B0B0B"
+
+    }
+    function digitando_telefone() {
+        texto_telefone.style = "color: black"
+        ipt_telefone.style = " border-bottom-color: #0B0B0B"
+
+    }
+
+    function digitando_senha() {
+        texto_senha.style = "color: black"
+        ipt_senha.style = " border-bottom-color: #0B0B0B"
+
+    }
+    
+    function digitando_conf_senha() {
+        texto_conf_senha.style = "color: black"
+        ipt_conf_senha.style = " border-bottom-color: #0B0B0B"
+
+    }
+</script>
+
