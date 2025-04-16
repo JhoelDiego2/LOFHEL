@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LOFHEL - Home</title>
+  <link rel="icon" href="https://images.vexels.com/media/users/3/324047/isolated/preview/f44e990d3e438767249b7e40dc53ee22-taca-de-vinho-dos-namorados.png">
+  <style>
+
+    /**tenta usar um arquivo css fica mais limpo de ver mas é opcinal */
+    .corpo-pagina {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+    }/*aqui vc esta tirando tudo predefinido é mais daora fazer com * {}*/
+
+    .cabecalho {
+      background-color: #2e1e17;
+      color: white;
+      padding: 10px 20px; /*: alturapx largurapx isso funciona com todos tipo margin*/
+      display: flex;
+      justify-content: space-between;/*para que a pagina seja maias responsivo recomendo nao usar pading nas laterias e que usar mais o justifycontent: no caso tanto faz qual, na 
+      aba iniio meu fiz com space-around*/
+      align-items: center;
+    }
+
+    .menu-navegacao a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;/**esta trag tira a propiedade de link dp propio html, outra forma é usar all: unset mesma coisa*/
+    }
+    /**unica coisa que falata na nav é que os llinks sem os botoes
+    e falta usar a tag position: fixed para assim que rolar a pagina ela ficar fixa,  esteja no meio, dica utiliza uma div para separ esses tipo, ficando asssim 3 div no menu*/
+    .banner-principal {
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+
+    .imagem-banner {
+      width: 100%;
+      height: auto;/*se vc coloca aula entao a imagem se adequa ao texto entao vc ou decrala uma 
+      altura especifica para a minagem com heigt 13928px, ou com min-heigt: 455vh
+      ou vc utiliza um margin top */
+    }
+
+    .texto-banner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);/*se comploicou demais nao é necessario*/
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .secao-conteudo {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .titulo-principal {
+      font-size: 28px;
+    }
+
+    .texto-descricao {
+      margin: 10px 0;
+    }
+
+    .formulario-calculadora {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .campo-input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .botao-simular {
+      padding: 10px 20px;
+      background-color: #e1ddd9;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .rodape {
+      background-color: #2e1e17;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    .link-rodape {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    /*rpdape esqueceu de colocar divs que voce planejou no papel*/
+  </style>
+</head>
+<body class="corpo-pagina">
+
+  <header class="cabecalho">
+    <div><strong>Lofhel</strong></div><!--strong irrelevante-->
+    <nav class="menu-navegacao">
+      <a href="#">Sobre Nós</a>
+      <a href="#">Sobre Vinhos</a>
+      <a href="#">Calculadora Financeira</a>
+      <a href="#">Minha Conta</a>
+      <a href="#"><button class="botao-simular">Entrar</button></a>
+    </nav>
+  </header>
+
+  <div class="banner-principal">
+    <img src="blob:https://web.whatsapp.com/55fc1e67-797d-4ff4-b011-af32414af654" alt="Calculadora Financeira" class="imagem-banner">
+    <div class="texto-banner">CALCULADORA FINANCEIRA</div>
+  </div>
+
+  <section class="secao-conteudo">
+    <h2 class="titulo-principal">Calculadora Financeira Lofhel</h2>
+    <p class="texto-descricao">Otimize seus resultados e fortaleça seu negócio!</p>
+    <p class="texto-descricao">Descubra quanto da sua produção pode ser preservada com o monitoramento eficaz de temperatura e umidade da Lofhel.</p>
+    <p class="texto-descricao">Insira suas datas e veja como nossa solução pode reduzir perdas e elevar a qualidade dos seus vinhos.</p>
+
+    <form class="formulario-calculadora">
+      <input type="text" class="campo-input" placeholder="Informe o seu nome: Ex. Fernanda">
+      <input type="number" class="campo-input" placeholder="Total de Garrafas Produzidas de Vinho no Mês: Ex. 1000">
+      <input type="number" class="campo-input" placeholder="Preço Médio de Cada Garrafa de Vinho: R$">
+      <p class="texto-descricao">Descubra agora quantas perdas sua vinícola pode evitar, clique em simular!</p>
+      <button type="submit" class="botao-simular">SIMULAR</button>
+    </form>
+  </section>
+
+  <footer class="rodape">
+    <p>A Lofhel é especializada em tecnologia para vinícolas. Oferecemos soluções inteligentes para garantir a qualidade do seu vinho.</p>
+    <div>
+      <a href="#" class="link-rodape">Sobre Nós</a>
+      <a href="#" class="link-rodape">Calculadora Financeira</a>
+      <a href="#" class="link-rodape">Sobre Vinhos</a>
+      <a href="#" class="link-rodape">Minha Conta</a>
+    </div>
+    <p>&copy; 2025 Lofhel. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
