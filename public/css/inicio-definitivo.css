@@ -18,8 +18,7 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: #160404;
-    /* Cor do fundo da barra */
+
     border-radius: 10px;
     /* Cantos arredondados da trilha */
 }
@@ -31,10 +30,6 @@
     /* Cantos arredondados */
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #000000;
-    /* Cor ao passar o mouse */
-}
 
 /*eliminando tudo pre definido para poder ter liberdade*/
 * {
@@ -64,7 +59,8 @@ a{
     align-items: center;
     z-index: 2;
     color: #F4F4F4;
-    
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
 }
 
 
@@ -99,16 +95,17 @@ nav p:hover {
 }
 nav img{
     width: 50%;
-
 }
-
+#logotipo:hover{
+    width: 55%;
+}
 #cadastre-se {
     border: solid 2px  var(--vinho);
     border-radius: 2vw;
     height: 3vw;
 }
 
-#cadastre-se :hover {
+#cadastre-se:hover {
     background-color: var(--vinho);
 }
 
@@ -206,8 +203,8 @@ nav img{
     font-size: 22.43px;
     margin-top: 56px;
 }
-.card :hover{
-    transform: translateY(-30px);
+.card:hover{
+    transform: translateY(-10px);
 }
 .diferentes .container{
     display: flex;
@@ -316,6 +313,9 @@ input{
     font-size: 1rem;
     color: white;
 }
+#contato:hover {
+    transform: translateY(-10px);
+}
 .footer {
     margin-top: 6rem;
     background-color: #1E0F0F;
@@ -349,4 +349,7 @@ input{
 }
 #redes{
     margin-left: 2rem;
+}
+.mover-cima:hover{
+    transform: translateY(-10px);
 }
