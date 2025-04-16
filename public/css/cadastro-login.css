@@ -28,7 +28,8 @@ body {
 .left-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /*nao funciona porque nao é um row vc colocou columna entoa nao ta fzd nada se vocs queria q fique
+    no meio que nem embaico seria align-items*/
     background-image: url("../assets/fundo_login_cadastro.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -51,7 +52,7 @@ body {
     color: white;
 }
 
-.logotipo {
+.logotipo {/*verifica a clase usada no html, nao existe logotipo*/
 
     display: flex;
     width: 50px;
@@ -63,7 +64,7 @@ body {
 }
 
 .image {
-    display: flex;
+    display: flex; /*aqui sim voce esta mexewndo com a imagem mas para que fique no topo ou vc usa align-self , positiion ou com margin-top negativou ou margin-botttom */
     width: 1vh;
     height: 50vh;
 }
@@ -81,7 +82,13 @@ button {
     background-color: #DEA976;
     color: white;
 }
-
+button:hover{
+    transform: translateY(-10px);
+}
+/*exemplo de annimação assim que o mouse passa no botao no caso eu transform a escala y do plano cartesiano para -10 px, 
+da para mudar o fundo, tamanho, varias coisas tenta experimentar e usar naquele bom vindo para que o border bottom seja width de 100%
+dica: no html tira essa linha e coloca uma borda emcbaico no css antes de usar a tag hover já que o css é cascata
+*/
 input {
     width: 50vh;
     max-width: 300px;
@@ -94,18 +101,18 @@ input {
     color: white;
 }
 
+
 .titulo-right {
     display: flex;
     margin-bottom: 1px;
     color: #DEA976;
 }
-.subtitle {
-    disp
-}
+
 .title {
     display: flex;
     margin-bottom: 25vh;
     align-items: center;
+
     
 
 }
