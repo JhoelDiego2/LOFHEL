@@ -125,7 +125,8 @@ nav img{
     background-repeat: no-repeat;
     min-height: 100vh;
     color: var(--cinza);
-    font-size: 23px
+    font-size: 23px;
+    box-shadow: 5px 5px 10px gray;
 }
 #home .container{
     display: flex;
@@ -179,7 +180,7 @@ nav img{
 }
 .titulo {
     text-align: center;
-    color: var(--marrom);
+    color: var(--vinho);
     font-size: 54px;
     margin-top: 3rem;
 
@@ -205,6 +206,10 @@ nav img{
 }
 .card:hover{
     transform: translateY(-10px);
+    background-color: #471414;
+    color: #F4F4F4;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
 }
 .diferentes .container{
     display: flex;
@@ -227,19 +232,28 @@ nav img{
     font-size: 28px;
     margin-bottom: 3px;
 }
+.caixa:hover{
+    transform: translateY(-10px);
+    background-color: #471414;
+    color: #F4F4F4;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+}
+
 #comece_hoje{
     text-align: center;
 }
 #comece_hoje h5{
     font-size: 2rem;
-    color: var(--marrom);
+    color: var(--vinho);
 }
 #comece_hoje button {
     border: none;
     padding: 1rem;
     margin-top: 2rem;
     border-radius: 3rem;
-    background-color: var(--amarelo);
+    background-color: var(--vinho);
+    color: white;
 }
 .feedback .container{
     display: flex;
@@ -353,3 +367,116 @@ input{
 .mover-cima:hover{
     transform: translateY(-10px);
 }
+/*-----------------SOBREVINHOS------------------------------*/
+#pagina-sobre-vinhos  #home {
+    background-image: url("../assets/fundoVinho.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 50vh;
+    color: #F4F4F4;
+    font-size: 23px
+}
+
+
+#pagina-sobre-vinhos  .container1{
+    display: flex;
+}
+#pagina-sobre-vinhos  .container1 .column-1{
+    width: 40%;
+    padding-top: 5rem;
+}
+#pagina-sobre-vinhos  .sobre{
+    font-size: 7rem;
+    font-family: "Italiana", sans-serif;
+
+}
+#pagina-sobre-vinhos  #texto_abaixo{
+    text-align: start;
+    font-size: 1.2rem;
+    margin: 4.4rem;
+}
+
+#pagina-sobre-vinhos  .container {
+    padding: 5rem;
+    color: var(--vinho);
+}
+#pagina-sobre-vinhos  #titulo-texto{
+    font-size: 45px;
+    padding-bottom: 3rem;
+}
+#pagina-sobre-vinhos #texto{
+    padding-bottom: 3rem;
+    width: 80%;
+    font-size: 20px;
+}
+
+#pagina-sobre-vinhos h1 {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+
+.vinhos {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 1rem 15rem
+}
+
+.vinho {
+    text-align: center;
+    margin: 0 10px;
+}
+
+.vinho img {
+    width: 100%;
+    border-radius: 5px;
+
+   /* width: 150px;
+    height: auto;
+    border-radius: 5px; AJUSTANDO APENAS LARGURA E ALTURA auto*/
+}
+.garrafa {
+    border-radius: 5px; /* Se desejar bordas arredondadas */
+}
+#pagina-sobre-vinhos h2 {
+    margin: 10px 0;
+}
+
+#baseboard {
+    margin-top: 2rem;
+    background-color: #1E0F0F;
+    height: 300px;
+    display: flex;
+}
+#baseboard ul{
+    margin-top: 3rem;
+    color: white;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 23.6px;
+    letter-spacing: 1.5px;
+}
+#baseboard .column-2 p{
+    margin-top: 8rem;
+    text-align: right; /*end*/
+    margin-right: 3rem;
+}
+#baseboard .column-1 p{
+    margin-top: -4rem;
+    font-size: 20px;
+    color: white;
+}
+#baseboard .column-1{
+    width: 40%;
+}
+#baseboard .column-2{
+    padding-left: 36rem;
+}
+#redes{
+    margin-left: 2rem;
+}
+
+/*---------------------------------------fim pagina sobre vinhos*/

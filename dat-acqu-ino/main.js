@@ -23,10 +23,10 @@ const serial = async (
         {
             // se o banco estiver na sua propia maquina é recomendavél usar o localhost do que os numeros que aparecem no workbank
             host: 'localhost',
-            user: 'aluno',
+            user: 'lofhel',
             password: 'Sptech#2024',
-            database: 'lubuntu',
-            // se desejar inserir no banco local a porta é 3306 e para maquina virtual é 3306
+            database: 'dbLofhel',
+            // se desejar inserir no banco local a porta é 3306 e para maquina virtual é 3307
             port: 3307
         }
     ).promise();
@@ -67,7 +67,7 @@ const serial = async (
 
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO dados_sensor (umidade, temperatura) VALUES (?, ?)',
+                'INSERT INTO tbRegistro (umidade, temperatura) VALUES (?, ?)',
                 [umidade, temperatura]
             );
             console.log("valores inseridos no banco: ", umidade + ", " + temperatura);
