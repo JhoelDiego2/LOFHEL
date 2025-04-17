@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Hind+Vadodara:wght@500&display=swap');
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+}
+
+.left-content,
+.right-content {
+    height: 100vh;
+    flex: 1;
+
+}
+
+.left-content {
+    display: flex;
+    flex-direction: column;
+    /*nao funciona porque nao é um row vc colocou columna entoa nao ta fzd nada se vocs queria q fique
+    no meio que nem embaico seria align-items*/
+    background-image: url("../assets/fundo_login.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Hind Vadodara', sans-serif;
+    color: #FFFF;
+
+
+}
+
+.right-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1D1D1D;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+
+
+
+.buttonback {
+    display: flex;
+    position: relative;
+    left: 17px;
+    top: 18px;
+    width: 0px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+
+}
+
+.size-logotipo {
+    /*verifica a clase usada no html, nao existe logotipo*/
+    width: 120px;
+    height: 120px;
+}
+
+.position-logotipo {
+    display: flex;
+    position: relative;
+    left: 70px;
+    top: -55px;
+    /*aqui sim voce esta mexewndo com a imagem mas para que fique no topo ou vc usa align-self , positiion ou com margin-top negativou ou margin-botttom */
+
+}
+
+
+button {
+    width: 55vh;
+    padding: 12px;
+    margin-top: 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #DEA976;
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-10px);
+}
+
+/*exemplo de annimação assim que o mouse passa no botao no caso eu transform a escala y do plano cartesiano para -10 px, 
+da para mudar o fundo, tamanho, varias coisas tenta experimentar e usar naquele bom vindo para que o border bottom seja width de 100%
+dica: no html tira essa linha e coloca uma borda emcbaico no css antes de usar a tag hover já que o css é cascata
+*/
+input {
+    width: 55vh;
+    padding-top: 60px;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    font-size: 15px;
+    color: white;
+}
+
+.title-right {
+    display: flex;
+    margin-bottom: 1px;
+    font-size: 21px;
+}
+
+.subtitle-right {
+    font-size: 15px;
+}
+
+.title {
+    display: flex;
+    align-self: center;
+    position: absolute;
+    bottom: 280px;
+}
+
+.size-title {
+    font-size: 50px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    line-height: 1;
+}
+
+.slogan {
+    display: flex;
+    padding-top: 0;
+    margin-top: 0;
+    position: absolute;
+    bottom: 80px;
+    left: 60px;
+}
+
+.size-slogan {
+    font-size: 23px;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: 1px
+}
+
+
+
+
+
+.txt-laranja {
+    color: #DEA976;
+}

@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/cadastro-login.css">
+    <link rel="stylesheet" href="css/login.css">
+    <div id="div_txt"></div>
 </head>
+
 <body>
-   
+
     <div class="container">
         <div class="left-content">
-            <div class="image">
-                <img class="logotipo01" src="./assets/logotipo01.png" alt="logotipo01">
+            <div class="buttonback">
+                <a href="inicio.html"></a><img src="./assets/back button.png" alt="backbutton">
+            </div>
+            <div class="position-logotipo">
+                <img class="size-logotipo" src="./assets/logotipo01.png" alt="logotipo01">
             </div>
 
             <div class="title">
-                <h1>BEM-VINDO DE VOLTA!<br>
-                    _
-                </h1>
+                <span class="size-title">
+                    BEM-VINDO DE<br> ﾠﾠﾠVOLTA!<br>_
+                </span>
             </div>
 
             <div class="slogan">
-                <h3><b>A Lofhel monitora a temperatura e umidade em tempos real para vinícolas e adegas</b></h2>
+                <span class="size-slogan">A Lofhel monitora a temperatura<br>e umidade em tempos real
+                    para<br>vinícolas e adegas </span>
             </div>
         </div>
 
         <div class="right-content">
-            <div class="txt-laranja">
-                <h3><b>Iniciar Sessão</b></h3>
+            <div class="title-right">
+                <span>
+                    <b class="txt-laranja">Iniciar Sessão</b> <br>
+                </span>
             </div>
             <div>
                 <span>
-                    <p>Não possui uma conta? <a class="txt-laranja" href="cadastro.html">Acesse aqui</a></p>
+                    <p class="subtitle-right">Não possui uma conta? <a class="txt-laranja" href="cadastro.html">Acesse
+                            aqui</a></p>
                 </span>
             </div>
-           
+
             <div>
                 <input type="text" id="ipt_email" placeholder="Email"><br>
             </div>
@@ -56,6 +66,7 @@
     </div>
 
 </body>
+
 </html>
 <script>
     function validar() {

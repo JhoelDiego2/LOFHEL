@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="css/cadastro-login.css">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <div id="div_txt"></div>
 </head>
 
 
@@ -13,19 +14,23 @@
 
     <div class="container">
         <div class="left-content">
-            <div class="image">
-                <img class="logotipo01" src="./assets/logotipo01.png" alt="logotipo01">
+            <div class="buttonback">
+                <a href="inicio.html"><img src="./assets/back button.png" alt="backbutton"></a>
+            </div>
+            <div class="position-logotipo">
+                <img class="size-logotipo" src="./assets/logotipo01.png" alt="logotipo01">
             </div>
 
             <div class="title">
-                <h1>SEJA BEM-VINDO <br>
-                    _
-                </h1>
+                <span class="size-title">
+                    SEJA BEM-VINDO <br> _
+                </span>
                 <!--a borda de baixo da para fazer com border botton para depois quando ele passar o mouse ele vira inteiro-->
             </div>
-
             <div class="slogan">
-                <h3><b>Preservando a excelência do vinho através da tecnologia</b></h2>
+                <span class="size-slogan">
+                    Preservando a excelência do vinho<br> através da tecnologia
+                </span>
             </div>
         </div>
 
@@ -33,9 +38,9 @@
             <div class="titulo-right">
                 <h3><b>Faça seu cadastro</b></h3>
             </div>
-        <!--la na deshbord no perfil eu coloquei um exemplo para imitar o que ta no figma-->
+            <!--la na deshbord no perfil eu coloquei um exemplo para imitar o que ta no figma-->
             <div>
-                Nome<br><input type="text" id="ipt_user" placeholder="Usuário"><br>
+                <br><input type="text" id="ipt_user" placeholder="Usuário"><br>
             </div>
 
             <div>
@@ -97,6 +102,6 @@
         }
     }
 
-       
-    
+
+
 </script>
