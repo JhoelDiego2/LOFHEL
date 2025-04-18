@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOFHEL - Deshbord</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="css/deshbord.css">
     <link rel="stylesheet" href="css/geral.css">
+    <link rel="stylesheet" href="css/deshbord.css">
 
 </head>
 
@@ -45,29 +45,30 @@
                 <div class="column-1">
                     <p id="title">Dashboard - <span id="nome_empresa">Vinícola Dom
                             Aurélio</span></p>
+                            <div class="sub">
+                
+                                <div class="column-1">
+                                    <select name="armazem" id="armazem_atual" onclick="trocar1()"">
+                                        <option value="geral">Geral</option>
+                                        <option value="armazem1" ">Armazém1</option>
+                                        <option value="armazem2">Armazém2</option>
+                                        <option value="armazem3">Armazém3</option>
+                                        <option value="armazem3">Armazém4</option>
+                                        <option value="armazem3">Armazém5</option>
+                                    </select>
+                                </div>
+                                <div class="column-2">
+                                    <input type="date" name="Atual" id="Atualdia">
+                                </div>
+                            </div>
                 </div>
                 <div class="column-2">
                     <div>
                         <img src="../deshbord/imagens-deshbord/person-circle.png" alt="picture"
                             style="padding-right: 10px;">
                         <p> Fernanda Caramico </p>
+                        <img src="../deshbord/imagens-deshbord/notifications.png" alt="" id="icone_notificacoes" onclick="abrir_notificacoes()">
                     </div>
-                </div>
-            </div>
-            <div class="sub">
-
-                <div class="column-1">
-                    <select name="armazem" id="armazem1">
-                        <option value="geral">Geral</option>
-                        <option value="armazem1">Armazém1</option>
-                        <option value="armazem2">Armazém2</option>
-                        <option value="armazem3">Armazém3</option>
-                        <option value="armazem3">Armazém4</option>
-                        <option value="armazem3">Armazém5</option>
-                    </select>
-                </div>
-                <div class="column-2">
-                    <input type="date" name="Atual" id="Atualdia">
                 </div>
             </div>
 
@@ -100,31 +101,27 @@
             <div class="column-1">
                 <div class="grafico pizza">
                     <h4>Distribuição de Status dos Armazéns (%)</h4>
-                    <canvas id="porcentagem_status" height=" "> </canvas>
+                    <div id="contem_grafico_redondo">
+                    <canvas id="porcentagem_status" > </canvas>
+                    </div>
                 </div>
                 <div class="grafico donut">
                     <h4>Distribuição de Status dos Sensores (%)</h4>
-                    <canvas id="status_sensores" height="350rem"> </canvas>
+                    <div id="contem_grafico_redondo">
+                    <canvas id="status_sensores" > </canvas>
                 </div>
-                <div class="grafico barras">
-                    <h4>Tipos de Alertas Registrados (semana atual)</h4>
-                    <canvas id="tipos_alerta" height="350rem"></canvas>
                 </div>
-
             </div>
             <div class="column-2">
-                <div class="grafico barras">
-                    <h4>Alertas Ativos Em Cada Armazém</h4>
-                    <canvas id="ranking_grafico" height="112rem"></canvas>
-                </div>
+
                 <div class="grafico linha">
                     <h4>Variação da Temperatura Média (Últimos 30 dias)</h4>
-                    <canvas id="variacao_temperatura_mensal" height="112rem"></canvas>
-                </div> 
+                    <canvas id="variacao_temperatura_mensal" height="90rem"></canvas>
+                </div>
                 <div class="grafico linha">
                     <h4>Variação da TUmidade Média (Últimos 30 dias)</h4>
-                    <canvas id="variacao_umidade_mensal" height="112rem"></canvas>
-                </div> 
+                    <canvas id="variacao_umidade_mensal" height="90rem"></canvas>
+                </div>
                 <!--
                 <div class="grafico barras">
                     <canvas id="myChart"></canvas>
@@ -132,50 +129,80 @@
                 -->
             </div>
 
-        <div class="column-3">
-            <div class="notificacoes">
-                <h4>Alertas Recentes <span>Ver todos</span></h4>
-                <div class="notificacao">
-                    <img src="../deshbord/imagens-deshbord/notifications.png">
-                    <p>Armazém 1 <br> <span>Temperatura acima do
-                            recomendado</span></p>
+            <div class="column-3">
+                <div class="grafico barras">
+                    <h4>Alertas Ativos Em Cada Armazém</h4>
+                    <canvas id="ranking_grafico" height="240rem"></canvas>
                 </div>
-                <div class="notificacao">
-                    <img src="../deshbord/imagens-deshbord/notifications.png">
-                    <p>Armazém 2<br> <span>Temperatura acima do
-                            recomendado</span></p>
+                <div class="grafico barras" style="z-index:-10;" id="teste">
+                    <h4>Tipos de Alertas Registrados (semana atual)</h4>
+                    <canvas id="tipos_alerta" height="240rem"></canvas>
                 </div>
-                <div class="notificacao">
-                    <img src="../deshbord/imagens-deshbord/notifications.png">
-                    <p>Armazém 3 <br><span>Temperatura acima do
-                            recomendado</span></p>
+
+                <div class="notificacoes" id="notificacao_caixa" style="display: none; z-index: 10;">
+                    <h4>Ultimas notificacoes <span><img src="../deshbord/imagens-deshbord/chevron-back-circle.png" alt="" id="icone_fechar" onclick="fechar_notificacoes()"></span> </h4>
+                    <div class="notificacao">
+                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <p>Armazém 1 <br> <span>Temperatura acima do
+                                recomendado</span></p>
+                    </div>
+                    <div class="notificacao">
+                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <p>Armazém 2<br> <span>Temperatura acima do
+                                recomendado</span></p>
+                    </div>
+                    <div class="notificacao">
+                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <p>Armazém 3 <br><span>Temperatura acima do
+                                recomendado</span></p>
+                    </div>
+                    <div class="notificacao">
+                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <p>Armazém 4 <br><span>Temperatura acima do
+                                recomendado</span></p>
+                    </div>
+                    <div class="notificacao">
+                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <p>Armazém 5 <br><span>Temperatura acima do
+                                recomendado</span></p>
+                    </div>
                 </div>
-                <div class="notificacao">
-                    <img src="../deshbord/imagens-deshbord/notifications.png">
-                    <p>Armazém 4 <br><span>Temperatura acima do
-                            recomendado</span></p>
-                </div>
-                <div class="notificacao">
-                    <img src="../deshbord/imagens-deshbord/notifications.png">
-                    <p>Armazém 5 <br><span>Temperatura acima do
-                            recomendado</span></p>
-                </div>
-                <div class="notificacao">
-                    <img src="../deshbord/imagens-deshbord/notifications.png">
-                    <p>Armazém 6<br> <span>Temperatura acima do
-                            recomendado</span></p>
-                </div>
+
             </div>
-            
         </div>
-
-
-    </div>
     </div>
 </body>
 
 </html>
+
 <script>
+    function trocar1() {
+        var select = armazem_atual.value
+        if (select == 'armazem1') {
+            window.location.href="deshbord-armazem1.html";
+            
+        }
+    }
+
+
+    var notificacao_aberta = false
+    // abrir as notificaoes
+    function abrir_notificacoes() {
+        if (notificacao_aberta == false) {
+            notificacao_caixa.style="display: 1 "  
+            notificacao_aberta = true  
+        } else {
+            notificacao_caixa.style="display: none "    
+            notificacao_aberta = false 
+            
+        }
+
+        
+    }
+    function fechar_notificacoes() {
+        notificacao_caixa.style="display:none"
+    }
+
     // so colocando valor no input
     Atualdia.value = "2025-04-14"
     //graficos com chart js
@@ -222,7 +249,7 @@
     /*Primero declaramos a data e depois criamos o grafico usando algo parecido a um procedimento e depois plotamos no html*/
     const data_pizza = {
         labels: [
-            'Dentro da faixa ideal',
+            'Faixa ideal',
             'Alertas leves',
             'Alertas críticos'
         ],
@@ -241,84 +268,84 @@
     };
     const pizza = {
         type: 'pie',
-        data: data_pizza, 
+        data: data_pizza,
         // usando options para colocar a legenda embaixo do grafico
         options: {
-        plugins: {
-            legend: {
-                position: 'bottom', // Coloca a legenda embaixo do gráfico
-                labels: {
-                    color: 'black', // Cor da fonte da legenda
-                    font: {
-                        size: 14
+            plugins: {
+                legend: {
+                    position: 'bottom', // Coloca a legenda embaixo do gráfico
+                    labels: {
+                        color: 'black', // Cor da fonte da legenda
+                        font: {
+                            size: 12
+                        }
                     }
-                }
-            },
+                },
+            }
         }
-    }
-        
+
     };
     const myChart_pizza = document.getElementById('porcentagem_status');
     new Chart(myChart_pizza, pizza);
-    
+
     // grafico de donunts -------------------------------------------------------------
-    
-const data_status_sensores = {
-  labels: [
-    'Ativo',
-    'Inativo',
-    'Em manutenção'
-  ],
-  datasets: [{
-    label: 'status',
-    data: [10, 1, 1],
-    backgroundColor: [
-      'green',
-      'red',
-      'yellow'
-    ],
-    hoverOffset: 3
-  }]
-};
-const donunts = {
-  type: 'doughnut',
-  data: data_status_sensores,
-  options: {
-        plugins: {
-            legend: {
-                position: 'bottom', // Coloca a legenda embaixo do gráfico
-                labels: {
-                    color: 'black', // Cor da fonte da legenda
-                    font: {
-                        size: 14
+
+    const data_status_sensores = {
+        labels: [
+            'Ativo',
+            'Inativo',
+            'Em manutenção'
+        ],
+        datasets: [{
+            label: 'status',
+            data: [10, 1, 1],
+            backgroundColor: [
+                'green',
+                'red',
+                'yellow'
+            ],
+            hoverOffset: 3
+        }]
+    };
+    const donunts = {
+        type: 'doughnut',
+        data: data_status_sensores,
+        options: {
+            plugins: {
+                legend: {
+                    position: 'bottom', // Coloca a legenda embaixo do gráfico
+                    labels: {
+                        color: 'black', // Cor da fonte da legenda
+                        font: {
+                            size: 12
+                        }
                     }
-                }
-            },
+                },
+            }
         }
-    }
-};
-const myChart_donuts = document.getElementById('status_sensores');
-new Chart(myChart_donuts, donunts );
+    };
+    const myChart_donuts = document.getElementById('status_sensores');
+    new Chart(myChart_donuts, donunts);
 
-// grafico de ranking de alertas ativos por armazem -------------------------------------------------------------
+    // grafico de ranking de alertas ativos por armazem -------------------------------------------------------------
 
-const myChart_barra_status = document.getElementById('ranking_grafico');
+    const myChart_barra_status = document.getElementById('ranking_grafico');
 
-new Chart(myChart_barra_status, {
-    type: 'bar',
-    data: {
-        labels: ['Armazém 1', 'Armazém 2', 'Armazém 3', 'Armazém 4', 'Armazém 5'],
-    datasets: [{
-        label: 'Alertas Ativos',
-        data: [1, 0, 3, 0, 0],
-        backgroundColor: 
-            'red',
-            
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1
-    }], 
-    },
-});
+    new Chart(myChart_barra_status, {
+        type: 'bar',
+        data: {
+            labels: ['Armazém 1', 'Armazém 2', 'Armazém 3', 'Armazém 4', 'Armazém 5'],
+            datasets: [{
+                label: 'Alertas Ativos',
+                data: [1, 0, 3, 0, 0],
+                backgroundColor:
+                    'red',
+
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }],
+        },
+    });
     // grafico do tipo linha-------------------------------------------------------------
 
     const labels = [
@@ -357,37 +384,37 @@ new Chart(myChart_barra_status, {
         labels: labels,
         datasets: [{
             label: 'Temperatura Média',
-            data: 
-            [15.2,
-            15.5,
-            15.8,
-            16.1,
-            16.4,
-            16.7,
-            17.0,
-            16.8,
-            16.5,
-            16.2,
-            15.9,
-            15.6,
-            15.3,
-            15.0,
-            14.8,
-            14.5,
-            15.4,
-            14.1,
-            14.4,
-            14.7,
-            15.0,
-            15.3,
-            15.6,
-            15.9,
-            16.2,
-            16.5,
-            16.8,
-            17.1,
-            16.9,
-            16.6],
+            data:
+                [15.2,
+                    15.5,
+                    15.8,
+                    16.1,
+                    16.4,
+                    16.7,
+                    17.0,
+                    16.8,
+                    16.5,
+                    16.2,
+                    15.9,
+                    15.6,
+                    15.3,
+                    15.0,
+                    14.8,
+                    14.5,
+                    15.4,
+                    14.1,
+                    14.4,
+                    14.7,
+                    15.0,
+                    15.3,
+                    15.6,
+                    15.9,
+                    16.2,
+                    16.5,
+                    16.8,
+                    17.1,
+                    16.9,
+                    16.6],
 
 
 
@@ -406,9 +433,9 @@ new Chart(myChart_barra_status, {
     const myChart_var_temp = document.getElementById('variacao_temperatura_mensal');
     new Chart(myChart_var_temp, config_var_temp);
 
-       // grafico do tipo linha-------------------------------------------------------------
+    // grafico do tipo linha-------------------------------------------------------------
 
-       const labels_umidade = [
+    const labels_umidade = [
         '1',
         '2',
         '3',
@@ -444,39 +471,39 @@ new Chart(myChart_barra_status, {
         labels: labels,
         datasets: [{
             label: 'Umidade Média',
-            data: 
-            [
-                68,
-                69,
-                70,
-                71,
-                68,
-                69,
-                70,
-                71,
-                72,
-                71,
-                70,
-                69,
-                68,
-                67,
-                66,
-                65,
-                64,
-                63,
-                64,
-                65,
-                66,
-                67,
-                68,
-                69,
-                70,
-                71,
-                72,
-                73,
-                72,
-                71
-            ],
+            data:
+                [
+                    68,
+                    69,
+                    70,
+                    71,
+                    68,
+                    69,
+                    70,
+                    71,
+                    72,
+                    71,
+                    70,
+                    69,
+                    68,
+                    67,
+                    66,
+                    65,
+                    64,
+                    63,
+                    64,
+                    65,
+                    66,
+                    67,
+                    68,
+                    69,
+                    70,
+                    71,
+                    72,
+                    73,
+                    72,
+                    71
+                ],
 
 
 
@@ -501,23 +528,23 @@ new Chart(myChart_barra_status, {
     const tipos_alerta = document.getElementById('tipos_alerta');
 
     new Chart(tipos_alerta, {
-    type: 'bar',
-    data: {
-        labels: ['Temperatura alta', 'Temperatura Baixa', 'Umidade Alta', 'Umidade Baixa', 'Falha de equipamento'],
-        datasets: [{
-            label: 'Tipo de alerta',
-            data: [7, 10, 2, 4, 1],
-            backgroundColor: [
-                'rgb(255, 140, 0)',
-                'blue', 
-                'rgb(255, 140, 0)',
-                'blue',
-                'grey',
+        type: 'bar',
+        data: {
+            labels: ['Temperatura alta', 'Temperatura Baixa', 'Umidade Alta', 'Umidade Baixa', 'Falha de equipamento'],
+            datasets: [{
+                label: 'Tipo de alerta',
+                data: [7, 10, 2, 4, 1],
+                backgroundColor: [
+                    'rgb(255, 140, 0)',
+                    'blue',
+                    'rgb(255, 140, 0)',
+                    'blue',
+                    'grey',
+                ],
+                borderWidth: 1
+            }
             ],
-            borderWidth: 1
-        }
-        ],
-    },
-});
+        },
+    });
 
 </script>

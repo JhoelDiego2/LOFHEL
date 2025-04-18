@@ -9,7 +9,6 @@
     <link rel="icon" href="../public/assets/Design%20sem%20nome%20(20).png">
 
     <link rel="stylesheet" href="css/suporte-bob.css">
-
 </head>
 
 <body>
@@ -58,9 +57,9 @@
             <div class="sub">
 
                 <div class="column-1">
-                    Olá seja bem vindo(a) ao nosso asistente virtual Bob IA 
+                    <p>Olá seja bem vindo(a) ao nosso asistente virtual Bob IA </p>
                 </div>
-
+                
             </div>
 
         </div>
@@ -71,11 +70,17 @@
             <div class="column-2">
                 <div class="painel">
                     <div class="resposta">
-                        <p>Olá, como posso ajudar-lo?</p>
+                        <p class="esquerda" id="iniciar">Olá, como posso ajudar-lo?</p>
+                        <p class="direita" id="pergunta1"></p>
+                        <p class="esquerda" id="resposta1"></p>
+                        <p class="direita" id="pergunta2"></p>
+                        <p class="esquerda" id="resposta2"></p>
+                        <p class="direita" id="pergunta3"></p>
+                        <p class="esquerda" id="resposta3"></p>
                     </div>
-                    <div class="mensagem">
-                        <input type="text" placeholder="Digite a sua pergunta..." id="pergunta">
-                        <button><img src="/deshbord/imagens-deshbord/seta.png" alt="seta" id="seta"></button>
+                    <div class="mensagem" id="div_mensagem">
+                        <input  placeholder="Digite a sua pergunta..." id="pergunta">
+                        <button><img src="/deshbord/imagens-deshbord/seta.png" alt="seta" id="seta" onclick="pergunta()"></button>
                     </div>
                 </div>  
             </div>
@@ -87,3 +92,31 @@
 </body>
 
 </html>
+<script>
+    function pergunta() {
+        var perguntaBOB = document.getElementById("pergunta").value
+        pergunta1.style= " background-color: green; color: white; padding: 2%;border-radius: 1rem;width: 30% "
+        pergunta1.innerHTML = perguntaBOB
+        if (perguntaBOB == '' || perguntaBOB%1 == 0 ){
+            resposta1.style = "background-color: #1D232A;color: white;padding: 2%;border-radius: 1rem;width: 30%"
+            resposta1.innerHTML = `Opa, algo deu errado não consegui entender a sua dúvida, porfavor tente novamente`
+        } else {
+            resposta1.style = "background-color: #1D232A;color: white;padding: 2%;border-radius: 1rem;width: 30%"
+            resposta1.innerHTML = `#Vai dar certo`
+            if (perguntaBOB == 'Quais são os grupos de vinho existentes') {
+                resposta1.style = "background-color: #1D232A;color: white;padding: 2%;border-radius: 1rem;width: 30%"
+            resposta1.innerHTML = `Os grupos de vinho existentes são 4: <br>
+            -Gelado <br> -Frio <br> -Temperatura Adea <br> -Fresco `  
+                div_mensagem.style = "position: relative; top: -2vh;"
+        }
+            if (perguntaBOB == 'O que significa o nome LOFHEL') {
+                resposta1.style = "background-color: #1D232A;color: white;padding: 2%;border-radius: 1rem;width: 30%"
+            resposta1.innerHTML = `A empresa recebeu este nome dado que<br>
+            as incias dos fundadores do projetos formavam a LOFHEL
+            `  
+            }
+            
+        }
+    }
+
+</script>d

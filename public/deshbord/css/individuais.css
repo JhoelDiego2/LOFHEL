@@ -50,6 +50,9 @@
     gap: 40px;
     text-align: center;
 }
+.card-armazem p {
+    color: rgba(255, 255, 255, 0);
+}
  /*perfil*/
 .container-perfil{
     display: flex;

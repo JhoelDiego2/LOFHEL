@@ -20,6 +20,8 @@ body {
     background-color: var(--azul);
     color: white;
     display: flex;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .main {

@@ -68,36 +68,26 @@
         <!--mesma estrutura no css-->
         <div class="container-funcionarios">
                 <div class="column-1">
-                    <div class="card">
+                    <div class="card card-armazem">
                         <h6>Cadastro de armazém</h6>
-                        <p id="texto_nome"></p>
-                        <input type="text" id="ipt_nome" placeholder="Nome" oninput="digitando_nome()" >
-                        <p id="texto_descricao"></p>
-                        <input type="text" id="ipt_descricao" placeholder="Descrição (opcional)"  oninput="digitando_descricao()">
-                        <p id="texto_garrafas"></p>
-                        <input type="text" id="ipt_garrafas" placeholder="Capacidade em garrafas"  oninput="digitando_garrafas()">
-                        <p id="texto_escolha"></p>
-                        <div class="escolha" onclick="digitando_escolha()" id="escolha">
-                            <div >  
-                            Espumante - gelado<input type="radio" id="ipt_gelado" class="radio"> 
-                            Branco Leve - gelado<input type="radio" id="ipt_gelado" class="radio"> 
-                        </div><div>
-                            Branco Espumante - frio<input type="radio" id="ipt_frio" class="radio"> 
-                            Branco A - frio<input type="radio" id="ipt_frio" class="radio"> 
-                            Rose - frio <input type="radio" id="ipt_frio" class="radio"> 
-                            </div><div>
-                            Branco Leve - temp. adega<input type="radio" id="ipt_adega" class="radio"> 
-                            Tinto Leve - temp. adega<input type="radio" id="ipt_adega" class="radio"> 
-                        </div><div>
-                            Tinto Medio Espumante - fresco<input type="radio" id="ipt_fresco" class="radio"> 
-                            Tinto Espumante - fresco<input type="radio" id="ipt_fresco" class="radio"> 
-                            Fortificado - fresco<input type="radio" id="ipt_fresco" class="radio"> 
-                            </div>
-                        </div>
-                        <p id="texto_temp_ideal"></p>
-                        <input type="text" id="ipt_temp_ideal" placeholder="Temperatura ideal" oninput="digitando_temperatura()" >
-                        <p id="texto_umidade_ideal"></p>
-                        <input type="text" id="ipt_umidade_ideal" placeholder="Umidade ideal" oninput="digitando_umidade()" >
+                        <p id="texto_nome" >Nome</p>
+                        <input type="text" id="ipt_nome" placeholder="Nome"  oninput="digitando()">
+                        <p id="texto_descricao">Descripção</p>
+                        <input type="text" id="ipt_descricao" placeholder="Descrição (opcional)"  oninput="digitando()">
+                        <p id="texto_garrafas">garrafas</p>
+                        <input type="text" id="ipt_garrafas" placeholder="Capacidade em garrafas"  oninput="digitando()">
+                        <p id="texto_select">Grupo do Vinho</p>
+                         <select name="grupo" id="select_grupo" onclick="digitando()">
+                            <option value="" >Grupo do Vinho</option>
+                            <option value="gelado" id="ipt_gelado" >Gelado</option>
+                            <option value="frio" id="ipt_frio">Frio</option>
+                            <option value="temp_adega"  id="ipt_adega">Temperatura Adeha</option>
+                            <option value="fresco" id="ipt_fresco">Fesco</option>
+                         </select>
+                        <p id="texto_temp_ideal">Temperatura Ideal</p>
+                        <input type="text" id="ipt_temp_ideal" placeholder="Temperatura ideal" oninput="digitando()">
+                        <p id="texto_umidade_ideal">Umidade Ideal</p>
+                        <input type="text" id="ipt_umidade_ideal" placeholder="Umidade ideal" oninput="digitando()">
                         <button>Cadastrar</button>
                     </div>
                 </div>
@@ -125,53 +115,56 @@
 </body>
 </html>
 <script>
-    // card cadastrar mais na frente utilizar animações ou um procedimento
-    function digitando_nome() {
-        texto_nome.innerHTML = `Nome`
-        ipt_nome.style = " border-bottom-color: #0B0B0B"
+    function digitando() {
+        var nome = ipt_nome.value
+        var descricao = ipt_descricao.value
+        var garrafas = ipt_garrafas.value
+        var temperatura = ipt_temp_ideal.value
+        var umidade = ipt_umidade_ideal.value
+        var select = select_grupo.value
+
+            if (nome != '' ) {
+                texto_nome.style = "color: black"
+                ipt_nome.style = " border-bottom-color: #0B0B0B"   
+            }
+            if (descricao != '' ) {
+                texto_descricao.style = "color: black"
+                ipt_descricao.style = " border-bottom-color: #0B0B0B"   
+            }
+            if (garrafas != '' ) {
+                texto_garrafas.style = "color: black"
+                ipt_garrafas.style = " border-bottom-color: #0B0B0B"   
+            }
+
+            if (select != '' ) {
+                texto_select.style = "color: black"
+                select_grupo.style = " border-bottom-color: #0B0B0B"
+                ipt_umidade_ideal.value = '55%' 
+                texto_umidade_ideal.style = "color: black"
+                ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B"   
+                texto_temp_ideal.style = "color: black"
+                ipt_temp_ideal.style = " border-bottom-color: #0B0B0B"   
+            }
+            if (temperatura != '' ) {
+                texto_temp_ideal.style = "color: black"
+                ipt_temp_ideal.style = " border-bottom-color: #0B0B0B"   
+            }
+            if (umidade != '') {
+                texto_umidade_ideal.style = "color: black"
+                ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B"   
+            }
+            if (select == 'gelado') {
+                ipt_temp_ideal.value= '5°C'
+            }
+            if (select == 'frio') {
+                ipt_temp_ideal.value = '10°C'
+            }
+            if (select == 'temp_adega') {
+                ipt_temp_ideal.value = '15°C'
+            }
+            if (select == 'fresco') {
+                ipt_temp_ideal.value = '18°C'
+            }
     }
-    function digitando_descricao() {
-        texto_descricao.innerHTML = `Descrição`
-        ipt_descricao.style = " border-bottom-color: #0B0B0B"
-
-    }
-    function digitando_garrafas() {
-        texto_garrafas.innerHTML = `Quantidade de garrafas`
-        ipt_garrafas.style = " border-bottom-color: #0B0B0B"
-
-    }
-    function digitando_escolha() {
-        texto_escolha.innerHTML = `Ecolha do tipo de vinho`
-
-    }
-    function digitando_temperatura() {
-        texto_temp_ideal.innerHTML = `Temperatura ideal`
-        ipt_temp_ideal.style = " border-bottom-color: #0B0B0B"
-
-    }
-  
-    function digitando_umidade() {
-        texto_umidade_ideal.innerHTML = `Umidade ideal`
-        ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B"
-    }
-
-
-    // card remover
-    function digitando_armazem_removendo() {
-        texto_armazem_remover.innerHTML = `Armazém`
-        ipt_armazem_remover.style = " border-bottom-color: #0B0B0B"
-
-    }
-    function digitando_senha_removendo() {
-        texto_senha_remover.innerHTML = `Senha`
-        ipt_senha_remover.style = " border-bottom-color: #0B0B0B"
-
-    }
-    function digitando_confirmacao_removendo() {
-        texto_confirmacao_remover.innerHTML = `Confirmar Senha`
-        ipt_confirmacao_remover.style = " border-bottom-color: #0B0B0B"
-
-    }
-
 </script>
 
