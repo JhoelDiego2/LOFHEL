@@ -1,0 +1,437 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Italiana&family=Orbitron:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap');
+/*  font-family: "Playfair Display", serif;*/
+/*font-family: "Italiana", sans-serif;*/
+:root{
+    --amarelo: #F9C06A;
+    --marrom: #603809;
+    --cinza: #F4F4F4;
+    --marrom_claro: #FFEED8;
+    --fundo: #FFFEFC;
+    --texto_irrelevante: #707070;
+    --vinho: #580303;
+}
+
+/* Para navegadores baseados em WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+    /* Define a largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+
+    border-radius: 10px;
+    /* Cantos arredondados da trilha */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--vinho);
+    /* Cor do botão de rolagem */
+    border-radius: 10px;
+    /* Cantos arredondados */
+}
+
+
+/*eliminando tudo pre definido para poder ter liberdade*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Playfair Display", serif;
+    color: var(--texto_irrelevante);
+    height: 100%;
+    background-color: var(--fundo);
+    overflow-x: hidden ;
+}
+a{
+    all: unset;
+    cursor: pointer;
+}
+#cabecalho .nav {
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    background-color: #00000059;
+    display: flex;
+    justify-content: space-around;
+    gap: 10%;
+    align-items: center;
+    z-index: 2;
+    color: #F4F4F4;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+}
+
+
+nav p {
+    height: 4vw;
+    align-items: center;
+    display: flex;
+    width: 7vw;
+    justify-content: center;
+}
+
+/*efeito quando o mouse passat na tag p para mudar a negrito, e agregar um border baixo, e uma transição*/
+nav p:hover {
+    font-weight: 800;
+    border-bottom: 3px solid #ffffff;
+    transition: all 0.1s ease;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.nav-list1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30vw;
+}
+
+.div_logo , .nav-list2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3%;
+}
+nav img{
+    width: 50%;
+}
+#logotipo:hover{
+    width: 55%;
+
+}
+#cadastre-se {
+    border: solid 2px  var(--vinho);
+    border-radius: 2vw;
+    height: 3vw;
+}
+
+#cadastre-se:hover {
+    background-color: var(--vinho);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+#boton{
+    border: none;
+    background-color: var(--vinho);
+    width: 8vw;
+    height: 3vw;
+    display: flex;
+    border-radius: 3vw;
+}
+
+#home {
+    background-image: url("../assets/fundo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: var(--cinza);
+    font-size: 23px;
+    box-shadow: 5px 5px 10px gray;
+}
+#home .container{
+    display: flex;
+}
+#home .container .column-1{
+    margin-top: 0rem;
+    width: 50%;
+    padding: 5rem;
+}
+#vinho{
+    font-family: "Italiana", sans-serif;
+    font-size: 220px;
+}
+#home button {
+    border: none;
+    padding: 1rem;
+    margin-left: 80%;
+    margin-top: 2rem;
+    border-radius: 2rem;
+}
+.monitoramento .container {
+    display: flex;
+    margin-top: 3rem;
+}
+.monitoramento .column-1 {
+    padding: 3rem;
+    width: 80%;
+}
+.monitoramento .column-2{
+    width: 35%;
+}
+.monitoramento h2{
+    color: var(--vinho);
+    font-size: 54px;
+}
+.monitoramento img {
+    width: 40rem
+}
+.monitoramento p{
+    margin-top: 2rem;
+    font-size: 1.7rem;
+}
+.monitoramento button {
+    border: none;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 3rem;
+    background-color: var(--vinho);
+    color: white;
+    font-size: 1rem;
+}
+.titulo {
+    text-align: center;
+    color: var(--vinho);
+    font-size: 54px;
+    margin-top: 3rem;
+
+}
+.titulo p {
+    font-size: 30px;
+}
+.servicos .container{
+    display: flex;
+    
+}
+.card{
+    background-color: var(--cinza);
+    padding: 40.37px;
+    border-radius: 17.94px;
+    margin: 50px;
+    font-size: 16.15px
+}
+
+.card h5{
+    font-size: 22.43px;
+    margin-top: 56px;
+}
+.card:hover{
+    transform: translateY(-10px);
+    background-color: #471414;
+    color: #F4F4F4;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+}
+.diferentes .container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    column-gap: 2rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+.caixa {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 60px;
+    background-color: var(--cinza);
+    color: var(--marrom);
+    font-size: 20px;
+    text-align: center;
+}
+.caixa h4{
+    font-size: 28px;
+    margin-bottom: 3px;
+}
+.caixa:hover{
+    transform: translateY(-10px);
+    background-color: #471414;
+    color: #F4F4F4;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+}
+
+#comece_hoje{
+    text-align: center;
+}
+#comece_hoje h5{
+    font-size: 2rem;
+    color: var(--vinho);
+}
+#comece_hoje button {
+    border: none;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 3rem;
+    background-color: var(--vinho);
+    color: white;
+}
+.feedback .container{
+    display: flex;
+    background-image: url("../assets/Group%2019.png");
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+.feedback h4 {
+    text-align: start;
+}
+.feedback .column-2{
+    width: 70%;
+    padding: 4rem;
+    padding-top: 7rem;
+}
+.textoVivian{
+    font-size: 1.3rem;
+    text-align: start;
+}
+#texto_comentario {
+    font-size: 1.12rem;
+}
+#seta {
+    padding-left: 7rem;
+}
+.localizacao .container {
+    background-image: url("../assets/Captura%20de%20pantalla%202025-03-29%20151802%201.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 700px;
+    display: flex;
+}
+.localizacao .column-1{
+    width: 50%;
+}
+#contato{
+    background-color: var(--marrom_claro);
+    padding: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    font-weight: bolder ;
+    text-align: start;
+    margin-top: 13rem;
+    margin-left: 5rem;
+}
+#contato p{
+    font-size: 1.3rem;
+}
+input{
+    margin-top: 2px;
+    border-radius: 2px;
+    padding: 10px;
+    width: 100%;
+
+}
+#ipt_mensagem{
+    padding-bottom: 10rem;
+}
+.caixinha{
+    display: flex;
+}
+#contato button{
+    border: none;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    background-color: var(--marrom);
+    font-size: 1rem;
+    color: white;
+}
+#contato:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+.footer {
+    margin-top: 6rem;
+    background-color: #1E0F0F;
+    height: 300px;
+    display: flex;
+}
+.footer ul{
+    margin-top: 3rem;
+    color: white;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 23.6px;
+    letter-spacing: 1.5px;
+}
+.footer .column-2 p{
+    margin-top: 8rem;
+    text-align: end;
+    margin-right: 1rem;
+}
+.footer .column-1 p{
+    margin-top: -4rem;
+    font-size: 20px;
+    color: white;
+}
+.footer .column-1{
+    width: 40%;
+}
+.footer .column-2{
+    padding-left: 36rem;
+}
+.mover-cima:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+/*-----------------SOBREVINHOS------------------------------*/
+
+
+/* Estilo seção Missão, Visão e Valores estilo imagem */
+
+.servicos-dark {
+    background-color: #24130B;
+    padding: 5rem 2rem;
+  }
+
+  .cards-mvv {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 40px 0;
+  }
+  
+  .card-mvv {
+    width: 320px;
+    min-height: 320px;
+    padding: 24px;
+    background-color: #eeeeee;
+    border-radius: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card-mvv:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-mvv h5 {
+    margin-top: 16px;
+    font-size: 1.25rem;
+    color: #1a1a1a;
+  }
+  
+  .card-mvv p,
+  .card-mvv ul {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  .icone-circulo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icone-circulo img {
+    width: 32px;
+    height: 32px;
+  }
+  
+
+/*---------------------------------------fim pagina sobre vinhos*/
