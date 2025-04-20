@@ -59,11 +59,31 @@
     gap: 40px;
     text-align: center;
 }
-.card-armazem p {
-    color: rgba(255, 255, 255, 0);
+
+.check_tipo div{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 2vh;
 }
-
-
+.check_tipo div input{
+    width: 2vw;
+}
+.check_tipo  p{
+    color: #0B0B0B;
+    margin-bottom: 1vh;
+}
+.container-armazem{
+    display: flex;
+    justify-content: center;
+}
+.container-armazem span{
+    color: red;
+    text-align: center;
+}
+.container-armazem .column-2 .card{
+    display: flex;
+    gap: 7.6vh;
+}
 
  /*perfil*/
 .container-perfil{

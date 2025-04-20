@@ -19,18 +19,19 @@
             <p>Olá Fernanda Caramico, seja bem vinda</p>
 
             <div class="nav-list">
-                <div =>
+                <div>
                     <a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Inicio</a>
                 </div>
                 <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png"
                             alt="icone">Perfil</a>
                 </div>
-                <div ><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
+                <div><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
                             alt="icone">Funcionarios</a>
                 </div>
-                <div id="atual"><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a>
+                <div id="atual"><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png"
+                            alt="icone">Armazéns</a>
                 </div>
-                <div ><a href="suporte-bob.html"><img src="../deshbord/imagens-deshbord/body.png"
+                <div><a href="suporte-bob.html"><img src="../deshbord/imagens-deshbord/body.png"
                             alt="icone">Suporte-BobIA</a>
                 </div>
                 <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
@@ -47,7 +48,8 @@
                 </div>
                 <div class="column-2">
                     <div>
-                        <img src="../deshbord/imagens-deshbord/person-circle.png" alt="picture" style="padding-right: 10px;">
+                        <img src="../deshbord/imagens-deshbord/person-circle.png" alt="picture"
+                            style="padding-right: 10px;">
                         <p> Fernanda Caramico </p>
                     </div>
                     <div>
@@ -61,110 +63,92 @@
                     <p>Gestão</p>
                     <p></p>
                 </div>
- 
+
             </div>
 
         </div>
         <!--mesma estrutura no css-->
-        <div class="container-funcionarios">
-                <div class="column-1">
-                    <div class="card card-armazem">
-                        <h6>Cadastro de armazém</h6>
-                        <p id="texto_nome" >Nome lucas</p>
-                        <input type="text" id="ipt_nome" placeholder="Nome"  oninput="digitando()">
-                        <p id="texto_descricao">Descripção</p>
-                        <input type="text" id="ipt_descricao" placeholder="Descrição (opcional)"  oninput="digitando()">
-                        <p id="texto_garrafas">garrafas</p>
-                        <input type="text" id="ipt_garrafas" placeholder="Capacidade em garrafas"  oninput="digitando()">
-                        <p id="texto_select">Grupo do Vinho</p>
-                         <select name="grupo" id="select_grupo" onclick="digitando()">
-                            <option value="" >Grupo do Vinho</option>
-                            <option value="gelado" id="ipt_gelado" >Gelado</option>
-                            <option value="frio" id="ipt_frio">Frio</option>
-                            <option value="temp_adega"  id="ipt_adega">Temperatura Adeha</option>
-                            <option value="fresco" id="ipt_fresco">Fesco</option>
-                         </select>
-                        <p id="texto_temp_ideal">Temperatura Ideal</p>
-                        <input type="text" id="ipt_temp_ideal" placeholder="Temperatura ideal" oninput="digitando()">
-                        <p id="texto_umidade_ideal">Umidade Ideal</p>
-                        <input type="text" id="ipt_umidade_ideal" placeholder="Umidade ideal" oninput="digitando()">
-                        <button>Cadastrar</button>
+        <div class="container-funcionarios container-armazem">
+            <div class="column-1">
+                <div class="card card-armazem">
+                    <h6>Cadastro de armazém</h6>
+                    <p id="texto_nome">Nome</p>
+                    <input type="text" id="ipt_nome" placeholder="Nome" oninput="digitando()">
+                    <p id="texto_descricao">Descripção</p>
+                    <input type="text" id="ipt_descricao" placeholder="Descrição (opcional)" oninput="digitando()">
+                    <p id="texto_select">Grupo do Vinho</p>
+                    <select name="grupo" id="select_grupo" onclick="digitando()">
+                        <option value="">Grupo do Vinho</option>
+                        <option value="gelado" id="ipt_gelado">Gelado</option>
+                        <option value="frio" id="ipt_frio">Frio</option>
+                        <option value="temp_adega" id="ipt_adega">Temperatura Adega</option>
+                        <option value="fresco" id="ipt_fresco">Fesco</option>
+                    </select>
+                    <div id="op_gelado" class="check_tipo" style="display:none">
+                        <p id="texto_tipos">Gelado</p>
+                        <div>
+                            Espumante<input type="checkbox" id="ipt_espumante">
+                            Branco Leve<input type="checkbox" id="ipt_branco_leve">
+                        </div>
                     </div>
-                </div>
-                <div class="column-2">
-                    <div class="card">
-                        <h6>Remover armazém</h6>
-
-                        <p id="texto_armazem_remover"></p>
-                        <select name="cargo" id="ipt_armazem_remover" onclick="digitando_armazem_removendo()">
-                            <option value="armazem1">Armazém 1</option>
-                            <option value="armazem2">Armazém 2</option>
-                            <option value="armazem3">Armazém 3</option>
-                        </select>
-                        <p id="texto_senha_remover"></p>
-                        <input type="text" id="ipt_senha_remover" placeholder="Senha"  oninput="digitando_senha_removendo()">
-                        <p id="texto_confirmacao_remover"></p>
-                        <input type="text" id="ipt_confirmacao_remover" placeholder="Confirmar senha"  oninput="digitando_confirmacao_removendo()">
-                        <button>Remover</button>
+                    <div id="op_frio" class="check_tipo" style="display:none">
+                        <p id="texto_tipos">Frio</p>
+                        <div>
+                            Branco encorpado<input type="checkbox" id="ipt_branco_encorpado">
+                            Branco Aromático<input type="checkbox" id="ipt_branco_aromatico">
+                            Rosé<input type="checkbox" id="ipt_rose">
+                        </div>
                     </div>
+                    <div id="op_temp_adega" class="check_tipo" style="display:none">
+                        <p id="texto_tipos">Temperatura Adega</p>
+                        <div>
+                            Tinto Médio Corpo<input type="checkbox" id="ipt_tinto_medio_corpo">
+                            Tinto Leve<input type="checkbox" id="ipt_tinto_leve">
+                        </div>
+                    </div>
+                    <div id="op_fresco" class="check_tipo" style="display:none">
+                        <p id="texto_tipos">fresco</p>
+                        <div>
+                            Tinto Médio Corpo<input type="checkbox" id="ipt_tinto_medio_corpo">
+                            Tinto Encorpado<input type="checkbox" id="ipt_tinto_encorpado">
+                        </div>
+                    </div>
+                    <p id="texto_temp_ideal">Temperatura Ideal [°C]</p>
+                    <input id="ipt_temp_ideal" placeholder="Temperatura ideal [°C]" oninput="digitando()">
+                    <p id="texto_umidade_ideal">Umidade Ideal [%]</p>
+                    <input id="ipt_umidade_ideal" placeholder="Umidade ideal [%]" oninput="digitando()">
+                    <button onclick="cadastrar_armazem()">Cadastrar</button>
+                    <span id="cad_armazem_vazio" style="display: none;">Pencher os campos vazios</span>
                 </div>
             </div>
+            <div class="column-2">
+                <div class="card">
+                    <h6>Remover armazém</h6>
+                    <div>
+                    <p id="texto_armazem_remover">Armazém</p>
+                    <select name="cargo" id="ipt_armazem_remover" onclick="digitando()">
 
+                        <option value="">Armazém</option>
+                        <option value="armazem1" id="arm1">Armazém 1</option>
+                        <option value="armazem2"id="arm2">Armazém 2</option>
+                        <option value="armazem3"id="arm3">Armazém 3</option>
+                        <option value="armazem4"id="arm4">Armazém 4</option>
+                        <option value="armazem5"id="arm5">Armazém 5</option>
+                    </select>
+                    <p id="texto_senha_remover">Senha</p>
+                    <input type="text" id="ipt_senha_remover" placeholder="Senha" oninput="digitando()">
+                    <p id="texto_confirmacao_remover">Confirmar Senhag</p>
+                    <input type="text" id="ipt_confirmacao_remover" placeholder="Confirmar senha" oninput="digitando()">
+                </div><div>
+                    <button onclick="remover_armazem()">Remover</button>
+                    <span id="remover_armazem_vazio" style="display: none;"> prencher todos os campos</span>
+                </div>
+                </div>
+            </div>
         </div>
+
+    </div>
     </div>
 </body>
 </html>
-<script>
-    function digitando() {
-        var nome = ipt_nome.value
-        var descricao = ipt_descricao.value
-        var garrafas = ipt_garrafas.value
-        var temperatura = ipt_temp_ideal.value
-        var umidade = ipt_umidade_ideal.value
-        var select = select_grupo.value
-
-            if (nome != '' ) {
-                texto_nome.style = "color: black"
-                ipt_nome.style = " border-bottom-color: #0B0B0B"   
-            }
-            if (descricao != '' ) {
-                texto_descricao.style = "color: black"
-                ipt_descricao.style = " border-bottom-color: #0B0B0B"   
-            }
-            if (garrafas != '' ) {
-                texto_garrafas.style = "color: black"
-                ipt_garrafas.style = " border-bottom-color: #0B0B0B"   
-            }
-
-            if (select != '' ) {
-                texto_select.style = "color: black"
-                select_grupo.style = " border-bottom-color: #0B0B0B"
-                ipt_umidade_ideal.value = '55%' 
-                texto_umidade_ideal.style = "color: black"
-                ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B"   
-                texto_temp_ideal.style = "color: black"
-                ipt_temp_ideal.style = " border-bottom-color: #0B0B0B"   
-            }
-            if (temperatura != '' ) {
-                texto_temp_ideal.style = "color: black"
-                ipt_temp_ideal.style = " border-bottom-color: #0B0B0B"   
-            }
-            if (umidade != '') {
-                texto_umidade_ideal.style = "color: black"
-                ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B"   
-            }
-            if (select == 'gelado') {
-                ipt_temp_ideal.value= '5°C'
-            }
-            if (select == 'frio') {
-                ipt_temp_ideal.value = '10°C'
-            }
-            if (select == 'temp_adega') {
-                ipt_temp_ideal.value = '15°C'
-            }
-            if (select == 'fresco') {
-                ipt_temp_ideal.value = '18°C'
-            }
-    }
-</script>
-
+<script src="../deshbord/JS/deshbord.js"></script>
