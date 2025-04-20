@@ -49,8 +49,8 @@
 
                         <div class="column-1">
                             <select name="armazem" id="armazem_atual" onclick="trocar1()"">
-                                        <option value=" armazem1" ">Armazém1</option>
-                                        <option value=" geral">Geral</option>
+                                <option value="armazem1" ">Armazém1</option>
+                                <option value="geral">Geral</option>
                                 <option value="armazem2">Armazém2</option>
                                 <option value="armazem3">Armazém3</option>
                                 <option value="armazem3">Armazém4</option>
@@ -121,11 +121,11 @@
             <div class="column-2">
                 <div class="grafico linha">
                     <h4>Variação na Temperatura nas Últimas 24h</h4>
-                    <canvas id="variacao_temperatura_atual" height="112rem"></canvas>
+                    <canvas id="variacao_temperatura_atual" height="90rem"></canvas>
                 </div>
                 <div class="grafico linha">
                     <h4>Variação na Umidade nas Últimas 24h</h4>
-                    <canvas id="variacao_umidade_mensal" height="112rem"></canvas>
+                    <canvas id="variacao_umidade_mensal" height="90rem"></canvas>
                 </div>
                 <!--<div class="grafico barras">
                     <h4>Alertas Ativos Em Cada Armazém</h4>
@@ -144,28 +144,40 @@
                         <div class="critico parametro">
                             <p>Temperatura - Critica</p>
                             <h2>13°C</h2>
+                            
+                            <p>Umidade - Critica</p>
+                            <h2>40%</h2>
                         </div>
                         <div class="alerta parametro">
                             <p>Temperatura - Alerta</p>
                             <h2>15°C</h2>
+                            <p class="pouco">Umidade - Alerta</p>
+                            <h2>44%</h2>
         
                         </div>
                         <div class="ideal parametro">
                             <p>Temperatura - Ideal</p>
                             <h2>18°C</h2>
+                            <p class="pouco">Umidade - Ideal</p>
+                            <h2>52.5%</h2>
         
                         </div>
                         <div class="alerta parametro">
                             <p>Temperatura - Alerta</p>
                             <h2>21°C2</h2>
+                            <p class="pouco">Umidade - Alerta</p>
+                            <h2>61%</h2>
         
                         </div>
                         <div class="critico parametro">
                             <p>Temperatura - Critica</p>
                             <h2>23°C</h2>
+                            <p>Umidade - Critica</p>
+                            <h2>65%</h2>
         
                         </div>
                     </div>
+                    <!--
                     <div class="umidade ">
                         <div class="critico parametro">
                             <p>Umidade - Critica</p>
@@ -192,7 +204,7 @@
                             <h2>65%</h2>
         
                         </div>
-                    </div>
+                    </div>-->
         
         
         
@@ -210,17 +222,17 @@
                         <p>Armazém 2<br> <span>Temperatura acima do
                                 recomendado</span></p>
                     </div>
-                    <div class="notificacao">
+                    <div class="notificacao concluida">
                         <img src="../deshbord/imagens-deshbord/notifications.png">
                         <p>Armazém 3 <br><span>Temperatura acima do
                                 recomendado</span></p>
                     </div>
-                    <div class="notificacao">
+                    <div class="notificacao concluida">
                         <img src="../deshbord/imagens-deshbord/notifications.png">
                         <p>Armazém 4 <br><span>Temperatura acima do
                                 recomendado</span></p>
                     </div>
-                    <div class="notificacao">
+                    <div class="notificacao concluida">
                         <img src="../deshbord/imagens-deshbord/notifications.png">
                         <p>Armazém 5 <br><span>Temperatura acima do
                                 recomendado</span></p>
@@ -244,8 +256,8 @@
 
     function trocar1() {
         var select = armazem_atual.value
-        if (select == 'armazem1') {
-            window.location.href = "deshbord-armazem1.html";
+        if (select == 'geral') {
+            window.location.href = "deshbord.html";
 
         }
     }

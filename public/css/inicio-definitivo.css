@@ -31,6 +31,7 @@
 }
 
 
+
 /*eliminando tudo pre definido para poder ter liberdade*/
 * {
     padding: 0;
@@ -70,6 +71,7 @@ nav p {
     display: flex;
     width: 7vw;
     justify-content: center;
+    text-align: center;
 }
 
 /*efeito quando o mouse passat na tag p para mudar a negrito, e agregar um border baixo, e uma transição*/

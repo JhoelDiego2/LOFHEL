@@ -20,25 +20,24 @@
             <p>Olá Fernanda Caramico, seja bem vinda</p>
 
             <div class="nav-list">
-                <div =>
+                <div>
                     <a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Inicio</a>
-                </div>
-                <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png"
-                            alt="icone">Perfil</a>
-                </div>
-                <div id="atual"><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
-                            alt="icone">Funcionarios</a>
-                </div>
-                <div><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a>
-                </div>
-                <div ><a href="suporte-bob.html"><img src="../deshbord/imagens-deshbord/body.png"
-                            alt="icone">Suporte-BobIA</a>
-                </div>
-                <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
-                            alt="icone">sair</a>
-                </div>
+            </div>
+            <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png" alt="icone">Perfil</a>
+            </div>
+            <div id="atual"><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
+                        alt="icone">Funcionarios</a>
+            </div>
+            <div><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a>
+            </div>
+            <div><a href="suporte-bob.html"><img src="../deshbord/imagens-deshbord/body.png"
+                        alt="icone">Suporte-BobIA</a>
+            </div>
+            <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
+                        alt="icone">sair</a>
             </div>
         </div>
+    </div>
     </div>
     <div class="main">
         <div class="header">
@@ -48,7 +47,8 @@
                 </div>
                 <div class="column-2">
                     <div>
-                        <img src="../deshbord/imagens-deshbord/person-circle.png" alt="picture" style="padding-right: 10px;">
+                        <img src="../deshbord/imagens-deshbord/person-circle.png" alt="picture"
+                            style="padding-right: 10px;">
                         <p> Fernanda Caramico </p>
                     </div>
                     <div>
@@ -62,123 +62,108 @@
                     <p>Gestão</p>
                     <p></p>
                 </div>
- 
+
             </div>
 
         </div>
         <div class="container-funcionarios ">
-                <div class="column-1">
-                    <div class="card">
-                        <h6>Cadastrar Funcionario</h6>
-                        <p id="texto_nome"></p>
-                        <input type="text" id="ipt_nome" placeholder="Nome" oninput="digitando_nome()" >
-                        <p id="texto_email"></p>
-                        <input type="text" id="ipt_email" placeholder="Email"  oninput="digitando_cpf()">
-                        <p id="texto_telefone"></p>
-                        <input type="text" id="ipt_telefone" placeholder="Telefone"  oninput="digitando_telefone()">
-                        <p id="texto_cargo"></p>
-                        <select name="cargo" id="ipt_cargo" onclick="digitando_cargo()" >
-                            <option value="Gerente" >Gerente</option>
-                            <option value="Analista">Analista</option>
-                            <option value="Operacional">Operacional</option>
-                        </select>
-                        <p id="texto_senha"></p>
-                        <input type="text" id="ipt_senha" placeholder="Senha" oninput="digitando_senha()" >
-                        <button>Cadastrar</button>
-                    </div>
+            <div class="column-1">
+                <div class="card">
+                    <h6>Cadastrar Funcionario</h6>
+                    <p id="texto_nome">Nome</p>
+                    <input type="text" id="ipt_nome" placeholder="Nome" oninput="digitando()">
+                    <p id="texto_email">Email</p>
+                    <input type="text" id="ipt_email" placeholder="Email" oninput="digitando()">
+                    <span id="erro_email" style="display: none; ">E-mail invalido deve conter: 1(@) e 1(.)</span>
+                    <p id="texto_telefone">Telefone</p>
+                    <input type="text" id="ipt_telefone" placeholder="Telefone" oninput="digitando()">
+                    <span id="erro_telefone" style="display: none;">telefone invalido deve conter 11 digitos</span>
+                    <p id="texto_cargo">Cargo</p>
+                    <select name="cargo" id="ipt_cargo" onclick="digitando()">
+                        <option value="">Cargo</option>
+                        <option value="Gerente">Gerente</option>
+                        <option value="Analista">Analista</option>
+                        <option value="Operacional">Operacional</option>
+                    </select>
+                    <p id="texto_senha">Senha</p>
+                    <input type="text" id="ipt_senha" placeholder="Senha" oninput="digitando()">
+                    <button onclick="cadastrar_funcionario()">Cadastrar</button>
+                    <span style="display:none; text-align: center;" id="cadastrar_vazio">Prencher todos os campos</span>
                 </div>
-                <div class="column-2">
-                    <div class="card">
-                        <h6>Atualizar Funcionario</h6>
+            </div>
+            <div class="column-2">
+                <div class="card" style="gap:8vh;">
+                    <h6 style="padding-bottom: vh;">Atualizar Funcionario</h6>
+                    <div>
+                        <p id="texto_email_atualizar">Email</p>
 
-                        <p id="texto_email_atualizar"></p>
-                        <input type="text" id="ipt_email_atualizar" placeholder="Email"  oninput="digitando_email_atualizado()">
-                        <p id="texto_telefone_atualizar"></p>
-                        <input type="text" id="ipt_telefone_atualizar" placeholder="Telefone"  oninput="digitando_telefone_atualizado()">
-                        <p id="texto_cargo_atualizar"></p>
-                        <select name="cargo_atualizar" id="ipt_cargo_atualizar" onclick="digitando_cargo_atualizado()">
+                        <input type="text" id="ipt_email_atualizar" placeholder="Email" oninput="digitando()">
+                        <span id="erro_email_atualizar" style="display: none;">E-mail invalido deve conter: 1(@) e
+                            1(.)</span>
+                        <p id="texto_telefone_atualizar">Telefone</p>
+                        <input type="text" id="ipt_telefone_atualizar" placeholder="Telefone" oninput="digitando()">
+                        <span id="erro_telefone_atualizar" style="display: none;">telefone invalido deve conter 11
+                            digitos</span>
+                        <p id="texto_cargo_atualizar">Cargo</p>
+                        <select name="cargo_atualizar" id="ipt_cargo_atualizar" onclick="digitando()">
+                            <option value="">Cargo</option>
                             <option value="Gerente">Gerente</option>
                             <option value="Analista">Analista</option>
                             <option value="Operacional">Operacional</option>
                         </select>
-                        <button>Atualizar</button>
                     </div>
-
+                    <div>
+                        <button onclick="atualizar_funcionario()">Atualizar</button>
+                        <span style="display:none; text-align: center;" id="atualizar_vazio">Prencher todos os
+                            campos</span>
+                    </div>
                 </div>
-                <div class="column-3">
-                    <div class="card">
-                        <h6>Remover Funcionario</h6>
 
-                        <p id="texto_email_remover"></p>
-                        <input type="text" id="ipt_email_remover" placeholder="Email"  oninput="digitando_email_removendo()">
-                        <p id="texto_cargo_remover"></p>
-                        <select name="cargo" id="ipt_cargo_remover" onclick="digitando_cargo_removendo()">
+            </div>
+            <div class="column-3">
+                <div class="card" style="gap: 11.5vh;">
+                    <h6>Remover Funcionario</h6>
+                    <div>
+                        <p id="texto_email_remover">Email</p>
+                        <input type="text" id="ipt_email_remover" placeholder="Email" oninput="digitando()">
+                        <span id="erro_email_remover" style="display: none;">E-mail invalido deve conter: 1(@) e
+                            1(.)</span>
+                        <p id="texto_cargo_remover">Cargo</p>
+                        <select name="cargo" id="ipt_cargo_remover" onclick="digitando()">
+                            <option value="">Cargo</option>
                             <option value="Gerente">Gerente</option>
                             <option value="Analista">Analista</option>
                             <option value="Operacional">Operacional</option>
                         </select>
-                        <button>Remover</button>
+                    </div>
+                    <div>
+                        <button onclick="remover_funcionario()">Remover</button>
+                        <span style="display:none; text-align: center;" id="remover_vazio">Prencher todos os
+                            campos</span>
                     </div>
                 </div>
             </div>
-
         </div>
+
+    </div>
+    </div>
+    <div class="div_fechar_alerta" onclick="fechar_alerta()" style="display: none;" id="div_sair_alerta">
+    </div>
+    <div class="alerta_lofhel" style="display: none;" id="alerta_grupo3">
+        <div>
+            <img src="../deshbord/imagens-deshbord/logotipo01.png" id="logotipo_alerta">
+            <img src="../deshbord/imagens-deshbord/chevron-back-circle.png" id="icone_fechar_alerta" alt=""
+                onclick="fechar_alerta()">
+        </div>
+        <p id="alerta_titulo">
+            Cadastro realizado
+        </p>
+        <p id="alerta_sub">
+            com sucesso
+        </p>
+
     </div>
 </body>
+
 </html>
-<script>
-    // card cadastrar mais na frente utilizar animações ou um procedimento
-    function digitando_nome() {
-        texto_nome.innerHTML = `Nome`
-        ipt_nome.style = " border-bottom-color: #0B0B0B"
-    }
-    function digitando_cpf() {
-        texto_email.innerHTML = `Email`
-        ipt_email.style = " border-bottom-color: #0B0B0B"
-
-    }
-    function digitando_telefone() {
-        texto_telefone.innerHTML = `Telefone`
-        ipt_telefone.style = " border-bottom-color: #0B0B0B"
-
-    }
-    function digitando_cargo() {
-        texto_cargo.innerHTML = `Cargo`
-        ipt_cargo.style = " border-bottom-color: #0B0B0B"
-
-    }
-    function digitando_senha() {
-        texto_senha.innerHTML = `Senha`
-        ipt_senha.style = " border-bottom-color: #0B0B0B"
-
-    }
-    // card atualizar
-    function digitando_email_atualizado() {
-        texto_email_atualizar.innerHTML = `Email`
-        ipt_email_atualizar.style = " border-bottom-color: #0B0B0B"
-    }
-    function digitando_telefone_atualizado() {
-        texto_telefone_atualizar.innerHTML = `Telefone`
-        ipt_telefone_atualizar.style = " border-bottom-color: #0B0B0B"
-
-    }
-    function digitando_cargo_atualizado() {
-        texto_cargo_atualizar.innerHTML = `Cargo`
-        ipt_cargo_atualizar.style = " border-bottom-color: #0B0B0B"
-
-    }
-
-    // card remover
-    function digitando_email_removendo() {
-        texto_email_remover.innerHTML = `Email`
-        ipt_telefone_atualizar.style = " border-bottom-color: #0B0B0B"
-
-    }
-    function digitando_cargo_removendo() {
-        texto_cargo_remover.innerHTML = `Telefone`
-        ipt_cargo_remover.style = " border-bottom-color: #0B0B0B"
-
-    }
-
-</script>
-
+<script src="../deshbord/JS/deshbord.js"></script>

@@ -145,31 +145,26 @@ option {
     padding-left: 2rem;
     flex-direction: column;
 }
-.card-parametros .temperatura , .umidade{
+.card-parametros .temperatura{
     display: flex;
     flex-direction: column;
     gap: 4px;
-    margin-top: 20px;
 }
 .critico {
     background-color: #f70000;
-    width: 18%;
     border-radius: 10px;
-
 }
 .alerta {
     background-color: #d6d304;
-    width: 18%;
     border-radius: 10px;
 }
 .ideal {
     background-color: #09a309;
-    width: 18%;
     border-radius: 10px;
 }
-.umidade .parametro {
-    width: 20%;
+.temperatura h2{
+    padding-bottom: 0.5vh;
 }
-.pouco {
-    margin-top: 15%;
+.concluida{
+    text-decoration:  line-through #83aa5e8f;
 }
