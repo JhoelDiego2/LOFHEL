@@ -33,15 +33,11 @@ body {
 }
 
 
-
-
-
-
 .buttonback {
     display: flex;
     position: relative;
     right: 46%;
-    top:  -9%;
+    bottom: 9%;
     margin: 0;
     padding: 0;
 
@@ -55,8 +51,8 @@ body {
 .position-logotipo {
     display: flex;
     position: relative;
-    top: -136px;
-    right: 380px;
+    bottom: 145px;
+    right: 39%;
 
 }
 
@@ -90,8 +86,8 @@ input {
     outline: none;
     font-size: 15px;
     color: white;
+    background-color: #1D1D1D;
 }
-
 
 .title {
     display: flex;
@@ -105,8 +101,3 @@ input {
     line-height: 1;
     color: #DEA976;
 }
-
-
-
-
-

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="css/cadastro.css">
-    <div id="div_txt"></div>
 </head>
 
 
@@ -25,7 +24,7 @@
                 <span class="size-title">
                     SEJA BEM-VINDO <br> _
                 </span>
-                <!--a borda de baixo da para fazer com border botton para depois quando ele passar o mouse ele vira inteiro-->
+
             </div>
             <div class="slogan">
                 <span class="size-slogan">
@@ -38,7 +37,7 @@
             <div class="titulo-right">
                 <h3><b>Faça seu cadastro</b></h3>
             </div>
-            <!--la na deshbord no perfil eu coloquei um exemplo para imitar o que ta no figma-->
+
             <div>
                 <br><input type="text" id="ipt_user" placeholder="Usuário"><br>
             </div>
@@ -92,13 +91,13 @@
         var temletramaiscula = false;
         var temespaco = false;
 
-        // -------- Validando campos em branco ---------
+        // Validando campos que estão vazios
 
         if (user === "" && cnpj === "" && email === "" && senha === "" && confirmarsenha === "") {
             alert('Preencha os campos')
         } else {
 
-            // --------- Validando usuario
+            // Validando usuario
 
             for (var i = 0; i < user.length; i++) {
                 if (user[i] === " ") {
@@ -117,7 +116,7 @@
                 validado = false;
             }
 
-         
+            // Validando cnpj
 
             temespaco = false;
 
@@ -143,8 +142,8 @@
                 alert('Erro... Não pode ter letras no cnpj');
             }
 
+            // Validando email
 
-           
             temespaco = false;
 
             for (var i = 0; i < email.length; i++) {
@@ -167,7 +166,8 @@
                 validado = false;
             }
 
-         
+            // Validando senha         
+
             temespaco = false;
             temletra = false;
             temnumero = false;
@@ -193,6 +193,7 @@
             }
 
             // Validando confirmar senha
+
             if (confirmarsenha === "") {
                 alert('Preencha o campo confirmar senha');
             } else if (confirmarsenha != senha) {
