@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redefinir Senha</title>
+    <link rel="stylesheet" href="css/redefinirsenha.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="content">
+            <div class="buttonback">
+                <a href="./login.html"><img src="./assets/back button.png" alt="backbutton"></a>
+            </div>
+            <div class="position-logotipo">
+                <img class="size-logotipo" src="./assets/logotipo01.png" alt="logotipo01">
+            </div>
+            <div class="title">
+                <span class="size-title">Redefinir Senha</span> <br>
+            </div>
+
+            <div>
+                <input type="text" id="ipt_email" placeholder="Email"><br>
+            </div>
+            <div>
+                <input type="text" id="ipt_codigo" placeholder="Codigo de verificação"><br>
+            </div>
+
+            <div>
+                <input type="password" id="ipt_novasenha" placeholder="Nova senha"><br>
+            </div>
+
+            <div>
+                <input type="password" id="ipt_confnovasenha" placeholder="Confirmar nova senha"><br>
+            </div>
+            <div>
+                <button onclick="validar()">Redefinir</button>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script>
+    function validar() {
+        var email = ipt_email.value;
+        var codigoverificador = Number(ipt_codigo.value);
+        var novasenha = Number(ipt_novasenha.value);
+        var confirnovasenha = Number(ipt_confnovasenha.value);
+        var temespaco_email = false;
+        var temespaco_novasenha = false;
+        var temespaco_codigo = false;
+
+        for (var i = 0; i < email.length; i++) {
+            if (email[i] === " ") {
+                temespaco_email = true;
+            }
+        }
+        for (var i = 0; i < novasenha.length; i++) {
+            if (novasenha[i] === " ") {
+                temespaco_novasenha = true
+            }
+        }
+
+        if (email === "" || codigoverificador === "" || novasenha === "" || confirnovasenha === "") {
+            alert('Preencha todos os campos')
+        } else if (temespaco_email) {
+            alert('Erro... Email não deve ter espaços')
+        } else if (!email.includes("@") || !email.endsWith(".com")) {
+            alert('Email inválido!')
+        } else if (temespaco_novasenha) {
+            alert('Erro... Senha não deve ter espaços')
+        } else if (novasenha != confirnovasenha) {
+            alert('Erro... Senhas não coincidem!')
+        } else {
+            alert('Senha alterada com sucesso!')
+        }
+    }
+
+</script>

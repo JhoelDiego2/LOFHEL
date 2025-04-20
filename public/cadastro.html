@@ -86,22 +86,126 @@
         var email = ipt_email.value;
         var senha = ipt_senha.value;
         var confirmarsenha = ipt_confirmarsenha.value;
+        var validado = true;
+        var temnumero = false;
+        var temletra = false;
+        var temletramaiscula = false;
+        var temespaco = false;
 
-        if (user == "" || cnpj == "" || email == "" || senha == "" || confirmarsenha == "") {
-            alert("Preencha todos os campos!");
-        } else if (cnpj.length != 14) {
-            alert('CNPJ inválido (deve conter 14 dígitos)!');
-        } else if (!email.includes("@") || !email.endsWith(".com")) {
-            alert('Email inválido!')
-        } else if (senha.length < 8) {
-            alert('A senha deve ter pelo menos 8 caracteres!')
-        } else if (senha != confirmarsenha) {
-            alert('Erro.. As senhas estão diferentes.');
+        // -------- Validando campos em branco ---------
+
+        if (user === "" && cnpj === "" && email === "" && senha === "" && confirmarsenha === "") {
+            alert('Preencha os campos')
         } else {
-            alert('Cadastro realizado com sucesso, até mais...')
-        }
-    }
 
+            // --------- Validando usuario
+
+            for (var i = 0; i < user.length; i++) {
+                if (user[i] === " ") {
+                    temespaco = true;
+                }
+            }
+
+            if (user === "") {
+                alert('Preencha o campo usuário');
+                validado = false;
+            } else if (user.length <= 3) {
+                alert('Erro... Não pode ter menos de 3 caracteres no usuário');
+                validado = false;
+            } else if (temespaco) {
+                alert('Erro... Não pode conter espaços no usuário ');
+                validado = false;
+            }
+
+         
+
+            temespaco = false;
+
+            for (var i = 0; i < cnpj.length; i++) {
+                if (cnpj[i] === " ") {
+                    temespaco = true;
+                }
+                if (cnpj[i] >= "A" && cnpj[i] <= "Z" || cnpj[i] >= "a" && cnpj[i] <= "z") {
+                    temletra = true;
+                }
+            }
+
+            if (cnpj === "") {
+                alert('Preencha o campo cnpj');
+                validado = false;
+            } else if (cnpj.length != 14) {
+                alert('Erro... Cnpj precisa ter 14 digitos');
+                validado = false;
+            } else if (cnpj.includes('@') || cnpj.includes('#') || cnpj.includes('$') || cnpj.includes('&') || cnpj.includes('_') || cnpj.includes('-') || cnpj.includes('+') || cnpj.includes('!') || cnpj.includes('?') || cnpj.includes('*') || cnpj.includes('/') || cnpj.includes('=') || cnpj.includes('<') || cnpj.includes('>') || cnpj.includes('~')) {
+                alert('Erro... Cnpj não pode ter caracteres especiais');
+                validado = false;
+            } else if (temletra) {
+                alert('Erro... Não pode ter letras no cnpj');
+            }
+
+
+           
+            temespaco = false;
+
+            for (var i = 0; i < email.length; i++) {
+                if (email[i] === " ") {
+                    temespaco = true;
+                }
+            }
+
+            if (email === "") {
+                alert('Preencha o campo email');
+                validado = false;
+            } else if (temespaco) {
+                alert('Erro... Email não pode conter espaços');
+                validado = false;
+            } else if (!email.includes('@')) {
+                alert('Erro... Email deve ter @');
+                validado = false;
+            } else if (!email.endsWith('.com')) {
+                alert('Erro... Email deve terminar com .com');
+                validado = false;
+            }
+
+         
+            temespaco = false;
+            temletra = false;
+            temnumero = false;
+
+            for (var i = 0; i < senha.length; i++) {
+                if (senha[i] === " ") {
+                    temespaco = true;
+                }
+                if (senha[i] >= "A" && senha[i] <= "Z" || senha[i] >= "a" && senha[i] <= "z") {
+                    temletra = true;
+                }
+                if (senha[i] >= 0 && senha[i] <= 9) {
+                    temnumero = true;
+                }
+            }
+            if (senha === "") {
+                alert('Preencha o campo senha');
+                validado = false;
+            } else if (temespaco) {
+                alert('Erro... Senha não pode conter espaços');
+            } else if (!temletra && !temnumero) {
+                alert('Erro... Senha deve ter números e letras');
+            }
+
+            // Validando confirmar senha
+            if (confirmarsenha === "") {
+                alert('Preencha o campo confirmar senha');
+            } else if (confirmarsenha != senha) {
+                alert('Erro... Senhas estão diferentes');
+            }
+
+            if (validado) {
+                alert('Cadastro realizado!')
+            }
+
+        }
+
+    }
 
 
 </script>

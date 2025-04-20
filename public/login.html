@@ -57,7 +57,7 @@
             </div>
             <div>
                 <span>
-                    <p>Esqueceu a senha? <a class="txt-laranja" href="">Acesse aqui</a></p>
+                    <p>Esqueceu a senha? <a class="txt-laranja" href="./redefinirsenha.html">Acesse aqui</a></p>
                 </span>
             </div>
 
@@ -69,18 +69,45 @@
 
 </html>
 <script>
+
     function validar() {
         var email = ipt_email.value;
         var senha = ipt_senha.value;
+        var emailuser = 'lofhel@gmail.com';
+        var senhauser = 'l0fh3l';
+        var temespaco_email = false;
+        var temespaco_senha = false;
 
-        if (email == "" || senha == "") {
+
+        for (var i = 0; i < email.length; i++) {
+            if (email[i] === " ") {
+                temespaco_email = true;
+            }
+        }
+        for (var i = 0; i < senha.length; i++) {
+            if (senha[i] === " ") {
+                temespaco_senha = true
+            }
+        }
+
+        if (senha === "" || email === "") {
             alert("Preencha todos os campos!");
+
+        } else if (temespaco_email) {
+            alert('Erro... Email não deve ter espaços')
+        } else if (temespaco_senha) {
+            alert('Erro... Senha não deve ter espaços')
         } else if (!email.includes("@") || !email.endsWith(".com")) {
             alert('Email inválido!')
-        } else if (senha.length < 8) {
-            alert('A senha deve ter no mínimo 8 caracteres!')
+        } else if (email != emailuser) {
+            alert('Erro... Conta ainda não cadastrada')
+        } else if (senha === "") {
+            alert('Preencha o campo senha')
+        } else if (senha != senhauser) {
+            alert('Erro... Senha incorreta!')
         } else {
-            alert('Bem-vindo')
+            alert('Seja bem-vindo')
         }
     }
+
 </script>

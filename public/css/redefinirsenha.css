@@ -4,9 +4,10 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    color: white;
 }
 
-.container {
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,54 +17,37 @@ body {
 
 }
 
-.left-content,
-.right-content {
+.content {
     height: 100vh;
     flex: 1;
-
-}
-
-.left-content {
     display: flex;
     flex-direction: column;
-    /*nao funciona porque nao é um row vc colocou columna entoa nao ta fzd nada se vocs queria q fique
-    no meio que nem embaico seria align-items*/
-    background-image: url("../assets/fundo_login.png");
+    align-items: center;
+    justify-content: center;
+    background-color: #1D1D1D;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     font-family: 'Hind Vadodara', sans-serif;
     color: #FFFF;
-
-
 }
 
-.right-content {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-color: #1D1D1D;
-    font-family: 'Inter', sans-serif;
-    color: white;
-}
+
+
 
 
 
 .buttonback {
     display: flex;
     position: relative;
-    left: 17px;
-    top: 18px;
-    width: 0px;
-    height: 30px;
+    right: 46%;
+    top:  -9%;
     margin: 0;
     padding: 0;
 
 }
 
 .size-logotipo {
-    /*verifica a clase usada no html, nao existe logotipo*/
     width: 120px;
     height: 120px;
 }
@@ -71,17 +55,15 @@ body {
 .position-logotipo {
     display: flex;
     position: relative;
-    left: 70px;
-    top: -55px;
-    /*aqui sim voce esta mexewndo com a imagem mas para que fique no topo ou vc usa align-self , positiion ou com margin-top negativou ou margin-botttom */
+    top: -136px;
+    right: 380px;
 
 }
-
 
 button {
     width: 55vh;
     padding: 12px;
-    margin-top: 20px;
+    margin-top: 30px;
     border-radius: 10px;
     font-size: 16px;
     background-color: #DEA976;
@@ -97,10 +79,11 @@ da para mudar o fundo, tamanho, varias coisas tenta experimentar e usar naquele 
 dica: no html tira essa linha e coloca uma borda emcbaico no css antes de usar a tag hover já que o css é cascata
 */
 input {
+    
     width: 55vh;
     padding-top: 30px;
     padding-bottom: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #ccc;
@@ -109,47 +92,21 @@ input {
     color: white;
 }
 
-.titulo-right {
-    display: flex;
-    margin-bottom: -10px;
-    color: #DEA976;
-}
-
 
 .title {
     display: flex;
-    align-self: center;
     position: absolute;
-    bottom: 320px;
+    top: 128px;
 }
 
 .size-title {
-    font-size: 50px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    line-height: 1;
-}
-
-.slogan {
-    display: flex;
-    padding-top: 0;
-    margin-top: 0;
-    position: absolute;
-    bottom: 80px;
-    left: 60px;
-}
-
-.size-slogan {
-    font-size: 23px;
+    font-size: 40px;
     font-weight: bold;
     line-height: 1;
-    letter-spacing: 1px
-}
-
-
-
-
-
-.txt-laranja {
     color: #DEA976;
 }
+
+
+
+
+
