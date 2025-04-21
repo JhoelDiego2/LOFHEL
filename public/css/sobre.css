@@ -52,12 +52,13 @@ a{
     width: 100%;
     height: 100px;
     position: fixed;
+    top: 0;
     background-color: #00000059;
     display: flex;
     justify-content: space-around;
-    gap: 10%;
+    gap: 0%;
     align-items: center;
-    z-index: 2;
+    z-index: 100;
     color: #F4F4F4;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(2px);
@@ -77,7 +78,6 @@ nav p:hover {
     font-weight: 800;
     border-bottom: 3px solid #ffffff;
     transition: all 0.1s ease;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .nav-list1 {
@@ -171,20 +171,12 @@ nav img{
     margin-top: 2rem;
     font-size: 1.7rem;
 }
-.monitoramento button {
-    border: none;
-    padding: 1rem;
-    margin-top: 2rem;
-    border-radius: 3rem;
-    background-color: var(--vinho);
-    color: white;
-    font-size: 1rem;
-}
+
 .titulo {
     text-align: center;
     color: var(--vinho);
     font-size: 54px;
-    margin-top: 3rem;
+    margin-top: 0%;
 
 }
 .titulo p {
@@ -224,7 +216,7 @@ nav img{
 .caixa {
     margin-top: 2rem;
     margin-bottom: 2rem;
-    padding: 60px;
+    padding: 30px;
     background-color: var(--cinza);
     color: var(--marrom);
     font-size: 20px;
@@ -237,6 +229,7 @@ nav img{
 .caixa:hover{
     transform: translateY(-10px);
     background-color: #471414;
+    border-radius: 5%;
     color: #F4F4F4;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
@@ -374,7 +367,7 @@ input{
 /* Estilo seção Missão, Visão e Valores estilo imagem */
 
 .servicos-dark {
-    background-color: #24130B;
+    background-color: #350f0f;
     padding: 5rem 2rem;
   }
 
@@ -383,11 +376,11 @@ input{
     justify-content: center;
     flex-wrap: wrap;
     gap: 32px;
-    padding: 40px 0;
+    padding: 2px 0;
   }
   
   .card-mvv {
-    width: 320px;
+    width: 500px;
     min-height: 320px;
     padding: 24px;
     background-color: #eeeeee;
@@ -410,7 +403,6 @@ input{
     color: #1a1a1a;
   }
   
-  .card-mvv p,
   .card-mvv ul {
     margin-top: 12px;
     font-size: 0.95rem;
@@ -432,6 +424,181 @@ input{
     width: 32px;
     height: 32px;
   }
+
+  .foto-membro {
+    width: 300px;
+    height: 400px; /* ajuste conforme necessário */
+    object-fit: cover;
+    border-radius: 10%;
+}
+
+.diagrama img {
+    border-radius: 12px;
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+}
+
+.diagrama {
+    text-align: center; /* Centraliza inline elements como <img> */
+    margin-top: 2rem;
+}
+
+
+.sobre-lofhel {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 1rem;
+    background-color: white;
+  }
+  
+  .sobre-container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    background-color: #360404;
+    color: white;
+    border-radius: 20px;
+    padding: 3rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .texto {
+    flex: 1 1 500px;
+  }
+  
+  .texto h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .texto .descricao {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .texto ul {
+    font-size: 1.1rem;
+    list-style: none;
+    padding-left: 0;
+    line-height: 1.8;
+  }
+  
+  .texto li::before {
+    content: "✓ ";
+    color: #ffffff;
+  }
+  
+  .cta {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 30px;
+    background-color: white;
+    color: #580303;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .cta:hover {
+    transform: scale(1.05);
+  }
+  
+  .imagem {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 400px;
+    max-width: 100%;
+  }
+  
+  .imagem img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 20px;
+    position: absolute;
+  }
+  
+  /* Camada mais ao fundo */
+  .camada-3 {
+    top: 60px;
+    left: 100px;
+    z-index: 3;
+  }
+  
+  /* Camada do meio */
+  .camada-2 {
+    top: 20px;
+    left: 60px;
+    z-index: 2;
+  }
+  
+  /* Imagem principal - mais próxima */
+  .imagem-principal {
+    position: relative;
+    z-index: 0;
+  }
   
 
+  .imagem img:hover {
+    transform: scale(1.01);
+  }
+  
+  .redes-sociais {
+    margin-top: 10px;
+  }
+  
+  .redes-sociais a {
+    color: #333;
+    margin: 0 8px;
+    font-size: 20px;
+    transition: color 0.3s;
+  }
+  
+  .redes-sociais a:hover {
+    color: #8B0000;
+  }
+  
+  .redes-sociais {
+    margin-top: 10px;
+  }
+  
+  .redes-sociais a {
+    margin: 0 8px;
+  }
+  
+  .redes-sociais img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  #comece_hoje {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px 20px;
+    text-align: center;
+    color: #ffffff;
+    background: #ffffff url('../assets/proteger.png');
+    border-radius: 10px;
+    font-family: Georgia, serif;
+  }
+
+  
+  #comece_hoje .mover-cima {
+    padding: 8px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 15px;
+    background: #580303;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  
 /*---------------------------------------fim pagina sobre vinhos*/
