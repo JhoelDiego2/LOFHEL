@@ -2,7 +2,7 @@
 create database lofhel;
 use lofhel;
 
-create table endereco (
+create table tbEndereco (
     idEndereco int primary key,
     sigla char(2),
     cidade varchar(60),
@@ -13,7 +13,7 @@ create table endereco (
     complemento varchar(80)
 );
 
-create table empresa (
+create table tbEmpresa (
     idEmpresa int primary key,
     email varchar(100),
     senha varchar(30),
@@ -22,18 +22,18 @@ create table empresa (
     data_cadastro datetime,
     nome_fantasia varchar(60),
     fkMatriz int,
-    foreign key (fkMatriz) references empresa(idEmpresa)
+    foreign key (fkMatriz) references tbEmpresa(idEmpresa)
 );
 
-create table contato (
+create table tbContato (
     idContato varchar(16) primary key,
     email varchar(255),
     dtContato date,
     empresa_idEmpresa int,
-    foreign key (empresa_idEmpresa) references empresa(idEmpresa)
+    foreign key (empresa_idEmpresa) references tbEmpresa(idEmpresa)
 );
 
-create table funcionarios (
+create table tbFuncionarios (
     idFuncionarios varchar(15) primary key,
     email varchar(255),
     password varchar(32),
@@ -41,88 +41,88 @@ create table funcionarios (
     cargo varchar(45),
     fkSensor int,
     representante int,
-    foreign key (representante) references empresa(idEmpresa)
+    foreign key (representante) references tbEmpresa(idEmpresa)
 );
 
 
-create table vinicola (
+create table tbVinicola (
     idVinicola int primary key,
     nome varchar(40),
     fkEmpresa int,
     fkEndereco int,
-    foreign key (fkEmpresa) references empresa(idEmpresa),
-    foreign key (fkEndereco) references endereco(idEndereco)
+    foreign key (fkEmpresa) references tbEmpresa(idEmpresa),
+    foreign key (fkEndereco) references tbEndereco(idEndereco)
 );
 
-create table armazem (
+
+create table tbArmazem (
     idArmazem int primary key,
     nome varchar(60),
     umi_max int,
     umi_min int,
     fkEmpresa int,
     fkVinicola int,
-    foreign key (fkEmpresa) references empresa(idEmpresa),
-    foreign key (fkVinicola) references vinicola(idVinicola)
+    foreign key (fkEmpresa) references tbEmpresa(idEmpresa),
+    foreign key (fkVinicola) references tbVinicola(idVinicola)
 );
 
-create table grupo (
+create table tbGrupoVinho (
     idGrupo int primary key,
     classe varchar(40),
     temp_max float,
     temp_min float
 );
 
-create table tipo (
+create table tbTipoVinho (
     idTipo int primary key,
     tipo varchar(40),
-    quantidade int,
     fkGrupo int,
     fkArmazem int,
-    foreign key (fkGrupo) references grupo(idGrupo),
-    foreign key (fkArmazem) references armazem(idArmazem)
+    foreign key (fkGrupo) references tbGrupoVinho(idGrupo),
+    foreign key (fkArmazem) references tbArmazem(idArmazem)
 );
 
-create table sensor_DHT11 (
+create table tbSensor (
     idSensor int primary key,
     nomeSerial char(12),
     nomeLocal varchar(60),
     fkArmazem int,
-    foreign key (fkArmazem) references armazem(idArmazem)
+    foreign key (fkArmazem) references tbArmazem(idArmazem)
 );
 
-create table dados_sensor (
-    idDados_sensor int primary key,
+create table tbRegistro (
+    idRegistro int primary key,
     temperatura float,
     umidade float,
     dataTime datetime,
     fkSensor int,
-    foreign key (fkSensor) references sensor_DHT11(idSensor)
+    foreign key (fkSensor) references tbSensor(idSensor)
 );
 
 
-insert into endereco values (1, 'SP', 'São Paulo', 'Rua dos Vinhos', 'Mooca', 123, '03000-000', 'Próximo à praça');
-insert into empresa values (1, 'empresa@loja.com', 'senha123', 'Loja de Vinhos', '12345678000199', now(), 'Vinhos SP', null);
-insert into contato values ('cont001', 'contato@loja.com', '2025-04-07', 1);
-insert into vinicola values (1, 'Vinícola Bela Uva', 1, 1);
-insert into armazem values (1, 'Armazém Central', 85, 40, 1, 1);
-insert into grupo values (1, 'Premium', 28.5, 10.0);
-insert into tipo values (1, 'Tinto Seco', 200, 1, 1);
-insert into sensor_DHT11 values (1, 'SN1234567890', 'Parede Leste', 1);
-insert into dados_sensor values (1, 25.6, 60.2, now(), 1);
-insert into funcionarios values ('func001', 'joao@loja.com', 'senha456', '2023-05-10', 'Técnico', 1, 1);
+insert into tbEndereco values (1, 'SP', 'São Paulo', 'Rua dos Vinhos', 'Mooca', 123, '03000-000', 'Próximo à praça');
+insert into tbEmpresa values (1, 'empresa@loja.com', 'senha123', 'Loja de Vinhos', '12345678000199', now(), 'Vinhos SP', null);
+insert into tbContato values ('cont001', 'contato@loja.com', '2025-04-07', 1);
+insert into tbVinicola values (1, 'Vinícola Bela Uva', 1, 1);
+insert into tbArmazem values (1, 'Armazém Central', 85, 40, 1, 1);
+insert into tbGrupoVinho values (1, 'Premium', 28.5, 10.0);
+insert into tbTipoVinho values (1, 'Tinto Seco', 1, 1);
+insert into tbSensor values (1, 'SN1234567890', 'Parede Leste', 1);
+insert into tbRegistro values (1, 25.6, 60.2, now(), 1);
+insert into tbFuncionarios values ('func001', 'joao@loja.com', 'senha456', '2023-05-10', 'Técnico', 1, 1);
 
 select e.nome, c.email
-from empresa e
-join contato c on e.idEmpresa = c.empresa_idEmpresa;
-
+from tbEmpresa e
+join tbContato c on e.idEmpresa = c.empresa_idEmpresa;
+																							
 select a.nome as Armazem, s.nomeLocal, d.temperatura, d.umidade, d.dataTime
-from armazem a
-join sensor_DHT11 s on a.idArmazem = s.fkArmazem
-join dados_sensor d on s.idSensor = d.fkSensor;
+from tbArmazem a
+join tbSensor s on a.idArmazem = s.fkArmazem
+join tbRegistro d on s.idSensor = d.fkSensor;
 
-select t.tipo, t.quantidade, g.classe
-from tipo t
-join grupo g on t.fkGrupo = g.idGrupo;
+select t.tipo, g.classe
+from tbTipoVinho t
+join tbGrupoVinho g on t.fkGrupo = g.idGrupo;
 
 
-alter table dados_sensor modify column idDados_sensor int auto_increment;
+alter table tbRegistro modify column idRegistro int auto_increment;
