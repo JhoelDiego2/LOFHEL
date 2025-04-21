@@ -101,15 +101,14 @@ dica: no html tira essa linha e coloca uma borda emcbaico no css antes de usar a
 */
 input {
     width: 55vh;
-    padding-top: 60px;
-    padding-bottom: 5px;
+    padding: 1vh 0vw;
     margin-bottom: 30px;
-    background-color: transparent;
     border: none;
     border-bottom: 1px solid #ccc;
     outline: none;
     font-size: 15px;
     color: white;
+    background:none;
 }
 
 .title-right {
@@ -151,11 +150,14 @@ input {
     line-height: 1;
     letter-spacing: 1px
 }
-
-
-
-
-
 .txt-laranja {
     color: #DEA976;
+}
+#texto_email, #texto_senha{
+    color: #1D1D1D;
+}
+.escondido{
+    position: absolute;
+    color: #1D1D1D;
+    
 }

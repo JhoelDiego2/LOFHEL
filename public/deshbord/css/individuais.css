@@ -84,6 +84,10 @@
     display: flex;
     gap: 7.6vh;
 }
+.container-armazem .column-1 .card{
+    display: flex;
+    gap: 8vh;
+}
 
  /*perfil*/
 .container-perfil{
@@ -150,4 +154,7 @@
     text-align: center;
     border-radius: 10px;
     margin-top: 2%;
+}
+input:focus{
+    outline: none;
 }

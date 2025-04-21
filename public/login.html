@@ -46,17 +46,22 @@
             </div>
 
             <div>
-                <input type="text" id="ipt_email" placeholder="Email"><br>
+                <p id="texto_email" >Email</p>
+                <input type="text" id="ipt_email" oninput="digitando_login()" placeholder="E-mail"><br>
+                <span id="email_erro" class="escondido">Email invalido deve conter 1 (@) e 1 (.)</span>
             </div>
 
             <div>
-                <input type="password" id="ipt_senha" placeholder="Senha"><br>
+                <p id="texto_senha">Senha</p>
+                <input type="password" id="ipt_senha" oninput="digitando_login()" placeholder="Senha"><br>
+                <span id="senha_erro" class="escondido">Senha invalido</span>
             </div>
             <div>
-                <button onclick="validar()">Entrar</button>
+                <button onclick="validar()">Entrar</button><br>
+                <span id="texto_botom" class="escondido" >Preencha todos os campos!</span>
             </div>
-            <div>
-                <span>
+            <div style="padding-top:5vh;">
+                <span >
                     <p>Esqueceu a senha? <a class="txt-laranja" href="./redefinirsenha.html">Acesse aqui</a></p>
                 </span>
             </div>
@@ -70,6 +75,11 @@
 </html>
 <script>
 
+    function digitando_login() {
+        ipt_email.value != '' ? (texto_email.style = "color:#DEA976", ipt_email.style = "    border-bottom: 1px solid #DEA976;") : null
+        ipt_senha.value != '' ? (texto_senha.style = "color:#DEA976", ipt_senha.style = "    border-bottom: 1px solid #DEA976;") : null
+    }
+
     function validar() {
         var email = ipt_email.value;
         var senha = ipt_senha.value;
@@ -77,6 +87,7 @@
         var senhauser = 'l0fh3l';
         var temespaco_email = false;
         var temespaco_senha = false;
+        var i_arroba = 0
 
 
         for (var i = 0; i < email.length; i++) {
@@ -90,24 +101,59 @@
             }
         }
 
-        if (senha === "" || email === "") {
-            alert("Preencha todos os campos!");
+        for (let i = 0; i < email.length; i++) {
+            if (senha.includes('@')) {
+                i_arroba++
+            }
+    }
 
-        } else if (temespaco_email) {
-            alert('Erro... Email não deve ter espaços')
-        } else if (temespaco_senha) {
-            alert('Erro... Senha não deve ter espaços')
-        } else if (!email.includes("@") || !email.endsWith(".com")) {
-            alert('Email inválido!')
-        } else if (email != emailuser) {
-            alert('Erro... Conta ainda não cadastrada')
-        } else if (senha === "") {
-            alert('Preencha o campo senha')
-        } else if (senha != senhauser) {
-            alert('Erro... Senha incorreta!')
-        } else {
-            alert('Seja bem-vindo')
+
+        if (senha != senhauser) {
+            senha_erro.style = "color:red"
+            senha_erro.innerHTML = 'Erro... Senha incorreta!'
         }
+        if (email != emailuser) {
+            email_erro.style = "color:red"
+            email_erro.innerHTML = 'Erro... Conta ainda não cadastrada'
+            senha_erro.style = "color:#1D1D1D"
+        }
+
+        if (!email.includes("@") || !email.endsWith(".com" || i_arroba > 1)) {
+            email_erro.innerHTML = "Email invalido deve conter 1 (@) e 1 (.)"
+            email_erro.style = "color:red"
+        }
+
+        if (senha == "") {
+            senha_erro.style = "color:red"
+            senha_erro.innerHTML = 'Preencha o campo senha'
+
+
+        }
+        if (email == "") {
+            email_erro.style = "color:red"
+            email_erro.innerHTML = 'Preencha o campo e-mail'
+     
+
+        }
+        if (temespaco_email) {
+            email_erro.innerHTML = 'Erro... Email não deve ter espaços'
+            email_erro.style = "color:red"
+        }
+        if (temespaco_senha) {
+            senha_erro.innerHTML = "'Erro... Senha não deve ter espaços"
+            senha_erro.style = "color:red"
+        }
+        if (senha === "" && email === "") {
+            texto_botom.style = "color:red"
+            senha_erro.style = "color:#1D1D1D"
+            email_erro.style = "color:#1D1D1D"
+        }else{
+                        texto_botom.style = "color:#1D1D1D"
+        }
+
+
+        // alert('Seja bem-vindo')
+
     }
 
 </script>

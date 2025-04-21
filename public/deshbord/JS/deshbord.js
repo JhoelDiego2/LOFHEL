@@ -133,12 +133,12 @@ function remover_funcionario() {
 
 function digitando() {
     var select = select_grupo.value
-    var temperatura = ipt_temp_ideal.value
-    var umidade = ipt_umidade_ideal.value
+    //var temperatura = ipt_temp_ideal.value
+   // var umidade = ipt_umidade_ideal.value
     ipt_nome.value != '' ? (texto_nome.style = "color:black", ipt_nome.style = " border-bottom-color: #0B0B0B") : null
     ipt_descricao.value != '' ? (texto_descricao.style = "color:black", ipt_descricao.style = " border-bottom-color: #0B0B0B") : null
-    ipt_temp_ideal.value != '' ? (texto_temp_ideal.style = "color:black", ipt_temp_ideal.style = " border-bottom-color: #0B0B0B") : null
-    ipt_umidade_ideal.value != '' ? (texto_umidade_ideal.style = "color:black", ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B") : null
+    //ipt_temp_ideal.value != '' ? (texto_temp_ideal.style = "color:black", ipt_temp_ideal.style = " border-bottom-color: #0B0B0B") : null
+   // ipt_umidade_ideal.value != '' ? (texto_umidade_ideal.style = "color:black", ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B") : null
     ipt_armazem_remover.value != '' ? (texto_armazem_remover.style = "color:black", ipt_armazem_remover.style = " border-bottom-color: #0B0B0B") : null
     ipt_senha_remover.value != '' ? (texto_senha_remover.style = "color:black", ipt_senha_remover.style = " border-bottom-color: #0B0B0B") : null
     ipt_confirmacao_remover.value != '' ? (texto_confirmacao_remover.style = "color:black", ipt_confirmacao_remover.style = " border-bottom-color: #0B0B0B") : null
@@ -146,22 +146,22 @@ function digitando() {
         texto_select.style = "color:black"
         select_grupo.style = " border-bottom-color: #0B0B0B"
         // ipt_umidade_ideal.value = "55"
-        ipt_umidade_ideal.placeholder = "55 (sugestão)"
-        texto_umidade_ideal.style = "color: black"
-        ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B"
-        texto_temp_ideal.style = "color: black"
-        ipt_temp_ideal.style = " border-bottom-color: #0B0B0B"
+       // ipt_umidade_ideal.placeholder = "55 (sugestão)"
+       // texto_umidade_ideal.style = "color: black"
+        //ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B"
+        //texto_temp_ideal.style = "color: black"
+       // ipt_temp_ideal.style = " border-bottom-color: #0B0B0B"
     }
-    if (temperatura != '') {
+   /* if (temperatura != '') {
         texto_temp_ideal.style = "color: black"
         ipt_temp_ideal.style = " border-bottom-color: #0B0B0B"
     }
     if (umidade != '') {
         texto_umidade_ideal.style = "color: black"
         ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B"
-    }
+    }*/
     if (select == 'gelado') {
-        ipt_temp_ideal.placeholder = '5 (sugestão)';
+   //     ipt_temp_ideal.placeholder = '5 (sugestão)';
 
         op_gelado.style = "display:1"
         op_frio.style = "display:none"
@@ -170,21 +170,21 @@ function digitando() {
 
     }
     if (select == 'frio') {
-        ipt_temp_ideal.placeholder = '10 (sugestão)'
+        //ipt_temp_ideal.placeholder = '10 (sugestão)'
         op_gelado.style = "display:none"
         op_frio.style = "display:1"
         op_temp_adega.style = "display:none"
         op_fresco.style = "display:none"
     }
     if (select == 'temp_adega') {
-        ipt_temp_ideal.placeholder = '15 (sugestão)'
+       // ipt_temp_ideal.placeholder = '15 (sugestão)'
         op_gelado.style = "display:none"
         op_frio.style = "display:none"
         op_temp_adega.style = "display:1"
         op_fresco.style = "display:none"
     }
     if (select == 'fresco') {
-        ipt_temp_ideal.placeholder = '18 (sugestão)'
+      //  ipt_temp_ideal.placeholder = '18 (sugestão)'
         op_gelado.style = "display:none"
         op_frio.style = "display:none"
         op_temp_adega.style = "display:none"
@@ -193,8 +193,8 @@ function digitando() {
 }
 function cadastrar_armazem() {
     var select = select_grupo.value
-    var temperatura = ipt_temp_ideal.value
-    var umidade = ipt_umidade_ideal.value
+   // var temperatura = ipt_temp_ideal.value
+  //  var umidade = ipt_umidade_ideal.value
     var nome_armazem = ipt_nome.value
     var descricao = ipt_descricao.value
     var grupo = select_grupo.value
@@ -208,7 +208,7 @@ function cadastrar_armazem() {
     var tinto_medio_corpo = ipt_tinto_medio_corpo.value ? true : false
     var tinto_encorpado = ipt_tinto_encorpado.value ? true : false
 
-    if (select == '' || temperatura == '' || umidade == '' || nome_armazem == '' || grupo == '' ||
+    if (select == '' || /*temperatura == '' || umidade == '' */ nome_armazem == '' || grupo == '' ||
         (espumante == false && branco_leve == false) || (branco_encorpado == false && branco_aromatico == false && rose == false)
         || (tinto_medio_corpo == false && tinto_leve == false) || (tinto_médio_corpo == false && tinto_encorpado == false)) {
         cad_armazem_vazio.style="display=1"

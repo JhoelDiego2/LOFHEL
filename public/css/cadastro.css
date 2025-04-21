@@ -5,6 +5,10 @@ body {
     margin: 0;
     padding: 0;
 }
+*{
+    margin: 0;
+    padding: 0;
+}
 
 .container {
     display: flex;
@@ -98,9 +102,7 @@ dica: no html tira essa linha e coloca uma borda emcbaico no css antes de usar a
 */
 input {
     width: 55vh;
-    padding-top: 30px;
-    padding-bottom: 5px;
-    margin-bottom: 20px;
+
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #ccc;
@@ -152,4 +154,42 @@ input {
 
 .txt-laranja {
     color: #DEA976;
+}
+
+#recomendacao_senha{
+    display: flex;
+    gap: 2vw;
+    position: relative;
+    left: 1vw;
+    /*color: #ccc;*/
+    padding-top:4vh;
+    color: #1D1D1D;
+    /*color: rgb(196, 196, 196);*/
+    
+}
+.right-content span{
+    padding-left: 0.5vw;
+    color: rgb(218, 53, 53);
+    display: none;
+}
+#botom_esqueci{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -9vh;
+}
+.right-content{
+    display: flex;
+    flex-direction: column;
+    gap: 7vh;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 4.5vh;
+}
+.inputs p{
+    padding-bottom: 0.5vh;
+    color: #1D1D1D;
 }
