@@ -409,27 +409,26 @@ input{
     padding-bottom: 3rem;
 }
 #pagina-sobre-vinhos #texto{
-    padding-bottom: 3rem;
-    width: 80%;
     font-size: 20px;
+    padding-bottom: 3rem;
 }
 
 #pagina-sobre-vinhos h1 {
     text-align: center;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
 }
 
 
 .vinhos {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 0px;
     padding: 1rem 15rem
 }
 
 .vinho {
     text-align: center;
-    margin: 0 10px;
+    margin: 10px;
 }
 
 .vinho img {
@@ -486,5 +485,7 @@ input{
     position: relative;
     right: 4vw;
 }
+
+
 
 /*---------------------------------------fim pagina sobre vinhos*/
