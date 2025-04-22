@@ -64,7 +64,7 @@
             Campos Vazios
         </p>
         <p id="alerta_sub">
-            Porfavor prencher todos eles
+            Por favor, preencha todos eles
         </p>
         
     </div>
@@ -73,6 +73,8 @@
 </html>
 <script>
     function fechar_alerta() {
-        alerta_grupo3.style= "display:none"
-    }
+    document.getElementById("alerta_grupo3").style.display = "none";
+    document.querySelector(".div_fechar_alerta").style.display = "none";
+}
+
 </script>

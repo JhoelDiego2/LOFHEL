@@ -53,8 +53,8 @@
                                 <option value="geral">Geral</option>
                                 <option value="armazem2">Armazém2</option>
                                 <option value="armazem3">Armazém3</option>
-                                <option value="armazem3">Armazém4</option>
-                                <option value="armazem3">Armazém5</option>
+                                <option value="armazem4">Armazém4</option>
+                                <option value="armazem5">Armazém5</option>
                             </select>
                         </div>
                         <div class="column-2">
@@ -105,7 +105,7 @@
                 <div class="grafico pizza">
                     <h4>Tipos de Vinhos Sendo Monitorados (%)</h4>
                     <div id="contem_grafico_redondo">
-                        <canvas id="porcentagem_tipos_vinhos" height=" "> </canvas>
+                        <canvas id="porcentagem_tipos_vinhos" height="300"></canvas>
                     </div>
                 </div>
                 <div class="grafico donut">
@@ -270,7 +270,7 @@
     // abrir as notificaoes
     function abrir_notificacoes() {
         if (notificacao_aberta == false) {
-            notificacao_caixa.style = "display: 1 "
+            notificacao_caixa.style.display = "block";
             notificacao_aberta = true
         } else {
             notificacao_caixa.style = "display: none "

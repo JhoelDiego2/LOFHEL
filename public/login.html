@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/login.css">
-    <div id="div_txt"></div>
+
 </head>
 
 <body>
-
+    <div id="div_txt"></div>
     <div class="container">
         <div class="left-content">
-            <div class="buttonback">
-                <a href="inicio.html"></a><img src="./assets/back button.png" alt="backbutton">
-            </div>
+            <a href="inicio.html">
+                <img src="./assets/back button.png" alt="backbutton">
+            </a>
+
             <div class="position-logotipo">
                 <img class="size-logotipo" src="./assets/logotipo01.png" alt="logotipo01">
             </div>
@@ -46,7 +47,7 @@
             </div>
 
             <div>
-                <p id="texto_email" >Email</p>
+                <p id="texto_email">Email</p>
                 <input type="text" id="ipt_email" oninput="digitando_login()" placeholder="E-mail"><br>
                 <span id="email_erro" class="escondido">Email invalido deve conter 1 (@) e 1 (.)</span>
             </div>
@@ -58,10 +59,10 @@
             </div>
             <div>
                 <button onclick="validar()">Entrar</button><br>
-                <span id="texto_botom" class="escondido" >Preencha todos os campos!</span>
+                <span id="texto_botom" class="escondido">Preencha todos os campos!</span>
             </div>
             <div style="padding-top:5vh;">
-                <span >
+                <span>
                     <p>Esqueceu a senha? <a class="txt-laranja" href="./redefinirsenha.html">Acesse aqui</a></p>
                 </span>
             </div>
@@ -102,10 +103,11 @@
         }
 
         for (let i = 0; i < email.length; i++) {
-            if (senha.includes('@')) {
-                i_arroba++
+            if (email[i] === '@') {
+                i_arroba++;
             }
-    }
+        }
+
 
 
         if (senha != senhauser) {
@@ -118,10 +120,11 @@
             senha_erro.style = "color:#1D1D1D"
         }
 
-        if (!email.includes("@") || !email.endsWith(".com" || i_arroba > 1)) {
-            email_erro.innerHTML = "Email invalido deve conter 1 (@) e 1 (.)"
-            email_erro.style = "color:red"
+        if (!email.includes("@") || !email.endsWith(".com") || i_arroba !== 1) {
+            email_erro.innerHTML = "Email inválido: deve conter apenas um '@' e terminar com '.com'";
+            email_erro.style = "color:red";
         }
+
 
         if (senha == "") {
             senha_erro.style = "color:red"
@@ -132,7 +135,7 @@
         if (email == "") {
             email_erro.style = "color:red"
             email_erro.innerHTML = 'Preencha o campo e-mail'
-     
+
 
         }
         if (temespaco_email) {
@@ -140,15 +143,15 @@
             email_erro.style = "color:red"
         }
         if (temespaco_senha) {
-            senha_erro.innerHTML = "'Erro... Senha não deve ter espaços"
+            senha_erro.innerHTML = "Erro... Senha não deve ter espaços"
             senha_erro.style = "color:red"
         }
         if (senha === "" && email === "") {
             texto_botom.style = "color:red"
             senha_erro.style = "color:#1D1D1D"
             email_erro.style = "color:#1D1D1D"
-        }else{
-                        texto_botom.style = "color:#1D1D1D"
+        } else {
+            texto_botom.style = "color:#1D1D1D"
         }
 
 
