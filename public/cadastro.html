@@ -224,7 +224,7 @@
             var contandor_arroba = 0
             // verificar se tem mais de um @ 
             for (let i = 0; i < email.length; i++) {
-                if (eamil.includes('@')) {
+                if (email.includes('@')) {
                     contandor_arroba++
 
                 }
@@ -292,12 +292,12 @@
 
             if (confirmarsenha === "") {
                 alert('Preencha o campo confirmar senha');
-                senha_erro.style = "display:flex"
-                senha_erro.innerHTML = "Preencha o campo senha"
+                conf_senha_erro.style = "display:flex"
+                conf_senha_erro.innerHTML = "Preencha o campo senha"
             } else if (confirmarsenha != senha) {
                 alert('Erro... Senhas estão diferentes');
-                senha_erro.style = "display:flex"
-                senha_erro.innerHTML = "Preencha o campo senha"
+                conf_senha_erro.style = "display:flex"
+                conf_senha_erro.innerHTML = "Preencha o campo senha"
             }
 
             if (validado) {

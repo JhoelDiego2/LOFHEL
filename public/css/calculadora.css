@@ -1,0 +1,152 @@
+
+#main_calculadora .cabecalho {
+    background: url('../assets/fundo_calculadora.png') ;
+    height: 70vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+#main_calculadora .cabecalho h1 {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+#main_calculadora .conteudo {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+#main_calculadora .conteudo h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#main_calculadora .descricao {
+    font-size: 1.4rem;
+   padding-bottom: 8vh;
+    color: #444;
+    padding-top: 2vh;
+}
+
+#main_calculadora .formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 6vh;
+    padding-left: 2vw;
+}
+
+#main_calculadora .campo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1vh;
+    
+}
+
+#main_calculadora .campo label {
+    color:#5c1010;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+#main_calculadora .caixaIPT {
+    border: 1px solid #ccc;
+    padding: 25px;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    width: 90vw;
+    text-align: center;
+}
+
+#main_calculadora input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #ffffff;
+    border-radius: 5px;
+    font-size: 15px;
+    outline: none;
+    border: solid 1px rgb(206, 206, 206);
+}
+
+#main_calculadora .botao {
+    background-color: #5c1010;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    padding: 2.4vh 2vw;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+#main_calculadora .botao:hover {
+    background-color: #8a0505;
+}
+
+#divTxt {
+    margin-top: 30px;
+    text-align: left;
+}
+
+
+
+#main_calculadora .conteudo h2{
+    font-size: 3rem;
+    text-align: center;
+    width: 50vw;
+}
+.dois-lados{
+    display: flex;
+    justify-content: center;
+    gap: 6vw;
+}
+.resultados{
+    width: 40%;
+    text-align: start;
+}
+.resultados .vinho{
+    color: #5c1010;
+    font-weight: 600;   
+}
+#texto_acima_botom{
+    font-weight: 400;
+}
+
+#main_calculadora .explicacao {
+    margin-top: 4vh;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.explicacao p{
+    width: 70%;
+}
+.meio{
+    min-width: 1px;
+    min-height: 20vh;
+    background-color: #5c1010;
+}
+.camp_vaz{
+    color: #ff0000;
+    letter-spacing: 2px;
+    display: none;
+}

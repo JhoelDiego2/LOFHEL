@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira Lofhel</title>
+    <link rel="stylesheet" href="css/inicio-definitivo.css">
+    <link rel="stylesheet" href="css/calculadora.css">
+</head>
+
+<body>
+    <header id="cabecalho">
+        <nav class="nav">
+            <div class="div_logo">
+                <a href="#cabecalho"> <img src="../public/assets/Sem%20título-5%20(3).png" alt="logotipo_lofhel"
+                        id="logotipo"></a>
+            </div>
+            <div class="nav-list1">
+                <a href="inicio.html">
+                    <p>Inicio </p>
+                </a>
+                <a src="sobre.html">
+                    <p>Sobre Nós </p>
+                </a>
+                <a href="vinhos.html">
+                    <p>Sobre Vinhos </p>
+                </a>
+                <a href="calculadora.html">
+                    <p style="border-bottom:3px solid white; color: white; font-weight: 800;"> Simulador Financieiro</p>
+                </a>
+            </div>
+            <div class="nav-list2">
+                <a href="cadastro.html">
+                    <p id="cadastre-se">Cadastre-se</p>
+                </a>
+                <a href="login.html">
+                    <p id="boton">ENTRAR</p>
+                </a></li>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <main id="main_calculadora">
+
+
+
+
+        <div class="cabecalho">
+            <h1>CALCULADORA FINANCEIRA</h1>
+        </div>
+
+        <div class="conteudo">
+            <h2 class="titulo">Calculadora Financeira Lofhel</h2>
+            <div class="caixaIPT">
+                <p class="descricao">
+                    Otimize seus resultados e fortaleça seu negócio!<br>
+                    Descubra quanto da sua produção pode ser preservado com o monitoramento eficaz de temperatura e
+                    umidade
+                    da
+                    Lofhel.<br>
+                    Insira seus dados e veja como nossa solução pode reduzir perdas e elevar a qualidade dos seus
+                    vinhos. <span id="meio">|</span>
+                </p>
+                <div class="dois-lados">
+                    <div class="formulario">
+                        <div class="campo">
+                            <label for="dadoNome">Informe seu nome:</label>
+                            <input id="dadoNome">
+                            <span id="nome_vazio" class="camp_vaz">Digite seu nome</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="iptGarrafas">Total de garrafas produzidas por mês:</label>
+                            <input id="iptGarrafas" type="number">
+                            <span id="garrafa_vazio" class="camp_vaz">Digite a quantidade de garrafas</span>
+
+                        </div>
+
+                        <div class="campo">
+                            <label for="iptPreco">Preço médio por garrafa (R$):</label>
+                            <input id="iptPreco" type="number">
+                            <span id="preco_vazio" class="camp_vaz">Digite o preço médio da garrafa</span>
+
+                        </div>
+
+                        <p id="texto_acima_botom">Descubra agora quantas perdas sua viníco<span>l</span>a pode evitar.
+                            Clique em simular!
+                        </p>
+                        <button class="botao" onclick="mostrar()">Simular</button>
+                    </div>
+                    <div class="meio"></div>
+                    <div id="div_text" class="resultados">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="explicacao">
+                <p>
+                    A Calculadora Financeira Lofhel foi desenvolvida para ajudar vinícolas a estimar e reduzir perdas
+                    financeiras causadas pela falta de controle adequado de temperatura e umidade. Com base nos dados
+                    fornecidos,
+                    a ferramenta simula o impacto dessas variáveis, indicando quantas garrafas poderiam ser economizadas
+                    e a
+                    economia
+                    gerada ao longo do tempo.</p>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="column-1">
+            <a href="inicio.html"> <img src="../public/assets/Sem%20título-5%20(3).png" alt="logotipo_lofhel"
+                    style="padding-left: 1rem;margin-top: -3rem;"></a>
+            <p style="margin-left: 1.7rem">
+                Na LOFHEL, acreditamos que um grande vinho merece um armazenamento perfeito. Tecnologia precisa, paixão
+                inigualável.
+            </p><br>
+            <div id="redes">
+                <img src="../public/assets/Vector.png" alt="whatsapp">
+                <img src="../public/assets/Group%2050.png" alt="facebook">
+                <img src="../public/assets/Group%2051.png" alt="instagram">
+            </div>
+        </div>
+        <div class="column-2">
+            <div>
+                <ul>
+                    <li><a href="inicio.html">Inicio </a></li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <li><a href="sobre.html">Sobre Nós</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <li><a href="vinhos.html">Sobre Vinhos </a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <li><a href="calculadora.html">Simulador Financieiro</a></li>
+                </ul>
+            </div>
+            <p>© 2025 Lofhel. Todos os direitos reservados.</p>
+
+        </div>
+
+    </footer>
+</body>
+
+</html>
+<script>
+    /*
+    function mostrar() {
+        let nome = document.getElementById('dadoNome').value;
+        let garrafas = Number(document.getElementById('iptGarrafas').value);
+        let preco = Number(document.getElementById('iptPreco').value);
+
+        if (nome == "" || garrafas == 0 || preco == 0) {
+            alert("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        let perdaComum = garrafas * 0.27;
+        let perdaValor = perdaComum * preco;
+        let perdaLofhel = garrafas * 0.17;
+        let economiaMes = (perdaComum - perdaLofhel) * preco;
+        let economiaAno = economiaMes * 12;
+        let rendimento = economiaAno * (1 + 13.25 / 100);
+
+        document.getElementById('div_text').innerHTML = `
+        <strong>Olá, ${nome}!</strong><br><br>
+        Com a produção mensal de <b>${garrafas}</b> garrafas, sua vinícola pode estar perdendo cerca de <b>${perdaComum.toFixed(0)}</b> garrafas por mês (27%), o que representa R$ <b>${perdaValor.toFixed(2)}</b>.<br><br>
+        Com a Lofhel, essa perda seria reduzida para <b>${perdaLofhel.toFixed(0)}</b> garrafas, com economia mensal de <b>R$ ${economiaMes.toFixed(2)}</b>.<br><br>
+        A economia anual acumulada pode chegar a <b>R$ ${economiaAno.toFixed(2)}</b>, rendendo até <b>R$ ${rendimento.toFixed(2)}</b> se investido com rendimento de 13,25% ao ano.
+      `;
+    }
+*/
+    // Variáveis de perda sem o uso da solução
+    var garrafasPerdidasMes = 0;
+    var valorPerdidoMes = 0;
+    var valorPerdidoSem = 0;
+
+    // Variáveis de economia após o uso da solução
+    var garrafasEcoMes = 0;
+    var valorEcoMes = 0;
+    var valorEcoSem = 0;
+    var ecoTotalAno = 0;
+    var ecoTotalSem = 0;
+    var selic = 0;
+    var rendeAno = 0;
+
+    // Função do calculo do desperdicio sem a solução
+    function calcularDesp() {
+
+        // Calculo da perca = 27% ao mes
+        garrafasPerdidasMes = Number(iptGarrafas.value) * 0.27
+        valorPerdidoMes = garrafasPerdidasMes * Number(iptPreco.value)
+
+        // Calculo de perca Semestre
+        valorPerdidoSem = garrafasPerdidasMes * 6 * Number(iptPreco.value)
+    }
+
+    // função do calculo do desperdicio com a solução
+    function calcularEco() {
+        // Calculo da eco = 5% ao mes
+        garrafasEcoMes = Number(iptGarrafas.value) * 0.17
+        valorEcoMes = garrafasEcoMes * Number(iptPreco.value)
+
+        // Calculo de eco semestre
+        valorEcoSem = garrafasEcoMes * 6 * Number(iptPreco.value)
+
+        // Calculo do lucro utilizando nossa solução
+        ecoTotalAno = valorPerdidoSem * 2 - valorEcoSem * 2;
+        ecoTotalSem = valorPerdidoSem - valorEcoSem;
+    }
+
+    // função do calculo do rendimento anual do selic
+    function calcularSelic() {
+        selic = 13.25;
+        rendeAno = ecoTotalAno * (1 + (selic / 100));
+    }
+
+
+    // Função que  mostra os dados calculados pelas outras funções
+    function mostrar() {
+        var verificado = false
+        if (dadoNome.value == '') {
+            nome_vazio.style = "display:flex"
+        }else{nome_vazio.style="display:none"}
+        if (iptGarrafas.value == '') {
+            garrafa_vazio.style = "display:flex"
+
+        }else{garrafa_vazio.style="display:none"}
+        if (iptPreco.value == '') {
+            preco_vazio.style = "display:flex"
+        }else{preco_vazio.style="display:none"}
+
+        if (dadoNome.value != '' && iptGarrafas.value != '' && iptPreco.value != '') {
+            verificado = true
+        }
+
+        if (verificado == true) {
+
+
+            // Calcula o desperdicio via função
+            calcularDesp();
+
+            // Calcula a economia via função
+            calcularEco();
+
+            // Calcula o rendimento do selic
+            calcularSelic();
+
+            // Mostra mensagem na tela para o usuário
+            div_text.innerHTML =
+                `<b style="font-size: 1.5rem; font-weight: 800; color: #5c1010;"> Olá, ${dadoNome.value}!</b><br><br>
+                        <p style="font-size: 1.2rem;">
+                        🍷 Estima-se que, no mercado de <span class="vinho">vinhos,</span>haja uma perda <br> considerável de 27% nas 
+                        <span class="vinho">vinícolas</span> devido à falta de controle de <span class="vinho">temperatura e umidade.</span><br><br>
+                  
+                        📈 A cada ${iptGarrafas.value} garrafas produzidas, você pode <span class="vinho">perder mensalmente</span>,
+                         em média, um pouco mais de um <span class="vinho">quarto</span> desse total, o que equivale a 
+                         <span class="vinho">${garrafasPerdidasMes} garrafas</span>, resultando em um 
+                         <span class="vinho">prejuízo de R$ ${valorPerdidoMes.toFixed(2)}.</span><br><br>
+                  
+                        📉 Com <span class="vinho">nossos sensores</span>, essa perda diminuiria para apenas 
+                        <span class="vinho">${garrafasEcoMes.toFixed(2)} garrafas por mês</span>, reduzindo a perda para R$
+                         <span class="vinho">${valorEcoMes.toFixed(2)} mensais.</span> Nossa projeção é que as perdas mensais 
+                         comuns podem chegar a <span class="vinho">17%.</span><br><br>
+                  
+                        <b>💰<b style="font-size: 1.5rem; font-weight: 800; color: #5c1010;"> Economia estimada:</b><br>
+                        🔸 <span class="vinho">No semestre:</span> R$ ${ecoTotalSem.toFixed(2)}<br>
+                        🔸 <span class="vinho">No ano:</span> R$ ${ecoTotalAno.toFixed(2)}<br>
+                        🔸 <span class="vinho"><i></i>Rendimento aplicando a economia mensal na SELIC de 13,25% ao ano: R$ ${rendeAno.toFixed(2)}</span></b></div>
+                    </p>`
+        }
+    }
+
+
+
+
+
+
+
+</script>
