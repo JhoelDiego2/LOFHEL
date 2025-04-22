@@ -74,16 +74,16 @@
             </div>
 
         </div>
-        <div class="card-topo">
-            <div class="card pouco_texto">
+        <div class="card-topo" >
+            <div class="card pouco_texto"  >
                 <p>Total de armzaéns</p>
-                <h2>5</h2>
+                <h2 >5</h2>
             </div>
-            <div class="card">
+            <div class="card" style="background-color: rgb(231, 229, 123);">
                 <p>Armzaéns fora da faixa ideal</p>
                 <h2>2</h2>
             </div>
-            <div class="card pouco_texto">
+            <div class="card pouco_texto" style="background-color: rgb(192, 113, 113);">
                 <p>Alertas Ativos</p>
                 <h2>4</h2>
             </div>
@@ -118,11 +118,11 @@
                 <div class="grafico linha">
                     <h4>Variação da Temperatura Média (Últimos 30 dias)</h4>
                    
-                    <canvas id="variacao_temperatura_mensal" height="90rem"></canvas>
+                    <canvas id="variacao_temperatura_mensal" height="89rem"></canvas>
                 </div>
                 <div class="grafico linha">
-                    <h4>Variação da TUmidade Média (Últimos 30 dias)</h4>
-                    <canvas id="variacao_umidade_mensal" height="90rem"></canvas>
+                    <h4>Variação da Umidade Média (Últimos 30 dias)</h4>
+                    <canvas id="variacao_umidade_mensal" height="89rem"></canvas>
                 </div>
                 <!--
                 <div class="grafico barras">
@@ -134,9 +134,9 @@
             <div class="column-3">
                 <div class="grafico barras">
                     <h4>Alertas Ativos Em Cada Armazém</h4>
-                    <canvas id="ranking_grafico" height="240rem"></canvas>
+                    <canvas id="ranking_grafico" height="560rem"></canvas>
                 </div>
-                <div class="grafico barras" style="z-index:-10;" id="teste">
+                <div class="grafico barras" style="z-index:-10; display: none;" id="teste">
                     <h4>Tipos de Alertas Registrados (semana atual)</h4>
                     <canvas id="tipos_alerta" height="240rem"></canvas>
                 </div>
@@ -183,6 +183,9 @@
         var select = armazem_atual.value
         if (select == 'armazem1') {
             window.location.href = "deshbord-armazem1.html";
+        }
+        if (select == 'armazem3') {
+            window.location.href = "deshbord-armazem3.html";
 
         }
     }
@@ -261,8 +264,8 @@
             data: [60, 20, 20],
 
             backgroundColor: [
-                '#d5a6bd', // Vermelho 
-                '#741b47',  // Amarelo 
+                'rgb(158, 73, 99)', // Vermelho 
+                'rgb(189, 115, 137)',  // Amarelo 
                 '#4c1130', // Verde 
 
             ],
@@ -303,8 +306,8 @@
             label: 'status',
             data: [10, 1, 1],
             backgroundColor: [
-                '#d5a6bd', // Vermelho 
-                '#741b47',  // Amarelo 
+            'rgb(158, 73, 99)', // Vermelho 
+                'rgb(189, 115, 137)',  // Amarelo 
                 '#4c1130', // Verde 
             ],
             hoverOffset: 3
@@ -340,7 +343,7 @@
             labels: ['Armazém 1', 'Armazém 2', 'Armazém 3', 'Armazém 4', 'Armazém 5'],
             datasets: [{
                 label: 'Alertas Ativos',
-                data: [1, 0, 3, 0, 0],
+                data: [2, 0, 1, 0, 1],
                 backgroundColor:
                     '#4c1130',
 
@@ -421,8 +424,8 @@
 
 
             fill: true,
-            borderColor: '#c27ba0',
-            backgroundColor: '#d5a6bd',
+            borderColor: 'rgba(240, 248, 255, 0)',
+            backgroundColor: 'rgb(158, 73, 99',
             tension: 0.1
         },
         ]

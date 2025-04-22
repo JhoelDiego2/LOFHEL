@@ -49,10 +49,10 @@
 
                         <div class="column-1">
                             <select name="armazem" id="armazem_atual" onclick="trocar1()"">
-                                <option value="armazem1" ">Armazém1</option>
-                                <option value="geral">Geral</option>
-                                <option value="armazem2">Armazém2</option>
                                 <option value="armazem3">Armazém3</option>
+                                <option value="geral">Geral</option>
+                                <option value="armazem1" ">Armazém1</option>
+                                <option value="armazem2">Armazém2</option>
                                 <option value="armazem3">Armazém4</option>
                                 <option value="armazem3">Armazém5</option>
                             </select>
@@ -77,23 +77,23 @@
         <div class="card-topo">
             <div class="card pouco_texto" style="background-color: rgb(192, 113, 113);">
                 <p >Temperatura Atual</p>
-                <h2>12.8°C</h2>
+                <h2>2°C</h2>
             </div>
-            <div class="card pouco_texto" style="background-color: rgb(231, 229, 123);">
+            <div class="card pouco_texto" style="background-color: rgb(123, 231, 123); color: black;">
                 <p>Umidade Atual</p>
-                <h2>43%</h2>
+                <h2>50%</h2>
             </div>
             <div class="card pouco_texto" style="background-color: rgb(192, 113, 113);">
                 <p>Alertas Ativos</p>
-                <h2>2</h2>
+                <h2>1</h2>
             </div>
             <div class="card">
                 <p>Quantidade de sensores</p><br>
-                <h2>4</h2>
+                <h2>2</h2>
             </div>
             <div class="card">
                 <p>Total de alertas na semana</p>
-                <h2>5</h2>
+                <h2>3</h2>
             </div>
         </div>
         <!---->
@@ -146,35 +146,35 @@
                     <div class="temperatura ">
                         <div class="critico parametro" style="background-color: rgb(192, 113, 113); color:rgb(0, 0, 0)">
                             <p>Temperatura - Critica</p>
-                            <h2>13°C</h2>
+                            <h2>3°C</h2>
                             
                             <p>Umidade - Critica</p>
                             <h2>40%</h2>
                         </div>
                         <div class="alerta parametro" style="background-color: rgb(231, 229, 123); color: black;">
                             <p>Temperatura - Alerta</p>
-                            <h2>15°C</h2>
+                            <h2>4°C</h2>
                             <p class="pouco">Umidade - Alerta</p>
                             <h2>44%</h2>
         
                         </div>
                         <div class="ideal parametro" style="background-color: rgb(123, 231, 123); color: black;">
                             <p>Temperatura - Ideal</p>
-                            <h2>18°C</h2>
+                            <h2>5°C</h2>
                             <p class="pouco">Umidade - Ideal</p>
                             <h2>52.5%</h2>
         
                         </div>
                         <div class="alerta parametro"  style="background-color: rgb(231, 229, 123); color: black;">
                             <p>Temperatura - Alerta</p>
-                            <h2>21°C2</h2>
+                            <h2>6°C</h2>
                             <p class="pouco">Umidade - Alerta</p>
                             <h2>61%</h2>
         
                         </div>
                         <div class="critico parametro" style="background-color: rgb(192, 113, 113); color:rgb(0, 0, 0)">
                             <p>Temperatura - Critica</p>
-                            <h2>23°C</h2>
+                            <h2>7°C</h2>
                             <p>Umidade - Critica</p>
                             <h2>65%</h2>
         
@@ -263,11 +263,13 @@
             window.location.href = "deshbord.html";
 
         }
-        if (select == 'armazem3') {
-            window.location.href = "deshbord-armazem3.html";
+    
+        if (select == 'armazem1') {
+            window.location.href = "deshbord-armazem1.html";
 
         }
     }
+    
 
 
     var notificacao_aberta = false
@@ -331,18 +333,17 @@
     /*Primero declaramos a data e depois criamos o grafico usando algo parecido a um procedimento e depois plotamos no html*/
     const data_pizza = {
         labels: [
-            'Tinto Medio',
-            'Tinto Espumante',
-            'Fortificado'
+            'Branco Leve',
+            'Espumante',
         ],
         datasets: [{
             label: 'Tipo de vinho (%)',
-            data: [60, 20, 20],
+            data: [50, 50],
 
             backgroundColor: [
-            'rgb(158, 73, 99)', // Vermelho 
-                'rgb(189, 115, 137)',  // Amarelo 
+                'rgb(158, 73, 99)', // Vermelho 
                 '#4c1130', // Verde 
+                'rgb(189, 115, 137)',  // Amarelo 
 
             ],
             hoverOffset: 5
@@ -443,30 +444,30 @@
         datasets: [{
             label: 'Temperatura Média',
             data:
-                [14.5,
-                    14.3,
-                    14.1,
-                    14.4,
-                    14.7,
-                    15.0,
-                    14.7,
-                    14.4,
-                    14.8,
-                    14.5,
-                    14.3,
-                    14.1,
-                    14.4,
-                    14.7,
-                    15.0,
-                    14.8,
-                    14.5,
-                    14.3,
-                    14.1,
-                    14.7,
-                    14.7,
-                    14.7,
-                    14.7,
-                    14.4],
+                [4.2,
+                    4.1,
+                    4.0,
+                    4.1,
+                    4.0,
+                    4.0,
+                    4.0,
+                    3.9,
+                    3.9,
+                    3.8,
+                    3.7,
+                    3.5,
+                    3.7,
+                    3.8,
+                    3.9,
+                    4.0,
+                    4.0,
+                    4.0,
+                    3.5,
+                    3.1,
+                    3.1,
+                    3.1,
+                    3.0,
+                    2],
 
 
 
@@ -525,36 +526,36 @@
             label: 'Umidade Média',
             data:
                 [
-                    68,
-                    69,
-                    70,
-                    71,
-                    68,
-                    69,
-                    70,
-                    71,
-                    72,
-                    71,
-                    70,
-                    69,
-                    68,
-                    67,
-                    66,
-                    65,
-                    64,
-                    63,
-                    64,
-                    65,
-                    66,
-                    67,
-                    68,
-                    69,
-                    70,
-                    68,
-                    67,
-                    64,
-                    61,
-                    60
+                    58,
+                    59,
+                    60,
+                    59,
+                    58,
+                    59,
+                    60,
+                    59,
+                    58,
+                    59,
+                    57,
+                    59,
+                    58,
+                    57,
+                    56,
+                    55,
+                    54,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    50,
+                    58,
+                    59,
+                    50,
+                    50,
+                    50
                 ],
 
 

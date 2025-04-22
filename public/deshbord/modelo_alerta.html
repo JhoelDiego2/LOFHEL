@@ -8,6 +8,10 @@
 </head>
 <style>
     /*alerta-personalisado*/
+    a{
+        all: unset;
+        cursor: pointer;
+    }
     .alerta_lofhel {
         background-color: rgb(0, 0, 0);
         color: rgb(255, 255, 255);
@@ -22,57 +26,80 @@
         z-index: 10;
 
     }
-    .alerta_lofhel div{
+    .alerta_lofhel{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .alerta_lofhel div {
         display: flex;
         justify-content: space-around;
         align-items: center;
     }
-    #icone_fechar_alerta{
+    #icone_fechar_alerta {
         height: 4vh;
         position: relative;
-        bottom:3vh
+        bottom: 3vh;
+        padding-left: 20px;
     }
-    #logotipo_alerta{
+
+    #logotipo_alerta {
         position: relative;
         left: 1vw;
     }
-    #alerta_titulo{
+
+    #alerta_titulo {
         font-size: 2rem;
+        position: relative;
+        bottom: 5vh;
+        width: 19vw;
     }
-    #alerta_sub{
+
+    #alerta_sub {
         font-size: 1.4rem;
+        background-color: rgb(241, 241, 241);
+        color: black;
+        width: 10vw;
+        padding: 1vh 2vw;
+        border-radius: 10px;
+        position: relative;
+        bottom: 9vh;
     }
-    .div_fechar_alerta{
+
+    .div_fechar_alerta {
         min-height: 97vh;
         min-width: 98vw;
         z-index: 8;
     }
-    /*alerta-personalisado_fim*/
 
+    /*alerta-personalisado_fim*/
 </style>
 
 <body style="background-color:#1D232A">
-    <div class="div_fechar_alerta" onclick="fechar_alerta()" style="display: ">
+    <div class="div_fechar_alerta" onclick="fechar_alerta()" style="display: flex " id="div_fechar_alerta">
     </div>
-    <div class="alerta_lofhel" style="display: nne;" id="alerta_grupo3">
+    <div class="alerta_lofhel" style="display: none;" id="alerta_grupo3">
         <div>
             <img src="../deshbord/imagens-deshbord/logotipo01.png" id="logotipo_alerta">
-            <img
-                src="../deshbord/imagens-deshbord/chevron-back-circle.png" id="icone_fechar_alerta" alt="" onclick="fechar_alerta()">
+            <img src="../deshbord/imagens-deshbord/exit.png" id="icone_fechar_alerta" alt="" onclick="fechar_alerta()">
         </div>
         <p id="alerta_titulo">
-            Campos Vazios
+            Cadastro realizado com sucesso
         </p>
-        <p id="alerta_sub">
-            Porfavor prencher todos eles
-        </p>
+
         
+            <p id="alerta_sub"><a href="../login.html">
+                Faça o seu login</a>
+            </p>
+        
+
     </div>
 </body>
 
 </html>
 <script>
     function fechar_alerta() {
-        alerta_grupo3.style= "display:none"
+        alerta_grupo3.style = "display:none"
     }
 </script>

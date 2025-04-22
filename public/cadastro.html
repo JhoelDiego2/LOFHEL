@@ -9,7 +9,24 @@
 </head>
 
 <body>
+    <div class="div_fechar_alerta" onclick="fechar_alerta()" style="display: none " id="div_fechar_alerta">
+    </div>
+    <div class="alerta_lofhel" style="display: none;" id="alerta_grupo3">
+        <div>
+            <img src="../deshbord/imagens-deshbord/logotipo01.png" id="logotipo_alerta">
+            <img src="../deshbord/imagens-deshbord/exit.png" id="icone_fechar_alerta" alt="" onclick="fechar_alerta()">
+        </div>
+        <p id="alerta_titulo">
+            Cadastro realizado com sucesso
+        </p>
 
+        
+            <p id="alerta_sub"><a href="../login.html">
+                Faça o seu login</a>
+            </p>
+        
+
+    </div>
     <div class="container">
         <div class="left-content">
             <div class="buttonback">
@@ -152,7 +169,11 @@
         var temletra = false;
         var temletramaiscula = false;
         var temespaco = false;
-
+        
+        //if (user=="Jhoel") {
+         // div_fechar_alerta.style="display:flex"
+         //     alerta_grupo3.style="display:flex"
+        //   }
         // Validando campos que estão vazios
 
         if (user === "" && cnpj === "" && email === "" && senha === "" && confirmarsenha === "") {
@@ -224,9 +245,8 @@
             var contandor_arroba = 0
             // verificar se tem mais de um @ 
             for (let i = 0; i < email.length; i++) {
-                if (email.includes('@')) {
+                if (email[i].includes('@')) {
                     contandor_arroba++
-
                 }
             }
 
@@ -301,11 +321,16 @@
             }
 
             if (validado) {
-                alert('Cadastro realizado!')
+                div_fechar_alerta.style="display:flex"
+                alerta_grupo3.style="display:flex"
             }
 
         }
 
+    }
+    function fechar_alerta() {
+        alerta_grupo3.style = "display:none"
+        div_fechar_alerta.style="display:none"
     }
 
 
