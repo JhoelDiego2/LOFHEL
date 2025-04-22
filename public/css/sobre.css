@@ -50,15 +50,14 @@ a{
 }
 #cabecalho .nav {
     width: 100%;
-    height: 100px;
+    height: 12.3vh;
     position: fixed;
-    top: 0;
     background-color: #00000059;
     display: flex;
     justify-content: space-around;
-    gap: 0%;
+    gap: 10%;
     align-items: center;
-    z-index: 100;
+    z-index: 20;
     color: #F4F4F4;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(2px);
@@ -66,11 +65,13 @@ a{
 
 
 nav p {
-    height: 4vw;
+    height: 5vw;
+    margin-top: 2vh;
     align-items: center;
     display: flex;
     width: 7vw;
     justify-content: center;
+    text-align: center;
 }
 
 /*efeito quando o mouse passat na tag p para mudar a negrito, e agregar um border baixo, e uma transição*/
@@ -374,7 +375,6 @@ input{
   .cards-mvv {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 32px;
     padding: 2px 0;
   }
@@ -602,3 +602,40 @@ input{
   
   
 /*---------------------------------------fim pagina sobre vinhos*/
+
+
+
+.footer {
+    margin-top: 6rem;
+    background-color: #1E0F0F;
+    height: 300px;
+    display: flex;
+}
+.footer ul{
+    margin-top: 3rem;
+    color: white;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 23.6px;
+    letter-spacing: 1.5px;
+}
+.footer .column-2 p{
+    margin-top: 8rem;
+    text-align: end;
+    margin-right: 1rem;
+}
+.footer .column-1 p{
+    margin-top: -4rem;
+    font-size: 20px;
+    color: white;
+}
+.footer .column-1{
+    width: 40%;
+}
+.footer .column-2{
+    padding-left: 36rem;
+}
+#redes{
+    margin-left: 2rem;
+}

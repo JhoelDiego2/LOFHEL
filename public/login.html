@@ -14,10 +14,12 @@
     <div class="container">
         <div class="left-content">
             <div class="buttonback">
-                <a href="inicio.html"></a><img src="./assets/back button.png" alt="backbutton">
+                <a href="inicio.html"><img src="./assets/back button.png" alt="backbutton"></a>
             </div>
             <div class="position-logotipo">
+                <a href="inicio.html">
                 <img class="size-logotipo" src="./assets/logotipo01.png" alt="logotipo01">
+            </a>
             </div>
 
             <div class="title">
@@ -83,8 +85,8 @@
     function validar() {
         var email = ipt_email.value;
         var senha = ipt_senha.value;
-        var emailuser = 'lofhel@gmail.com';
-        var senhauser = 'l0fh3l';
+        var emailuser = 'fernanda@gmail.com';
+        var senhauser = 'Urubu100$';
         var temespaco_email = false;
         var temespaco_senha = false;
         var i_arroba = 0
@@ -150,7 +152,9 @@
         }else{
                         texto_botom.style = "color:#1D1D1D"
         }
-
+        if (email=="fernanda@gmail.com" && senha == "Urubu100$") {
+            window.location.href = "deshbord/deshbord.html";
+        }
 
         // alert('Seja bem-vindo')
 

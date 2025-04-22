@@ -481,5 +481,10 @@ input{
 #redes{
     margin-left: 2rem;
 }
+#imagem_umidade{
+    width: 60vw;
+    position: relative;
+    right: 4vw;
+}
 
 /*---------------------------------------fim pagina sobre vinhos*/
