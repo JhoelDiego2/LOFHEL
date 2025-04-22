@@ -9,7 +9,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
     <div class="div_fechar_alerta" onclick="fechar_alerta()" style="display: none " id="div_fechar_alerta">
     </div>
     <div class="alerta_lofhel" style="display: none;" id="alerta_grupo3">
@@ -21,15 +20,13 @@
             Cadastro realizado com sucesso
         </p>
 
-        
-            <p id="alerta_sub"><a href="../login.html">
+
+        <p id="alerta_sub"><a href="../login.html">
                 Faça o seu login</a>
-            </p>
-        
+        </p>
+
 
     </div>
-=======
->>>>>>> 34d7a78a936441212a51aaea0da42754664eb3ca
     <div class="container">
         <div class="left-content">
             <div class="buttonback">
@@ -81,7 +78,8 @@
 
                 <div>
                     <p id="texto_confirmarsenha">Confirmar Senha</p>
-                    <input type="password" id="ipt_confirmarsenha" placeholder="Confirmar Senha" oninput="digitando_cad()"><br>
+                    <input type="password" id="ipt_confirmarsenha" placeholder="Confirmar Senha"
+                        oninput="digitando_cad()"><br>
                     <span id="conf_senha_erro" style="display:none;">As senhas não coincidem</span>
                     <div id="recomendacao_senha">
                         <ul>
@@ -154,139 +152,111 @@
 
             if (!user || !cnpj || !email || !senha || !confirmarSenha) {
                 campos_vazios.style.display = "flex";
-                return;
-            }
-
-<<<<<<< HEAD
-
-
-
-    function registro() {
-        var user = ipt_user.value;
-        var cnpj = ipt_cnpj.value;
-        var email = ipt_email.value;
-        var senha = ipt_senha.value;
-        var confirmarsenha = ipt_confirmarsenha.value;
-        var validado = true;
-        var temnumero = false;
-        var temletra = false;
-        var temletramaiscula = false;
-        var temespaco = false;
-        
-        //if (user=="Jhoel") {
-         // div_fechar_alerta.style="display:flex"
-         //     alerta_grupo3.style="display:flex"
-        //   }
-        // Validando campos que estão vazios
-
-        if (user === "" && cnpj === "" && email === "" && senha === "" && confirmarsenha === "") {
-            campos_vazios.style = "display:flex"
-        } else {
-
-            // Validando usuario
-
-            //  for (var i = 0; i < user.length; i++) {
-            //      if (user[i] === " ") {
-            //          temespaco = true;
-            //      }
-            // }
-
-            if (user === "") {
-                nome_erro.style = "display:flex"
-                validado = false;
-            } else if (user.length <= 3) {
-                nome_erro.innerHTML = 'Erro... Não pode ter menos de 3 caracteres no usuário';
-                nome_erro.style = "display:flex"
-=======
-            // Nome
-            if (user.length < 3) {
-                nome_erro.innerHTML = 'O nome deve ter pelo menos 3 caracteres.';
-                nome_erro.style.display = "flex";
->>>>>>> 34d7a78a936441212a51aaea0da42754664eb3ca
-                validado = false;
-            }
-
-            // CNPJ
-            const cnpjHasLetters = /[a-zA-Z]/.test(cnpj);
-            const cnpjHasSpecials = /[^0-9]/.test(cnpj);
-
-            if (cnpj.length !== 14 || cnpjHasLetters || cnpjHasSpecials) {
-                cnpj_erro.innerHTML = 'CNPJ deve ter 14 números e não conter letras ou símbolos.';
-                cnpj_erro.style.display = "flex";
-                validado = false;
-            }
-
-            // E-mail
-            const arrobas = [...email].filter(c => c === '@').length;
-            if (!email.includes('@') || arrobas > 1 || !email.endsWith('.com') || email.includes(' ')) {
-                email_erro.innerHTML = 'Email inválido. Ex: exemplo@email.com';
-                email_erro.style.display = "flex";
-                validado = false;
-            }
-
-            // Senha
-            const especiais = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~´`^~¨§ªº°";
-            let temMaiusculo = false, temMinusculo = false, temNumero = false, temEspecial = false;
-
-<<<<<<< HEAD
-            temespaco = false;
-
-            for (var i = 0; i < email.length; i++) {
-                if (email[i] === " ") {
-                    temespaco = true;
-                }
-            }
-            var contandor_arroba = 0
-            // verificar se tem mais de um @ 
-            for (let i = 0; i < email.length; i++) {
-                if (email[i].includes('@')) {
-                    contandor_arroba++
-                }
-=======
-            for (let i = 0; i < senha.length; i++) {
-                const c = senha[i];
-                if (c >= 'A' && c <= 'Z') temMaiusculo = true;
-                if (c >= 'a' && c <= 'z') temMinusculo = true;
-                if (!isNaN(c)) temNumero = true;
-                if (especiais.includes(c)) temEspecial = true;
->>>>>>> 34d7a78a936441212a51aaea0da42754664eb3ca
-            }
-
-            if (!temMaiusculo || !temMinusculo || !temNumero || !temEspecial || senha.length < 8) {
-                senha_erro.innerHTML = 'Senha deve conter: 1 maiúscula, 1 minúscula, 1 número, 1 símbolo e mínimo 8 caracteres.';
-                senha_erro.style.display = "flex";
-                validado = false;
-            }
-
-            // Confirmar senha
-            if (senha !== confirmarSenha) {
-                conf_senha_erro.innerHTML = "As senhas não coincidem.";
-                conf_senha_erro.style.display = "flex";
-                validado = false;
-            }
-
-            if (validado) {
-<<<<<<< HEAD
-                div_fechar_alerta.style="display:flex"
-                alerta_grupo3.style="display:flex"
-=======
-                alert("Cadastro realizado com sucesso!");
-                // Aqui você pode redirecionar ou limpar os campos
->>>>>>> 34d7a78a936441212a51aaea0da42754664eb3ca
             }
         }
+
+
+
+        function registro() {
+            var user = ipt_user.value;
+            var cnpj = ipt_cnpj.value;
+            var email = ipt_email.value;
+            var senha = ipt_senha.value;
+            var confirmarsenha = ipt_confirmarsenha.value;
+            var validado = true;
+            var temnumero = false;
+            var temletra = false;
+            var temletramaiscula = false;
+            var temespaco = false;
+
+            //if (user=="Jhoel") {
+            // div_fechar_alerta.style="display:flex"
+            //     alerta_grupo3.style="display:flex"
+            //   }
+            // Validando campos que estão vazios
+
+            if (user == "" && cnpj == "" && email == "" && senha == "" && confirmarsenha == "") {
+                campos_vazios.style = "display:flex"
+            } else {
+                // Validando usuario
+
+                //  for (var i = 0; i < user.length; i++) {
+                //      if (user[i] === " ") {
+                //          temespaco = true;
+                //      }
+                // }
+
+                if (user === "") {
+                    nome_erro.style = "display:flex"
+                    validado = false;
+                } else if (user.length <= 3) {
+                    nome_erro.innerHTML = 'Erro... Não pode ter menos de 3 caracteres no usuário';
+                    nome_erro.style = "display:flex"
+                    validado = false;
+                }
+
+                // CNPJ
+                const cnpjHasLetters = /[a-zA-Z]/.test(cnpj);
+                const cnpjHasSpecials = /[^0-9]/.test(cnpj);
+
+                if (cnpj.length !== 14 || cnpjHasLetters || cnpjHasSpecials) {
+                    cnpj_erro.innerHTML = 'CNPJ deve ter 14 números e não conter letras ou símbolos.';
+                    cnpj_erro.style.display = "flex";
+                    validado = false;
+                }
+
+                // E-mail
+                const arrobas = [...email].filter(c => c === '@').length;
+                if (!email.includes('@') || arrobas > 1 || !email.endsWith('.com') || email.includes(' ')) {
+                    email_erro.innerHTML = 'Email inválido. Ex: exemplo@gmail.com';
+                    email_erro.style.display = "flex";
+                    validado = false;
+                }
+
+                // Senha
+                const especiais = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~´`^~¨§ªº°";
+                let temMaiusculo = false, temMinusculo = false, temNumero = false, temEspecial = false;
+
+                temespaco = false;
+
+                for (var i = 0; i < email.length; i++) {
+                    if (email[i] === " ") {
+                        temespaco = true;
+                    }
+                }
+                var contandor_arroba = 0
+                // verificar se tem mais de um @ 
+                for (let i = 0; i < email.length; i++) {
+                    if (email[i].includes('@')) {
+                        contandor_arroba++
+                    }
+                }
+
+                if (!temMaiusculo || !temMinusculo || !temNumero || !temEspecial || senha.length < 8) {
+                    console.log(senha.length)
+                    console.log(temMaiusculo)
+
+                    senha_erro.innerHTML = 'Senha deve conter: 1 maiúscula, 1 minúscula, 1 número, 1 símbolo e mínimo 8 caracteres.';
+                    senha_erro.style.display = "flex";
+                    validado = false;
+                }
+
+                // Confirmar senha
+                if (senha !== confirmarSenha) {
+                    conf_senha_erro.innerHTML = "As senhas não coincidem.";
+                    conf_senha_erro.style.display = "flex";
+                    validado = false;
+                }
+
+                if (validado) {
+                    div_fechar_alerta.style = "display:flex"
+                    alerta_grupo3.style = "display:flex"
+                }
+            }
+        }
+        function fechar_alerta() {
+            alerta_grupo3.style = "display:none"
+            div_fechar_alerta.style = "display:none"
+        }
+
     </script>
-</body>
-
-<<<<<<< HEAD
-    }
-    function fechar_alerta() {
-        alerta_grupo3.style = "display:none"
-        div_fechar_alerta.style="display:none"
-    }
-
-
-</script>
-=======
-</html>
->>>>>>> 34d7a78a936441212a51aaea0da42754664eb3ca
