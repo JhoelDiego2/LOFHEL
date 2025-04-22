@@ -74,13 +74,13 @@
             </div>
 
         </div>
-        <div class="card-topo" >
-            <div class="card pouco_texto"  >
+        <div class="card-topo">
+            <div class="card pouco_texto">
                 <p>Total de armazéns</p>
-                <h2 >5</h2>
+                <h2>5</h2>
             </div>
             <div class="card" style="background-color: rgb(231, 229, 123);">
-                <p>Armzaéns fora da faixa ideal</p>
+                <p>Armazéns fora da faixa ideal</p>
                 <h2>2</h2>
             </div>
             <div class="card pouco_texto" style="background-color: rgb(192, 113, 113);">
@@ -117,7 +117,7 @@
 
                 <div class="grafico linha">
                     <h4>Variação da Temperatura Média (Últimos 30 dias)</h4>
-                   
+
                     <canvas id="variacao_temperatura_mensal" height="89rem"></canvas>
                 </div>
                 <div class="grafico linha">
@@ -306,7 +306,7 @@
             label: 'status',
             data: [10, 1, 1],
             backgroundColor: [
-            'rgb(158, 73, 99)', // Vermelho 
+                'rgb(158, 73, 99)', // Vermelho 
                 'rgb(189, 115, 137)',  // Amarelo 
                 '#4c1130', // Verde 
             ],
@@ -356,14 +356,14 @@
     let ideal = document.getElementById("ipt_umidade_ideal");
 
     const labels = [
-        '1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30',
+        '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
     ]
     const data_var_temp = {
         labels: labels,
         datasets: [{
             label: 'Temperatura Média',
             data:
-                [15.2,15.5,15.8,16.1,16.4,16.7,17.0,16.8,16.5,16.2,15.9,15.6,15.3,15.0,14.8,14.5,15.4,14.1,14.4,14.7,15.0,15.3,15.6,15.9,16.2,16.5,16.8,17.1,16.9,16.6],
+                [15.2, 15.5, 15.8, 16.1, 16.4, 16.7, 17.0, 16.8, 16.5, 16.2, 15.9, 15.6, 15.3, 15.0, 14.8, 14.5, 15.4, 14.1, 14.4, 14.7, 15.0, 15.3, 15.6, 15.9, 16.2, 16.5, 16.8, 17.1, 16.9, 16.6],
             fill: false,
             borderColor: '#551c36',
             backgroundColor: '#551c36',
@@ -380,7 +380,7 @@
 
     // grafico do tipo linha-------------------------------------------------------------
 
-    const labels_umidade = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30',
+    const labels_umidade = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
     ]
     const data_var_umidade = {
         labels: labels,
