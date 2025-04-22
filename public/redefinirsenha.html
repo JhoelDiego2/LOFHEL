@@ -47,38 +47,26 @@
 </html>
 <script>
     function validar() {
-        var email = ipt_email.value;
-        var codigoverificador = Number(ipt_codigo.value);
-        var novasenha = Number(ipt_novasenha.value);
-        var confirnovasenha = Number(ipt_confnovasenha.value);
-        var temespaco_email = false;
-        var temespaco_novasenha = false;
-        var temespaco_codigo = false;
+        var email = ipt_email.value.trim();
+        var codigoverificador = ipt_codigo.value.trim();
+        var novasenha = ipt_novasenha.value;
+        var confirnovasenha = ipt_confnovasenha.value;
 
-        for (var i = 0; i < email.length; i++) {
-            if (email[i] === " ") {
-                temespaco_email = true;
-            }
-        }
-        for (var i = 0; i < novasenha.length; i++) {
-            if (novasenha[i] === " ") {
-                temespaco_novasenha = true
-            }
-        }
+        var temespaco_email = email.includes(" ");
+        var temespaco_novasenha = novasenha.includes(" ");
 
         if (email === "" || codigoverificador === "" || novasenha === "" || confirnovasenha === "") {
-            alert('Preencha todos os campos')
+            alert('Preencha todos os campos');
         } else if (temespaco_email) {
-            alert('Erro... Email não deve ter espaços')
+            alert('Erro... Email não deve ter espaços');
         } else if (!email.includes("@") || !email.endsWith(".com")) {
-            alert('Email inválido!')
+            alert('Email inválido!');
         } else if (temespaco_novasenha) {
-            alert('Erro... Senha não deve ter espaços')
-        } else if (novasenha != confirnovasenha) {
-            alert('Erro... Senhas não coincidem!')
+            alert('Erro... Senha não deve ter espaços');
+        } else if (novasenha !== confirnovasenha) {
+            alert('Erro... Senhas não coincidem!');
         } else {
-            alert('Senha alterada com sucesso!')
+            alert('Senha alterada com sucesso!');
         }
     }
-
 </script>

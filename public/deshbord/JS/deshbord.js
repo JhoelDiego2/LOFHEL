@@ -31,9 +31,9 @@ function cadastrar_funcionario() {
     }
     // verificar se tem mais de um @ 
     for (let i = 0; i < email.length; i++) {
-        i_arroba++
-
+        if (email[i] == '@') i_arroba++
     }
+    
     if ((email.includes('@') && (i_arroba == 1)) && (email.includes('.')) && email_largura >= 7) {
         valido = true
     } else {
