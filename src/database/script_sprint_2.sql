@@ -1,8 +1,21 @@
--- drop database lofhel;
+-- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
+-- Você precisa executar os comandos no banco de dados para criar as tabelas,
+-- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo !!
+
+/*
+comandos para executar no mysql
+*/
+
 create database lofhel;
 use lofhel;
 
-create table tbEndereco (
+
+/*CREATE USER 'apiLofhelWeb'@'localhost' IDENTIFIED BY 'Urubu100';
+GRANT INSERT, UPDATE, SELECT ON lofhel.* TO 'apiLofhelWeb'@'localhost';
+FLUSH PRIVILEGES;*/
+
+
+create table Endereco (
     idEndereco int primary key,
     sigla char(2),
     cidade varchar(60),
@@ -11,9 +24,11 @@ create table tbEndereco (
     numero int,
     cep char(9),
     complemento varchar(80)
-);
+); 
 
-create table tbEmpresa (
+
+
+create table Empresa (
     idEmpresa int primary key,
     email varchar(100),
     senha varchar(30),
@@ -25,7 +40,12 @@ create table tbEmpresa (
     foreign key (fkMatriz) references tbEmpresa(idEmpresa)
 );
 
-create table tbContato (
+
+
+
+
+
+create table Contato (
     idContato varchar(16) primary key,
     email varchar(255),
     dtContato date,
@@ -33,7 +53,7 @@ create table tbContato (
     foreign key (empresa_idEmpresa) references tbEmpresa(idEmpresa)
 );
 
-create table tbFuncionarios (
+create table Funcionarios (
     idFuncionarios varchar(15) primary key,
     email varchar(255),
     password varchar(32),
@@ -45,7 +65,7 @@ create table tbFuncionarios (
 );
 
 
-create table tbVinicola (
+create table Vinicola (
     idVinicola int primary key,
     nome varchar(40),
     fkEmpresa int,
@@ -55,7 +75,7 @@ create table tbVinicola (
 );
 
 
-create table tbArmazem (
+create table Armazem (
     idArmazem int primary key,
     nome varchar(60),
     umi_max int,
@@ -66,14 +86,14 @@ create table tbArmazem (
     foreign key (fkVinicola) references tbVinicola(idVinicola)
 );
 
-create table tbGrupoVinho (
+create table GrupoVinho (
     idGrupo int primary key,
     classe varchar(40),
     temp_max float,
     temp_min float
 );
 
-create table tbTipoVinho (
+create table TipoVinho (
     idTipo int primary key,
     tipo varchar(40),
     fkGrupo int,
@@ -82,7 +102,7 @@ create table tbTipoVinho (
     foreign key (fkArmazem) references tbArmazem(idArmazem)
 );
 
-create table tbSensor (
+create table Sensor (
     idSensor int primary key,
     nomeSerial char(12),
     nomeLocal varchar(60),
@@ -90,7 +110,7 @@ create table tbSensor (
     foreign key (fkArmazem) references tbArmazem(idArmazem)
 );
 
-create table tbRegistro (
+create table Registro (
     idRegistro int primary key,
     temperatura float,
     umidade float,
@@ -99,7 +119,7 @@ create table tbRegistro (
     foreign key (fkSensor) references tbSensor(idSensor)
 );
 
-
+/*
 insert into tbEndereco values (1, 'SP', 'São Paulo', 'Rua dos Vinhos', 'Mooca', 123, '03000-000', 'Próximo à praça');
 insert into tbEmpresa values (1, 'empresa@loja.com', 'senha123', 'Loja de Vinhos', '12345678000199', now(), 'Vinhos SP', null);
 insert into tbContato values ('cont001', 'contato@loja.com', '2025-04-07', 1);
@@ -125,4 +145,4 @@ from tbTipoVinho t
 join tbGrupoVinho g on t.fkGrupo = g.idGrupo;
 
 
-alter table tbRegistro modify column idRegistro int auto_increment;
+alter table tbRegistro modify column idRegistro int auto_increment;*/
