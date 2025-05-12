@@ -11,7 +11,7 @@
 
 </head>
 
-<body style="overflow-y: scroll;">
+<body style="overflow-y: hidden;">
     <div class="side-bar">
         <div class="nav">
             <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
@@ -43,16 +43,16 @@
         <div class="header">
             <div class="topo">
                 <div class="column-1">
-                    <p id="title">Dashboard - <span id="nome_empresa">Vinícola Dom
+                    <p id="title">Análise de dados - <span id="nome_empresa">Vinícola Dom
                             Aurélio</span></p>
                     <div class="sub">
 
                         <div class="column-1">
                             <select name="armazem" id="armazem_atual" onclick="trocar1()"">
-                                <option value="armazem3">Armazém3</option>
+                                <option value=" armazem3">Armazém3</option>
                                 <option value="geral">Geral</option>
                                 <option value="armazem1" ">Armazém1</option>
-                                <option value="armazem2">Armazém2</option>
+                                <option value=" armazem2">Armazém2</option>
                                 <option value="armazem3">Armazém4</option>
                                 <option value="armazem3">Armazém5</option>
                             </select>
@@ -76,7 +76,7 @@
         </div>
         <div class="card-topo">
             <div class="card pouco_texto" style="background-color: rgb(192, 113, 113);">
-                <p >Temperatura Atual</p>
+                <p>Temperatura Atual</p>
                 <h2>2°C</h2>
             </div>
             <div class="card pouco_texto" style="background-color: rgb(123, 231, 123); color: black;">
@@ -121,9 +121,9 @@
             <div class="column-2">
                 <div class="grafico linha">
                     <h4>Variação na Temperatura nas Últimas 24h</h4>
-                   <!--<span>Faixa ideal <input type="checkbox" name="temp_ideal" id="ipt_temp_ideal"></span>
+                    <!--<span>Faixa ideal <input type="checkbox" name="temp_ideal" id="ipt_temp_ideal"></span>
                     <span>Faixa de alerta <input type="checkbox" name="temp_alerta" id="ipt_temp_alerta"></span>
-                    <span>Faixa critica <input type="checkbox" name="temp_critica" id="ipt_temp_critica"></span>--> 
+                    <span>Faixa critica <input type="checkbox" name="temp_critica" id="ipt_temp_critica"></span>-->
                     <canvas id="variacao_temperatura_atual" height="89rem"></canvas>
                 </div>
                 <div class="grafico linha">
@@ -143,41 +143,43 @@
             <div class="column-3">
 
                 <div class="card-parametros">
+                   <p style="font-size: 1rem;">  Parametros</p>
                     <div class="temperatura ">
-                        <div class="critico parametro" style="background-color: rgb(192, 113, 113); color:rgb(0, 0, 0)">
-                            <p>Temperatura - Critica</p>
-                            <h2>3°C</h2>
-                            
-                            <p>Umidade - Critica</p>
-                            <h2>40%</h2>
+                        <div class="critico parametro" syle="background-color: rgb(192, 113, 113); color:rgb(0, 0, 0)">
+                            <p>Situação Critica</p>
+
+                            <h2 style="color: red;">3°C</h2>
+                            <p>ou</p>
+                            <h2 style="color: red;">40%</h2>
                         </div>
-                        <div class="alerta parametro" style="background-color: rgb(231, 229, 123); color: black;">
-                            <p>Temperatura - Alerta</p>
-                            <h2>4°C</h2>
-                            <p class="pouco">Umidade - Alerta</p>
-                            <h2>44%</h2>
-        
+                        <div class="alerta parametro" stle="background-color: rgb(231, 229, 123); color: black;">
+                            <p>Situação Alerta</p>
+
+                            <h2 style="color: rgb(191, 191, 2);">4°C</h2>
+                            <p class="pouco"> ou </p>
+                            <h2 style="color: rgb(191, 191, 2);">44%</h2>
+
                         </div>
-                        <div class="ideal parametro" style="background-color: rgb(123, 231, 123); color: black;">
-                            <p>Temperatura - Ideal</p>
-                            <h2>5°C</h2>
-                            <p class="pouco">Umidade - Ideal</p>
-                            <h2>52.5%</h2>
-        
+                        <div class="ideal parametro" stye="background-color: rgb(123, 231, 123); color: black;">
+                            <p>Situação Ideal</p>
+                            <h2 style="color: green;">5°C</h2>
+                            <p class="pouco"> ou</p>
+                            <h2 style="color: green;">52.5%</h2>
+
                         </div>
-                        <div class="alerta parametro"  style="background-color: rgb(231, 229, 123); color: black;">
-                            <p>Temperatura - Alerta</p>
-                            <h2>6°C</h2>
-                            <p class="pouco">Umidade - Alerta</p>
-                            <h2>61%</h2>
-        
+                        <div class="alerta parametro" stle="background-color: rgb(231, 229, 123); color: black;">
+                            <p>Situação Alerta</p>
+                            <h2 style="color: rgb(191, 191, 2);">6°C</h2>
+                            <p class="pouco">ou</p>
+                            <h2 style="color: rgb(191, 191, 2);">61%</h2>
+
                         </div>
-                        <div class="critico parametro" style="background-color: rgb(192, 113, 113); color:rgb(0, 0, 0)">
-                            <p>Temperatura - Critica</p>
-                            <h2>7°C</h2>
-                            <p>Umidade - Critica</p>
-                            <h2>65%</h2>
-        
+                        <div class="critico parametro" stle="background-color: rgb(192, 113, 113); color:rgb(0, 0, 0)">
+                            <p>Situação Critica</p>
+                            <h2 style="color: red;">7°C</h2>
+                            <p>ou</p>
+                            <h2 style="color: red;">65%</h2>
+
                         </div>
                     </div>
                     <!--
@@ -208,9 +210,9 @@
         
                         </div>
                     </div>-->
-        
-        
-        
+
+
+
                 </div>
                 <div class="notificacoes" id="notificacao_caixa" style="display: none; z-index: 10;">
                     <h4>Ultimas notificacoes <span><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
@@ -263,13 +265,13 @@
             window.location.href = "deshbord.html";
 
         }
-    
+
         if (select == 'armazem1') {
             window.location.href = "deshbord-armazem1.html";
 
         }
     }
-    
+
 
 
     var notificacao_aberta = false
@@ -383,7 +385,7 @@
             label: 'status',
             data: [10, 0, 0],
             backgroundColor: [
-            'rgb(158, 73, 99)', // Vermelho 
+                'rgb(158, 73, 99)', // Vermelho 
                 'rgb(189, 115, 137)',  // Amarelo 
                 '#4c1130', // Verde 
             ],

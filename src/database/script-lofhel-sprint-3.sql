@@ -43,7 +43,6 @@ CREATE TABLE Permissao (
     idPermissao INT PRIMARY KEY AUTO_INCREMENT,
     codigo VARCHAR(50) NOT NULL UNIQUE
 );
-drop table permissao;
 -- Tabela de Cargo
 CREATE TABLE Cargo (
     idCargo INT PRIMARY KEY AUTO_INCREMENT,
@@ -193,7 +192,7 @@ select fkPermissao from CargoPermissao where fkCargo = 1;
 select f.idFuncionario, f.nomeFuncionario, f.email, f.telefone, f.fkCargo,
 		v.idVinicola, v.nomeFantasia, 
 			c.idCargo, c.nomeCargo,
-    GROUP_CONCAT(DISTINCT cp.fkPermissao ) AS permissoes
+    GROUP_CONCAT(DISTINCT cp.fkPermissao ) AS fkpermissoes
 		from vinicola v join funcionario f on v.idVinicola = f.fkVinicola
 			join cargo c on c.idCargo = f.fkCargo
 				join cargoPermissao cp on cp.fkCargo = c.idCargo
@@ -204,6 +203,8 @@ select f.idFuncionario, f.nomeFuncionario, f.email, f.telefone, f.fkCargo,
 -- deshbord 
 SELECT * FROM armazem  WHERE fkVinicola = 11;
 
--- 
-
+select * from funcionario;
+select * from vinicola;
+update funcionario set nomeFuncionario = 'Jhoel', email = 'jhoeldiego8gmail.com' where idFuncionario = 1;
+update vinicola set nomeFantasia = 'Vinicola SPTech', razaoSocial ='VinicolaS.A' where idVinicola = 11;
 

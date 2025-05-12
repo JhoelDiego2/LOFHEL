@@ -1,11 +1,18 @@
 // sessão
 function validarSessao() {
     var nome = sessionStorage.NOME_USUARIO;
+    var nomeFantasia = sessionStorage.NOME_FANTASIA_VINICOLA 
+    var nomeCargo = sessionStorage.NOME_CARGO_USUARIO 
+    var b_usuario = document.querySelectorAll(".b_usuario");
+    var b_nome_fantasia = document.getElementById("b_nome_fantasia");
+    var b_cargo = document.getElementById("b_cargo");
+ 
+    if ( nome != null || nomeFantasia != null || nomeCargo != null) {
+        b_usuario[0].innerHTML = nome;
+        b_usuario[1].innerHTML = nome;
+        b_nome_fantasia.innerHTML = nomeFantasia;
+        b_cargo.innerHTML = nomeCargo;
 
-    var b_usuario = document.getElementById("b_usuario");
-
-    if ( nome != null) {
-        b_usuario.innerHTML = nome;
     } else {
         alert("redicionamento")
        // window.location = "../login.html";

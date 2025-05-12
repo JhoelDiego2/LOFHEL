@@ -17,8 +17,16 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
                         res.json({
-                            idEmpresa: resultadoAutenticar[0].idEmpresa,
+                            idFuncionario: resultadoAutenticar[0].idFuncionario,
+                            nomeFuncionario: resultadoAutenticar[0].nomeFuncionario,
                             email: resultadoAutenticar[0].email,
+                            telefone: resultadoAutenticar[0].telefone,
+                            fkCargo: resultadoAutenticar[0].fkCargo,
+                            idVinicola: resultadoAutenticar[0].idVinicola,
+                            nomeFantasia: resultadoAutenticar[0].nomeFantasia,
+                            idCargo: resultadoAutenticar[0].idCargo,
+                            nomeCargo: resultadoAutenticar[0].nomeCargo,
+                            fkPermissoes: resultadoAutenticar[0].fkPermissoes,
                         });
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("usuario e/ou senha inválido(s)");

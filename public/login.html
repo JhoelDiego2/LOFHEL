@@ -165,12 +165,16 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.ID_USUARIO = json.idFuncionario;
                     sessionStorage.NOME_USUARIO = json.nomeFuncionario;
-                    sessionStorage.NOME_USUARIO = json.telefone;
-                    sessionStorage.NOME_USUARIO = json.telefone;
-                    sessionStorage.NOME_USUARIO = json.telefone;
-                    sessionStorage.NOME_USUARIO = json.telefone;
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.TELEFONE_USUARIO = json.telefone;
+                    sessionStorage.CARGO_USUARIO = json.fkCargo;
+                    sessionStorage.ID_VINICOLA = json.idVinicola;
+                    sessionStorage.NOME_FANTASIA_VINICOLA = json.nomeFantasia;
+                    sessionStorage.ID_CARGO_USUARIO = json.idCargo;
+                    sessionStorage.NOME_CARGO_USUARIO = json.nomeCargo;
+                    sessionStorage.PERMISSOES_USUARIO = json.fkPermissoes;
                     setTimeout(function () {
-                        window.location = "./dashboard/armazens.html";
+                        window.location = "./deshbord/deshbord.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

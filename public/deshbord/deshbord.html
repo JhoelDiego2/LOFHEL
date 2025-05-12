@@ -8,15 +8,16 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/geral.css">
     <link rel="stylesheet" href="css/deshbord.css">
-
+    <script src="../js/sessao.js"></script>
 </head>
 
-<body>
+<body onload="validarSessao()"">
     <div class="side-bar">
         <div class="nav">
             <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
 
-            <p>Olá Fernanda Caramico, seja bem vindo(a)</p>
+            <p>Olá, <span class="b_usuario">Fernanda Caramico </span>, seja bem vindo(a)
+            <span id="b_cargo"></span></p>
 
             <div class="nav-list">
                 <div id="atual">
@@ -43,7 +44,7 @@
         <div class="header">
             <div class="topo">
                 <div class="column-1">
-                    <p id="title">Dashboard - <span id="nome_empresa">Vinícola Dom
+                    <p id="title">Análise de dados  - <span id="b_nome_fantasia">Vinícola Dom
                             Aurélio</span></p>
                     <div class="sub">
 
@@ -66,7 +67,7 @@
                     <div>
                         <img src="../deshbord/imagens-deshbord/person-circle.png" alt="picture"
                             style="padding-right: 10px;">
-                        <p> Fernanda Caramico </p>
+                        <p class="b_usuario"> Fernanda Caramico </p>
                         <img src="../deshbord/imagens-deshbord/notifications.png" alt="" id="icone_notificacoes"
                             onclick="abrir_notificacoes()">
                     </div>
