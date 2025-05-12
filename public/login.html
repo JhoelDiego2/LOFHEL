@@ -10,16 +10,16 @@
 </head>
 
 <body>
-    
+
     <div class="container">
         <div class="left-content">
             <div class="buttonback">
-                <a href="inicio.html"><img src="./assets/back button.png" alt="backbutton"></a>
+                <a href="inicio.html"><img src="assets/back button.png" alt="backbutton"></a>
             </div>
             <div class="position-logotipo">
                 <a href="inicio.html">
-                <img class="size-logotipo" src="./assets/logotipo01.png" alt="logotipo01">
-            </a>
+                    <img class="size-logotipo" src="assets/logotipo01.png" alt="logotipo01">
+                </a>
             </div>
 
             <div class="title">
@@ -59,12 +59,12 @@
                 <span id="senha_erro" class="escondido">Senha invalido</span>
             </div>
             <div>
-                <button onclick="validar()">Entrar</button><br>
+                <button onclick="autenticar()">Entrar</button><br>
                 <span id="texto_botom" class="escondido">Preencha todos os campos!</span>
             </div>
             <div style="padding-top:5vh;">
                 <span>
-                    <p>Esqueceu a senha? <a class="txt-laranja" href="./redefinirsenha.html">Acesse aqui</a></p>
+                    <p>Esqueceu a senha? <a class="txt-laranja" href="redefinirsenha.html">Acesse aqui</a></p>
                 </span>
             </div>
 
@@ -82,14 +82,13 @@
         ipt_senha.value != '' ? (texto_senha.style = "color:#DEA976", ipt_senha.style = "    border-bottom: 1px solid #DEA976;") : null
     }
 
-    function validar() {
+    function autenticar() {
         var email = ipt_email.value;
         var senha = ipt_senha.value;
-        var emailuser = 'fernanda@gmail.com';
-        var senhauser = 'Urubu100$';
         var temespaco_email = false;
         var temespaco_senha = false;
         var i_arroba = 0
+        let usuario_valido = false
 
 
         for (var i = 0; i < email.length; i++) {
@@ -109,17 +108,6 @@
             }
         }
 
-
-
-        if (senha != senhauser) {
-            senha_erro.style = "color:red"
-            senha_erro.innerHTML = 'Erro... Senha incorreta!'
-        }
-        if (email != emailuser) {
-            email_erro.style = "color:red"
-            email_erro.innerHTML = 'Erro... Conta ainda não cadastrada'
-            senha_erro.style = "color:#1D1D1D"
-        }
 
         if (!email.includes("@") || !email.endsWith(".com") || i_arroba !== 1) {
             email_erro.innerHTML = "Email inválido: deve conter apenas um '@' e terminar com '.com'";
@@ -154,12 +142,58 @@
         } else {
             texto_botom.style = "color:#1D1D1D"
         }
-        if (email=="fernanda@gmail.com" && senha == "Urubu100$") {
-            window.location.href = "deshbord/deshbord.html";
-        }
+        console.log("FORM LOGIN: ", email);
+        console.log("FORM SENHA: ", senha);
 
-        // alert('Seja bem-vindo')
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: email,
+                senhaServer: senha
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
 
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.ID_USUARIO = json.idFuncionario;
+                    sessionStorage.NOME_USUARIO = json.nomeFuncionario;
+                    sessionStorage.NOME_USUARIO = json.telefone;
+                    sessionStorage.NOME_USUARIO = json.telefone;
+                    sessionStorage.NOME_USUARIO = json.telefone;
+                    sessionStorage.NOME_USUARIO = json.telefone;
+                    setTimeout(function () {
+                        window.location = "./dashboard/armazens.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                   // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
+
+    // alert('Seja bem-vindo')
+
+
 
 </script>

@@ -7,126 +7,203 @@ comandos para executar no mysql
 */
 
 
-CREATE DATABASE Lofhel;
-USE Lofhel
-
-/*CREATE USER 'apiLofhelWeb'@'localhost' IDENTIFIED BY 'Urubu100';
+CREATE USER 'apiLofhelWeb'@'localhost' IDENTIFIED BY 'Urubu100$';
 GRANT INSERT, UPDATE, SELECT ON lofhel.* TO 'apiLofhelWeb'@'localhost';
-FLUSH PRIVILEGES;*/ 
---tabela empresa
-CREATE TABLE Empresa (
-    idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
-    nomeRazaoSocial VARCHAR(50) NOT NULL,
-    nomeFantasia VARCHAR(60),
-    cnpj CHAR(14) NOT NULL UNIQUE,
-    senha VARCHAR (45)NOT NULL,
-    dataCadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-    fkMatriz INT, 
-    CONSTRAINT fkMatrizFiliar FOREIGN KEY (fkMatriz) REFERENCES Empresa(idEmpresa)
-) 
+FLUSH PRIVILEGES;
 
--- Tabela Endereco
+
+CREATE DATABASE Lofhel;
+USE Lofhel;
+show tables;
+
+
 CREATE TABLE Endereco (
     idEndereco INT PRIMARY KEY AUTO_INCREMENT,
     uf CHAR(2) NOT NULL,
     cidade VARCHAR(60) NOT NULL,
     logradouro VARCHAR(70) NOT NULL,
-    bairro VARCHAR(70),
-    numero VARCHAR(10),
-    cep VARCHAR(9),
-    complemento VARCHAR(80),
-) 
+    bairro VARCHAR(70) NOT NULL,
+    numero INT NOT NULL,
+    cep CHAR(9) NOT NULL,
+    complemento VARCHAR(80)
+);
 
--- Tabela Vinicola (Filial)
 CREATE TABLE Vinicola (
     idVinicola INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(40) NOT NULL,
-    fkEmpresa INT NOT NULL,
-    fkEndereco INT NOT NULL,
-    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
-    FOREIGN KEY (fkEndereco) REFERENCES Endereco(idEndereco)
+    nomeFantasia VARCHAR(60) NOT NULL,
+    razaoSocial VARCHAR(45) NOT NULL,
+    cnpj VARCHAR(15) NOT NULL UNIQUE,  
+	fkMatriz INT DEFAULT NULL,
+    fkEndereco INT DEFAULT NULL,
+    CONSTRAINT fkMatrizVinicola FOREIGN KEY (fkMatriz) REFERENCES Vinicola(idVinicola),
+    CONSTRAINT fkEnderecoVinicola FOREIGN KEY (fkEndereco) REFERENCES Endereco(idEndereco)
 );
-
--- Tabela Cargo nao concreticzada
- /*
+-- Tabela de Permissão
+CREATE TABLE Permissao (
+    idPermissao INT PRIMARY KEY AUTO_INCREMENT,
+    codigo VARCHAR(50) NOT NULL UNIQUE
+);
+drop table permissao;
+-- Tabela de Cargo
 CREATE TABLE Cargo (
     idCargo INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(45) NOT NULL UNIQUE,
-    descricao VARCHAR(200),
-    nivelAcesso ???
-);*/
-
-
--- Tabela Funcionario
-CREATE TABLE Funcionario (
-    idFuncionario INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    senha VARCHAR(45) NOT NULL,
-    fkEmpresa INT NOT NULL,
-    FOREIGN KEY (fkEmpresa) REFERENCES Vinicola(idVinicola)
+    nome VARCHAR(50) NOT NULL,           
+    fkVinicola INT NOT NULL,              
+    CONSTRAINT fkVinicolaCargo FOREIGN KEY (FKVinicola) REFERENCES Vinicola(idVinicola)
 );
 
--- Tabela Armazem a umidade poderia sair é um capmo fixo para todos
+CREATE TABLE CargoPermissao (
+    fkCargo INT,
+    fkPermissao INT NOT NULL,
+    CONSTRAINT pkComposta PRIMARY KEY (fkCargo, fkPermissao), 
+    CONSTRAINT fkCargoPermissao FOREIGN KEY (fkCargo) REFERENCES cargo(idCargo),
+    CONSTRAINT fkPermissaoCargo FOREIGN KEY (fkPermissao) REFERENCES Permissao(idPermissao)
+);
+
+-- Tabela de Funcionário
+CREATE TABLE Funcionario (
+    idFuncionario INT PRIMARY KEY AUTO_INCREMENT,
+    nomeFuncionario VARCHAR(100) NOT NULL,  
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(45) NOT NULL,         
+    fkRepresentante INT,               
+    telefone VARCHAR(20) NOT NULL,          
+    fkVinicola INT NOT NULL,
+    fkCargo INT,
+    CONSTRAINT fkRepresentanteFuncionario FOREIGN KEY (fkRepresentante) REFERENCES Funcionario(idFuncionario),
+    CONSTRAINT fkVinicolaFuncionario FOREIGN KEY (fkVinicola) REFERENCES Vinicola(idVinicola),
+    CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES cargo(idCargo)
+);
+
+
+
+
+-- Tabela de Armazém
 CREATE TABLE Armazem (
     idArmazem INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(60) NOT NULL,
-    descricao VARCHAR(200),
+    nomeArmazem VARCHAR(60) NOT NULL,    
+    descricao VARCHAR(100),
     umidadeMax INT NOT NULL,
     umidadeMin INT NOT NULL,
     fkVinicola INT NOT NULL,
-    FOREIGN KEY (fkVinicola) REFERENCES Vinicola(idVinicola)
+    CONSTRAINT fkVinicolaArmazem FOREIGN KEY (fkVinicola) REFERENCES Vinicola(idVinicola)
 );
 
--- Tabela GrupoVinho
+-- Tabela de Grupo de Vinho (corrigido de sensors)
 CREATE TABLE GrupoVinho (
     idGrupoVinho INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(40) NOT NULL UNIQUE,
+    classe VARCHAR(40) NOT NULL,
     temperaturaMax FLOAT NOT NULL,
-    temperaturaMin FLOAT NOT NULL,
+    temperaturaMin FLOAT NOT NULL
 );
 
--- Tabela TipoVinho
+-- Tabela de Tipo de Vinho
 CREATE TABLE TipoVinho (
     idTipoVinho INT AUTO_INCREMENT,
-    nome VARCHAR(40) NOT NULL,
-    descricao VARCHAR(200),
+    tipo VARCHAR(40) NOT NULL,
     fkGrupoVinho INT NOT NULL,
     fkArmazem INT NOT NULL,
-    CONSTRAINT pkCompostaVinho PRIMARY KEY (idTipoVinho, fkGrupoVinho, fkArmazem)
-    FOREIGN KEY (fkGrupoVinho) REFERENCES GrupoVinho(idGrupoVinho),
-    FOREIGN KEY (fkArmazem) REFERENCES Armazem(idArmazem)
+    CONSTRAINT pkCompostaTipo  PRIMARY KEY (idTipoVinho, fkGrupoVinho, fkArmazem),
+	CONSTRAINT fkGrupoTipo FOREIGN KEY (fkGrupoVinho) REFERENCES GrupoVinho(idGrupoVinho),
+    CONSTRAINT fkArmazemTipo FOREIGN KEY (fkArmazem) REFERENCES Armazem(idArmazem)
 );
 
--- Tabela Sensor
+-- Tabela de Sensor
 CREATE TABLE Sensor (
     idSensor INT PRIMARY KEY AUTO_INCREMENT,
-    codigoSerial CHAR(12) NOT NULL UNIQUE,
+    nomeSerial CHAR(12) NOT NULL UNIQUE, 
     fkArmazem INT NOT NULL,
-    FOREIGN KEY (fkArmazem) REFERENCES Armazem(idArmazem)
+    CONSTRAINT fkArmazemSensor FOREIGN KEY (fkArmazem) REFERENCES Armazem(idArmazem)
 );
 
--- Tabela RegistroSensor
-CREATE TABLE RegistroSensor (
+-- Tabela de Registro
+CREATE TABLE Registro (
     idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     temperatura FLOAT NOT NULL,
     umidade FLOAT NOT NULL,
-    dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FKSensor INT NOT NULL,
-    FOREIGN KEY (idSensor) REFERENCES Sensor(idSensor)
+    dataHora DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    fkSensor INT NOT NULL,
+   CONSTRAINT fkSensorRegistro  FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor)
 );
 
--- Tabela Alerta
-CREATE TABLE Alerta (
-    idAlerta INT PRIMARY KEY AUTO_INCREMENT,
-    tipo VARCHAR(30) NOT NULL,
-    severidade VARCHAR(10) NOT NULL,
-    mensagem VARCHAR(200) NOT NULL,
-    dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FKRegistro INT,
-    fkSensor INT NOT NULL,
-    fkVinicola INT NOT NULL,
-    FOREIGN KEY (fkRegistro) REFERENCES RegistroSensor(idRegistro),
-    FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor),
-    FOREIGN KEY (fkVinicola) REFERENCES Vinicola(idVinicola)
-);
+select * from Endereco;
+select * from Vinicola;
+select * from Armazem;
+select * from Cargo;
+select * from Permissao;
+select * from CargoPermissao;
+select * from Funcionario;
+select * from TipoVinho;
+select * from GrupoVinho;
+select * from Sensor;
+select * from Registro;
+alter table cargo rename column nome to nomeCargo;
+
+
+-- permissoes padroes do sistema por enquanto são esses
+insert into Permissao (codigo) values 
+('acessar_dashboard'),
+('gerenciar_armazens'), 
+('gerenciar_funcionarios'),
+('gerar_relatorios');
+
+
+-- estes inserts tem q ser feitos na hora do cadastro
+update funcionario set fkCargo = 1 where idFuncionario = 1;
+insert into cargo values
+	(default, 'Representante Legal', 11);
+    
+insert into cargoPermissao (fkCargo, fkPermissao) values
+	(1,1), 
+    (1,2), 
+    (1,3), 
+    (1,4);
+
+-- cadastro de vinicola e devido representate legal
+-- inserts e selects para a api no total 4 inserts na hora do cadastro ou seja 4 requisições  seguindo uma ordem para pegar FKs exemplo: var fkVinicola = resultadoVinicola.insertId;
+INSERT INTO Vinicola (nomeFantasia, razaoSocial, cnpj) VALUES ('${nomeFantasia}', '${razaoSocial}', '${cnpj}'); -- ja foi
+INSERT INTO Cargo (nome, fkVinicola) VALUES ('Representante Legal', '${fkVinicola}');
+INSERT INTO CargoPermissao (fkCargo, fkPermissao) VALUES 
+	('${fkCargo}', 1),
+	('${fkCargo}', 2),
+	('${fkCargo}', 3),
+	('${fkCargo}', 4);
+INSERT INTO Funcionario (nomeFuncionario, email,telefone, senha, fkVinicola, fkCargo) VALUES ('${nome}', '${email}', '${telefone}', '${senha}', '${fkVinicola}', '${fkCargo}'); -- completo ainda nao
+INSERT INTO Funcionario (nomeFuncionario, email,telefone, senha, fkVinicola) VALUES ('${nome}', '${email}', '${telefone}', '${senha}', '${fkVinicola}'); -- ja foi
+-- login sera q é melhor fazer um select com join ou fazer varios selects??
+-- com este select obtenho o necessario para o redirecionamento e o sessionstorage  e para pegar os armazens e assim pegar dados preciso da fkvinivola e guardarla para fazer outro sele
+select f.idFuncionario, f.nomeFuncionario, f.email, f.telefone, f.fkCargo,
+		v.idVinicola, v.nomeFantasia, 
+			c.idCargo, c.nomeCargo,
+				cp.fkPermissao
+		from vinicola v join funcionario f on v.idVinicola = f.fkVinicola
+			join cargo c on c.idCargo = f.fkCargo
+				join cargoPermissao cp on cp.fkCargo = c.idCargo
+		where email = 'aaaaaaaaa@gmail.com' and senha = 'Urubu100$'; -- nesse caso ele vai devolver varias linhas ai seria fazer um loop para armazenar as permissoes e depois fazer ifs
+        --    2°
+select f.idFuncionario, f.nomeFuncionario, f.email, f.telefone, f.fkCargo,
+		v.idVinicola, v.nomeFantasia, 
+			c.idCargo, c.nomeCargo
+		from vinicola v join funcionario f on v.idVinicola = f.fkVinicola
+			join cargo c on c.idCargo = f.fkCargo
+		where email = 'aaaaaaaaa@gmail.com' and senha = 'Urubu100$'; -- nesse caso tendo a id cargo vou fazer outro select
+select fkPermissao from CargoPermissao where fkCargo = 1;
+
+		-- 3 º usando group_concat mas ela nao passou 
+select f.idFuncionario, f.nomeFuncionario, f.email, f.telefone, f.fkCargo,
+		v.idVinicola, v.nomeFantasia, 
+			c.idCargo, c.nomeCargo,
+    GROUP_CONCAT(DISTINCT cp.fkPermissao ) AS permissoes
+		from vinicola v join funcionario f on v.idVinicola = f.fkVinicola
+			join cargo c on c.idCargo = f.fkCargo
+				join cargoPermissao cp on cp.fkCargo = c.idCargo
+		where email = 'aaaaaaaaa@gmail.com' and senha = 'Urubu100$'; -- aqui tenho tudo o
+--  WHERE email = '${email}' AND senha = '${senha}';
+
+-- agora dentro do site 
+-- deshbord 
+SELECT * FROM armazem  WHERE fkVinicola = 11;
+
+-- 
+
+

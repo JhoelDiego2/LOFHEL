@@ -13,15 +13,15 @@
     </div>
     <div class="alerta_lofhel" style="display: none;" id="alerta_grupo3">
         <div>
-            <img src="../deshbord/imagens-deshbord/logotipo01.png" id="logotipo_alerta">
-            <img src="../deshbord/imagens-deshbord/exit.png" id="icone_fechar_alerta" alt="" onclick="fechar_alerta()">
+            <img src="deshbord/imagens-deshbord/logotipo01.png" id="logotipo_alerta">
+            <img src="deshbord/imagens-deshbord/exit.png" id="icone_fechar_alerta" alt="" onclick="fechar_alerta()">
         </div>
         <p id="alerta_titulo">
             Cadastro realizado com sucesso
         </p>
 
 
-        <p id="alerta_sub"><a href="../login.html">
+        <p id="alerta_sub"><a href="login.html">
                 Faça o seu login</a>
         </p>
 
@@ -30,10 +30,10 @@
     <div class="container">
         <div class="left-content">
             <div class="buttonback">
-                <a href="inicio.html"><img src="./assets/back button.png" alt="backbutton"></a>
+                <a href="inicio.html"><img src="assets/back button.png" alt="backbutton"></a>
             </div>
             <div class="position-logotipo">
-                <a href="inicio.html"><img class="size-logotipo" src="./assets/logotipo01.png" alt="logotipo01"></a>
+                <a href="inicio.html"><img class="size-logotipo" src="assets/logotipo01.png" alt="logotipo01"></a>
             </div>
             <div class="title">
                 <span class="size-title">
@@ -47,40 +47,90 @@
             </div>
         </div>
 
-        <div class="right-content">
-            <div class="titulo-right">
-                <h3><b>Faça seu cadastro</b></h3>
+        <div class="direita">
+            <p class="titulo">Cadastre Sua Empresa</p>
+            <div class="linha">
+                <div></div>
+                <div onclick="proximaEtapa()"></div>
+                <div></div>
             </div>
-            <div class="inputs">
-                <div>
-                    <p id="texto_user">Nome</p>
-                    <input type="text" id="ipt_user" placeholder="Nome" oninput="digitando_cad()"><br>
-                    <span id="nome_erro" style="display:none;">Preencha o nome</span>
+            <!-- Etapa 1: Dados da Empresa -->
+            <div class="content">
+                <div class="etapa primeiro" style="display: noe;">
+                    <!-- Nome Fantasia -->
+                    <div>
+                        <img src="assets/svg/user.svg" alt="">
+                        <p id="texto_nome_fantasia">Nome Fantasia</p>
+                    </div>
+                    <input type="text" id="ipt_nome_fantasia" onclick="digitando_cad('nome_fantasia')">
+                    <span id="erro_nome_fantasia" style="display: none;">Preencha o nome fantasia</span>
+
+                    <!-- Razão Social -->
+                    <div>
+                        <img src="assets/svg/user.svg" alt="">
+                        <p id="texto_razao_social">Razão Social</p>
+                    </div>
+                    <input type="text" id="ipt_razao_social" onclick="digitando_cad('razao_social')">
+                    <span id="erro_razao_social" style="display: none;">Preencha a razão social</span>
+
+                    <!-- CNPJ -->
+                    <div>
+                        <img src="assets/svg/user.svg" alt="">
+                        <p id="texto_cnpj">CNPJ</p>
+                    </div>
+                    <input type="text" id="ipt_cnpj" onclick="digitando_cad('cnpj')">
+                    <span id="erro_cnpj" style="display: none;">CNPJ inválido</span>
+
+                    <button onclick="proximaEtapa()">PRÓXIMO</button>
+                    <p id="subtitulo">Já possui uma conta?
+                        <a href="login.html"> <span
+                                style="color: #DEA976; text-decoration: underline; justify-self: center;">Acesse
+                                aqui</span></a>
+                    </p>
                 </div>
 
-                <div>
-                    <p id="texto_cnpj">CNPJ</p>
-                    <input type="text" id="ipt_cnpj" placeholder="CNPJ" oninput="digitando_cad()"><br>
-                    <span id="cnpj_erro" style="display:none;">CNPJ inválido</span>
-                </div>
+                <!-- Etapa 2: Dados do Responsável -->
+                <div class="etapa segundo" style="display: none;">
 
-                <div>
-                    <p id="texto_email">E-mail</p>
-                    <input type="text" id="ipt_email" placeholder="Email" oninput="digitando_cad()"><br>
-                    <span id="email_erro" style="display:none;">E-mail inválido</span>
-                </div>
+                    <div>
+                        <img src="assets/svg/user.svg" alt="">
+                        <p id="texto_nome">Nome do Responsável</p>
+                    </div>
+                    <input type="text" id="ipt_nome" onclick="digitando_cad('nome')">
+                    <span id="erro_nome" style="display: none;">Preencha o nome</span>
 
-                <div>
-                    <p id="texto_senha">Senha</p>
-                    <input type="password" id="ipt_senha" placeholder="Senha" oninput="digitando_cad()"><br>
-                    <span id="senha_erro" style="display:none;">Senha inválida</span>
-                </div>
+                    <!-- Email -->
+                    <div>
+                        <img src="assets/svg/mail.svg" alt="">
+                        <p id="texto_email">Email</p>
+                    </div>
+                    <input type="text" id="ipt_email" onclick="digitando_cad('email')">
+                    <span id="erro_email" style="display: none;">E-mail inválido deve conter: 1(@) e 1(.)</span>
 
-                <div>
-                    <p id="texto_confirmarsenha">Confirmar Senha</p>
-                    <input type="password" id="ipt_confirmarsenha" placeholder="Confirmar Senha"
-                        oninput="digitando_cad()"><br>
-                    <span id="conf_senha_erro" style="display:none;">As senhas não coincidem</span>
+                    <!-- Telefone -->
+                    <div>
+                        <img src="assets/svg/mail.svg" alt="">
+                        <p id="texto_telefone">Telefone</p>
+                    </div>
+                    <input type="text" id="ipt_telefone" onclick="digitando_cad('telefone')">
+                    <span id="erro_telefone" style="display: none;">Telefone inválido (11 dígitos)</span>
+
+                    <!-- Senha -->
+                    <div>
+                        <img src="assets/svg/lock-closed.svg" alt="">
+                        <p id="texto_senha">Senha</p>
+                    </div>
+                    <input type="password" id="ipt_senha" onclick="digitando_cad('senha')" oninput="digitando_senha()">
+                    <span id="erro_senha" style="display: none;">Senha inválida</span>
+
+                    <!-- Confirmar Senha -->
+                    <div>
+                        <img src="assets/svg/lock-closed.svg" alt="">
+                        <p id="texto_confirmar_senha">Confirmar Senha</p>
+                    </div>
+                    <input type="password" id="ipt_confirmar_senha" onclick="digitando_cad('confirmar_senha')">
+                    <span id="erro_confirmar_senha" style="display: none;">As senhas não coincidem</span>
+                    
                     <div id="recomendacao_senha">
                         <ul>
                             <li id="minusculo">Um caractere minúsculo </li>
@@ -92,43 +142,44 @@
                             <li id="minimo">Mínimo de 8 caracteres</li>
                         </ul>
                     </div>
+                    <button onclick="cadastrar()">CADASTRAR-SE</button>
+                    <span id="campos_vazios" style="display: none;">campos_vazios</span>
+                    <p id="subtitulo">Já possui uma conta?
+                        <a href="login.html"><span style="color: #658a87; text-decoration: underline;">Acesse
+                                aqui</span></a>
+                    </p>
                 </div>
-            </div>
-            <div id="botom_esqueci">
-                <button onclick="registro()">Cadastrar</button>
-                <span id="campos_vazios" style="display:none;">Preencha todos os campos!</span>
-                <span style="display: flex; color: white;">
-                    <p>Já possui uma conta? <a class="txt-laranja" href="login.html">Faça login</a></p>
-                </span>
             </div>
         </div>
     </div>
 
     <script>
-        function digitando_cad() {
-            // Resetando estilos de erro
-            nome_erro.style.display = "none";
-            cnpj_erro.style.display = "none";
-            email_erro.style.display = "none";
-            senha_erro.style.display = "none";
-            conf_senha_erro.style.display = "none";
-            campos_vazios.style.display = "none";
+        function digitando_cad(x) {
+            var texto_x = document.getElementById(`texto_${x}`);
+            var ipt_x = document.getElementById(`ipt_${x}`);
+            texto_x.style.color = "#DEA976";
+            texto_x.style.position = "relative";
+            texto_x.style.transform = "translate(-2vw, -3.2vh)";
+            texto_x.style.transition = "0.7s ease-in-out";
+            ipt_x.style.borderBottom = "solid 3px #DEA976;";
+        }
+        function proximaEtapa() {
+            var primeiro = document.querySelector('.primeiro')
+            var segundo = document.querySelector('.segundo')
+            primeiro.style.display = "none"
+            segundo.style.display = "flex"
+        }
 
-            // Estilizando inputs preenchidos
-            ipt_user.value !== '' && (texto_user.style.color = "#DEA976", ipt_user.style.borderBottom = "1px solid #DEA976");
-            ipt_cnpj.value !== '' && (texto_cnpj.style.color = "#DEA976", ipt_cnpj.style.borderBottom = "1px solid #DEA976");
-            ipt_email.value !== '' && (texto_email.style.color = "#DEA976", ipt_email.style.borderBottom = "1px solid #DEA976");
-            ipt_senha.value !== '' && (texto_senha.style.color = "#DEA976", ipt_senha.style.borderBottom = "1px solid #DEA976", recomendacao_senha.style.color = "grey");
-            ipt_confirmarsenha.value !== '' && (texto_confirmarsenha.style.color = "#DEA976", ipt_confirmarsenha.style.borderBottom = "1px solid #DEA976");
 
+        function digitando_senha() {
             // Verificação dos requisitos da senha
-            const senha = ipt_senha.value;
-            const especiais = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~´`^~¨§ªº°";
+            var senha = ipt_senha.value;
+            var especiais = "!#$%&'()*+,-:;<=>?@[]^_`{|}~´`^~¨§ªº°";
 
             let temMaiusculo = false, temMinusculo = false, temNumero = false, temEspecial = false;
 
             for (let i = 0; i < senha.length; i++) {
-                const c = senha[i];
+                var c = senha[i];
                 if (c >= 'A' && c <= 'Z') temMaiusculo = true;
                 if (c >= 'a' && c <= 'z') temMinusculo = true;
                 if (!isNaN(c)) temNumero = true;
@@ -142,118 +193,146 @@
             minimo.style.color = senha.length >= 8 ? "#DEA976" : "grey";
         }
 
-        function registro() {
-            const user = ipt_user.value.trim();
-            const cnpj = ipt_cnpj.value.trim();
-            const email = ipt_email.value.trim();
-            const senha = ipt_senha.value;
-            const confirmarSenha = ipt_confirmarsenha.value;
-            let validado = true;
-
-            if (!user || !cnpj || !email || !senha || !confirmarSenha) {
-                campos_vazios.style.display = "flex";
-            }
-        }
+        function cadastrar() {
+                        // falta atualizar
+            var nome_fantasia = document.getElementById('ipt_nome_fantasia').value
+            var razao_social = document.getElementById('ipt_razao_social').value
+            var cnpj = document.getElementById('ipt_cnpj').value;
 
 
+            var nome = document.getElementById('ipt_nome').value;
+            var email = document.getElementById('ipt_email').value;
+            var telefone = document.getElementById('ipt_telefone').value;
+            var senha = document.getElementById('ipt_senha').value;
+            var confirmarsenha = document.getElementById('ipt_confirmar_senha').value;
 
-        function registro() {
-            var user = ipt_user.value;
-            var cnpj = ipt_cnpj.value;
-            var email = ipt_email.value;
-            var senha = ipt_senha.value;
-            var confirmarsenha = ipt_confirmarsenha.value;
+
+
+            var nome_fantasia = document.getElementById('ipt_nome_fantasia').value
+            var nome_fantasia = document.getElementById('ipt_nome_fantasia').value
+             
             var validado = true;
-            var temnumero = false;
-            var temletra = false;
-            var temletramaiscula = false;
-            var temespaco = false;
+            var experimento = true
+            // Mensagens de erro
+            var nome_erro = document.getElementById('erro_nome');
+            var cnpj_erro = document.getElementById('erro_cnpj');
+            var email_erro = document.getElementById('erro_email');
+            var senha_erro = document.getElementById('erro_senha');
+            var conf_senha_erro = document.getElementById('erro_confirmar_senha');
 
-            //if (user=="Jhoel") {
-            // div_fechar_alerta.style="display:flex"
-            //     alerta_grupo3.style="display:flex"
-            //   }
-            // Validando campos que estão vazios
-
-            if (user == "" && cnpj == "" && email == "" && senha == "" && confirmarsenha == "") {
-                campos_vazios.style = "display:flex"
-            } else {
-                // Validando usuario
-
-                //  for (var i = 0; i < user.length; i++) {
-                //      if (user[i] === " ") {
-                //          temespaco = true;
-                //      }
-                // }
-
-                if (user === "") {
-                    nome_erro.style = "display:flex"
-                    validado = false;
-                } else if (user.length <= 3) {
-                    nome_erro.innerHTML = 'Erro... Não pode ter menos de 3 caracteres no usuário';
-                    nome_erro.style = "display:flex"
-                    validado = false;
-                }
-
-                // CNPJ
-                const cnpjHasLetters = /[a-zA-Z]/.test(cnpj);
-                const cnpjHasSpecials = /[^0-9]/.test(cnpj);
-
-                if (cnpj.length !== 14 || cnpjHasLetters || cnpjHasSpecials) {
-                    cnpj_erro.innerHTML = 'CNPJ deve ter 14 números e não conter letras ou símbolos.';
-                    cnpj_erro.style.display = "flex";
-                    validado = false;
-                }
-
-                // E-mail
-                const arrobas = [...email].filter(c => c === '@').length;
-                if (!email.includes('@') || arrobas > 1 || !email.endsWith('.com') || email.includes(' ')) {
-                    email_erro.innerHTML = 'Email inválido. Ex: exemplo@gmail.com';
-                    email_erro.style.display = "flex";
-                    validado = false;
-                }
-
-                // Senha
-                const especiais = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~´`^~¨§ªº°";
-                let temMaiusculo = false, temMinusculo = false, temNumero = false, temEspecial = false;
-
-                temespaco = false;
-
-                for (var i = 0; i < email.length; i++) {
-                    if (email[i] === " ") {
-                        temespaco = true;
-                    }
-                }
-                var contandor_arroba = 0
-                // verificar se tem mais de um @ 
-                for (let i = 0; i < email.length; i++) {
-                    if (email[i].includes('@')) {
-                        contandor_arroba++
-                    }
-                }
-
-                if (!temMaiusculo || !temMinusculo || !temNumero || !temEspecial || senha.length < 8) {
-                    console.log(senha.length)
-                    console.log(temMaiusculo)
-
-                    senha_erro.innerHTML = 'Senha deve conter: 1 maiúscula, 1 minúscula, 1 número, 1 símbolo e mínimo 8 caracteres.';
-                    senha_erro.style.display = "flex";
-                    validado = false;
-                }
-
-                // Confirmar senha
-                if (senha !== confirmarSenha) {
-                    conf_senha_erro.innerHTML = "As senhas não coincidem.";
-                    conf_senha_erro.style.display = "flex";
-                    validado = false;
-                }
-
-                if (validado) {
-                    div_fechar_alerta.style = "display:flex"
-                    alerta_grupo3.style = "display:flex"
-                }
+            // Verificar campos vazios
+            if (nome == "" || cnpj == "" || email == "" || senha == "" || confirmarsenha == "") {
+                campos_vazios.style = "display: flex";
+                validado = false;
             }
+
+            // Nome de usuário
+            if (nome === "") {
+                nome_erro.innerHTML = 'Preencha o nome de usuário';
+                nome_erro.style = "display: flex";
+                validado = false;
+            } else if (nome.length < 3) {
+                nome_erro.innerHTML = 'Erro... Não pode ter menos de 3 caracteres no usuário';
+                nome_erro.style = "display: flex";
+                validado = false;
+            }
+
+            // Validação do CNPJ
+            const cnpjHasLetters = /[a-zA-Z]/.test(cnpj);
+            const cnpjHasSpecials = /[^0-9]/.test(cnpj);
+            if (cnpj.length !== 14 || cnpjHasLetters || cnpjHasSpecials) {
+                cnpj_erro.innerHTML = 'CNPJ deve ter 14 números e não conter letras ou símbolos.';
+                cnpj_erro.style.display = "flex";
+                validado = false;
+            }
+
+            // Validação do e-mail
+            const arrobas = [...email].filter(c => c === '@').length;
+            if (!email.includes('@') || arrobas > 1 || !email.endsWith('.com') || email.includes(' ')) {
+                email_erro.innerHTML = 'Email inválido. Ex: exemplo@gmail.com';
+                email_erro.style.display = "flex";
+                validado = false;
+            }
+
+            // Validação da senha
+            const especiais = "!#$%&'()*+,-:;<=>?@[]^_`{|}~´`^~¨§ªº°";
+            let temMaiusculo = false, temMinusculo = false, temNumero = false, temEspecial = false;
+
+            for (let i = 0; i < senha.length; i++) {
+                const c = senha[i];
+                if (c >= 'A' && c <= 'Z') temMaiusculo = true;
+                if (c >= 'a' && c <= 'z') temMinusculo = true;
+                if (!isNaN(c)) temNumero = true;
+                if (especiais.includes(c)) temEspecial = true;
+            }
+
+            if (!temMaiusculo || !temMinusculo || !temNumero || !temEspecial || senha.length < 8) {
+                senha_erro.innerHTML = 'Senha deve conter: 1 maiúscula, 1 minúscula, 1 número, 1 símbolo e mínimo 8 caracteres.';
+                senha_erro.style.display = "flex";
+                validado = false;
+            }
+
+          /*  // Confirmar senha
+            if (senha != confirmarsenha) {
+                conf_senha_erro.innerHTML = "As senhas não coincidem.";
+                conf_senha_erro.style.display = "flex";
+                validado = false;
+            }*/
+
+            // Se tudo estiver validado, prossiga com o cadastro
+            if (validado) {
+                // Lógica para cadastrar o usuário
+                // Limpeza dos campos (se necessário)
+                // Limpeza de erros
+                nome_erro.style.display = "none";
+                cnpj_erro.style.display = "none";
+                email_erro.style.display = "none";
+                senha_erro.style.display = "none";
+                conf_senha_erro.style.display = "none";
+                campos_vazios.style.display = "none";
+            }
+              if (experimento) {
+                    fetch("/usuarios/cadastrar_vinicola", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+
+                            nomeFantasiaServer: nome,
+                            razaoSocialServer: cnpj,
+                            cnpjServer: cnpj,
+
+                            nomeServer: nome,
+                            telefoneServer: telefone,
+                            emailServer: email,
+                            senhaServer: senha,
+                        }),
+                    })
+                        .then(function (resposta) {
+                            console.log("resposta: ", resposta);
+
+                            if (resposta.ok) {
+                                alert('redirecionando')
+
+                                
+                                setTimeout(() => {
+                                    window.location = "login.html";
+                                }, "2000");
+
+                            } else {
+                                throw "Houve um erro ao tentar realizar o cadastro!";
+                            }
+                        })
+                        .catch(function (resposta) {
+                            console.log(`#ERRO: ${resposta}`);
+                            finalizarAguardar();
+                        });
+
+                    return false;
+                }
         }
+
         function fechar_alerta() {
             alerta_grupo3.style = "display:none"
             div_fechar_alerta.style = "display:none"

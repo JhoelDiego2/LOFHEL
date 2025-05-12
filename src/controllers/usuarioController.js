@@ -1,12 +1,10 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-
     if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
@@ -18,24 +16,12 @@ function autenticar(req, res) {
                     console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
                     if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
-
-                        aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length > 0) {
-                                    res.json({
-                                        id: resultadoAutenticar[0].id,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha,
-                                        aquarios: resultadoAquarios
-                                    });
-                                } else {
-                                    res.status(204).json({ aquarios: [] });
-                                }
-                            })
+                        res.json({
+                            idEmpresa: resultadoAutenticar[0].idEmpresa,
+                            email: resultadoAutenticar[0].email,
+                        });
                     } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
+                        res.status(403).send("usuario e/ou senha inválido(s)");
                     } else {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                     }
@@ -51,30 +37,44 @@ function autenticar(req, res) {
 
 }
 
-function cadastrar(req, res) {
+function cadastrar_vinicola(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nome = req.body.nomeServer;
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
-    var fkEmpresa = req.body.idEmpresaVincularServer;
+    var nomeFantasia = req.body.nomeFantasiaServer;
+    var razaoSocial = req.body.razaoSocialServer;
+    var cnpj = req.body.cnpjServer;
 
     // Faça as validações dos valores
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
+    if (nomeFantasia == undefined) {
+        res.status(400).send("Seu nomeFantasia está undefined!");
+    } else if (razaoSocial == undefined) {
+        res.status(400).send("Seu razaoSocial está undefined!");
+    } else if (cnpj == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if (fkEmpresa == undefined) {
-        res.status(400).send("Sua empresa a vincular está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, fkEmpresa)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
+        usuarioModel.cadastrar_vinicola(nomeFantasia, razaoSocial, cnpj)
+            .then(function (resultadoVinicola) {
+                var fkVinicola = resultadoVinicola.insertId;
+                var nome = req.body.nomeServer;
+                var telefone = req.body.telefoneServer;
+                var email = req.body.emailServer;
+                var senha = req.body.senhaServer;
+                if (fkVinicola == undefined) {
+                    res.status(400).send("Seu fkVinicol está undefined!");
+                } else if (nome == undefined) {
+                    res.status(400).send("Seu nome está undefined!");
+                } else if (telefone == undefined) {
+                    res.status(400).send("Sua telefone está undefined!");
+                } else if (email == undefined) {
+                    res.status(400).send("Sua email está undefined!");
+                } else if (senha == undefined) {
+                    res.status(400).send("Sua senha está undefined!");
+                } else {
+                    // Suponha que você tenha um endereço padrão para cadastrar junto
+                    return usuarioModel.cadastrar_representante(nome, email, telefone, senha, fkVinicola);
                 }
+            }
             ).catch(
                 function (erro) {
                     console.log(erro);
@@ -90,5 +90,5 @@ function cadastrar(req, res) {
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar_vinicola, 
 }
