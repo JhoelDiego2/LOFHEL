@@ -127,9 +127,9 @@
         <div class="column-2">
             <div>
                 <ul>
-                    <li><a href="inicio.html">Inicio </a></li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <li><a href="sobre.html">Sobre Nós</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <li><a href="vinhos.html">Sobre Vinhos </a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <li><a href="inicio.html">Inicio </a></li>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="vinhos.html">Sobre Vinhos </a></li>
                     <li><a href="#">Simulador Financieiro</a></li>
                 </ul>
             </div>
@@ -168,92 +168,71 @@
       `;
     }
 */
-    // Variáveis de perda sem o uso da solução
+    // Variáveis de desperdício e economia
     var garrafasPerdidasMes = 0;
     var valorPerdidoMes = 0;
     var valorPerdidoSem = 0;
 
-    // Variáveis de economia após o uso da solução
     var garrafasEcoMes = 0;
     var valorEcoMes = 0;
     var valorEcoSem = 0;
     var ecoTotalAno = 0;
     var ecoTotalSem = 0;
-    var selic = 0;
-    var rendeAno = 0;
 
-    // Função do calculo do desperdicio sem a solução
+    // Variáveis de REG (reinvestimento)
+    const CUSTO_INSPECAO = 150;    // médio por inspeção
+    const CUSTO_SENSOR = 350;      // médio por sensor adicional
+    var insSem = 0;
+    var insAno = 0;
+    var sensorsSem = 0;
+    var sensorsAno = 0;
+
+    // Função de cálculo do desperdício sem a solução
     function calcularDesp() {
-
-        // Calculo da perca = 27% ao mes
-        garrafasPerdidasMes = Number(iptGarrafas.value) * 0.27
-        valorPerdidoMes = garrafasPerdidasMes * Number(iptPreco.value)
-
-        // Calculo de perca Semestre
-        valorPerdidoSem = garrafasPerdidasMes * 6 * Number(iptPreco.value)
+        garrafasPerdidasMes = Number(iptGarrafas.value) * 0.27;
+        valorPerdidoMes = garrafasPerdidasMes * Number(iptPreco.value);
+        valorPerdidoSem = garrafasPerdidasMes * 6 * Number(iptPreco.value);
     }
 
-    // função do calculo do desperdicio com a solução
+    // Função de cálculo da economia com a solução
     function calcularEco() {
-        // Calculo da eco = 5% ao mes
-        garrafasEcoMes = Number(iptGarrafas.value) * 0.17
-        valorEcoMes = garrafasEcoMes * Number(iptPreco.value)
-
-        // Calculo de eco semestre
-        valorEcoSem = garrafasEcoMes * 6 * Number(iptPreco.value)
-
-        // Calculo do lucro utilizando nossa solução
-        ecoTotalAno = valorPerdidoSem * 2 - valorEcoSem * 2;
+        garrafasEcoMes = Number(iptGarrafas.value) * 0.17;
+        valorEcoMes = garrafasEcoMes * Number(iptPreco.value);
+        valorEcoSem = garrafasEcoMes * 6 * Number(iptPreco.value);
         ecoTotalSem = valorPerdidoSem - valorEcoSem;
+        ecoTotalAno = ecoTotalSem * 2;
     }
 
-    // função do calculo do rendimento anual do selic
-    function calcularSelic() {
-        selic = 13.25;
-        rendeAno = ecoTotalAno * (1 + (selic / 100));
+    // Função de cálculo do REG (reinvestimento da economia gerada)
+    function calcularREG() {
+        insSem = Math.floor(ecoTotalSem / CUSTO_INSPECAO);
+        insAno = Math.floor(ecoTotalAno / CUSTO_INSPECAO);
+        sensorsSem = Math.floor(ecoTotalSem / CUSTO_SENSOR);
+        sensorsAno = Math.floor(ecoTotalAno / CUSTO_SENSOR);
     }
 
-
-    // Função que  mostra os dados calculados pelas outras funções
+    // Função que mostra os dados calculados
     function mostrar() {
-        var verificado = false
-        if (dadoNome.value == '') {
-            nome_vazio.style = "display:flex"
-        }else{nome_vazio.style="display:none"}
-        if (iptGarrafas.value == '') {
-            garrafa_vazio.style = "display:flex"
-
-        }else{garrafa_vazio.style="display:none"}
-        if (iptPreco.value == '') {
-            preco_vazio.style = "display:flex"
-        }else{preco_vazio.style="display:none"}
-
-        if (dadoNome.value != '' && iptGarrafas.value != '' && iptPreco.value != '') {
-            verificado = true
-        }
+        var verificado = false;
+        if (dadoNome.value == '') nome_vazio.style = "display:flex"; else nome_vazio.style = "display:none";
+        if (iptGarrafas.value == '') garrafa_vazio.style = "display:flex"; else garrafa_vazio.style = "display:none";
+        if (iptPreco.value == '') preco_vazio.style = "display:flex"; else preco_vazio.style = "display:none";
+        if (dadoNome.value != '' && iptGarrafas.value != '' && iptPreco.value != '') verificado = true;
 
         if (verificado == true) {
-
-
-            // Calcula o desperdicio via função
             calcularDesp();
-
-            // Calcula a economia via função
             calcularEco();
+            calcularREG();
 
-            // Calcula o rendimento do selic
-            calcularSelic();
-
-            // Mostra mensagem na tela para o usuário
             div_text.innerHTML =
                 `<b style="font-size: 1.5rem; font-weight: 800; color: #5c1010;"> Olá, ${dadoNome.value}!</b><br><br>
                         <p style="font-size: 1.2rem;">
-                        🍷 Estima-se que, no mercado de <span class="vinho">vinhos,</span>haja uma perda <br> considerável de 27% nas 
+                        🍷 Estima-se que, no mercado de <span class="vinho">vinhos,</span> haja uma perda <br> considerável de 27% nas 
                         <span class="vinho">vinícolas</span> devido à falta de controle de <span class="vinho">temperatura e umidade.</span><br><br>
                   
                         📈 A cada ${iptGarrafas.value} garrafas produzidas, você pode <span class="vinho">perder mensalmente</span>,
                          em média, um pouco mais de um <span class="vinho">quarto</span> desse total, o que equivale a 
-                         <span class="vinho">${garrafasPerdidasMes} garrafas</span>, resultando em um 
+                         <span class="vinho">${garrafasPerdidasMes.toFixed(2)} garrafas</span>, resultando em um 
                          <span class="vinho">prejuízo de R$ ${valorPerdidoMes.toFixed(2)}.</span><br><br>
                   
                         📉 Com <span class="vinho">nossos sensores</span>, essa perda diminuiria para apenas 
@@ -263,16 +242,16 @@
                   
                         <b>💰<b style="font-size: 1.5rem; font-weight: 800; color: #5c1010;"> Economia estimada:</b><br>
                         🔸 <span class="vinho">No semestre:</span> R$ ${ecoTotalSem.toFixed(2)}<br>
-                        🔸 <span class="vinho">No ano:</span> R$ ${ecoTotalAno.toFixed(2)}<br>
-                        🔸 <span class="vinho"><i></i>Rendimento aplicando a economia mensal na SELIC de 13,25% ao ano: R$ ${rendeAno.toFixed(2)}</span></b></div>
-                    </p>`
+                        🔸 <span class="vinho">No ano:</span> R$ ${ecoTotalAno.toFixed(2)}</b><br><br>
+
+                        <b>🔧 Inspeções possíveis (R$ ${CUSTO_INSPECAO} cada):</b><br>
+                        • Semestral: ${insSem} inspeção(ões)<br>
+                        • Anual: ${insAno} inspeção(ões)<br><br>
+
+                        <b>🔄 Sensores adicionais (R$ ${CUSTO_SENSOR} cada):</b><br>
+                        • Semestral: ${sensorsSem} sensor(es)<br>
+                        • Anual: ${sensorsAno} sensor(es)
+                        </p>`;
         }
     }
-
-
-
-
-
-
-
 </script>
