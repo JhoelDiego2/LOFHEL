@@ -5,7 +5,7 @@ function autenticar(email, senha) {
     var instrucaoSql = `
         SELECT f.idFuncionario, f.nomeFuncionario, f.email, f.telefone, f.fkCargo,
 		v.idVinicola, v.nomeFantasia, 
-			c.idCargo, c.nomeCargo,
+			 c.nomeCargo,
     GROUP_CONCAT(DISTINCT cp.fkPermissao ) AS fkPermissoes
 		FROM vinicola v JOIN funcionario f on v.idVinicola = f.fkVinicola
 			JOIN cargo c on c.idCargo = f.fkCargo
@@ -31,14 +31,14 @@ function cadastrar_vinicola(nomeFantasia, razaoSocial, cnpj) {
 function cadastrar_representante_cargo(fkVinicola) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_representante():", fkVinicola);
     var instrucaoSql = `
-        INSERT INTO Cargo (nome, fkVinicola) VALUES ('Representante Legal', '${fkVinicola}');
+        INSERT INTO Cargo (nomeCargo, fkVinicola) VALUES ('Representante Legal', '${fkVinicola}');
         ;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-function cadastrar_cargo_permissao(fkCargo, fkPermissao) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_representante():", fkCargo, fkPermissao);
+function cadastrar_cargo_permissao(fkCargo) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_representante():", fkCargo, );
     var instrucaoSql = `
         INSERT INTO CargoPermissao (fkCargo, fkPermissao) VALUES 
             ('${fkCargo}', 1),
@@ -54,7 +54,7 @@ function cadastrar_cargo_permissao(fkCargo, fkPermissao) {
 function cadastrar_representante(nome, email, telefone, senha, fkVinicola, fkCargo) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_representante():", nome, email, telefone, senha, fkVinicola, fkCargo);
     var instrucaoSql = `
-        INSERT INTO Funcionario (nomeFuncionario, email,telefone, senha, fkVinicola) VALUES ('${nome}', '${email}', '${telefone}', '${senha}', '${fkVinicola}', '${fkCargo}')
+        INSERT INTO Funcionario (nomeFuncionario, email,telefone, senha, fkVinicola, fkCargo) VALUES ('${nome}', '${email}', '${telefone}', '${senha}', '${fkVinicola}', '${fkCargo}')
         ;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

@@ -309,11 +309,10 @@
                             senhaServer: senha,
                         }),
                     })
-                        .then(function (resposta) {
-                            console.log("resposta: ", resposta);
+                        .then(function (resultado_representante) {
+                            console.log("resultado_representante: ", resultado_representante);
 
-                            if (resposta.ok) {
-                                alert('redirecionando')
+                            if (resultado_representante.ok) {
 
                                 
                                 setTimeout(() => {
@@ -324,9 +323,8 @@
                                 throw "Houve um erro ao tentar realizar o cadastro!";
                             }
                         })
-                        .catch(function (resposta) {
-                            console.log(`#ERRO: ${resposta}`);
-                            finalizarAguardar();
+                        .catch(function (resultado_representante) {
+                            console.log(`#ERRO: ${resultado_representante}`);
                         });
 
                     return false;
