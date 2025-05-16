@@ -7,9 +7,9 @@ function autenticar(email, senha) {
 		v.idVinicola, v.nomeFantasia, 
 			 c.nomeCargo,
     GROUP_CONCAT(DISTINCT cp.fkPermissao ) AS fkPermissoes
-		FROM vinicola v JOIN funcionario f on v.idVinicola = f.fkVinicola
-			JOIN cargo c on c.idCargo = f.fkCargo
-				JOIN cargoPermissao cp ON cp.fkCargo = c.idCargo
+		FROM Vinicola v JOIN Funcionario f on v.idVinicola = f.fkVinicola
+			JOIN Cargo c on c.idCargo = f.fkCargo
+				JOIN CargoPermissao cp ON cp.fkCargo = c.idCargo
 		WHERE email = '${email}' AND senha = '${senha}';
         ;
     `;
