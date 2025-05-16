@@ -3,7 +3,7 @@ var database = require("../database/config");
 function buscarUltimasMedidas(fkArmazem, limite_linhas) {
 
     var instrucaoSql = `
-        SELECT temperatura, DATE_FORMAT(dataHora,'%d/%m %H:%i:%s') AS dataHora
+        SELECT temperatura, umidade, DATE_FORMAT(dataHora,'%d/%m %H:%i:%s') AS dataHora
 	        FROM Registro r JOIN sensor s ON r.fkSensor = s.idSensor
 	    	JOIN armazem a on s.fkArmazem = a.idArmazem
          WHERE s.fkArmazem = ${fkArmazem}
@@ -16,7 +16,7 @@ function buscarUltimasMedidas(fkArmazem, limite_linhas) {
 function buscarMedidasEmTempoReal(fkArmazem, limite_linhas) {
 
     var instrucaoSql = `
-            SELECT temperatura, DATE_FORMAT(dataHora,'%d/%m %H:%i:%s') AS dataHora
+            SELECT temperatura, umidade,  DATE_FORMAT(dataHora,'%d/%m %H:%i:%s') AS dataHora
 	                FROM Registro r JOIN sensor s ON r.fkSensor = s.idSensor
 	            	JOIN armazem a on s.fkArmazem = a.idArmazem
          WHERE s.fkArmazem = ${fkArmazem}
