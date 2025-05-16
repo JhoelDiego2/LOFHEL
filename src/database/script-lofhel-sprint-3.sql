@@ -5,12 +5,12 @@
 /*
 comandos para executar no mysql
 */
-
+/*
 
 CREATE USER 'apiLofhelWeb'@'localhost' IDENTIFIED BY 'Urubu100$';
 GRANT INSERT, UPDATE, SELECT ON lofhel.* TO 'apiLofhelWeb'@'localhost';
 FLUSH PRIVILEGES;
-
+*/
 
 CREATE DATABASE Lofhel;
 USE Lofhel;
@@ -55,7 +55,7 @@ CREATE TABLE CargoPermissao (
     fkCargo INT,
     fkPermissao INT NOT NULL,
     CONSTRAINT pkComposta PRIMARY KEY (fkCargo, fkPermissao), 
-    CONSTRAINT fkCargoPermissao FOREIGN KEY (fkCargo) REFERENCES cargo(idCargo),
+    CONSTRAINT fkCargoPermissao FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo),
     CONSTRAINT fkPermissaoCargo FOREIGN KEY (fkPermissao) REFERENCES Permissao(idPermissao)
 );
 
@@ -71,7 +71,7 @@ CREATE TABLE Funcionario (
     fkCargo INT,
     CONSTRAINT fkRepresentanteFuncionario FOREIGN KEY (fkRepresentante) REFERENCES Funcionario(idFuncionario),
     CONSTRAINT fkVinicolaFuncionario FOREIGN KEY (fkVinicola) REFERENCES Vinicola(idVinicola),
-    CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES cargo(idCargo)
+    CONSTRAINT fkCargoFuncionario FOREIGN KEY (fkCargo) REFERENCES Cargo(idCargo)
 );
 
 
@@ -82,8 +82,6 @@ CREATE TABLE Armazem (
     idArmazem INT PRIMARY KEY AUTO_INCREMENT,
     nomeArmazem VARCHAR(60) NOT NULL,    
     descricao VARCHAR(100),
-    umidadeMax INT NOT NULL,
-    umidadeMin INT NOT NULL,
     fkVinicola INT NOT NULL,
     CONSTRAINT fkVinicolaArmazem FOREIGN KEY (fkVinicola) REFERENCES Vinicola(idVinicola)
 );
@@ -95,6 +93,8 @@ CREATE TABLE GrupoVinho (
     temperaturaMax FLOAT NOT NULL,
     temperaturaMin FLOAT NOT NULL
 );
+alter table GrupoVinho add column umidadeMin int;
+alter table GrupoVinho add column umidadeMax int;
 
 -- Tabela de Tipo de Vinho
 CREATE TABLE TipoVinho (
@@ -145,14 +145,18 @@ insert into Permissao (codigo) values
 ('gerenciar_armazens'), 
 ('gerenciar_funcionarios'),
 ('gerar_relatorios');
-
-
+select * from Vinicola;
+insert into Vinicola values 
+	(1,'Maria Vinicola', 'MariaS.A.', '100200300102456', null, null); 
+select * from Armazem;
+insert into Armazem values
+	(1, 'Armazem 1', 'Vinhos delicados', 1);
 -- estes inserts tem q ser feitos na hora do cadastro
 update funcionario set fkCargo = 1 where idFuncionario = 1;
-insert into cargo values
-	(default, 'Representante Legal', 11);
+insert into Cargo values
+	(default, 'Representante Legal', 1);
     
-insert into cargoPermissao (fkCargo, fkPermissao) values
+insert into CargoPermissao (fkCargo, fkPermissao) values
 	(1,1), 
     (1,2), 
     (1,3), 
@@ -203,8 +207,8 @@ select f.idFuncionario, f.nomeFuncionario, f.email, f.telefone, f.fkCargo,
 -- deshbord 
 SELECT * FROM armazem  WHERE fkVinicola = 11;
 
-select * from funcionario;
+select * from Funcionario;
 select * from vinicola;
-update funcionario set nomeFuncionario = 'Jhoel', email = 'jhoeldiego8gmail.com' where idFuncionario = 1;
-update vinicola set nomeFantasia = 'Vinicola SPTech', razaoSocial ='VinicolaS.A' where idVinicola = 11;
+INSERT INTO Funcionario values
+(1, 'Maria', 'maria@gmail.com', 'Urubu100$', null, '11946787175', 1, 1);
 
