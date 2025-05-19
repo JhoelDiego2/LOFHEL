@@ -22,10 +22,10 @@ const serial = async (
     let poolBancoDados = mysql.createPool(
         {
             // se o banco estiver na sua propia maquina é recomendavél usar o localhost do que os numeros que aparecem no workbank
-            host: 'localhost',
-            user: 'lofhel',
+            host: '10.18.32.53',
+            user: 'aluno',
             password: 'Sptech#2024',
-            database: 'dbLofhel',
+            database: 'Lofhel',
             // se desejar inserir no banco local a porta é 3306 e para maquina virtual é 3307
             port: 3307
         }
@@ -67,7 +67,7 @@ const serial = async (
 
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO tbRegistro (umidade, temperatura) VALUES (?, ?)',
+                'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?,1)',
                 [umidade, temperatura]
             );
             console.log("valores inseridos no banco: ", umidade + ", " + temperatura);

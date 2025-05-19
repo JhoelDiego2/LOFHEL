@@ -12,7 +12,7 @@ void setup() {
 }
 
 void loop() {
-  int umidade = sensorDHT.readHumidity() - 45; // variável que recebe os valores da umidade 
+  int umidade = sensorDHT.readHumidity() + 20; // variável que recebe os valores da umidade 
   float temperatura = sensorDHT.readTemperature() - 10; // variável que recebe os valores da temperatura
 
   if (isnan(temperatura) || isnan(umidade)) {
