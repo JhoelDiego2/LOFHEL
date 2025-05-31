@@ -9,15 +9,15 @@ var fkUsuario = sessionStorage.ID_USUARIO;
     var nomeCargo = sessionStorage.NOME_CARGO_USUARIO;
     var fkPermissao = sessionStorage.PERMISSOES_USUARIO;
 function validarSessao() {
-
     var b_usuario = document.querySelectorAll(".b_usuario");
     var b_nome_fantasia = document.getElementById("b_nome_fantasia");
     var b_cargo = document.getElementById("b_cargo");
- 
+    
     if ( nome != null || nomeFantasia != null || nomeCargo != null || fkUsuario != null ||
         email != null  || telefone != null || fkVinicola != null || fkCargo != null || nomeCargo != null ||
         fkPermissao != null 
     ) {
+        console.log('fdsafsdafafda')
         b_usuario[0].innerHTML = nome;
         b_usuario[1].innerHTML = nome;
         b_nome_fantasia.innerHTML = nomeFantasia;

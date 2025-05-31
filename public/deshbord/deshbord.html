@@ -11,40 +11,40 @@
     <script src="../js/sessao.js"></script>
 </head>
 
-<body onload="validarSessao()"">
-    <div class="side-bar">
-        <div class="nav">
-            <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
+<body onload="validarSessao()">
+    <div class=" side-bar">
+    <div class="nav">
+        <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
 
-            <p>Olá, <span class="b_usuario">Fernanda Caramico </span>, seja bem vindo(a)
-            <span id="b_cargo"></span></p>
+        <p>Olá, <span class="b_usuario">Fernanda Caramico </span>, seja bem vindo(a)
+            <span id="b_cargo"></span>
+        </p>
 
-            <div class="nav-list">
-                <div id="atual">
-                    <a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Inicio</a>
-                </div>
-                <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png"
-                            alt="icone">Perfil</a>
-                </div>
-                <div><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
-                            alt="icone">Funcionarios</a>
-                </div>
-                <div><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a>
-                </div>
-                <div><a href="suporte-bob.html"><img src="../deshbord/imagens-deshbord/body.png"
-                            alt="icone">Suporte-BobIA</a>
-                </div>
-                <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
-                            alt="icone">sair</a>
-                </div>
+        <div class="nav-list">
+            <div id="atual">
+                <a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Inicio</a>
+            </div>
+            <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png" alt="icone">Perfil</a>
+            </div>
+            <div><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
+                        alt="icone">Funcionarios</a>
+            </div>
+            <div><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a>
+            </div>
+            <div><a href="suporte-bob.html"><img src="../deshbord/imagens-deshbord/body.png"
+                        alt="icone">Suporte-BobIA</a>
+            </div>
+            <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
+                        alt="icone">sair</a>
             </div>
         </div>
+    </div>
     </div>
     <div class="main">
         <div class="header">
             <div class="topo">
                 <div class="column-1">
-                    <p id="title">Análise de dados  - <span id="b_nome_fantasia">Vinícola Dom
+                    <p id="title">Análise de dados - <span id="b_nome_fantasia">Vinícola Dom
                             Aurélio</span></p>
                     <div class="sub">
 
@@ -104,7 +104,7 @@
                 <div class="grafico pizza">
                     <h4>Distribuição de Status dos Armazéns (%)</h4>
                     <div id="contem_grafico_redondo">
-                        <canvas id="porcentagem_status"> </canvas>
+                        <canvas id="porcentagem_status" width="10vh" > </canvas>
                     </div>
                 </div>
                 <div class="grafico donut">
@@ -248,6 +248,8 @@
             }
             ],
         },
+                options: {
+            responsive: false,}
     });
 
 
@@ -318,6 +320,7 @@
         type: 'doughnut',
         data: data_status_sensores,
         options: {
+            responsive: false,
             plugins: {
                 legend: {
                     position: 'bottom', // Coloca a legenda embaixo do gráfico

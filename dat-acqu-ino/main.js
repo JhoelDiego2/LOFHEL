@@ -22,7 +22,7 @@ const serial = async (
     let poolBancoDados = mysql.createPool(
         {
             // se o banco estiver na sua propia maquina é recomendavél usar o localhost do que os numeros que aparecem no workbank
-            host: '10.18.32.53',
+            host: '10.18.32.94',
             user: 'aluno',
             password: 'Sptech#2024',
             database: 'Lofhel',

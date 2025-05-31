@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOFHEL - Suporte - Bob IA</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="icon" href="../public/assets/Design%20sem%20nome%20(20).png">
 
     <link rel="stylesheet" href="css/suporte-bob.css">
 </head>
 
-<body>
+<body id="body">
     <div class="side-bar">
         <div class="nav">
             <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
@@ -19,7 +18,7 @@
             <p>Olá Fernanda Caramico, seja bem vinda</p>
 
             <div class="nav-list">
-                <div =>
+                <div>
                     <a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Inicio</a>
                 </div>
                 <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png"
@@ -59,7 +58,7 @@
                 <div class="column-1">
                     <p>Olá seja bem vindo(a) ao nosso asistente virtual Bob IA </p>
                 </div>
-                
+
             </div>
 
         </div>
@@ -68,55 +67,133 @@
                 <img src="../deshbord/imagens-deshbord/robot.png" alt="BobIA" width="300px">
             </div>
             <div class="column-2">
-                <div class="painel">
-                    <div class="resposta">
-                        <p class="esquerda" id="iniciar">Olá, como posso ajudar-lo?</p>
-                        <p class="direita" id="pergunta1"></p>
-                        <p class="esquerda" id="resposta1"></p>
-                        <p class="direita" id="pergunta2"></p>
-                        <p class="esquerda" id="resposta2"></p>
-                        <p class="direita" id="pergunta3"></p>
-                        <p class="esquerda" id="resposta3"></p>
+                <section id="forum" style="display: n">
+                    <div class="div-results">
+                        <div id="feed_container" class="feed-container">
+
+                        </div>
                     </div>
-                    <div class="mensagem" id="div_mensagem">
-                        <input  placeholder="Digite a sua pergunta..." id="pergunta">
-                        <button><img src="/deshbord/imagens-deshbord/seta.png" alt="seta" id="seta" onclick="pergunta()"></button>
+                    <div class="div-form">
+                        <form id="form_postagem">
+                            <label>
+                                <p>
+                                    Mensagem (máximo de 250 caracteres):
+                                </p>
+                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                                <button onclick="gerarResposta()">Enviar</button>
+                            </label>
+                        </form>
                     </div>
-                </div>  
+                </section>
             </div>
         </div>
+    </div>
 
 
-        </div>
+    </div>
     </div>
 </body>
 
 </html>
 <script>
-    function pergunta() {
-        var perguntaBOB = document.getElementById("pergunta").value
-        pergunta1.style= " background-color: green; color: white; padding: 2%;border-radius: 1rem;width: 30% "
-        pergunta1.innerHTML = perguntaBOB
-        if (perguntaBOB == '' || perguntaBOB%1 == 0 ){
-            resposta1.style = "background-color: #1D232A;color: white;padding: 2%;border-radius: 1rem;width: 30%"
-            resposta1.innerHTML = `Opa, algo deu errado não consegui entender a sua dúvida, porfavor tente novamente`
-        } else {
-            resposta1.style = "background-color: #1D232A;color: white;padding: 2%;border-radius: 1rem;width: 30%"
-            resposta1.innerHTML = `#Vai dar certo`
-            if (perguntaBOB == 'Quais são os grupos de vinho existentes') {
-                resposta1.style = "background-color: #1D232A;color: white;padding: 2%;border-radius: 1rem;width: 30%"
-            resposta1.innerHTML = `Os grupos de vinho existentes são 4: <br>
-            -Gelado <br> -Frio <br> -Temperatura Adea <br> -Fresco `  
-                div_mensagem.style = "position: relative; top: -2vh;"
-        }
-            if (perguntaBOB == 'O que significa o nome LOFHEL') {
-                resposta1.style = "background-color: #1D232A;color: white;padding: 2%;border-radius: 1rem;width: 30%"
-            resposta1.innerHTML = `A empresa recebeu este nome dado que<br>
-            as incias dos fundadores do projetos formavam a LOFHEL
-            `  
-            }
-            
-        }
+// Armazena as mensagens de forma persistente
+let conversa = JSON.parse(sessionStorage.getItem('conversa_lofhel')) || [];
+
+async function gerarResposta(event) {
+    event.preventDefault(); // Impede o comportamento padrão do formulário
+    
+    const textarea = document.getElementById('textarea_descricao');
+    const pergunta = textarea.value.trim();
+
+    if (!pergunta) {
+        alert("Digite uma pergunta!");
+        return;
     }
 
-</script>d
+    // Adiciona mensagem do usuário
+    conversa.push({
+        sender: 'user',
+        text: pergunta,
+        time: new Date()
+    });
+    
+    // Atualiza o sessionStorage
+    sessionStorage.setItem('conversa_lofhel', JSON.stringify(conversa));
+    
+    exibirConversa();
+    textarea.value = ''; // Limpa o campo
+
+    try {
+        const response = await fetch('/bobia/publicar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ pergunta })
+        });
+
+        const data = await response.json();
+
+        // Adiciona resposta da IA
+        conversa.push({
+            sender: 'ia',
+            text: data.resultado,
+            time: new Date()
+        });
+        
+        sessionStorage.setItem('conversa_lofhel', JSON.stringify(conversa));
+
+    } catch (error) {
+        console.error("Erro:", error);
+        conversa.push({
+            sender: 'ia',
+            text: "Erro ao se comunicar com o servidor",
+            time: new Date()
+        });
+        sessionStorage.setItem('conversa_lofhel', JSON.stringify(conversa));
+    } finally {
+        exibirConversa();
+    }
+}
+
+function exibirConversa() {
+    const feedContainer = document.getElementById('feed_container');
+    if (!feedContainer) return;
+
+    const nome = sessionStorage.NOME_USUARIO || "Usuário";
+    let html = '';
+
+    conversa.forEach(message => {
+        if (!message.sender || !message.text) return;
+        
+        const isUser = message.sender === 'user';
+        html += `
+        <div class="div_feed ${isUser ? 'div_feed_usuario' : ''}">
+            <img src="${isUser ? 'imagens-deshbord/person-circle.png' : 'imagens-deshbord/bob_logo.png'}" 
+                 alt="" class="avatar_mensagem">
+            <div class="div_mensagem">
+                <p class="nome_mensagem">${isUser ? nome : 'Bob IA'}</p>
+                <p class="mensagem_counteudo">${message.text}</p>
+                <p class="data_mensagem">
+                    ${message.time.toLocaleDateString("pt-BR")} - 
+                    ${message.time.toLocaleTimeString("pt-BR", {hour: '2-digit', minute:'2-digit'})}
+                </p>
+            </div>
+        </div>`;
+    });
+
+    feedContainer.innerHTML = html;
+    feedContainer.scrollTop = feedContainer.scrollHeight;
+}
+
+// Carrega a conversa ao iniciar
+document.addEventListener('DOMContentLoaded', () => {
+    exibirConversa();
+    
+    // Configura o evento do formulário corretamente
+    const form = document.querySelector('form'); // Ou o seletor do seu botão
+    if (form) {
+        form.addEventListener('submit', gerarResposta);
+    }
+});
+</script>

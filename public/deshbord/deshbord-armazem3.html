@@ -5,19 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOFHEL - Deshbord</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/geral.css">
     <link rel="stylesheet" href="css/deshbord.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/sessao.js"></script>
 </head>
 
-<body style="overflow-y: hidden;">
+<body onload="validarSessao()">
     <div class="side-bar">
         <div class="nav">
             <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
 
             <p>Olá, <span class="b_usuario">Fernanda Caramico </span>, seja bem vindo(a)
-            <span id="b_cargo"></span></p>
+                <span id="b_cargo"></span>
+            </p>
 
             <div class="nav-list">
                 <div id="atual">
@@ -44,7 +45,7 @@
         <div class="header">
             <div class="topo">
                 <div class="column-1">
-                    <p id="title">Análise de dados  - <span id="b_nome_fantasia">Vinícola Dom
+                    <p id="title">Análise de dados - <span id="b_nome_fantasia">Vinícola Dom
                             Aurélio</span></p>
                     <div class="sub">
 
@@ -187,11 +188,33 @@
 
 </html>
 <script>
+    function validarSessao() {
+    var b_usuario = document.querySelectorAll(".b_usuario");
+    var b_nome_fantasia = document.getElementById("b_nome_fantasia");
+    var b_cargo = document.getElementById("b_cargo");
+    
+    if ( nome != null || nomeFantasia != null || nomeCargo != null || fkUsuario != null ||
+        email != null  || telefone != null || fkVinicola != null || fkCargo != null || nomeCargo != null ||
+        fkPermissao != null 
+    ) {
+        console.log('fdsafsdafafda')
+        b_usuario[0].innerHTML = nome;
+        b_usuario[1].innerHTML = nome;
+        b_nome_fantasia.innerHTML = nomeFantasia;
+        b_cargo.innerHTML = nomeCargo;
+
+    } else {
+        alert("redicionamento")
+       // window.location = "../login.html";
+    }
+}
+
+    window.onload = validarSessao();
 
     let proximaAtualizacao
     const fkArmazem = 1;
-        const b_temperatura_atual = document.getElementById('b_temperatura_atual')
-        const b_umidade_atual = document.getElementById('b_umidade_atual')
+    const b_temperatura_atual = document.getElementById('b_temperatura_atual')
+    const b_umidade_atual = document.getElementById('b_umidade_atual')
 
     function trocar1() {
         var select = armazem_atual.value
