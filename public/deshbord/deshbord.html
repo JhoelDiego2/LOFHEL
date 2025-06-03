@@ -50,12 +50,12 @@
 
                         <div class="column-1">
                             <select name="armazem" id="armazem_atual" onclick="trocar1()"">
-                                        <option value=" geral">Geral</option>
+                                        <!-- <option value=" geral">Geral</option>
                                 <option value="armazem1" ">Armazém1</option>
                                         <option value=" armazem2">Armazém2</option>
                                 <option value="armazem3">Armazém3</option>
                                 <option value="armazem3">Armazém4</option>
-                                <option value="armazem3">Armazém5</option>
+                                <option value="armazem3">Armazém5</option> -->
                             </select>
                         </div>
                         <div class="column-2">
@@ -178,16 +178,14 @@
 </body>
 
 </html>
-
+<script src="./JS/armazens-deshbord.js"></script>
 <script>
+    
     function trocar1() {
         var select = armazem_atual.value
-        if (select == 'armazem1') {
-            window.location.href = "deshbord-armazem1.html";
-        }
-        if (select == 'armazem3') {
-            window.location.href = "deshbord-armazem3.html";
-
+        sessionStorage.ARMAZEM_SELECIONADO = select 
+        if (select != 'geral') {
+            window.location.href ='deshbord-armazem1.html'
         }
     }
 
