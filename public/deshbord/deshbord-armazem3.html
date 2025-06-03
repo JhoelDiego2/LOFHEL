@@ -11,7 +11,7 @@
     <script src="../js/sessao.js"></script>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSesao()">
     <div class="side-bar">
         <div class="nav">
             <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
@@ -99,56 +99,61 @@
 
             <div class="column-1">
                 <div class="grafico donut">
-                    <h4>Distribuição de Status dos Sensores (%)</h4>
+                    <h4 class="titulo_card titulo_desh">Distribuição de Status dos Sensores (%)</h4>
                     <canvas id="status_sensores" style="width: 20vw; height: 22vh;"> </canvas>
                 </div>
-                <div class="card_parametros">
-                    <p style="width: 100%; text-align: center; font-weight: 800; font-size: 1.4rem;"> Condições de
-                        Armazenamento</p>
-                    <div>
-                        <p>✅ Estável</p>
-                        <div>
-                            <p> Temperatura: <br> 12 °C a 16 °C</p>
-                            <div class="div_linha"></div>
-                            <p> Umidade:<br> 60% a 70%</p>
-                        </div>
+                <div class="container-notification-history">
+                    <div class="info-history">
+                        <p style="text-align: center; width: 100%;">Legenda Parametros</p>
                     </div>
-                    <div>
-                        <p>⚠️ Instável</p>
-                        <div>
-
-                            <p> Temperatura: <br>
-                                < 11.5 °C ou> 16.5 °C
-                            </p>
-                            <div class="div_linha"></div>
-
-                            <p> Umidade: <br>
-                                < 58% ou> 72%
-                            </p>
+                    <div class="container-history">
+                        <div class="history">
+                            <img src="imagens-deshbord/alert-critico.png" alt="">
+                            <div class="data-history">
+                                <p class="titulo_params">Alerta Crítico</p>
+                                <p> Temperatura:
+                                    < 10 °C ou> 20 °C
+                                </p>
+                                <p> Umidade:
+                                    < 55% ou> 75%
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <p>❌ Crítico</p>
-                        <div>
-                            <p> Temperatura: <br>
-                                < 10 °C ou> 20 °C
-                            </p>
-                            <div class="div_linha"></div>
 
-                            <p> Umidade:<br>
-                                < 55% ou> 75%
-                            </p>
+                        <div class="history">
+                            <img src="https://cdn-icons-png.flaticon.com/512/257/257195.png" alt="">
+                            <div class="data-history">
+                                <p class="titulo_params">Atenção</p>
+                                <p>Temperatura: 
+                                < 11.5 °C ou> 16.5 °C</p>
+                                <p> Umidade:
+                                < 58% ou> 72%</p>
+                            </div>
                         </div>
+
+                        <div class="history">
+                            <img src="https://img.freepik.com/vetores-premium/icone-de-avisos-de-notificacao_1076610-18996.jpg?semt=ais_hybrid&w=740"
+                                alt="">
+                            <div class="data-history">
+                                <p class="titulo_params">Cuidado</p>
+                                <p>Temperatura: 
+                                < 10 °C ou> 20 °C</p>
+                                <p> Umidade:
+                                < 55% ou> 75%</p>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
             <div class="column-2">
                 <div class="grafico linha">
-                    <h4>Variação na Temperatura nas Últimas 24h</h4>
+                    <h4 class="titulo_card titulo_desh">Variação na Temperatura nas Últimas 24h</h4>
                     <canvas id="variacao_temperatura_atual" style="width: 24vw; height: 12vh;"></canvas>
                 </div>
                 <div class="grafico linha">
-                    <h4>Variação na Umidade nas Últimas 24h</h4>
+                    <h4 class="titulo_card titulo_desh">Variação na Umidade nas Últimas 24h</h4>
                     <canvas id="variacao_umidade_atual" style="width: 24vw; height: 12vh"></canvas>
                 </div>
             </div>
@@ -188,28 +193,28 @@
 
 </html>
 <script>
-    function validarSessao() {
-    var b_usuario = document.querySelectorAll(".b_usuario");
-    var b_nome_fantasia = document.getElementById("b_nome_fantasia");
-    var b_cargo = document.getElementById("b_cargo");
-    
-    if ( nome != null || nomeFantasia != null || nomeCargo != null || fkUsuario != null ||
-        email != null  || telefone != null || fkVinicola != null || fkCargo != null || nomeCargo != null ||
-        fkPermissao != null 
-    ) {
-        console.log('fdsafsdafafda')
-        b_usuario[0].innerHTML = nome;
-        b_usuario[1].innerHTML = nome;
-        b_nome_fantasia.innerHTML = nomeFantasia;
-        b_cargo.innerHTML = nomeCargo;
+    function validaressao() {
+        var b_usuario = document.querySelectorAll(".b_usuario");
+        var b_nome_fantasia = document.getElementById("b_nome_fantasia");
+        var b_cargo = document.getElementById("b_cargo");
 
-    } else {
-        alert("redicionamento")
-       // window.location = "../login.html";
+        if (nome != null || nomeFantasia != null || nomeCargo != null || fkUsuario != null ||
+            email != null || telefone != null || fkVinicola != null || fkCargo != null || nomeCargo != null ||
+            fkPermissao != null
+        ) {
+            console.log('fdsafsdafafda')
+            b_usuario[0].innerHTML = nome;
+            b_usuario[1].innerHTML = nome;
+            b_nome_fantasia.innerHTML = nomeFantasia;
+            b_cargo.innerHTML = nomeCargo;
+
+        } else {
+            alert("redicionamento")
+            // window.location = "../login.html";
+        }
     }
-}
 
-    window.onload = validarSessao();
+    // window.onload = validarSesso();
 
     let proximaAtualizacao
     const fkArmazem = 1;
