@@ -33,9 +33,7 @@ CREATE TABLE Vinicola (
     nomeFantasia VARCHAR(60) NOT NULL,
     razaoSocial VARCHAR(45) NOT NULL,
     cnpj VARCHAR(15) NOT NULL UNIQUE,  
-	fkMatriz INT DEFAULT NULL,
     fkEndereco INT DEFAULT NULL,
-    CONSTRAINT fkMatrizVinicola FOREIGN KEY (fkMatriz) REFERENCES Vinicola(idVinicola),
     CONSTRAINT fkEnderecoVinicola FOREIGN KEY (fkEndereco) REFERENCES Endereco(idEndereco)
 );
 -- Tabela de Permissão
@@ -64,7 +62,7 @@ CREATE TABLE Funcionario (
     idFuncionario INT PRIMARY KEY AUTO_INCREMENT,
     nomeFuncionario VARCHAR(100) NOT NULL,  
     email VARCHAR(255) NOT NULL UNIQUE,
-    senha VARCHAR(45) NOT NULL,         
+    senha VARCHAR(100) NOT NULL,         
     fkRepresentante INT,               
     telefone VARCHAR(20) NOT NULL,          
     fkVinicola INT NOT NULL,
@@ -77,35 +75,28 @@ CREATE TABLE Funcionario (
 
 
 
--- Tabela de Armazém
-CREATE TABLE Armazem (
-    idArmazem INT PRIMARY KEY AUTO_INCREMENT,
-    nomeArmazem VARCHAR(60) NOT NULL,    
-    descricao VARCHAR(100),
-    fkVinicola INT NOT NULL,
-    CONSTRAINT fkVinicolaArmazem FOREIGN KEY (fkVinicola) REFERENCES Vinicola(idVinicola)
-);
 
 -- Tabela de Grupo de Vinho (corrigido de sensors)
 CREATE TABLE GrupoVinho (
     idGrupoVinho INT PRIMARY KEY AUTO_INCREMENT,
     classe VARCHAR(40) NOT NULL,
     temperaturaMax FLOAT NOT NULL,
-    temperaturaMin FLOAT NOT NULL
+    temperaturaMin FLOAT NOT NULL, 
+    umidadeMax FLOAT NOT NULL,
+    umidadeMin FLOAT NOT NULL
 );
-alter table GrupoVinho add column umidadeMin int;
-alter table GrupoVinho add column umidadeMax int;
-
--- Tabela de Tipo de Vinho
-CREATE TABLE TipoVinho (
-    idTipoVinho INT AUTO_INCREMENT,
-    tipo VARCHAR(40) NOT NULL,
+-- Tabela de Armazém
+CREATE TABLE Armazem (
+    idArmazem INT PRIMARY KEY AUTO_INCREMENT,
+    nomeArmazem VARCHAR(60) NOT NULL,    
+    descricao VARCHAR(100),
+    fkVinicola INT NOT NULL,
     fkGrupoVinho INT NOT NULL,
-    fkArmazem INT NOT NULL,
-    CONSTRAINT pkCompostaTipo  PRIMARY KEY (idTipoVinho, fkGrupoVinho, fkArmazem),
-	CONSTRAINT fkGrupoTipo FOREIGN KEY (fkGrupoVinho) REFERENCES GrupoVinho(idGrupoVinho),
-    CONSTRAINT fkArmazemTipo FOREIGN KEY (fkArmazem) REFERENCES Armazem(idArmazem)
+    CONSTRAINT fkVinicolaArmazem FOREIGN KEY (fkVinicola) REFERENCES Vinicola(idVinicola),
+    CONSTRAINT fkGrupoVinhoArmazem FOREIGN KEY (fkGrupoVinho) REFERENCES GrupoVinho(idGrupoVinho)
 );
+
+
 
 -- Tabela de Sensor
 CREATE TABLE Sensor (
@@ -173,34 +164,16 @@ INSERT INTO CargoPermissao (fkCargo, fkPermissao) VALUES
 	('${fkCargo}', 4);
 INSERT INTO Funcionario (nomeFuncionario, email,telefone, senha, fkVinicola, fkCargo) VALUES ('${nome}', '${email}', '${telefone}', '${senha}', '${fkVinicola}', '${fkCargo}'); -- completo ainda nao
 INSERT INTO Funcionario (nomeFuncionario, email,telefone, senha, fkVinicola) VALUES ('${nome}', '${email}', '${telefone}', '${senha}', '${fkVinicola}'); -- ja foi
--- login sera q é melhor fazer um select com join ou fazer varios selects??
--- com este select obtenho o necessario para o redirecionamento e o sessionstorage  e para pegar os armazens e assim pegar dados preciso da fkvinivola e guardarla para fazer outro sele
-select f.idFuncionario, f.nomeFuncionario, f.email, f.telefone, f.fkCargo,
-		v.idVinicola, v.nomeFantasia, 
-			c.idCargo, c.nomeCargo,
-				cp.fkPermissao
-		from vinicola v join funcionario f on v.idVinicola = f.fkVinicola
-			join cargo c on c.idCargo = f.fkCargo
-				join cargoPermissao cp on cp.fkCargo = c.idCargo
-		where email = 'aaaaaaaaa@gmail.com' and senha = 'Urubu100$'; -- nesse caso ele vai devolver varias linhas ai seria fazer um loop para armazenar as permissoes e depois fazer ifs
-        --    2°
-select f.idFuncionario, f.nomeFuncionario, f.email, f.telefone, f.fkCargo,
-		v.idVinicola, v.nomeFantasia, 
-			c.idCargo, c.nomeCargo
-		from vinicola v join funcionario f on v.idVinicola = f.fkVinicola
-			join cargo c on c.idCargo = f.fkCargo
-		where email = 'aaaaaaaaa@gmail.com' and senha = 'Urubu100$'; -- nesse caso tendo a id cargo vou fazer outro select
-select fkPermissao from CargoPermissao where fkCargo = 1;
 
 		-- 3 º usando group_concat mas ela nao passou 
+create view vw_informacoes_login as
 select f.idFuncionario, f.nomeFuncionario, f.email, f.telefone, f.fkCargo,
 		v.idVinicola, v.nomeFantasia, 
 			c.idCargo, c.nomeCargo,
     GROUP_CONCAT(DISTINCT cp.fkPermissao ) AS fkpermissoes
 		from vinicola v join funcionario f on v.idVinicola = f.fkVinicola
 			join cargo c on c.idCargo = f.fkCargo
-				join cargoPermissao cp on cp.fkCargo = c.idCargo
-		where email = 'aaaaaaaaa@gmail.com' and senha = 'Urubu100$'; -- aqui tenho tudo o
+				join cargoPermissao cp on cp.fkCargo = c.idCargo;
 --  WHERE email = '${email}' AND senha = '${senha}';
 
 -- agora dentro do site 
@@ -211,4 +184,28 @@ select * from Funcionario;
 select * from vinicola;
 INSERT INTO Funcionario values
 (1, 'Maria', 'maria@gmail.com', 'Urubu100$', null, '11946787175', 1, 1);
+
+
+CREATE VIEW vw_AlertaEmTempoReal AS
+SELECT 
+    r.idRegistro,
+    r.dataHora,
+    r.temperatura,
+    r.umidade,
+    s.nomeSerial AS sensor,
+    a.nomeArmazem,
+    gv.classe AS tipoVinho,
+    
+    CASE 
+        WHEN r.temperatura > gv.temperaturaMax THEN 'Temperatura Acima'
+        WHEN r.temperatura < gv.temperaturaMin THEN 'Temperatura Abaixo'
+        WHEN r.umidade > gv.umidadeMax THEN 'Umidade Acima'
+        WHEN r.umidade < gv.umidadeMin THEN 'Umidade Abaixo'
+        ELSE 'Normal'
+    END AS statusAlerta
+    
+FROM Registro r
+JOIN Sensor s ON r.fkSensor = s.idSensor
+JOIN Armazem a ON s.fkArmazem = a.idArmazem
+JOIN GrupoVinho gv ON a.fkGrupoVinho = gv.idGrupoVinho;
 

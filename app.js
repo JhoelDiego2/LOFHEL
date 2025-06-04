@@ -22,7 +22,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
-var aquariosRouter = require("./src/routes/aquarios");
+var armazemRouter = require("./src/routes/armazem");
 var empresasRouter = require("./src/routes/empresas");
 var bobiaRouter = require("./src/routes/bobia");
 
@@ -36,7 +36,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
-app.use("/aquarios", aquariosRouter);
+app.use("/armazem", armazemRouter);
 app.use("/empresas", empresasRouter);
 app.use("/bobia", bobiaRouter);
 

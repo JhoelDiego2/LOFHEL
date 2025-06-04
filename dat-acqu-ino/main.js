@@ -64,11 +64,18 @@ const serial = async (
 
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
+            const min = -1.5;
+            const max = 1.5;
+            const intervalo = max - min;
+            const umidadeComVariacao = umidade + random1;
+            const temperaturaComVariacao = temperatura + random2;
+            const random1 = Number((Math.random() * intervalo + min).toFixed(2));
+            const random2 = Number((Math.random() * intervalo + min).toFixed(2));
 
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?,1)',
-                [umidade, temperatura]
+                'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?, ?)',
+                [umidadeComVariacao, temperaturaComVariacao, 1]
             );
             console.log("valores inseridos no banco: ", umidade + ", " + temperatura);
 

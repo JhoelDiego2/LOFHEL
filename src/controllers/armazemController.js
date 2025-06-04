@@ -1,9 +1,9 @@
-var aquarioModel = require("../models/aquarioModel");
+var armazemModel = require("../models/armazemModel");
 
-function buscarAquariosPorEmpresa(req, res) {
-  var idUsuario = req.params.idUsuario;
+function buscarArmazemEmpresa(req, res) {
+  var fkVinicola = req.params.fkVinicola;
 
-  aquarioModel.buscarAquariosPorEmpresa(idUsuario).then((resultado) => {
+  armazemModel.buscarArmazemEmpresa(fkVinicola).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {
@@ -28,7 +28,7 @@ function cadastrar(req, res) {
   } else {
 
 
-    aquarioModel.cadastrar(descricao, idUsuario)
+    armazemModel.cadastrar(descricao, idUsuario)
       .then((resultado) => {
         res.status(201).json(resultado);
       }
@@ -44,6 +44,6 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-  buscarAquariosPorEmpresa,
+  buscarArmazemEmpresa,
   cadastrar
 }
