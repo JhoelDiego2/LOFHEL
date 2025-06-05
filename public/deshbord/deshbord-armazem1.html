@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="br-pt">
 
 <head>
     <meta charset="UTF-8">
@@ -14,29 +14,25 @@
 <body style="overflow-y: visible;">
     <div class="side-bar">
         <div class="nav">
-            <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
+            <img src="imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
 
-            <p>Olá, <span class="b_usuario">Fernanda Caramico </span>, seja bem vindo(a)
+            <p>Olá, <span class="b_usuario"> </span>, seja bem vindo(a)
                 <span id="b_cargo"></span>
             </p>
 
             <div class="nav-list">
                 <div id="atual">
-                    <a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Inicio</a>
+                    <a href="deshbord.html"><img src="imagens-deshbord/house.png" alt="icone">Inicio</a>
                 </div>
-                <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png"
-                            alt="icone">Perfil</a>
+                <div><a href="perfil.html"><img src="imagens-deshbord/person-circle.png" alt="icone">Perfil</a>
                 </div>
-                <div><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
-                            alt="icone">Funcionarios</a>
+                <div><a href="funcionarios.html"><img src="imagens-deshbord/people.png" alt="icone">Funcionarios</a>
                 </div>
-                <div><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a>
+                <div><a href="armazens.html"><img src="imagens-deshbord/cube.png" alt="icone">Armazéns</a>
                 </div>
-                <div><a href="suporte-bob.html"><img src="../deshbord/imagens-deshbord/body.png"
-                            alt="icone">Suporte-BobIA</a>
+                <div><a href="suporte-bob.html"><img src="imagens-deshbord/body.png" alt="icone">Suporte-BobIA</a>
                 </div>
-                <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
-                            alt="icone">sair</a>
+                <div><a href="../inicio.html"><img src="imagens-deshbord/chevron-back-circle.png" alt="icone">sair</a>
                 </div>
             </div>
         </div>
@@ -58,9 +54,10 @@
                     </div>
                 </div>
                 <div class="column-2">
+                    <div class="data-hora" id="data-hora"></div>
                     <div>
                         <p class="b_usuario"> Fernanda Caramico </p>
-                        <img src="../deshbord/imagens-deshbord/notifications.png" alt="" id="icone_notificacoes"
+                        <img src="imagens-deshbord/notifications.png" alt="" id="icone_notificacoes"
                             onclick="abrir_notificacoes()">
                     </div>
                 </div>
@@ -71,61 +68,47 @@
 
 
         <div class="notificacoes" id="notificacao_caixa" style="display: none; z-index: 10;">
-            <h4>Ultimas notificacoes <span><img src="../deshbord/imagens-deshbord/chevron-back-circle.png" alt=""
-                        id="icone_fechar" onclick="fechar_notificacoes()"></span> </h4>
+            <h4>Ultimas notificacoes <span><img src="imagens-deshbord/chevron-back-circle.png" alt="" id="icone_fechar"
+                        onclick="fechar_notificacoes()"></span> </h4>
             <div class="notificacao">
-                <img src="../deshbord/imagens-deshbord/notifications.png">
+                <img src="imagens-deshbord/notifications.png">
                 <p>Armazém 1 <br> <span>Temperatura acima do
                         recomendado</span></p>
             </div>
             <div class="notificacao">
-                <img src="../deshbord/imagens-deshbord/notifications.png">
+                <img src="imagens-deshbord/notifications.png">
                 <p>Armazém 2<br> <span>Temperatura acima do
                         recomendado</span></p>
             </div>
             <div class="notificacao concluida">
-                <img src="../deshbord/imagens-deshbord/notifications.png">
+                <img src="imagens-deshbord/notifications.png">
                 <p>Armazém 3 <br><span>Temperatura acima do
                         recomendado</span></p>
             </div>
             <div class="notificacao concluida">
-                <img src="../deshbord/imagens-deshbord/notifications.png">
+                <img src="imagens-deshbord/notifications.png">
                 <p>Armazém 4 <br><span>Temperatura acima do
                         recomendado</span></p>
             </div>
             <div class="notificacao concluida">
-                <img src="../deshbord/imagens-deshbord/notifications.png">
+                <img src="imagens-deshbord/notifications.png">
                 <p>Armazém 5 <br><span>Temperatura acima do
                         recomendado</span></p>
             </div>
         </div>
         <script src="JS/armazens-deshbord.js"></script>
         <script src="JS/armazem-especifico.js"></script>
-        <script>
-            console.log("Script rodando, buscando o select");
-
-            var select = document.getElementById("armazem_atual");
-            console.log("Select:", select);
-
-            document.addEventListener("DOMContentLoaded", function () {
-                var select = document.getElementById("armazem_atual");
-
-                select.addEventListener("change", function () {
-                    var valorSelecionado = select.value;
-                    console.log(valorSelecionado);
-                    if (valorSelecionado == 'geral') {
-                        window.location.href = 'deshbord.html';
-                    } else {
-                        if (valorSelecionado != sessionStorage.ARMAZEM_SELECIONADO) {
-                            sessionStorage.ARMAZEM_SELECIONADO = valorSelecionado;
-                            exibir_armazem(valorSelecionado);
-                        }
-                    }
-                });
-            });
 
 
-        </script>
+
+
+        
+
 </body>
 
 </html>
+<script>
+
+
+
+</script>

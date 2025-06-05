@@ -1,4 +1,18 @@
+function exibeDataHora() {
+    // selecionadno a div que exibe a data e a hora na dashboard pelo ID
+    const divDataHora = document.getElementById("data-hora");
 
+    // atualizando a hora a cada 1 minuto
+    setInterval(() => {
+        // pegando a data atual e colocando em uma variável
+        const data = new Date();
+
+        // inserindo a data e hora formatadas para o nosso local (pt-BR) na div que selecionei
+        divDataHora.innerHTML = `${data.toLocaleDateString("pt-BR"
+        )} - ${data.toLocaleTimeString("pt-BR")}`;
+    }, 1000);
+}
+window.addEventListener('load', exibeDataHora)
 let proximaAtualizacao
 function exibirArmazemDoUsuarFDFSAFFDSAFDSADSAFDSAio() {
     var armazem = JSON.parse(sessionStorage.ARMAZEM);
@@ -29,24 +43,12 @@ function exibirArmazemDoUsuarFDFSAFFDSAFDSADSAFDSAio() {
         exibirAquario(aquarios[0].id)
     }
 }
-function exibir_select() {
-    const select_arm = document.getElementById('armazem_atual')
-    var armazem = JSON.parse(sessionStorage.ARMAZENS);
-    var armazem_visivel = sessionStorage.ARMAZEM_SELECIONADO
 
 
-    for (let i = 0; i < armazem.length; i++) {
-        select_arm.innerHTML += `
-                        <option value="${armazem[i].idArmazem}">${armazem[i].nomeArmazem}</option>
-                        `
-    }
-    select_arm.value = armazem_visivel
-
-}
 
 function exibirArmazemDoUsuario() {
 
-    exibir_select()
+
     var armazem = JSON.parse(sessionStorage.ARMAZENS);
     var main_container = document.querySelector(".main");
     var armazem_visivel = sessionStorage.ARMAZEM_SELECIONADO
@@ -132,13 +134,13 @@ function exibirArmazemDoUsuario() {
                 </div>
             </div>
             <div class="column-2">
-                <div class="grafico linha">
+                <div class="grafico linha" style="height: 36vh">
                     <h4 class="titulo_card titulo_desh">Variação na Temperatura nas Últimas 24h</h4>
                     <canvas id="variacao_temperatura_atual_${ocorrencia.idArmazem}" style="width: 24vw; height: 12vh;"></canvas>
                 </div>
-                <div class="grafico linha">
+                <div class="grafico linha" style="height: 36vh">
                     <h4 class="titulo_card titulo_desh">Variação na Umidade nas Últimas 24h</h4>
-                    <canvas id="variacao_umidade_atual_${ocorrencia.idArmazem}" style="width: 24vw; height: 12vh"></canvas>
+                    <canvas id="variacao_umidade_atual_${ocorrencia.idArmazem}" style="width: 24vw; height: 12vh;"></canvas>
                 </div>
             </div>
         </div>
@@ -283,4 +285,41 @@ function plotarGrafico(resposta, fkArmazem) {
 
 
 
-window.addEventListener('load', exibirArmazemDoUsuario)
+function exibir_select() {
+    const select_arm = document.getElementById('armazem_atual');
+    const armazem = JSON.parse(sessionStorage.ARMAZENS || '[]');
+    const armazem_visivel = sessionStorage.ARMAZEM_SELECIONADO;
+
+    select_arm.innerHTML = ''; // limpa antes
+
+    for (let i = 0; i < armazem.length; i++) {
+        select_arm.innerHTML += `
+            <option value="${armazem[i].idArmazem}">
+                ${armazem[i].nomeArmazem}
+            </option>
+        `;
+    }
+
+    select_arm.value = armazem_visivel;
+}
+
+window.addEventListener('load', function () {
+    exibir_select();
+    exibirArmazemDoUsuario()
+
+    const select = document.getElementById("armazem_atual");
+
+    select.addEventListener("change", function () {
+        const valorSelecionado = select.value;
+        console.log("Selecionado:", valorSelecionado);
+
+        if (valorSelecionado === 'geral') {
+            window.location.href = 'deshbord.html';
+        } else {
+            if (valorSelecionado != sessionStorage.ARMAZEM_SELECIONADO) {
+                sessionStorage.ARMAZEM_SELECIONADO = valorSelecionado;
+                exibir_armazem(valorSelecionado);
+            }
+        }
+    });
+});
