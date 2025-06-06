@@ -25,6 +25,7 @@ var medidasRouter = require("./src/routes/medidas");
 var armazemRouter = require("./src/routes/armazem");
 var empresasRouter = require("./src/routes/empresas");
 var bobiaRouter = require("./src/routes/bobia");
+var dashboardRouter = require("./src/routes/dashboard");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -39,6 +40,7 @@ app.use("/medidas", medidasRouter);
 app.use("/armazem", armazemRouter);
 app.use("/empresas", empresasRouter);
 app.use("/bobia", bobiaRouter);
+app.use("/dashboard", dashboardRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
