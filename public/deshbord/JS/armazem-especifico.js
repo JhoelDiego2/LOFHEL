@@ -337,6 +337,10 @@ function plotarGrafico(resultado_medidas, resultado_sensores, fkArmazem) {
     if (ctx_status_sensor) {
         new Chart(ctx_status_sensor, config_sensor);
     }
+        setTimeout(() => {
+            atualizar_grafico_temperatura(fkArmazem, data_var_temp, GraficoTemperatura, data_var_umidade, GraficoUmidade)
+        }, 2000);
+
 }
 
 
@@ -399,3 +403,64 @@ window.addEventListener('load', function () {
         }
     });
 });
+
+
+    function atualizar_grafico_temperatura(fkArmazem, data_var_temp, GraficoTemperatura, data_var_umidade, GraficoUmidade) {
+
+
+
+        fetch(`/medidas/tempo-real/${fkArmazem}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    //  obterdados(fkArmazem);
+                    // alertar(novoRegistro, fkArmazem);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(data_var_temp);
+
+
+                    if (novoRegistro[0].dataHora == data_var_temp.labels[data_var_temp.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há data_var_temp novos para captura, o gráfico não atualizará.")
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].dataHora)
+                        console.log("Horário do último dado capturado:")
+                        console.log(data_var_temp.labels[data_var_temp.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        data_var_temp.labels.shift(); // apagar o primeiro
+                        data_var_temp.labels.push(novoRegistro[0].dataHora); // incluir um novo momento
+
+                        data_var_temp.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                        data_var_temp.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                        b_temperatura_atual.innerHTML = `${novoRegistro[0].temperatura} °C`
+                        GraficoTemperatura.update();
+
+                        data_var_umidade.labels.shift(); // apagar o primeiro
+                        data_var_umidade.labels.push(novoRegistro[0].dataHora); // incluir um novo momento
+
+                        data_var_umidade.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                        data_var_umidade.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de temperatura
+                        b_umidade_atual.innerHTML = `${novoRegistro[0].umidade} %`
+
+                        GraficoUmidade.update();
+
+
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizar_grafico_temperatura(fkArmazem, data_var_temp, GraficoTemperatura, data_var_umidade, GraficoUmidade), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizar_grafico_temperatura(fkArmazem, data_var_temp, GraficoTemperatura, data_var_umidade, GraficoUmidade), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
