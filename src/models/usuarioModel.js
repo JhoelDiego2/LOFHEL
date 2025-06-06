@@ -7,10 +7,10 @@ function autenticar(email, senha) {
 		v.idVinicola, v.nomeFantasia, 
 			 c.nomeCargo,
     GROUP_CONCAT(DISTINCT cp.fkPermissao ) AS fkPermissoes
-		FROM Vinicola v JOIN Funcionario f on v.idVinicola = f.fkVinicola
-			JOIN Cargo c on c.idCargo = f.fkCargo
-				JOIN CargoPermissao cp ON cp.fkCargo = c.idCargo
-		WHERE email = '${email}' AND senha = '${senha}';
+		FROM Vinicola v JOIN Cargo c on v.idVinicola = c.fkVinicola 
+            JOIN CargoPermissao cp on cp.fkCargo = c.idCargo 
+            JOIN Funcionario f on f.fkCargo = c.idCargo 
+            WHERE f.email = '${email}' AND f.senha = '${senha}';
         ;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
