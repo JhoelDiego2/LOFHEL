@@ -85,6 +85,17 @@ CREATE TABLE GrupoVinho (
     umidadeMax FLOAT NOT NULL,
     umidadeMin FLOAT NOT NULL
 );
+desc GrupoVinho;
+alter table GrupoVinho add column umidadeMax int not null;
+alter table GrupoVinho add column umidadeMin int not null;
+select * from GrupoVinho;
+INSERT INTO GrupoVinho (classe, temperaturaMin, temperaturaMax, umidadeMin, umidadeMax)
+VALUES 
+('Vinho Gelado', 4, 6, 65, 75),
+('Vinho Frio', 8.5, 11.5, 65, 75),
+('Vinho Adega', 13.75, 15.25, 65, 75),
+('Vinho Fresco', 17, 19, 65, 75);
+
 -- Tabela de Armazém
 CREATE TABLE Armazem (
     idArmazem INT PRIMARY KEY AUTO_INCREMENT,
@@ -115,15 +126,20 @@ CREATE TABLE Registro (
     fkSensor INT NOT NULL,
    CONSTRAINT fkSensorRegistro  FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor)
 );
-
+alter table Armazem add column fkGrupoVinho int ;
+alter table Armazem add constraint fkArmazemGrupo FOREIGN key (fkGrupoVinho) references GrupoVinho (idGrupoVinho);
 select * from Endereco;
 select * from Vinicola;
 select * from Armazem;
+update Armazem set fkGrupoVinho = 1 Where idArmazem = 1;
+update Armazem set fkGrupoVinho = 2 Where idArmazem = 2;
+update Armazem set fkGrupoVinho = 3 Where idArmazem = 3;
+update Armazem set fkGrupoVinho = 4 Where idArmazem = 4;
+update Armazem set fkGrupoVinho = 2 Where idArmazem = 5;
 select * from Cargo;
 select * from Permissao;
 select * from CargoPermissao;
 select * from Funcionario;
-select * from TipoVinho;
 select * from GrupoVinho;
 select * from Sensor;
 select * from Registro;
@@ -185,6 +201,7 @@ select * from vinicola;
 INSERT INTO Funcionario values
 (1, 'Maria', 'maria@gmail.com', 'Urubu100$', null, '11946787175', 1, 1);
 
+select * from Sensor;
 
 CREATE VIEW vw_AlertaEmTempoReal AS
 SELECT 
@@ -195,6 +212,7 @@ SELECT
     s.nomeSerial AS sensor,
     a.nomeArmazem,
     gv.classe AS tipoVinho,
+    s.fkArmazem,
     
     CASE 
         WHEN r.temperatura > gv.temperaturaMax THEN 'Temperatura Acima'
@@ -208,4 +226,35 @@ FROM Registro r
 JOIN Sensor s ON r.fkSensor = s.idSensor
 JOIN Armazem a ON s.fkArmazem = a.idArmazem
 JOIN GrupoVinho gv ON a.fkGrupoVinho = gv.idGrupoVinho;
+select * from vw_AlertaEmTempoReal;
+
+CREATE VIEW vw_AlertasPersistentes AS
+SELECT 
+	fkArmazem,
+    sensor,
+    statusAlerta,
+    MIN(dataHora) AS inicioAlerta,
+    TIMESTAMPDIFF(MINUTE, MIN(dataHora), NOW()) AS minutosEmAlerta
+    
+FROM vw_AlertaEmTempoReal
+WHERE statusAlerta <> 'Normal'
+GROUP BY sensor, statusAlerta;
+select * from vw_AlertasPersistentes;
+
+select * from Sensor;
+select count(s.idSensor) as total_sensores, 
+	(select count(s.idSensor) from Sensor as s where statusSensor = 'Ativo' and s.fkArmazem = 2 ) as total_sensor_ativo, 
+		(select count(s.idSensor) from Sensor as s where statusSensor = 'Inativo'  and s.fkArmazem = 2) as total_sensor_inativo
+	from Sensor as s 
+    join Armazem as a on s.fkArmazem = a.idArmazem 
+    where a.idArmazem = 2;
+    
+select GrupoVinho.* from GrupoVinho 
+	join Armazem on Armazem.fkGrupoVinho = GrupoVinho.idGrupoVinho 
+    where Armazem.idArmazem = 1;
+    
+select * from Funcionario;
+
+
+
 

@@ -1,4 +1,5 @@
 var medidaModel = require("../models/medidaModel");
+var avisoModel = require("../models/avisoModel");
 
 function buscarUltimasMedidas(req, res) {
 
@@ -8,9 +9,32 @@ function buscarUltimasMedidas(req, res) {
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    medidaModel.buscarUltimasMedidas(fkArmazem, limite_linhas).then(function (resultado) {
+    medidaModel.buscarUltimasMedidas(fkArmazem, limite_linhas)
+    .then(function (resultado) {
         if (resultado.length > 0) {
-            res.status(200).json(resultado);
+                avisoModel.status_sensores(fkArmazem)
+                    .then(
+                        function (resultado_sensores) {
+                            if (resultado_sensores.length > 0) {
+                                res.status(200).json({
+                                    resultado_medidas: resultado,
+                                    resultado_sensores: resultado_sensores
+                                });
+                            } else {
+                                res.status(204).send("Nenhum resultado encontrado!");
+                            }
+                        }
+                    )
+                    .catch(
+                        function (erro_sensores) {
+                            console.log(erro_sensores);
+                            console.log(
+                                "Houve um erro_sensores ao buscar os avisos: ",
+                                erro_sensores.sqlMessage
+                            );
+                            res.status(500).json(erro_sensores.sqlMessage);
+                        }
+                    );
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
@@ -19,6 +43,7 @@ function buscarUltimasMedidas(req, res) {
         console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
+    
 }
 
 
@@ -42,6 +67,8 @@ function buscarMedidasEmTempoReal(req, res) {
         res.status(500).json(erro.sqlMessage);
     });
 }
+
+
 
 module.exports = {
     buscarUltimasMedidas,
