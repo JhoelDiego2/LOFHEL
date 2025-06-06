@@ -191,7 +191,7 @@ input {
     position: absolute;
     width: 63vw;
     height: 60vh;
-    background-color: rgb(92, 92, 92);
+    background-color: rgba(0, 0, 0, 0.788) ;
     background-repeat: repeat;
     background-size: 40%;
     display: flex;
@@ -207,7 +207,7 @@ input {
     flex-direction: column;
     gap: 3vh;
     padding: 3vh 2vw;
-    background: linear-gradient(to bottom, black 1%, rgba(0, 0, 0, 0.788) 10%, rgba(0, 0, 0, 0.699));
+    background: linear-gradient(to bottom, black 1%, rgba(0, 0, 0, 0.788) 10%, rgba(0, 0, 0, 0.158) 100%);
     border-radius: 10px;
 }
 

@@ -22,7 +22,7 @@ const serial = async (
     let poolBancoDados = mysql.createPool(
         {
             // se o banco estiver na sua propia maquina é recomendavél usar o localhost do que os numeros que aparecem no workbank
-            host: '10.18.32.94',
+            host: '10.18.32.60',
             user: 'aluno',
             password: 'Sptech#2024',
             database: 'Lofhel',
@@ -64,20 +64,32 @@ const serial = async (
 
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
-            const min = -1.5;
-            const max = 1.5;
+            const min = 4;
+            const max = 6;
             const intervalo = max - min;
+            const random1 = Number((Math.random() * intervalo + min).toFixed());
+            const random2 = Number((Math.random() * intervalo + min).toFixed(2));
             const umidadeComVariacao = umidade + random1;
             const temperaturaComVariacao = temperatura + random2;
-            const random1 = Number((Math.random() * intervalo + min).toFixed(2));
-            const random2 = Number((Math.random() * intervalo + min).toFixed(2));
 
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
                 'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?, ?)',
                 [umidadeComVariacao, temperaturaComVariacao, 1]
             );
-            console.log("valores inseridos no banco: ", umidade + ", " + temperatura);
+            await poolBancoDados.execute(
+                'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?, ?)',
+                [umidade, temperatura, 2]
+            );
+            await poolBancoDados.execute(
+                'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?, ?)',
+                [umidadeComVariacao, temperaturaComVariacao, 3]
+            );
+            await poolBancoDados.execute(
+                'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?, ?)',
+                [umidade, temperatura, 4]
+            );
+            console.log("valores inseridos no banco: ", umidadeComVariacao + ", " + temperaturaComVariacao);
 
         }
 

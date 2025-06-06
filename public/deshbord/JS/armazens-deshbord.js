@@ -27,4 +27,21 @@ function obterArmazens() {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 }
+function pegar_alertas_gerais() {
+    fetch(`/avisos/pegar_alertas_gerais`, { cache: 'no-store' }).then(function (response) {
+        console.log(response)
+        if (response.ok) {
+
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
 window.addEventListener('load', obterArmazens)

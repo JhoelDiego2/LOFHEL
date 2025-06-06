@@ -1,158 +1,46 @@
+function exibeDataHora() {
+    // selecionadno a div que exibe a data e a hora na dashboard pelo ID
+    const divDataHora = document.getElementById("data-hora");
 
+    // atualizando a hora a cada 1 minuto
+    setInterval(() => {
+        // pegando a data atual e colocando em uma variável
+        const data = new Date();
+
+        // inserindo a data e hora formatadas para o nosso local (pt-BR) na div que selecionei
+        divDataHora.innerHTML = `${data.toLocaleDateString("pt-BR"
+        )} - ${data.toLocaleTimeString("pt-BR")}`;
+    }, 1000);
+}
+window.addEventListener('load', exibeDataHora)
 let proximaAtualizacao
-function exibirArmazemDoUsuarFDFSAFFDSAFDSADSAFDSAio() {
-    var armazem = JSON.parse(sessionStorage.ARMAZEM);
-
-    aquarios.forEach(item => {
-        document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
-            `
-
-        document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.id}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
-                    </div>
-                </div>
-            `
-
-        obterDadosGrafico(item.id)
-    });
-
-    if (aquarios.length > 0) {
-        exibirAquario(aquarios[0].id)
-    }
-}
-function exibir_select() {
-    const select_arm = document.getElementById('armazem_atual')
-    var armazem = JSON.parse(sessionStorage.ARMAZENS);
-    var armazem_visivel = sessionStorage.ARMAZEM_SELECIONADO
 
 
-    for (let i = 0; i < armazem.length; i++) {
-        select_arm.innerHTML += `
-                        <option value="${armazem[i].idArmazem}">${armazem[i].nomeArmazem}</option>
-                        `
-    }
-    select_arm.value = armazem_visivel
 
-}
-
-function exibirArmazemDoUsuario() {
-
-    exibir_select()
-    var armazem = JSON.parse(sessionStorage.ARMAZENS);
-    var main_container = document.querySelector(".main");
-    var armazem_visivel = sessionStorage.ARMAZEM_SELECIONADO
-
-    console.log(armazem)
+// function exibirArmazemDoUsuario() {
 
 
-    for (let i = 0; i < armazem.length; i++) {
-        var ocorrencia = armazem[i]
+//     var armazem = JSON.parse(sessionStorage.ARMAZENS);
+//     var main_container = document.querySelector(".main");
+//     var armazem_visivel = sessionStorage.ARMAZEM_SELECIONADO
 
-        main_container.innerHTML += ` <div class="card-topo" id="card_topo_${ocorrencia.idArmazem}">
-    <div class="card pouco_texto">
-        <p class="titulo_card">Temperatura Atual</p>
-        <p class="texto_card" id="b_temperatura_atual">2°C</p>
-    </div>
-    <div class="card pouco_texto">
-        <p class="titulo_card">Umidade Atual</p>
-        <p class="texto_card" id="b_umidade_atual">50%</p>
-    </div>
-    <div class="card pouco_texto">
-        <p class="titulo_card">Alertas hoje</p>
-        <p class="texto_card">1</p>
-    </div>
-    <div class="card">
-        <p class="titulo_card">Alerta mais frequente</p>
-        <p class="texto_card">Critico</p>
-    </div>
-    <div class="card">
-        <p class="titulo_card">Total de alertas na semana</p>
-        <p class="texto_card">3</p>
-    </div>
-</div>
-<div class="container" id="container_${ocorrencia.idArmazem}">
-
-            <div class="column-1">
-                <div class="grafico donut">
-                    <h4 class="titulo_card titulo_desh">Distribuição de Status dos Sensores (%)</h4>
-                    <canvas id="status_sensores_${ocorrencia.idArmazem}" style="width: 20vw; height: 22vh;"> </canvas>
-                </div>
-                <div class="container-notification-history" id="parametros_${ocorrencia.idArmazem}">
-                    <div class="info-history">
-                        <p style="text-align: center; width: 100%;">Legenda Parametros</p>
-                    </div>
-                    <div class="container-history">
-                        <div class="history">
-                            <img src="imagens-deshbord/alert-critico.png" alt="">
-                            <div class="data-history">
-                                <p class="titulo_params">Alerta Crítico</p>
-                                <p> Temperatura:
-                                    < 10 °C ou> 20 °C
-                                </p>
-                                <p> Umidade:
-                                    < 55% ou> 75%
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="history">
-                            <img src="https://cdn-icons-png.flaticon.com/512/257/257195.png" alt="">
-                            <div class="data-history">
-                                <p class="titulo_params">Atenção</p>
-                                <p>Temperatura: 
-                                < 11.5 °C ou> 16.5 °C</p>
-                                <p> Umidade:
-                                < 58% ou> 72%</p>
-                            </div>
-                        </div>
-
-                        <div class="history">
-                            <img src="https://img.freepik.com/vetores-premium/icone-de-avisos-de-notificacao_1076610-18996.jpg?semt=ais_hybrid&w=740"
-                                alt="">
-                            <div class="data-history">
-                                <p class="titulo_params">Cuidado</p>
-                                <p>Temperatura: 
-                                < 10 °C ou> 20 °C</p>
-                                <p> Umidade:
-                                < 55% ou> 75%</p>
-                            </div>
-                        </div>
+//     console.log(armazem)
 
 
-                    </div>
-                </div>
-            </div>
-            <div class="column-2">
-                <div class="grafico linha">
-                    <h4 class="titulo_card titulo_desh">Variação na Temperatura nas Últimas 24h</h4>
-                    <canvas id="variacao_temperatura_atual_${ocorrencia.idArmazem}" style="width: 24vw; height: 12vh;"></canvas>
-                </div>
-                <div class="grafico linha">
-                    <h4 class="titulo_card titulo_desh">Variação na Umidade nas Últimas 24h</h4>
-                    <canvas id="variacao_umidade_atual_${ocorrencia.idArmazem}" style="width: 24vw; height: 12vh"></canvas>
-                </div>
-            </div>
-        </div>
+//     for (let i = 0; i < armazem.length; i++) {
+//         var ocorrencia = armazem[i]
 
-    </div> `
+//         main_container.innerHTML += `  `
 
-        obterDadosGrafico(ocorrencia.idArmazem)
-    }
+//         obterDadosGrafico(ocorrencia.idArmazem)
+//     }
 
 
-    if (armazem.length > 0) {
-        exibir_armazem(armazem_visivel)
-    }
-}
+//     if (armazem.length > 0) {
+//         exibir_armazem(armazem_visivel)
+//     }
+// }
+
 function exibir_armazem(idArmazem) {
     let todosOsGraficos = JSON.parse(sessionStorage.ARMAZENS);
 
@@ -191,9 +79,44 @@ function obterDadosGrafico(fkArmazem) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                document.getElementById('')
+                plotarGrafico(resposta.resultado_medidas, resposta.resultado_sensores, fkArmazem);
 
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+function pegar_parametros(fkArmazem) {
 
-                plotarGrafico(resposta, fkArmazem);
+    fetch(`/avisos/pegar_parametros/${fkArmazem}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                document.getElementById('temp_parametro_alerta').innerHTML = `
+                    Temperatura: 
+                                < ${resposta[0].temperaturaMin} °C ou> ${resposta[0].temperaturaMax} °C
+                `
+                
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+function pegar_alertas_especifico(fkArmazem) {
+    fetch(`/avisos/pegar_alertas_especifico/${fkArmazem}`, { cache: 'no-store' }).then(function (response) {
+        console.log(response)
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
             });
         } else {
@@ -206,10 +129,18 @@ function obterDadosGrafico(fkArmazem) {
 }
 
 
+function plotarGrafico(resultado_medidas, resultado_sensores, fkArmazem) {
+    // Destrói gráficos antigos se existirem
+    const graficosIds = ['variacao_temperatura_atual', 'variacao_umidade_atual', 'status_sensores'];
+    graficosIds.forEach(id => {
+        const chart = Chart.getChart(id);
+        if (chart) {
+            chart.destroy();
+        }
+    });
 
-function plotarGrafico(resposta, fkArmazem) {
-
-    const label_temperatura = []
+    // Arrays de rótulos e dados
+    const label_temperatura = [];
     const data_var_temp = {
         labels: label_temperatura,
         datasets: [{
@@ -218,27 +149,12 @@ function plotarGrafico(resposta, fkArmazem) {
             fill: false,
             borderColor: '#551c36',
             backgroundColor: '#551c36',
-            tension: 0.1
-        },
-        ]
+            tension: 0.4,
+            pointBackgroundColor: 'purple',
+        }]
     };
 
-    for (let i = resposta.length - 1; i >= 0; i--) {
-        var registro = resposta[i];
-        label_temperatura.push(registro.dataHora);
-        data_var_temp.datasets[0].data.push(registro.temperatura);
-        if (i == 0) {
-            b_temperatura_atual.innerHTML = `${registro.temperatura} ° C`
-        }
-    }
-    const config_var_temp = {
-        type: 'line',
-        data: data_var_temp,
-    };
-    const ctx_temp_atual = document.getElementById(`variacao_temperatura_atual_${fkArmazem}`).getContext('2d');
-    let GraficoTemperatura = new Chart(ctx_temp_atual, config_var_temp);
-
-    const labels_umidade = []
+    const labels_umidade = [];
     const data_var_umidade = {
         labels: labels_umidade,
         datasets: [{
@@ -246,34 +162,181 @@ function plotarGrafico(resposta, fkArmazem) {
             data: [],
             fill: true,
             borderColor: 'rgba(240, 248, 255, 0)',
-            backgroundColor: 'rgb(158, 73, 99',
-            tension: 0.1
-        },
-        ]
+            backgroundColor: 'rgb(158, 73, 99)',
+            tension: 0.4,
+            pointBackgroundColor: 'purple',
+        }]
     };
-    for (let i = resposta.length - 1; i >= 0; i--) {
-        var registro = resposta[i];
+
+    // Alimenta os dados de temperatura e umidade
+    for (let i = resultado_medidas.length - 1; i >= 0; i--) {
+        const registro = resultado_medidas[i];
+        label_temperatura.push(registro.dataHora);
         labels_umidade.push(registro.dataHora);
+
+        data_var_temp.datasets[0].data.push(registro.temperatura);
         data_var_umidade.datasets[0].data.push(registro.umidade);
-        if (i == 0) {
-            b_umidade_atual.innerHTML = `${registro.umidade} %`
+
+        // Atualiza dados mais recentes na tela
+        if (i === 0) {
+            const tempAtual = document.getElementById('b_temperatura_atual');
+            const umidadeAtual = document.getElementById('b_umidade_atual');
+            if (tempAtual) tempAtual.innerHTML = `${registro.temperatura} °C`;
+            if (umidadeAtual) umidadeAtual.innerHTML = `${registro.umidade} %`;
         }
     }
+
+    // Configurações dos gráficos de linha
+    const config_var_temp = {
+        type: 'line',
+        data: data_var_temp,
+        options: {
+            layout: {
+                padding: {
+                    top: 0,
+                    bottom: 0,
+                    left: 10,
+                    right: 10,
+                },
+            },
+            plugins: {
+                legend: { display: false },
+                datalabels: {
+                    align: 'top',
+                    anchor: 'end',
+                    color: '#000',
+                    font: { weight: 'bold', size: 12 },
+                    formatter: Math.round(1),
+                },
+            },
+            interaction: { mode: 'index' },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Horário do dia',
+                        color: '#000',
+                        font: { size: 10, weight: 'bold' },
+                    },
+                    ticks: { color: '#000', font: { size: 12 } },
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                },
+                y: {
+                    beginAtZero: true,
+                    min: 15,
+                    max: 35,
+                    title: {
+                        display: true,
+                        text: 'Temperatura (°C)',
+                        color: '#000',
+                        font: { size: 10, weight: 'bold' },
+                    },
+                    ticks: { stepSize: 10, color: '#000', font: { size: 12 } },
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                },
+            },
+        },
+    };
+
     const config_var_umidade = {
         type: 'line',
         data: data_var_umidade,
+        options: {
+            layout: {
+                padding: {
+                    top: 0,
+                    bottom: 0,
+                    left: 10,
+                    right: 10,
+                },
+            },
+            plugins: {
+                legend: { display: false },
+                datalabels: {
+                    align: 'top',
+                    anchor: 'end',
+                    color: '#000',
+                    font: { weight: 'bold', size: 12 },
+                    formatter: Math.round(1),
+                },
+            },
+            interaction: { mode: 'index' },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Horário do dia',
+                        color: '#000',
+                        font: { size: 10, weight: 'bold' },
+                    },
+                    ticks: { color: '#000', font: { size: 12 } },
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                },
+                y: {
+                    beginAtZero: true,
+                    min: 40,
+                    max: 90,
+                    title: {
+                        display: true,
+                        text: 'Umidade (%)',
+                        color: '#000',
+                        font: { size: 10, weight: 'bold' },
+                    },
+                    ticks: { stepSize: 10, color: '#000', font: { size: 12 } },
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                },
+            },
+        },
+    };
+    // Gráfico de status dos sensores (pizza/doughnut)
+    const data_status_sensores = {
+        labels: ['Ativo', 'Inativo'],
+        datasets: [{
+            label: 'Status dos Sensores',
+            data: [
+                resultado_sensores[0].total_sensor_ativo,
+                resultado_sensores[0].total_sensor_inativo
+            ],
+            backgroundColor: ['rgb(158, 73, 99)', 'rgb(189, 115, 137)'],
+            radius: '95%',
+            hoverOffset: 10
+        }]
     };
 
-    const ctx_umidade_atual = document.getElementById(`variacao_umidade_atual_${fkArmazem}`).getContext('2d');
-    let GraficoUmidade = new Chart(ctx_umidade_atual, config_var_umidade);
+    const config_sensor = {
+        type: 'doughnut',
+        data: data_status_sensores,
+        options: {
+            responsive: false,
+            plugins: {
+                legend: {
+                    position: 'right',
+                    labels: {
+                        color: 'black',
+                        font: {
+                            size: 14
+                        }
+                    }
+                }
+            }
+        }
+    };
 
+    // Renderização dos gráficos
+    const ctx_umidade_atual = document.getElementById('variacao_umidade_atual')?.getContext('2d');
+    if (ctx_umidade_atual) {
+        new Chart(ctx_umidade_atual, config_var_umidade);
+    }
 
+    const ctx_temp_atual = document.getElementById('variacao_temperatura_atual')?.getContext('2d');
+    if (ctx_temp_atual) {
+        new Chart(ctx_temp_atual, config_var_temp);
+    }
 
-
-    // setTimeout(() => {
-    //     atualizar_grafico_temperatura(fkArmazem, data_var_temp, GraficoTemperatura, data_var_umidade, GraficoUmidade)
-    // }, 2000);
-
+    const ctx_status_sensor = document.getElementById('status_sensores')?.getContext('2d');
+    if (ctx_status_sensor) {
+        new Chart(ctx_status_sensor, config_sensor);
+    }
 }
 
 
@@ -282,5 +345,57 @@ function plotarGrafico(resposta, fkArmazem) {
 
 
 
+const armazem_visivel = sessionStorage.ARMAZEM_SELECIONADO;
 
-window.addEventListener('load', exibirArmazemDoUsuario)
+
+function exibir_select() {
+    const select_arm = document.getElementById('armazem_atual');
+    const armazem = JSON.parse(sessionStorage.ARMAZENS || '[]');
+
+    select_arm.innerHTML = '<option value="geral">Geral</option>'; // adiciona 'geral'
+
+    for (let i = 0; i < armazem.length; i++) {
+        select_arm.innerHTML += `
+            <option value="${armazem[i].idArmazem}">
+                ${armazem[i].nomeArmazem}
+            </option>
+        `;
+    }
+
+    // Define o armazém visível no select
+    if (armazem_visivel) {
+        select_arm.value = armazem_visivel;
+    } else {
+        select_arm.value = `1`; // ou define algum padrão
+    }
+}
+
+window.addEventListener('load', function () {
+    exibir_select();
+
+    const select = document.getElementById("armazem_atual");
+    select.value = armazem_visivel
+    // ✅ Carrega o gráfico logo que a página abre, se já houver um selecionado
+    const valorSelecionado = select.value;
+    if (valorSelecionado !== 'geral') {
+        pegar_parametros(valorSelecionado)
+        obterDadosGrafico(valorSelecionado);
+        pegar_alertas_especifico(valorSelecionado)
+    }
+
+    // 🎯 Listener para mudança no select
+    select.addEventListener("change", function () {
+        const valorSelecionado = select.value;
+        console.log("Selecionado:", valorSelecionado);
+
+        if (valorSelecionado === 'geral') {
+            window.location.href = 'deshbord.html';
+        } else {
+            sessionStorage.ARMAZEM_SELECIONADO = valorSelecionado;
+            pegar_parametros(valorSelecionado)
+            obterDadosGrafico(valorSelecionado);
+        pegar_alertas_especifico(valorSelecionado)
+
+        }
+    });
+});

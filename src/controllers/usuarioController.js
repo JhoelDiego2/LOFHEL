@@ -45,71 +45,90 @@ function autenticar(req, res) {
 
 }
 
-function cadastrar_vinicola(req, res) {
-    var nomeFantasia = req.body.nomeFantasiaServer;
-    var razaoSocial = req.body.razaoSocialServer;
-    var cnpj = req.body.cnpjServer;
+// function cadastrar_vinicola(req, res) {
+//     var nomeFantasia = req.body.nomeFantasiaServer;
+//     var razaoSocial = req.body.razaoSocialServer;
+//     var cnpj = req.body.cnpjServer;
 
-    if (nomeFantasia == undefined) {
-        res.status(400).send("O campo 'nomeFantasia' está indefinido!");
-    } else if (razaoSocial == undefined) {
-        res.status(400).send("O campo 'razaoSocial' está indefinido!");
-    } else if (cnpj == undefined) {
-        res.status(400).send("O campo 'cnpj' está indefinido!");
-    } else {
-        usuarioModel.cadastrar_vinicola(nomeFantasia, razaoSocial, cnpj)
-            .then(function (resultadoVinicola) {
-                var fkVinicola = resultadoVinicola.insertId;
-                var nome = req.body.nomeServer;
-                var telefone = req.body.telefoneServer;
-                var email = req.body.emailServer;
-                var senha = req.body.senhaServer;
+//     if (nomeFantasia == undefined) {
+//         res.status(400).send("O campo 'nomeFantasia' está indefinido!");
+//     } else if (razaoSocial == undefined) {
+//         res.status(400).send("O campo 'razaoSocial' está indefinido!");
+//     } else if (cnpj == undefined) {
+//         res.status(400).send("O campo 'cnpj' está indefinido!");
+//     } else {
+//         usuarioModel.cadastrar_vinicola(nomeFantasia, razaoSocial, cnpj)
+//             .then(function (resultadoVinicola) {
+//                 var fkVinicola = resultadoVinicola.insertId;
+//                 var nome = req.body.nomeServer;
+//                 var telefone = req.body.telefoneServer;
+//                 var email = req.body.emailServer;
+//                 var senha = req.body.senhaServer;
 
-                if (fkVinicola == undefined) {
-                    res.status(400).send("Erro interno: fkVinicola está indefinido!");
-                } else if (nome == undefined) {
-                    res.status(400).send("O campo 'nome' está indefinido!");
-                } else if (telefone == undefined) {
-                    res.status(400).send("O campo 'telefone' está indefinido!");
-                } else if (email == undefined) {
-                    res.status(400).send("O campo 'email' está indefinido!");
-                } else if (senha == undefined) {
-                    res.status(400).send("O campo 'senha' está indefinido!");
-                } else {
-                    usuarioModel.cadastrar_representante_cargo(fkVinicola)
-                        .then(function (respostaRepresentanteCargo) {
-                            var fkCargo = respostaRepresentanteCargo.insertId;
+//                 if (fkVinicola == undefined) {
+//                     res.status(400).send("Erro interno: fkVinicola está indefinido!");
+//                 } else if (nome == undefined) {
+//                     res.status(400).send("O campo 'nome' está indefinido!");
+//                 } else if (telefone == undefined) {
+//                     res.status(400).send("O campo 'telefone' está indefinido!");
+//                 } else if (email == undefined) {
+//                     res.status(400).send("O campo 'email' está indefinido!");
+//                 } else if (senha == undefined) {
+//                     res.status(400).send("O campo 'senha' está indefinido!");
+//                 } else {
+//                     usuarioModel.cadastrar_representante_cargo(fkVinicola)
+//                         .then(function (respostaRepresentanteCargo) {
+//                             var fkCargo = respostaRepresentanteCargo.insertId;
 
-                            usuarioModel.cadastrar_cargo_permissao(fkCargo)
-                                .then(function (respostaCargoPermissao) {
-                                    usuarioModel.cadastrar_representante(nome, email, telefone, senha, fkVinicola, fkCargo)
-                                        .then(function (resultadoRepresentante) {
-                                            console.log("Representante cadastrado com sucesso.");
-                                            res.status(201).json({ mensagem: "Vinícola e representante cadastrados com sucesso!" });
-                                        }).catch(function (erro) {
-                                            console.log(erro);
-                                            console.log("\nErro ao cadastrar representante! Erro:", erro.sqlMessage);
-                                            res.status(500).json({ mensagem: "Erro ao cadastrar representante.", erro: erro.sqlMessage });
-                                        });
-                                }).catch(function (erro) {
-                                    console.log(erro);
-                                    console.log("\nErro ao cadastrar cargo e permissão! Erro:", erro.sqlMessage);
-                                    res.status(500).json({ mensagem: "Erro ao cadastrar cargo/permissão.", erro: erro.sqlMessage });
-                                });
-                        }).catch(function (erro) {
-                            console.log(erro);
-                            console.log("\nErro ao cadastrar cargo de representante! Erro:", erro.sqlMessage);
-                            res.status(500).json({ mensagem: "Erro ao cadastrar cargo de representante.", erro: erro.sqlMessage });
-                        });
-                }
-            }).catch(function (erro) {
-                console.log(erro);
-                console.log("\nHouve um erro ao realizar o cadastro da vinícola! Erro:", erro.sqlMessage);
-                res.status(500).json({ mensagem: "Erro ao cadastrar vinícola.", erro: erro.sqlMessage });
-            });
+//                             usuarioModel.cadastrar_cargo_permissao(fkCargo)
+//                                 .then(function (respostaCargoPermissao) {
+//                                     usuarioModel.cadastrar_representante(nome, email, telefone, senha, fkVinicola, fkCargo)
+//                                         .then(function (resultadoRepresentante) {
+//                                             console.log("Representante cadastrado com sucesso.");
+//                                             res.status(201).json({ mensagem: "Vinícola e representante cadastrados com sucesso!" });
+//                                         }).catch(function (erro) {
+//                                             console.log(erro);
+//                                             console.log("\nErro ao cadastrar representante! Erro:", erro.sqlMessage);
+//                                             res.status(500).json({ mensagem: "Erro ao cadastrar representante.", erro: erro.sqlMessage });
+//                                         });
+//                                 }).catch(function (erro) {
+//                                     console.log(erro);
+//                                     console.log("\nErro ao cadastrar cargo e permissão! Erro:", erro.sqlMessage);
+//                                     res.status(500).json({ mensagem: "Erro ao cadastrar cargo/permissão.", erro: erro.sqlMessage });
+//                                 });
+//                         }).catch(function (erro) {
+//                             console.log(erro);
+//                             console.log("\nErro ao cadastrar cargo de representante! Erro:", erro.sqlMessage);
+//                             res.status(500).json({ mensagem: "Erro ao cadastrar cargo de representante.", erro: erro.sqlMessage });
+//                         });
+//                 }
+//             }).catch(function (erro) {
+//                 console.log(erro);
+//                 console.log("\nHouve um erro ao realizar o cadastro da vinícola! Erro:", erro.sqlMessage);
+//                 res.status(500).json({ mensagem: "Erro ao cadastrar vinícola.", erro: erro.sqlMessage });
+//             });
+//     }
+// }
+async function cadastrar_vinicola(req, res) {
+    const dados = req.body;
+
+    try {
+        await usuarioModel.cadastrarCompleto(
+            dados.nomeFantasia,
+            dados.razaoSocial,
+            dados.cnpj,
+            dados.nome,
+            dados.email,
+            dados.telefone,
+            dados.senha
+        );
+
+        res.status(200).json({ mensagem: "Cadastro completo realizado!" });
+    } catch (erro) {
+        console.error("Erro ao cadastrar vinícola:", erro);
+        res.status(500).json({ erro: "Erro ao cadastrar vinícola. Verifique o log do servidor." });
     }
 }
-
 module.exports = {
     autenticar,
     cadastrar_vinicola,
