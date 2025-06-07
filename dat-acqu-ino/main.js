@@ -64,8 +64,8 @@ const serial = async (
 
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
-            const min = 4;
-            const max = 6;
+            const min = 2;
+            const max = 13;
             const intervalo = max - min;
             const random1 = Number((Math.random() * intervalo + min).toFixed());
             const random2 = Number((Math.random() * intervalo + min).toFixed(2));

@@ -15,7 +15,7 @@ function status_sensores(fkArmazem) {
 }
 
 function pegar_parametros(fkArmazem) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pesquisarDescricao()");
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegar_parametros()");
     var instrucaoSql = `
         select GrupoVinho.* from GrupoVinho 
             join Armazem on Armazem.fkGrupoVinho = GrupoVinho.idGrupoVinho 
@@ -25,7 +25,7 @@ function pegar_parametros(fkArmazem) {
     return database.executar(instrucaoSql);
 }
 function pegar_alertas_gerais() {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pesquisarDescricao()");
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegar_alertas_gerais()");
     var instrucaoSql = `
        select * from vw_AlertasPersistentes;
     `;
@@ -33,17 +33,48 @@ function pegar_alertas_gerais() {
     return database.executar(instrucaoSql);
 }
 function pegar_alertas_especifico(fkArmazem) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pesquisarDescricao()");
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegar_alertas_especifico()");
     var instrucaoSql = `
        select * from vw_AlertasPersistentes where fkArmazem = ${fkArmazem};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function min_total_alerta_hoje(fkArmazem) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function min_total_alerta_hoje()");
+    var instrucaoSql = `
+       SELECT 
+            SUM(minutosEmAlerta) / 60 AS min_fora_hoje,
+            COUNT(inicioAlerta) AS total_alertas_hoje
+        FROM vw_AlertasPersistentes
+        WHERE inicioAlerta >= CURDATE()
+        AND inicioAlerta < CURDATE() + INTERVAL 1 DAY
+        AND fkArmazem = ${fkArmazem};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function total_alertas_na_semana(fkArmazem) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function total_alertas_na_semana()");
+    var instrucaoSql = `
+        SELECT 
+            COUNT(*) as total_alertas_semana
+        FROM vw_AlertaEmTempoReal
+        WHERE statusAlerta COLLATE utf8mb4_unicode_ci <> 'Normal' COLLATE utf8mb4_unicode_ci
+        AND dataHora >= DATE_SUB(CURDATE(), INTERVAL 6 DAY)
+        AND dataHora <= NOW()
+        AND fkArmazem =  ${fkArmazem};
+            `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
     status_sensores,
     pegar_parametros,
     pegar_alertas_gerais,
     pegar_alertas_especifico,
+    min_total_alerta_hoje, 
+    total_alertas_na_semana, 
 }
