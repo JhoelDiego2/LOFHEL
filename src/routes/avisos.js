@@ -18,5 +18,7 @@ router.get("/pegar_alertas_gerais", function (req, res) {
 router.get("/pegar_alertas_especifico/:fkArmazem", function (req, res) {
     avisoController.pegar_alertas_especifico(req, res);
 });
-
+router.get("/pegar_valores_kpi/:fkArmazem", function (req, res) {
+    avisoController.kpi_alerta(req, res);
+});
 module.exports = router;
