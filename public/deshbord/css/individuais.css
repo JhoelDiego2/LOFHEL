@@ -159,3 +159,23 @@
 input:focus{
     outline: none;
 }
+.topo{
+    display: flex;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.096);
+    justify-content: space-between;
+    align-items: center;
+}
+.column-1{
+    font-size: 1.4rem;
+}
+.atual{
+    font-weight: 800;
+}
+label{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    justify-content: flex-start;
+    justify-content: space-around;
+    text-align: center;
+}
