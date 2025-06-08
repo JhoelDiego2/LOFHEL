@@ -1,3 +1,5 @@
+let maximo_alerta = 0
+let minimo_alerta = 0
 function exibeDataHora() {
     // selecionadno a div que exibe a data e a hora na dashboard pelo ID
     const divDataHora = document.getElementById("data-hora");
@@ -15,31 +17,6 @@ function exibeDataHora() {
 window.addEventListener('load', exibeDataHora)
 let proximaAtualizacao
 
-
-
-// function exibirArmazemDoUsuario() {
-
-
-//     var armazem = JSON.parse(sessionStorage.ARMAZENS);
-//     var main_container = document.querySelector(".main");
-//     var armazem_visivel = sessionStorage.ARMAZEM_SELECIONADO
-
-//     console.log(armazem)
-
-
-//     for (let i = 0; i < armazem.length; i++) {
-//         var ocorrencia = armazem[i]
-
-//         main_container.innerHTML += `  `
-
-//         obterDadosGrafico(ocorrencia.idArmazem)
-//     }
-
-
-//     if (armazem.length > 0) {
-//         exibir_armazem(armazem_visivel)
-//     }
-// }
 
 function exibir_armazem(idArmazem) {
     let todosOsGraficos = JSON.parse(sessionStorage.ARMAZENS);
@@ -68,6 +45,7 @@ function exibir_armazem(idArmazem) {
     graficoExibir_container.classList.remove("display-none")
     graficoExibir_container.classList.add("display-flex")
 }
+let proximaAtualizacao_kpi
 function obterDadosGrafico(fkArmazem) {
 
 
@@ -104,11 +82,24 @@ function pegar_parametros(fkArmazem) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                minimo_alerta = resposta[0].temperaturaMin
+                maximo_alerta = resposta[0].temperaturaMax
+                minimo_critico = resposta[0].temperaturaMax
+                maximo_critico = resposta[0].temperaturaMax
+                minimo_ideal = resposta[0].temperaturaMax
+                maximo_ideal = resposta[0].temperaturaMax
                 document.getElementById('temp_parametro_alerta').innerHTML = `
                     Temperatura: 
-                                < ${resposta[0].temperaturaMin} °C ou> ${resposta[0].temperaturaMax} °C
+                                < ${minimo_alerta} °C ou> ${maximo_alerta} °C
                 `
-
+                document.getElementById('temp_parametro_critico').innerHTML = `
+                    Temperatura: 
+                                < ${minimo_critico} °C ou> ${minimo_critico} °C
+                `
+                document.getElementById('temp_parametro_ideal').innerHTML = `
+                    Temperatura: 
+                                < ${minimo_ideal} °C ou> ${maximo_ideal} °C
+                `
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -136,6 +127,10 @@ function pegar_alertas_especifico(fkArmazem) {
 }
 function obter_dados_kpi(fkArmazem) {
 
+    if (proximaAtualizacao_kpi != undefined) {
+        clearTimeout(proximaAtualizacao_kpi);
+    }
+
     fetch(`/avisos/pegar_valores_kpi/${fkArmazem}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
@@ -144,20 +139,160 @@ function obter_dados_kpi(fkArmazem) {
                 if (resposta.resultado_hoje[0].min_fora_hoje == null) {
                     document.getElementById('b_tempo_fora').innerHTML = 0
                 }
-                let horas = resposta.resultado_hoje[0].min_fora_hoje;
+                let totalMinutos = resposta.resultado_hoje[0].min_fora_hoje;
 
-                if (horas != null) {
-                    let horas_certo = Number(horas).toFixed(2);
-                    let horario_formatado = horas_certo.replace(".", "h ");
-                    document.getElementById('b_tempo_fora').innerHTML = `${horario_formatado}`;
+                if (totalMinutos != null) {
+                    let horas = Math.floor(totalMinutos / 60);
+                    let minutos = Math.floor(totalMinutos % 60);
+                    let horario_formatado = `${horas}h ${minutos.toString().padStart(2, '0')}`;
+                    document.getElementById('b_tempo_fora').innerHTML = horario_formatado;
                 } else {
                     document.getElementById('b_tempo_fora').innerHTML = "0h 00";
                 }
                 document.getElementById('b_alertas_hoje').innerHTML = `${resposta.resultado_hoje[0].total_alertas_hoje}`
                 document.getElementById('b_total_semana').innerHTML = `${resposta.resultado_semana[0].total_alertas_semana}`
             });
+            proximaAtualizacao_kpi = setTimeout(() => {
+                obter_dados_kpi(fkArmazem)
+            }, 1000);
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
+            proximaAtualizacao_kpi = setTimeout(() => {
+                obter_dados_kpi(fkArmazem)
+            }, 1000);
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+
+let proximaAtualizacao_alerta
+let alertas_json = {}
+let primeira_vez = true
+function apagar_alerta(alerta) {
+    var alerta_div = document.getElementById(`mensagem_${alerta}`)
+    for (let i = 0; i < alertas_json.length; i++) {
+        if (alertas_json[i].valorCapturado == alerta) {
+           alerta_div.style.display = "none"
+           alertas_json[i].visivel = false
+        }
+        
+    }
+}
+function obter_alertas(fkArmazem) {
+
+    if (proximaAtualizacao_alerta != undefined) {
+        clearTimeout(proximaAtualizacao_alerta);
+    }
+
+    fetch(`/avisos/pegar_alertas_especifico/${fkArmazem}`, { cache: 'no-store' }).then(function (response) {
+        var alerta = document.getElementById('alerta')
+        if (response.ok) {
+            if (response.statusText == "No Content") {
+                alerta.innerHTML = ''
+            }
+            response.json().then(function (resposta) {
+                console.log('deu')
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                if (alertas_json.length != resposta.length) {
+                    alertas_json = resposta
+                    for (let i = 0; i < resposta.length; i++) {
+                        if (alertas_json[i] != resposta[i]) {
+                            alertas_json += resposta[i]
+                        }
+                    }
+                }
+
+                alerta.innerHTML = ''
+                if (primeira_vez) {
+                    for (let i = 0; i < resposta.length; i++) {
+                        alertas_json[i].visivel = true
+                        primeira_vez = false
+                    }
+                }
+
+                for (let i = 0; i < resposta.length; i++) {
+                    var ocorrencia = resposta[i]
+                    if (alertas_json[i].visivel == true) {
+                        alerta.innerHTML += `<div class="mensagem-alarme" id="mensagem_${ocorrencia.valorCapturado}">
+                      <div class="informacao">
+                                       <div > ${ocorrencia.nomeArmazem} </div>
+                                       <h3>${ocorrencia.statusAlerta}!</h3>
+                                       <small> ${ocorrencia.statusAlerta} Capturada: ${ocorrencia.valorCapturado}°C.</small>
+                                   </div>
+                                   <div class="alarme-sino"></div><p onclick= "apagar_alerta(${ocorrencia.valorCapturado})">x</p>
+                           </div>`
+                    }
+                }
+                // alerta.innerHTML = ''
+                // for (let i = 0; i < resposta.length; i++) {
+                //     var ocorrencia = resposta[i]
+                //     alertas_visiveis.push(i)
+                //     alerta.innerHTML += `
+                //             <div class="mensagem-alarme" id="mensagem_${i}">
+
+                //                     <div class="informacao">
+                //                         <div > ${ocorrencia.nomeArmazem} </div>
+                //                         <h3>${ocorrencia.statusAlerta}!</h3>
+                //                         <small> ${ocorrencia.statusAlerta} Capturada: ${ocorrencia.valorCapturado}°C.</small>
+                //                     </div>
+                //                     <div class="alarme-sino"></div><p onclick= "fechar_alerta(${i})">x</p>
+                //             </div>
+                //             `
+                //     }
+
+
+            });
+            proximaAtualizacao_alerta = setTimeout(() => {
+                obter_alertas(fkArmazem)
+            }, 1000);
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+            proximaAtualizacao_alerta = setTimeout(() => {
+                obter_alertas(fkArmazem)
+            }, 1000);
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+
+
+let proximaAtualizacao_alerta_todos
+function obter_alertas_geral() {
+    const notificacao_caixa = document.getElementById('notificacao_caixa')
+    if (proximaAtualizacao_alerta_todos != undefined) {
+        clearTimeout(proximaAtualizacao_alerta_todos);
+    }
+
+    fetch(`/avisos/pegar_alertas_gerais`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log('deu')
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                notificacao_caixa.innerHTML = ''
+                for (let i = 0; i < resposta.length; i++) {
+                    var ocorrencia = resposta[i]
+                    notificacao_caixa.innerHTML += `
+                <div class="notificacao">
+                        <img src="imagens-deshbord/notifications.png">
+                        <p>${ocorrencia.nomeArmazem} <br> <span>${ocorrencia.statusAlerta}</span><br>
+                        <span>Inicio: ${ocorrencia.inicioAlerta}</span></p>
+                  </div>
+                `
+
+                }
+            });
+            proximaAtualizacao_alerta_todos = setTimeout(() => {
+                obter_alertas_geral()
+            }, 1000);
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+            proximaAtualizacao_alerta_todos = setTimeout(() => {
+                obter_alertas_geral()
+            }, 1000);
         }
     })
         .catch(function (error) {
@@ -187,7 +322,24 @@ function plotarGrafico(resultado_medidas, resultado_sensores, fkArmazem) {
             backgroundColor: '#551c36',
             tension: 0.4,
             pointBackgroundColor: 'purple',
-        }]
+        },
+        {
+            label: 'Limite Temp. Max',
+            data: [maximo_alerta, maximo_alerta, maximo_alerta, maximo_alerta, maximo_alerta, maximo_alerta, maximo_alerta,],
+            borderWidth: 1,
+            borderColor: 'rgba(255, 0, 0, 0.77)',
+            backgroundColor: 'rgba(255, 0, 0, 0.77)',
+            pointRadius: 0
+        },
+        {
+            label: 'Limite Temp. Min',
+            data: [minimo_alerta, minimo_alerta, minimo_alerta, minimo_alerta, minimo_alerta, minimo_alerta, minimo_alerta,],
+            borderWidth: 1,
+            borderColor: 'rgba(255, 0, 0, 0.77)',
+            backgroundColor: 'rgba(255, 0, 0, 0.77)',
+            pointRadius: 0
+        }
+        ]
     };
 
     const labels_umidade = [];
@@ -197,11 +349,28 @@ function plotarGrafico(resultado_medidas, resultado_sensores, fkArmazem) {
             label: 'Umidade',
             data: [],
             fill: true,
-            borderColor: 'rgba(240, 248, 255, 0)',
-            backgroundColor: 'rgb(158, 73, 99)',
+            borderColor: 'rgb(158, 73, 99)',
+            backgroundColor: 'rgba(168, 44, 81, 0.42)',
             tension: 0.4,
             pointBackgroundColor: 'purple',
-        }]
+        },
+        {
+            label: 'Limite Umi. Max',
+            data: [75, 75, 75, 75, 75, 75, 75,],
+            borderWidth: 1,
+            borderColor: 'rgba(255, 0, 0, 0.77)',
+            backgroundColor: 'rgba(255, 0, 0, 0.77)',
+            pointRadius: 0
+        },
+        {
+            label: 'Limite Umi. Min',
+            data: [65, 65, 65, 65, 65, 65, 65,],
+            borderWidth: 1,
+            borderColor: 'rgba(255, 0, 0, 0.77)',
+            backgroundColor: 'rgba(255, 0, 0, 0.77)',
+            pointRadius: 0
+        }
+        ]
     };
 
     // Alimenta os dados de temperatura e umidade
@@ -227,25 +396,50 @@ function plotarGrafico(resultado_medidas, resultado_sensores, fkArmazem) {
         type: 'line',
         data: data_var_temp,
         options: {
-            layout: {
-                padding: {
-                    top: 0,
-                    bottom: 0,
-                    left: 10,
-                    right: 10,
-                },
-            },
             plugins: {
-                legend: { display: false },
+                legend: {
+                    position: 'right'
+                },
                 datalabels: {
                     align: 'top',
                     anchor: 'end',
                     color: '#000',
                     font: { weight: 'bold', size: 12 },
-                    formatter: Math.round(1),
                 },
+                // annotation: {
+                //     annotations: {
+                //         faixaIdeal: {
+                //             type: 'box',
+                //             yMin: minimo_alerta,
+                //             yMax: maximo_alerta,
+                //             backgroundColor: 'rgba(0, 255, 38, 0.1)',
+                //             borderColor: 'rgba(0, 255, 38, 0.1)',
+                //             borderWidth: 1,
+                //             label: {
+                //                 content: 'Faixa Ideal',
+                //                 enabled: true,
+                //                 position: 'start',
+                //             },
+                //         },
+                //         limiteMin: {
+                //             type: 'line',
+                //             yMin: minimo_alerta,
+                //             yMax: minimo_alerta,
+                //             borderColor: 'red',
+                //             borderWidth: 2,
+                //             borderDash: [10, 10],
+                //         },
+                //         limiteMax: {
+                //             type: 'line',
+                //             yMin: maximo_alerta,
+                //             yMax: maximo_alerta,
+                //             borderColor: 'black',
+                //             borderWidth: 2,
+                //             borderDash: [10, 10],
+                //         }
+                //     }
+                // }
             },
-            interaction: { mode: 'index' },
             scales: {
                 x: {
                     title: {
@@ -258,43 +452,73 @@ function plotarGrafico(resultado_medidas, resultado_sensores, fkArmazem) {
                     grid: { color: 'rgba(0,0,0,0.05)' },
                 },
                 y: {
-                    beginAtZero: true,
+                    beginAtZero: false,
+                    // min: minimo_alerta - 10,
+                    // max: maximo_alerta + 10,
                     title: {
                         display: true,
                         text: 'Temperatura (°C)',
                         color: '#000',
                         font: { size: 10, weight: 'bold' },
                     },
-                    ticks: { stepSize: 10, color: '#000', font: { size: 12 } },
+                    ticks: { stepSize: 5, color: '#000', font: { size: 12 } },
                     grid: { color: 'rgba(0,0,0,0.05)' },
                 },
             },
-        },
+            interaction: { mode: 'index' }
+        }
     };
 
     const config_var_umidade = {
         type: 'line',
         data: data_var_umidade,
         options: {
-            layout: {
-                padding: {
-                    top: 0,
-                    bottom: 0,
-                    left: 10,
-                    right: 10,
-                },
-            },
             plugins: {
-                legend: { display: false },
+                legend: {
+                    position: 'right'
+                },
                 datalabels: {
                     align: 'top',
-                    anchor: 'end',
+                    anchor: 'start',
                     color: '#000',
                     font: { weight: 'bold', size: 12 },
-                    formatter: Math.round(1),
                 },
+                // annotation: {
+                //     annotations: {
+                //         faixaIdeal: {
+                //             type: 'box',
+                //             yMin: 65,
+                //             yMax: 75,
+                //             backgroundColor: 'rgba(0, 255, 38, 0.1)',
+                //             borderColor: 'rgba(0, 255, 38, 0.1)',
+                //             borderWidth: 1,
+                //             label: {
+                //                 content: 'Faixa Ideal',
+                //                 enabled: true,
+                //                 position: 'start',
+                //             },
+                //         },
+                //         limiteMin: {
+                //             type: 'line',
+                //             yMin: 65,
+                //             yMax: 65,
+                //             borderColor: 'red',
+                //             borderWidth: 1,
+                //             borderDash: [10, 10],
+
+                //         },
+                //         limiteMax: {
+                //             type: 'line',
+                //             yMin: 75,
+                //             yMax: 75,
+                //             borderColor: 'red',
+                //             borderWidth: 2,
+                //             borderDash: [10, 10],
+
+                //         }
+                //     }
+                // }
             },
-            interaction: { mode: 'index' },
             scales: {
                 x: {
                     title: {
@@ -308,17 +532,20 @@ function plotarGrafico(resultado_medidas, resultado_sensores, fkArmazem) {
                 },
                 y: {
                     beginAtZero: true,
+                    min: 55,
+                    max: 85,
                     title: {
                         display: true,
                         text: 'Umidade (%)',
                         color: '#000',
                         font: { size: 10, weight: 'bold' },
                     },
-                    ticks: { stepSize: 10, color: '#000', font: { size: 12 } },
+                    ticks: { stepSize: 5, color: '#000', font: { size: 12 } },
                     grid: { color: 'rgba(0,0,0,0.05)' },
                 },
             },
-        },
+            interaction: { mode: 'index' }
+        }
     };
     // Gráfico de status dos sensores (pizza/doughnut)
     const data_status_sensores = {
@@ -407,6 +634,7 @@ function exibir_select() {
 
 window.addEventListener('load', function () {
     exibir_select();
+    obter_alertas_geral();
 
     const select = document.getElementById("armazem_atual");
     select.value = armazem_visivel
@@ -417,6 +645,7 @@ window.addEventListener('load', function () {
         obterDadosGrafico(valorSelecionado);
         pegar_alertas_especifico(valorSelecionado)
         obter_dados_kpi(valorSelecionado)
+        obter_alertas(valorSelecionado)
     }
 
     // 🎯 Listener para mudança no select
@@ -432,6 +661,7 @@ window.addEventListener('load', function () {
             obterDadosGrafico(valorSelecionado);
             pegar_alertas_especifico(valorSelecionado)
             obter_dados_kpi(valorSelecionado)
+            obter_alertas(valorSelecionado)
 
         }
     });
@@ -496,4 +726,22 @@ function atualizar_grafico_temperatura(fkArmazem, data_var_temp, GraficoTemperat
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
+}
+
+var notificacao_aberta = false
+// abrir as notificaoes
+function abrir_notificacoes() {
+    if (notificacao_aberta == false) {
+        notificacao_caixa.style = "display: 1 "
+        notificacao_aberta = true
+    } else {
+        notificacao_caixa.style = "display: none "
+        notificacao_aberta = false
+
+    }
+
+
+}
+function fechar_notificacoes() {
+    notificacao_caixa.style = "display:none"
 }

@@ -27,7 +27,7 @@ function pegar_parametros(fkArmazem) {
 function pegar_alertas_gerais() {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegar_alertas_gerais()");
     var instrucaoSql = `
-       select * from vw_AlertasPersistentes;
+       select nomeArmazem, statusAlerta, DATE_FORMAT(inicioAlerta,'%d/%m/%y %H:%i:%s') as inicioAlerta, minutosEmAlerta  from vw_AlertasPersistentes;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -35,7 +35,7 @@ function pegar_alertas_gerais() {
 function pegar_alertas_especifico(fkArmazem) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegar_alertas_especifico()");
     var instrucaoSql = `
-       select * from vw_AlertasPersistentes where fkArmazem = ${fkArmazem};
+select nomeArmazem, statusAlerta, DATE_FORMAT(inicioAlerta,'%d/%m/%y %H:%i:%s') as inicioAlerta, minutosEmAlerta, valorCapturado from vw_AlertasPersistentes where fkArmazem = ${fkArmazem} AND minutosEmAlerta is not null;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -44,7 +44,7 @@ function min_total_alerta_hoje(fkArmazem) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function min_total_alerta_hoje()");
     var instrucaoSql = `
        SELECT 
-            SUM(minutosEmAlerta) / 60 AS min_fora_hoje,
+            SUM(minutosEmAlerta) AS min_fora_hoje,
             COUNT(inicioAlerta) AS total_alertas_hoje
         FROM vw_AlertasPersistentes
         WHERE inicioAlerta >= CURDATE()

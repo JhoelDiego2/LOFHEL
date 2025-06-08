@@ -67,29 +67,25 @@ const serial = async (
             const min = 2;
             const max = 13;
             const intervalo = max - min;
-            const random1 = Number((Math.random() * intervalo + min).toFixed());
-            const random2 = Number((Math.random() * intervalo + min).toFixed(2));
-            const umidadeComVariacao = umidade + random1;
-            const temperaturaComVariacao = temperatura + random2;
 
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
                 'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?, ?)',
-                [umidadeComVariacao, temperaturaComVariacao, 1]
+                [(umidade * Number((Math.random() * intervalo + min).toFixed())), (temperatura  * Number((Math.random() * intervalo + min).toFixed(2))), 1]
             );
             await poolBancoDados.execute(
                 'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?, ?)',
-                [umidade, temperatura, 2]
+                 [(umidade * Number((Math.random() * intervalo + min).toFixed())), (temperatura  * Number((Math.random() * intervalo + min).toFixed(2))), 2]
             );
             await poolBancoDados.execute(
                 'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?, ?)',
-                [umidadeComVariacao, temperaturaComVariacao, 3]
+                 [(umidade * Number((Math.random() * intervalo + min).toFixed())), (temperatura  * Number((Math.random() * intervalo + min).toFixed(2))), 3]
             );
             await poolBancoDados.execute(
                 'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?, ?)',
-                [umidade, temperatura, 4]
+                [(umidade * Number((Math.random() * intervalo + min).toFixed())), (temperatura  * Number((Math.random() * intervalo + min).toFixed(2))), 4]
             );
-            console.log("valores inseridos no banco: ", umidadeComVariacao + ", " + temperaturaComVariacao);
+            console.log("valores inseridos no banco: ", umidadeComVariacao + ", " + temperatura);
 
         }
 

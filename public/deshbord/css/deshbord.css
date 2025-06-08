@@ -321,7 +321,7 @@ option {
 }
 
 .history .datatime-history {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 800;
     color: #7e6655;
     text-align: center;
@@ -346,4 +346,64 @@ option {
 
 .display-block {
   display: block;
+}
+
+
+/* ALERTA */
+
+#alerta {
+  position: absolute;
+    bottom: 2vh;
+  right: 2vw;
+}
+
+.mensagem-alarme {
+  background-color: white;
+  border-radius: 5px;
+  width: 300px;
+  height: 80px;
+  margin: 10px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: black;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.205);
+  position: relative;
+    border: solid 2px rgba(66, 50, 50, 0.281);
+
+}
+
+.mensagem-alarme h3 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.mensagem-alarme .informacao {
+  width: 66%;
+}
+
+.alarme-sino {
+  width: 48px;
+  height: 48px;
+  animation: bell 4s ease infinite alternate-reverse;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
+  background-size: cover;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bell {
+  0%   {transform: rotate(25deg)}
+  25%  {transform: rotate(-25deg)}
+  50%  {transform: rotate(25deg)}
+  75%  {transform: rotate(-25deg)}
+  100% {transform: rotate(25deg)}
+}
+.mensagem-alarme p {
+    color: red;
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    font-size: 2rem;
+    cursor: pointer;
 }
