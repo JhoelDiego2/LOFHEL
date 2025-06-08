@@ -97,10 +97,10 @@
             </div>
             <div class="column-2">
                 <div class="card" style="gap:8vh;">
-                    <h6 style="padding-bottom: vh;">Atualizar Funcionario</h6>
+                    <h6 style="padding-bottom: vh;">Atualizar informaçoes do Funcionario</h6>
                     <div>
                         <p id="texto_email_atualizar">Email</p>
-
+                        
                         <input type="text" id="ipt_email_atualizar" placeholder="Email" oninput="digitando()">
                         <span id="erro_email_atualizar" style="display: none;">E-mail invalido deve conter: 1(@) e
                             1(.)</span>
@@ -139,6 +139,12 @@
                             <option value="Analista">Analista</option>
                             <option value="Operacional">Operacional</option>
                         </select>
+                        <p id="texto_Deletarsenha">Senha</p>
+                    <input type="text" id="ipt_Deletarsenha" placeholder="Senha" oninput="digitando()">
+                    <span style="display:none; text-align: center;" id="cadastrar_vazio">Prencher todos os campos</span>
+                    <p id="texto_DeletarConfirmarsenha">Senha Confirmar</p>
+                    <input type="text" id="ipt_DeletarConfirmarsenha" placeholder="Senha" oninput="digitando()">
+                    <span style="display:none; text-align: center;" id="cadastrar_vazio">Prencher todos os campos</span>
                     </div>
                     <div>
                         <button onclick="remover_funcionario()">Remover</button>
@@ -203,6 +209,7 @@
                             <option value="Analista">Analista</option>
                             <option value="Operacional">Operacional</option>
                         </select>
+
                     </div>
                     <div>
                         <button onclick="atualizar_funcionario()">Atualizar</button>
