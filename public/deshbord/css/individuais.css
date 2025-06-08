@@ -42,8 +42,9 @@
     padding-bottom: 2rem;
 }
 .card p {
-    color: #ffffff;
+    color: #000000a2;
     padding-bottom: 0.3vh;
+    font-size: 15px;
 }
 .card select {
     width: 100%;
@@ -177,5 +178,6 @@ label{
     font-size: 20px;
     justify-content: flex-start;
     justify-content: space-around;
-    text-align: center;
+    text-align: start;
+    margin-top: 10px;
 }

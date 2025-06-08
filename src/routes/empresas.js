@@ -12,8 +12,16 @@ router.get("/buscar", function (req, res) {
     empresaController.buscarPorCnpj(req, res);
 });
 
-router.get("/buscar/:id", function (req, res) {
-  empresaController.buscarPorId(req, res);
+router.put("/atualizar", function (req, res) {
+    empresaController.atualizar(req, res);
+});
+
+router.delete("/deletar", function (req, res) {
+    empresaController.deletar(req, res);
+});
+
+router.get("/pegar_cargos/:fkVinicola", function (req, res) {
+  empresaController.pegar_cargos(req, res);
 });
 
 router.get("/listar", function (req, res) {
