@@ -226,3 +226,12 @@ function remover_armazem() {
 
 
 /*FIM VERIFICAÇÕES DSA ABA CADASTRO DE ARMAZEMS-------------------------------------------------------------------------------------------------------------------------------- */
+
+function mudar(nome) {
+    document.getElementById('tit_funcionario').style.fontWeight = "100"
+    document.getElementById('tit_cargos').style.fontWeight = "100"
+    document.getElementById(`tit_${nome}`).style.fontWeight = "800"
+    document.getElementById('section_cargos').style.display = 'none'
+    document.getElementById('section_funcionario').style.display = 'none'
+    document.getElementById(`section_${nome}`).style.display = 'flex'
+}
