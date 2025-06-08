@@ -174,10 +174,10 @@ function apagar_alerta(alerta) {
     var alerta_div = document.getElementById(`mensagem_${alerta}`)
     for (let i = 0; i < alertas_json.length; i++) {
         if (alertas_json[i].valorCapturado == alerta) {
-           alerta_div.style.display = "none"
-           alertas_json[i].visivel = false
+            alerta_div.style.display = "none"
+            alertas_json[i].visivel = false
         }
-        
+
     }
 }
 function obter_alertas(fkArmazem) {
@@ -641,11 +641,14 @@ window.addEventListener('load', function () {
     // ✅ Carrega o gráfico logo que a página abre, se já houver um selecionado
     const valorSelecionado = select.value;
     if (valorSelecionado !== 'geral') {
+        primeira_vez = true
+        alertas_json = {}
         pegar_parametros(valorSelecionado)
         obterDadosGrafico(valorSelecionado);
         pegar_alertas_especifico(valorSelecionado)
         obter_dados_kpi(valorSelecionado)
         obter_alertas(valorSelecionado)
+
     }
 
     // 🎯 Listener para mudança no select
@@ -656,6 +659,9 @@ window.addEventListener('load', function () {
         if (valorSelecionado === 'geral') {
             window.location.href = 'deshbord.html';
         } else {
+            primeira_vez = true
+            alertas_json = {}
+
             sessionStorage.ARMAZEM_SELECIONADO = valorSelecionado;
             pegar_parametros(valorSelecionado)
             obterDadosGrafico(valorSelecionado);

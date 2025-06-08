@@ -27,7 +27,7 @@ function pegar_parametros(fkArmazem) {
 function pegar_alertas_gerais() {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegar_alertas_gerais()");
     var instrucaoSql = `
-       select nomeArmazem, statusAlerta, DATE_FORMAT(inicioAlerta,'%d/%m/%y %H:%i:%s') as inicioAlerta, minutosEmAlerta  from vw_AlertasPersistentes;
+       select nomeArmazem, statusAlerta, DATE_FORMAT(inicioAlerta,'%d/%m/%y %H:%i:%s') as inicioAlerta, minutosEmAlerta  from vw_AlertasPersistentes order by inicioAlerta desc limit 8;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
