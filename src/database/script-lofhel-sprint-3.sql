@@ -7,6 +7,7 @@ CREATE USER 'apiLofhelWeb'@'localhost' IDENTIFIED BY 'Urubu100$';
 GRANT INSERT, UPDATE, SELECT ON lofhel.* TO 'apiLofhelWeb'@'localhost';
 FLUSH PRIVILEGES;
 */
+drop database if exists Lofhel;
 CREATE DATABASE Lofhel;
 USE Lofhel;
 CREATE TABLE Endereco (
@@ -74,7 +75,6 @@ CREATE TABLE GrupoVinho (
 CREATE TABLE Armazem (
     idArmazem INT PRIMARY KEY AUTO_INCREMENT,
     nomeArmazem VARCHAR(60) NOT NULL,    
-    descricao VARCHAR(100),
     fkVinicola INT NOT NULL,
     fkGrupoVinho INT NOT NULL,
     CONSTRAINT fkVinicolaArmazem FOREIGN KEY (fkVinicola) REFERENCES Vinicola(idVinicola),
@@ -129,9 +129,13 @@ insert into Permissao (codigo) values
 ('gerar_relatorios');
 
 insert into Vinicola values 
-	(1,'Maria Vinicola', 'MariaS.A.', '100200300102456', null, null); 
+	(1,'Maria Vinicola', 'MariaS.A.', '100200300102456', null); 
+    describe Vinicola;
+
 insert into Armazem values
-	(1, 'Armazem 1', 'Vinhos delicados', 1);
+	(1, 'Armazem 1', 'Vinhos delicados', 1,1); /*RETORNAR: TIRAR DESCRIÇÃO*/
+    describe Armazem;
+    
 update funcionario set fkCargo = 1 where idFuncionario = 1;
 insert into Cargo values
 	(default, 'Representante Legal', 1);
@@ -161,7 +165,8 @@ select * from vw_informacoes_login;
 
 
 INSERT INTO Funcionario values
-(1, 'Maria', 'maria@gmail.com', 'Urubu100$', null, '11946787175', 1, 1);
+(1, 'Maria', 'maria@gmail.com', 'Urubu100$', null, '11946787175', 1);
+describe Funcionario;
 
 select * from Sensor;
 

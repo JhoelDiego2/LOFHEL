@@ -136,7 +136,6 @@ function digitando() {
     //var temperatura = ipt_temp_ideal.value
    // var umidade = ipt_umidade_ideal.value
     ipt_nome.value != '' ? (texto_nome.style = "color:black", ipt_nome.style = " border-bottom-color: #0B0B0B") : null
-    ipt_descricao.value != '' ? (texto_descricao.style = "color:black", ipt_descricao.style = " border-bottom-color: #0B0B0B") : null
     //ipt_temp_ideal.value != '' ? (texto_temp_ideal.style = "color:black", ipt_temp_ideal.style = " border-bottom-color: #0B0B0B") : null
    // ipt_umidade_ideal.value != '' ? (texto_umidade_ideal.style = "color:black", ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B") : null
     ipt_armazem_remover.value != '' ? (texto_armazem_remover.style = "color:black", ipt_armazem_remover.style = " border-bottom-color: #0B0B0B") : null
@@ -160,60 +159,55 @@ function digitando() {
         texto_umidade_ideal.style = "color: black"
         ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B"
     }*/
-    if (select == 'gelado') {
-   //     ipt_temp_ideal.placeholder = '5 (sugestão)';
-
-        op_gelado.style = "display:1"
-        op_frio.style = "display:none"
-        op_temp_adega.style = "display:none"
-        op_fresco.style = "display:none"
-
-    }
-    if (select == 'frio') {
-        //ipt_temp_ideal.placeholder = '10 (sugestão)'
-        op_gelado.style = "display:none"
-        op_frio.style = "display:1"
-        op_temp_adega.style = "display:none"
-        op_fresco.style = "display:none"
-    }
-    if (select == 'temp_adega') {
-       // ipt_temp_ideal.placeholder = '15 (sugestão)'
-        op_gelado.style = "display:none"
-        op_frio.style = "display:none"
-        op_temp_adega.style = "display:1"
-        op_fresco.style = "display:none"
-    }
-    if (select == 'fresco') {
-      //  ipt_temp_ideal.placeholder = '18 (sugestão)'
-        op_gelado.style = "display:none"
-        op_frio.style = "display:none"
-        op_temp_adega.style = "display:none"
-        op_fresco.style = "display:1"
-    }
+   
 }
 function cadastrar_armazem() {
     var select = select_grupo.value
    // var temperatura = ipt_temp_ideal.value
   //  var umidade = ipt_umidade_ideal.value
     var nome_armazem = ipt_nome.value
-    var descricao = ipt_descricao.value
-    var grupo = select_grupo.value
-    var espumante = ipt_espumante.value ? true : false
-    var branco_leve = ipt_branco_leve.value ? true : false
-    var branco_encorpado = ipt_branco_encorpado.value ? true : false
-    var branco_aromatico = ipt_branco_aromatico.value ? true : false
-    var rose = ipt_rose.value ? true : false
-    var tinto_médio_corpo = ipt_tinto_medio_corpo.value ? true : false
-    var tinto_leve = ipt_tinto_leve.value ? true : false
-    var tinto_medio_corpo = ipt_tinto_medio_corpo.value ? true : false
-    var tinto_encorpado = ipt_tinto_encorpado.value ? true : false
+    var grupo = select_grupo.value/*BLZ */
+    
 
-    if (select == '' || /*temperatura == '' || umidade == '' */ nome_armazem == '' || grupo == '' ||
-        (espumante == false && branco_leve == false) || (branco_encorpado == false && branco_aromatico == false && rose == false)
-        || (tinto_medio_corpo == false && tinto_leve == false) || (tinto_médio_corpo == false && tinto_encorpado == false)) {
+
+    if (select == '' || /*temperatura == '' || umidade == '' */ nome_armazem == '' || grupo == '') {
         cad_armazem_vazio.style="display=1"
     }
-}
+    else {
+         fetch("/usuarios/cadastrar_armazem", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+
+                            selecionarServer: select,
+                            armazemNomeServer: nome_armazem,
+                            grupoServer: grupo
+                        }),
+                    })
+                        .then(function (resultado_representante) {
+                            console.log("resultado_representante: ", resultado_representante);
+
+                            if (resultado_representante.ok) {
+
+                                
+                                setTimeout(() => {
+                                    window.location = "dashbord.html"; /*antes: login.html */
+                                }, "2000");
+
+                            } else {
+                                throw "Houve um erro ao tentar realizar o cadastro!";
+                            }
+                        })
+                        .catch(function (resultado_representante) {
+                            console.log(`#ERRO: ${resultado_representante}`);
+                        });
+
+                    return false;
+                }
+    }
+
 function remover_armazem() {
     var armazem_remover = ipt_armazem_remover.value
     var remover_arm_senha = ipt_senha_remover.value
