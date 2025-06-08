@@ -45,9 +45,9 @@ function cadastrar(req, res) {
 }
 
 function cadastroArmazem(req, res) {
-  var nomeArmazem = req.body.nomeArmazem;
+  var nomeArmazem = req.body.armazemNomeServer;
   var fkVinicola = req.body.fkVinicola;
-  var fkGrupoVinho = req.body.fkGrupoVinho;
+  var fkGrupoVinho = req.body.grupoServer;
   /*Não tem o campo descrição mais*/
 
   if (nomeArmazem == undefined) {

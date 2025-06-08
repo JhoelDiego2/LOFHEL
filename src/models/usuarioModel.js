@@ -42,8 +42,8 @@ function cadastrarCompleto(nomeFantasia, razaoSocial, cnpj, nomeFuncionario, ema
             return database.executar(instrucaoPermissao).then(() => {
                 // 4. Cadastrar funcionário
                 var instrucaoFuncionario = `
-                    INSERT INTO Funcionario (nomeFuncionario, email, telefone, senha, fkVinicola, fkCargo)
-                    VALUES ('${nomeFuncionario}', '${email}', '${telefone}', '${senha}', ${fkVinicola}, ${fkCargo});
+                    INSERT INTO Funcionario (nomeFuncionario, email, telefone, senha, fkCargo)
+                    VALUES ('${nomeFuncionario}', '${email}', '${telefone}', '${senha}', ${fkCargo});
                 `;
 
                 return database.executar(instrucaoFuncionario);
