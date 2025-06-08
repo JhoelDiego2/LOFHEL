@@ -10,14 +10,14 @@ function buscarArmazemEmpresa(fkVinicola) {
 
 function cadastrar(fkVinicola, descricao) {
   
-  var instrucaoSql = `INSERT INTO (descricao, fk_empresa) Armazem VALUES (${descricao}, ${fkVinicola})`;
+  var instrucaoSql = `INSERT INTO Armazem (descricao, fk_empresa)  VALUES (${descricao}, ${fkVinicola})`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
 
 function cadastroArmazem (nomeArmazem, fkVinicola, fkGrupoVinho){ /*RETIRADOO ID PQ É AUTOINCREMENT */
-  var instrucaoSql = `INSERT INTO (nomeArmazem, fkVinicola, fkGrupoVinho) Armazem VALUES (
+  var instrucaoSql = `INSERT INTO Armazem (nomeArmazem, fkVinicola, fkGrupoVinho) VALUES (
   ${nomeArmazem} , ${fkVinicola},${fkGrupoVinho})`;
 
    console.log("Executando a instrução SQL: \n" + instrucaoSql);

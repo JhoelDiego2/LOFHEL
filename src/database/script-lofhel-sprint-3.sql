@@ -2,8 +2,8 @@
 -- Você precisa executar os comandos no banco de dados para criar as tabelas,
 -- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo !!
 -- comandos para executar no mysql
-/*
-CREATE USER 'apiLofhelWeb'@'localhost' IDENTIFIED BY 'Urubu100$';
+
+/*CREATE USER 'apiLofhelWeb'@'localhost' IDENTIFIED BY 'Urubu100$';
 GRANT INSERT, UPDATE, SELECT ON lofhel.* TO 'apiLofhelWeb'@'localhost';
 FLUSH PRIVILEGES;
 */
@@ -160,9 +160,6 @@ create view vw_informacoes_login as
             JOIN Funcionario f on f.fkCargo = c.idCargo
             group by idFuncionario;
 select * from vw_informacoes_login;
-
-
-
 
 INSERT INTO Funcionario values
 (1, 'Maria', 'maria@gmail.com', 'Urubu100$', null, '11946787175', 1);
