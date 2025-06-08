@@ -47,15 +47,46 @@ function cadastrar_funcionario() {
         vaido = false
     }
     if (valido == true) {
-        alerta_grupo3.style = "display:1"
-        div_sair_alerta.style = "display:1"
-        erro_telefone.style = "display:none"
-        erro_email.style = "display:none"
-        ipt_nome.value = ''
-        ipt_email.value = ''
-        ipt_telefone.value = ''
-        ipt_cargo.value = ''
-        ipt_senha.value = ''
+
+        fetch("/usuarios/cadastrar_funcionario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeFuncionarioServer: nome,
+                emailServer : email,
+                telefoneServer: telefone,
+                cargoServer: cargo,
+                senhaServer: senha
+            }),
+        })
+            .then(function (resultado_cargo) {
+                console.log("resultado_cargo: ", resultado_cargo);
+
+                if (resultado_cargo.ok) {
+                    var fkVinicola = sessionStorage.ID_VINICOLA
+                    exibir_select(fkVinicola)
+                    alert('deu')
+                    alerta_grupo3.style = "display:1"
+                    div_sair_alerta.style = "display:1"
+                    erro_telefone.style = "display:none"
+                    erro_email.style = "display:none"
+                    ipt_nome.value = ''
+                    ipt_email.value = ''
+                    ipt_telefone.value = ''
+                    ipt_cargo.value = ''
+                    ipt_senha.value = ''
+
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resultado_cargo) {
+                console.log(`#ERRO: ${resultado_cargo}`);
+            });
+
+        return false;
     }
 }
 function atualizar_funcionario() {
@@ -99,11 +130,13 @@ function atualizar_funcionario() {
 }
 function remover_funcionario() {
     var email_remover = ipt_email_remover.value;
-    var cargo_remover = ipt_cargo_remover.value;
-    var valido = false;
+    var valido = true;
     var email_remover_largura = email_remover.length
     var i_arroba = 0
-    if (email_remover == '' || cargo_remover == '') {
+    var senha = ipt_Deletarsenha.value
+    var confirmarSenha = ipt_DeletarConfirmarsenha
+    var idFuncionario = sessionStorage.ID_USUARIO
+    if (email_remover == '') {
         remover_vazio.style = "display:1; color:red;"
     }
     //validar email_remover
@@ -112,26 +145,55 @@ function remover_funcionario() {
     for (let i = 0; i < email_remover.length; i++) {
         i_arroba++
     }
-    if ((email_remover.includes('@') && (i_arroba == 1)) && (email_remover.includes('.')) && email_remover_largura >= 7) {
-        valido = true
-    } else {
-        erro_email_remover.style = "display:1; color:red"
-        vaido = false
-    }
+    // // if ((email_remover.includes('@') && (i_arroba == 1)) && (email_remover.includes('.')) && email_remover_largura >= 7) {
+    // //     valido = true
+    // // } else {
+    // //     erro_email_remover.style = "display:1; color:red"
+    // //     vaido = false
+    // }
     if (valido == true) {
-        alerta_grupo3.style = "display:1"
-        div_sair_alerta.style = "display:1"
-        erro_email_remover.style = "display:none"
-        ipt_email_remover.value = ''
-        ipt_telefone_atualizar.value = ''
-        ipt_cargo_remover.value = ''
+     
+        
+        fetch("/usuarios/deletar_funcionario", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                emailServer : email_remover,
+                senhaServer: senha,
+                idFuncionarioServer : idFuncionario
+            }),
+        })
+            .then(function (resultado_cargo) {
+                console.log("resultado_cargo: ", resultado_cargo);
+
+                if (resultado_cargo.ok) {
+                    var fkVinicola = sessionStorage.ID_VINICOLA
+                    exibir_select(fkVinicola)
+                    alert('deu')
+                    alerta_grupo3.style = "display:1"
+                    div_sair_alerta.style = "display:1"
+                    erro_telefone.style = "display:none"
+                    erro_email.style = "display:none"
+                    ipt_email.value = ''
+                    ipt_senha.value = ''
+
+                } else {
+                    throw "Houve um erro ao tentar realizar a deleção do funcionario!";
+                }
+            })
+            .catch(function (resultado_cargo) {
+                console.log(`#ERRO: ${resultado_cargo}`);
+            });
+
+        return false;
     }
 
 }
 /*FIM DE VERIFICAÇÕES DA ABA CADASTRO DE FUNCIONARIOS--------------------------------------------------------------------------------------------------------------------**/
 /*COMECO VERIFICAÇÕES DSA ABA CADASTRO DE ARMAZEMS-------------------------------------------------------------------------------------------------------------------------------- */
 
-<<<<<<< HEAD
 // function digitando() {
 //     var select = select_grupo.value
 //     //var temperatura = ipt_temp_ideal.value
@@ -191,68 +253,6 @@ function remover_funcionario() {
 // //                 console.log("resultado_representante: ", resultado_representante);
 
 // //                 if (resultado_representante.ok) {
-=======
-function digitando() {
-    var select = select_grupo.value
-    //var temperatura = ipt_temp_ideal.value
-   // var umidade = ipt_umidade_ideal.value
-    ipt_nome.value != '' ? (texto_nome.style = "color:black", ipt_nome.style = " border-bottom-color: #0B0B0B") : null
-    //ipt_temp_ideal.value != '' ? (texto_temp_ideal.style = "color:black", ipt_temp_ideal.style = " border-bottom-color: #0B0B0B") : null
-   // ipt_umidade_ideal.value != '' ? (texto_umidade_ideal.style = "color:black", ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B") : null
-    ipt_armazem_remover.value != '' ? (texto_armazem_remover.style = "color:black", ipt_armazem_remover.style = " border-bottom-color: #0B0B0B") : null
-    ipt_senha_remover.value != '' ? (texto_senha_remover.style = "color:black", ipt_senha_remover.style = " border-bottom-color: #0B0B0B") : null
-    ipt_confirmacao_remover.value != '' ? (texto_confirmacao_remover.style = "color:black", ipt_confirmacao_remover.style = " border-bottom-color: #0B0B0B") : null
-    if (select != '') {
-        texto_select.style = "color:black"
-        select_grupo.style = " border-bottom-color: #0B0B0B"
-        // ipt_umidade_ideal.value = "55"
-       // ipt_umidade_ideal.placeholder = "55 (sugestão)"
-       // texto_umidade_ideal.style = "color: black"
-        //ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B"
-        //texto_temp_ideal.style = "color: black"
-       // ipt_temp_ideal.style = " border-bottom-color: #0B0B0B"
-    }
-   /* if (temperatura != '') {
-        texto_temp_ideal.style = "color: black"
-        ipt_temp_ideal.style = " border-bottom-color: #0B0B0B"
-    }
-    if (umidade != '') {
-        texto_umidade_ideal.style = "color: black"
-        ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B"
-    }*/
-   
-}
-function cadastrar_armazem() {
-    var select = select_grupo.value
-   // var temperatura = ipt_temp_ideal.value
-  //  var umidade = ipt_umidade_ideal.value
-    var nome_armazem = ipt_nome.value;
-    var fkVinicola = sessionStorage.ID_VINICOLA;
-
-    if (select == '' || /*temperatura == '' || umidade == '' */ nome_armazem == '' || fkVinicola == '') {
-        cad_armazem_vazio.style="display=1"
-    }
-    else {
-         fetch("/usuarios/cadastrar_armazem", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-
-                            selecionar: select,
-                            armazemNomeServer: nome_armazem,
-                            grupoServer: fkVinicola
-                        }),
-                    })
-                        .then(function (resultado_representante) {
-                            console.log("resultado_representante: ", resultado_representante);
-
-                            if (resultado_representante.ok) {
-                                setTimeout(() => {
-                                    window.location = "dashbord.html"; /*antes: login.html */
-                                }, "2000");
->>>>>>> 9765f0014e90844780763a701a9ac3cd310431cf
 
 
 // //                     setTimeout(() => {
@@ -382,13 +382,13 @@ function exibir_select(fkVinicola) {
                 select3.innerHTML += cargos
                 select4.innerHTML += cargos
             });
-} else {
-    console.error('Nenhum dado encontrado ou erro na API');
-}
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
     })
-        .catch (function (error) {
-    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-});
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
 }
 const fkVinicola = sessionStorage.ID_VINICOLA
 window.addEventListener('load', exibir_select(fkVinicola))
@@ -450,17 +450,17 @@ function atualizar_cargo() {
 
 function remover_cargo() {
     var idFuncionario = sessionStorage.ID_USUARIO
-    var select =  ipt_cargo_remover_cargo.value
+    var select = ipt_cargo_remover_cargo.value
     var senha = ipt_senha_arm.value
     var conf_senha = ipt_conf_arm.value
 
 
 
-    if ( senha == '' || select == '') {
+    if (senha == '' || select == '') {
         cad_armazem_vazio.style = "display=1"
     } else if (senha != conf_senha) {
         cad_armazem_vazio.style = "display=1"
-    }else {
+    } else {
         fetch("/empresas/deletar", {
             method: "DELETE",
             headers: {
