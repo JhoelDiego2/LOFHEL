@@ -25,6 +25,8 @@ var medidasRouter = require("./src/routes/medidas");
 var armazemRouter = require("./src/routes/armazem");
 var empresasRouter = require("./src/routes/empresas");
 var bobiaRouter = require("./src/routes/bobia");
+
+
 // var dashboardRouter = require("./src/routes/dashboard");
 
 app.use(express.json());

@@ -19,16 +19,17 @@ function buscarArmazemEmpresa(req, res) {
 
 function cadastrar(req, res) {
   var descricao = req.body.descricao;
-  var idUsuario = req.body.idUsuario;
+  var idFuncionario = req.body.idFuncionario;
+  /*idFuncionario */
 
   if (descricao == undefined) {
     res.status(400).send("descricao está undefined!");
-  } else if (idUsuario == undefined) {
-    res.status(400).send("idUsuario está undefined!");
+  } else if (idFuncionario == undefined) {
+    res.status(400).send("idFuncionario está undefined!");
   } else {
 
 
-    armazemModel.cadastrar(descricao, idUsuario)
+    armazemModel.cadastrar(descricao, idFuncionario)
       .then((resultado) => {
         res.status(201).json(resultado);
       }
@@ -43,7 +44,40 @@ function cadastrar(req, res) {
   }
 }
 
+function cadastroArmazem(req, res) {
+  var nomeArmazem = req.body.nomeArmazem;
+  var fkVinicola = req.body.fkVinicola;
+  var fkGrupoVinho = req.body.fkGrupoVinho;
+  /*Não tem o campo descrição mais*/
+
+  if (nomeArmazem == undefined) {
+    res.status(400).send("nomeArmazem está undefined!");
+  } else if (fkVinicola == undefined) {
+    res.status(400).send("fkVinicola está undefined!");
+  } else if (fkGrupoVinho == undefined) {
+    res.status(400).send("fkGrupoVinho está undefined!");
+  }else {
+
+    armazemModel.cadastroArmazem(nomeArmazem, fkVinicola, fkGrupoVinho )
+      .then((resultado) => {
+        res.status(201).json(resultado);
+      }
+      ).catch((erro) => {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o cadastro! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
+
+
+
 module.exports = {
   buscarArmazemEmpresa,
-  cadastrar
+  cadastrar,
+  cadastroArmazem
 }

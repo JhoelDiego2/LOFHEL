@@ -59,9 +59,6 @@
                         <p>Nome</p>
                         <input type="text" id="ipt_nome" placeholder="Nome" oninput="digitando()">
 
-                        <p>Descrição</p>
-                        <input type="text" id="ipt_descricao" placeholder="Descrição (opcional)" oninput="digitando()">
-
                         <p>Grupo do Vinho</p>
                         <select id="select_grupo" onchange="digitando()">
                             <option value="">Grupo do Vinho</option>
@@ -71,37 +68,6 @@
                             <option value="fresco" id="ipt_fresco">Fresco</option>
                         </select>
 
-                        <div id="op_gelado" class="check_tipo" style="display:none">
-                            <p>Gelado</p>
-                            <div>
-                                Espumante <input type="checkbox" id="ipt_espumante">
-                                Branco Leve <input type="checkbox" id="ipt_branco_leve">
-                            </div>
-                        </div>
-
-                        <div id="op_frio" class="check_tipo" style="display:none">
-                            <p>Frio</p>
-                            <div>
-                                Branco Encorpado <input type="checkbox" id="ipt_branco_encorpado">
-                                Branco Aromático <input type="checkbox" id="ipt_branco_aromatico">
-                                Rosé <input type="checkbox" id="ipt_rose">
-                            </div>
-                        </div>
-
-                        <div id="op_temp_adega" class="check_tipo" style="display:none">
-                            <p>Temperatura Adega</p>
-                            <div>
-                                Tinto Médio Corpo <input type="checkbox" id="ipt_tinto_medio_corpo">
-                                Tinto Leve <input type="checkbox" id="ipt_tinto_leve">
-                            </div>
-                        </div>
-
-                        <div id="op_fresco" class="check_tipo" style="display:none">
-                            <p>Fresco</p>
-                            <div>
-                                Tinto Encorpado <input type="checkbox" id="ipt_tinto_encorpado">
-                            </div>
-                        </div>
 
                         <button onclick="cadastrar_armazem()">Cadastrar</button>
                         <span id="cad_armazem_vazio" style="display: none;">Preencher os campos vazios</span>

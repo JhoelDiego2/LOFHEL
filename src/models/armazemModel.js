@@ -16,8 +16,17 @@ function cadastrar(fkVinicola, descricao) {
   return database.executar(instrucaoSql);
 }
 
+function cadastroArmazem (nomeArmazem, fkVinicola, fkGrupoVinho){ /*RETIRADOO ID PQ É AUTOINCREMENT */
+  var instrucaoSql = `INSERT INTO (nomeArmazem, fkVinicola, fkGrupoVinho) Armazem VALUES (
+  ${nomeArmazem} , ${fkVinicola},${fkGrupoVinho})`;
+
+   console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+
+}
 
 module.exports = {
   buscarArmazemEmpresa,
-  cadastrar
+  cadastrar,
+  cadastroArmazem
 }
