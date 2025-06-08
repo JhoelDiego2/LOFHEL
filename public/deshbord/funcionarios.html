@@ -83,7 +83,7 @@
                     <input type="text" id="ipt_telefone" placeholder="Telefone" oninput="digitando()">
                     <span id="erro_telefone" style="display: none;">telefone invalido deve conter 11 digitos</span>
                     <p id="texto_cargo">Cargo</p>
-                    <select name="cargo" id="ipt_cargo" onclick="digitando()">
+                    <select name="cargo" id="ipt_cargo">
                         <option value="">Cargo</option>
                         <option value="Gerente">Gerente</option>
                         <option value="Analista">Analista</option>
@@ -109,7 +109,7 @@
                         <span id="erro_telefone_atualizar" style="display: none;">telefone invalido deve conter 11
                             digitos</span>
                         <p id="texto_cargo_atualizar">Cargo</p>
-                        <select name="cargo_atualizar" id="ipt_cargo_atualizar" onclick="digitando()">
+                        <select name="cargo_atualizar" id="ipt_cargo_atualizar">
                             <option value="">Cargo</option>
                             <option value="Gerente">Gerente</option>
                             <option value="Analista">Analista</option>
@@ -133,7 +133,7 @@
                         <span id="erro_email_remover" style="display: none;">E-mail invalido deve conter: 1(@) e
                             1(.)</span>
                         <p id="texto_cargo_remover">Cargo</p>
-                        <select name="cargo" id="ipt_cargo_remover" onclick="digitando()">
+                        <select name="cargo" id="ipt_cargo_remover">
                             <option value="">Cargo</option>
                             <option value="Gerente">Gerente</option>
                             <option value="Analista">Analista</option>
@@ -164,27 +164,28 @@
             <div class="column-1">
                 <div class="card">
                     <h6>Cadastrar Cargo</h6>
-                    <p id="texto_nome_cargo">Nome</p>
-                    <input type="text" id="ipt_nome_cargo" placeholder="Nome" oninput="digitando()">
-                    <p id="texto_email" style="color: black; padding-top: 3vh;">Permissões</p>
-                    <label style="color: black;">Acesso à dashbord
+                    <p>Nome</p>
+                    <input type="text" id="ipt_nome_cargo" placeholder="Nome">
+                    <p>Permissões</p>
+                    <label style="color: black;">
+                        Acesso à dashbord
 
-                        <input type="checkbox" name="permissoes" id="ck_dash" value="1">
+                        <input type="checkbox" name="permissoes" id="ck_dash" value="1" style="margin: 0;">
                     </label>
-                    
+
                     <label style="color: black;">Gerenciar Armazéns
-                        <input type="checkbox" name="permissoes" id="ck_permissoes" value="2">
+                        <input type="checkbox" name="permissoes" id="ck_armazem" value="2">
                     </label>
-                    
-                    <label style="color: black;">Gerenciar Funcionarios 
-                        <input type="checkbox" name="permissoes" id="ck_permissoes" value="3">
+
+                    <label style="color: black;">Gerenciar Funcionarios
+                        <input type="checkbox" name="permissoes" id="ck_funcionarios" value="3">
                     </label>
-                    
+
                     <label style="color: black;">Gerar Relatorios
 
-                         <input type="checkbox" name="permissoes" id="ck_permissoes" value="4">
+                        <input type="checkbox" name="permissoes" id="ck_relatorios" value="4">
                     </label>
-                   
+
                     <button onclick="cadastrar_cargo()" style="margin-top: 3vh;">Cadastrar</button>
                     <span style="display:none; text-align: center;" id="cadastrar_vazio">Prencher todos os campos</span>
                 </div>
@@ -193,27 +194,35 @@
                 <div class="card" style="gap:8vh;">
                     <h6 style="padding-bottom: vh;">Atualizar Cargo</h6>
                     <div>
-                        <p id="texto_email_atualizar">Email</p>
-
-                        <input type="text" id="ipt_email_atualizar" placeholder="Email" oninput="digitando()">
-                        <span id="erro_email_atualizar" style="display: none;">E-mail invalido deve conter: 1(@) e
-                            1(.)</span>
-                        <p id="texto_telefone_atualizar">Telefone</p>
-                        <input type="text" id="ipt_telefone_atualizar" placeholder="Telefone" oninput="digitando()">
-                        <span id="erro_telefone_atualizar" style="display: none;">telefone invalido deve conter 11
-                            digitos</span>
-                        <p id="texto_cargo_atualizar">Cargo</p>
-                        <select name="cargo_atualizar" id="ipt_cargo_atualizar" onclick="digitando()">
-                            <option value="">Cargo</option>
-                            <option value="Gerente">Gerente</option>
-                            <option value="Analista">Analista</option>
-                            <option value="Operacional">Operacional</option>
+                        <select name="cargo_atualizar" id="ipt_cargo_atualizar_cargo">
                         </select>
+                        <p>Novo nome</p>
+
+                        <input type="text" id="ipt_nome_cargo_atualizar" placeholder="Nome">
+                        <p>Permissões</p>
+                        <label style="color: black;">
+                            Acesso à dashbord
+
+                            <input type="checkbox" name="permissoes" id="ck_dash2" value="1" style="margin: 0;">
+                        </label>
+
+                        <label style="color: black;">Gerenciar Armazéns
+                            <input type="checkbox" name="permissoes" id="ck_armazem2" value="2">
+                        </label>
+
+                        <label style="color: black;">Gerenciar Funcionarios
+                            <input type="checkbox" name="permissoes" id="ck_funcionarios2" value="3">
+                        </label>
+
+                        <label style="color: black;">Gerar Relatorios
+
+                            <input type="checkbox" name="permissoes" id="ck_relatorios2" value="4">
+                        </label>
 
                     </div>
                     <div>
-                        <button onclick="atualizar_funcionario()">Atualizar</button>
-                        <span style="display:none; text-align: center;" id="atualizar_vazio">Prencher todos os
+                        <button onclick="atualizar_cargo()">Atualizar</button>
+                        <span style="display:none; text-align: center;" id="atualizar_vazio_cargo">Prencher todos os
                             campos</span>
                     </div>
                 </div>
@@ -223,20 +232,18 @@
                 <div class="card" style="gap: 11.5vh;">
                     <h6>Remover Cargo</h6>
                     <div>
-                        <p id="texto_email_remover">Email</p>
-                        <input type="text" id="ipt_email_remover" placeholder="Email" oninput="digitando()">
-                        <span id="erro_email_remover" style="display: none;">E-mail invalido deve conter: 1(@) e
-                            1(.)</span>
-                        <p id="texto_cargo_remover">Cargo</p>
-                        <select name="cargo" id="ipt_cargo_remover" onclick="digitando()">
-                            <option value="">Cargo</option>
-                            <option value="Gerente">Gerente</option>
-                            <option value="Analista">Analista</option>
-                            <option value="Operacional">Operacional</option>
+                        <select name="cargo" id="ipt_cargo_remover_cargo">
+                            
                         </select>
+                        <p>Senha</p>
+                        <input type="text" id="ipt_senha_arm" placeholder="Senha">
+
+                        <p>Confirmar Senha</p>
+                        <input type="text" id="ipt_conf_arm" placeholder="Confirmar Senha">
+                        
                     </div>
                     <div>
-                        <button onclick="remover_funcionario()">Remover</button>
+                        <button onclick="remover_cargo()">Remover</button>
                         <span style="display:none; text-align: center;" id="remover_vazio">Prencher todos os
                             campos</span>
                     </div>
