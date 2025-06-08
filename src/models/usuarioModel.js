@@ -42,8 +42,8 @@ function cadastrarCompleto(nomeFantasia, razaoSocial, cnpj, nomeFuncionario, ema
             return database.executar(instrucaoPermissao).then(() => {
                 // 4. Cadastrar funcionário
                 var instrucaoFuncionario = `
-                    INSERT INTO Funcionario (nomeFuncionario, email, telefone, senha, fkVinicola, fkCargo)
-                    VALUES ('${nomeFuncionario}', '${email}', '${telefone}', '${senha}', ${fkVinicola}, ${fkCargo});
+                    INSERT INTO Funcionario (nomeFuncionario, email, telefone, senha, fkCargo)
+                    VALUES ('${nomeFuncionario}', '${email}', '${telefone}', '${senha}', ${fkCargo});
                 `;
 
                 return database.executar(instrucaoFuncionario);
@@ -51,7 +51,37 @@ function cadastrarCompleto(nomeFantasia, razaoSocial, cnpj, nomeFuncionario, ema
         });
     });
 }
+
+function cadastrar_funcionario(nomeFuncionario, email, telefone, fkCargo, senha) {
+    var instrucaoFuncionario = `
+        INSERT INTO Funcionario (nomeFuncionario, email, telefone, fkCargo, senha) VALUES 
+        ('${nomeFuncionario}', '${email}', '${telefone}', ${fkCargo}', ${senha}');
+    `
+    return database.executar(instrucaoFuncionario);
+}
+
+function atualizar_funcionario(params) {
+    
+}
+
+function deletar_funcionario(email, senha) {
+
+    var instrucaoSQL =
+        `SELECT senha FROM Funcionario WHERE idUsuario = ${idUsuario};`
+    return database.executar(instrucaoSQL).then((resultadoSelect) => {
+        if (resultadoSelect[0].senha == senha) {
+            var instrucao2 =
+                `DELETE FROM Funcionario WHERE email = '${email}' AND idFuncionario > 1;`
+                return database.executar(instrucao2);
+        }
+    })
+}
+   
+
 module.exports = {
     autenticar,
-    cadastrarCompleto
+    cadastrarCompleto,
+    cadastrar_funcionario,
+    atualizar_funcionario,
+    deletar_funcionario
 };

@@ -22,6 +22,16 @@ router.post("/cadastrar_representante", function (req, res) {
     usuarioController.cadastrar_representante(req, res);
 })
 
+router.post("/cadastrar_funcionario", function (req, res) {
+    usuarioController.cadastrar_funcionario(req, res);
+})
 
+router.put("/atualizar_funcionario", function (req, res) {
+    usuarioController.atualizar_funcionario(req, res);
+})
+
+router.delete("/deletar_funcionario", function (req, res) {
+    usuarioController.deletar_funcionario(req, res);
+})
 
 module.exports = router;
