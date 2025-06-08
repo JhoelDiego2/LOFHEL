@@ -165,12 +165,10 @@ function cadastrar_armazem() {
     var select = select_grupo.value
    // var temperatura = ipt_temp_ideal.value
   //  var umidade = ipt_umidade_ideal.value
-    var nome_armazem = ipt_nome.value
-    var grupo = select_grupo.value/*BLZ */
-    
+    var nome_armazem = ipt_nome.value;
+    var fkVinicola = sessionStorage.ID_VINICOLA;
 
-
-    if (select == '' || /*temperatura == '' || umidade == '' */ nome_armazem == '' || grupo == '') {
+    if (select == '' || /*temperatura == '' || umidade == '' */ nome_armazem == '' || fkVinicola == '') {
         cad_armazem_vazio.style="display=1"
     }
     else {
@@ -181,17 +179,15 @@ function cadastrar_armazem() {
                         },
                         body: JSON.stringify({
 
-                            selecionarServer: select,
+                            selecionar: select,
                             armazemNomeServer: nome_armazem,
-                            grupoServer: grupo
+                            grupoServer: fkVinicola
                         }),
                     })
                         .then(function (resultado_representante) {
                             console.log("resultado_representante: ", resultado_representante);
 
                             if (resultado_representante.ok) {
-
-                                
                                 setTimeout(() => {
                                     window.location = "dashbord.html"; /*antes: login.html */
                                 }, "2000");
