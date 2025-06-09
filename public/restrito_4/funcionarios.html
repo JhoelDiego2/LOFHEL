@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOFHEL - Funcionarios</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="../public/assets/Design%20sem%20nome%20(20).png">
+    <link rel="stylesheet" href="css/geral.css">
+    <link rel="stylesheet" href="css/individuais.css">
+
+</head>
+
+<body>
+    <div class="side-bar">
+        <div class="nav">
+            <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
+
+            <p>Olá Fernanda Caramico, seja bem vinda</p>
+
+            <div class="nav-list">
+                <div>
+                    <a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Inicio</a>
+                </div>
+                <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png"
+                            alt="icone">Perfil</a>
+                </div>
+                <div id="atual"><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
+                            alt="icone">Funcionarios</a>
+                </div>
+                <div><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a>
+                </div>
+                <div><a href="https://lofhel.atlassian.net/servicedesk/customer/portal/2" target="_blank"><img src="../deshbord/imagens-deshbord/body.png"
+                            alt="icone">Suporte</a>
+                </div>
+                <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
+                            alt="icone">sair</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="header">
+            <div class="topo">
+                <div class="column-1">
+                    <p id="title">Gerenciamento - <span id="b_nome_fantasia">Vinícola Dom
+                            Aurélio</span></p>
+                </div>
+                <div class="column-2">
+                    <div>
+                        <img src="../deshbord/imagens-deshbord/person-circle.png" alt="picture"
+                            style="padding-right: 10px;">
+                        <p> Fernanda Caramico </p>
+                    </div>
+                    <div>
+                        <img src="../deshbord/imagens-deshbord/notifications.png" alt="icone">
+                    </div>
+                </div>
+            </div>
+            <div class="sub">
+
+                <div class="column-1" style="color: black;">
+                    <p class="atual" id="tit_funcionario" onclick="mudar('funcionario')" style="cursor: pointer;">
+                        Funcionarios</p>
+                    <p></p>
+                    <p id="tit_cargos" onclick="mudar('cargos')" style="cursor: pointer;">Cargos</p>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="container-funcionarios" id="section_funcionario">
+            <div class="column-1">
+                <div class="card">
+                    <h6>Cadastrar Funcionario</h6>
+                    <p id="texto_nome">Nome</p>
+                    <input type="text" id="ipt_nome" placeholder="Nome" oninput="digitando()">
+                    <p id="texto_email">Email</p>
+                    <input type="text" id="ipt_email" placeholder="Email" oninput="digitando()">
+                    <span id="erro_email" style="display: none; ">E-mail invalido deve conter: 1(@) e 1(.)</span>
+                    <p id="texto_telefone">Telefone</p>
+                    <input type="text" id="ipt_telefone" placeholder="Telefone" oninput="digitando()">
+                    <span id="erro_telefone" style="display: none;">telefone invalido deve conter 11 digitos</span>
+                    <p id="texto_cargo">Cargo</p>
+                    <select name="cargo" id="ipt_cargo">
+                        <option value="">Cargo</option>
+                        <option value="Gerente">Gerente</option>
+                        <option value="Analista">Analista</option>
+                        <option value="Operacional">Operacional</option>
+                    </select>
+                    <p id="texto_senha">Senha</p>
+                    <input type="text" id="ipt_senha" placeholder="Senha" oninput="digitando()">
+                    <button onclick="cadastrar_funcionario()">Cadastrar</button>
+                    <span style="display:none; text-align: center;" id="cadastrar_vazio">Prencher todos os campos</span>
+                </div>
+            </div>
+            <div class="column-2">
+                <div class="card" style="gap:8vh;">
+                    <h6 style="padding-bottom: vh;">Atualizar informaçoes do Funcionario</h6>
+                    <div>
+                        <p id="texto_email_atualizar">Email</p>
+                        
+                        <input type="text" id="ipt_email_atualizar" placeholder="Email" oninput="digitando()">
+                        <span id="erro_email_atualizar" style="display: none;">E-mail invalido deve conter: 1(@) e
+                            1(.)</span>
+                        <p id="texto_telefone_atualizar">Telefone</p>
+                        <input type="text" id="ipt_telefone_atualizar" placeholder="Telefone" oninput="digitando()">
+                        <span id="erro_telefone_atualizar" style="display: none;">telefone invalido deve conter 11
+                            digitos</span>
+                        <p id="texto_cargo_atualizar">Cargo</p>
+                        <select name="cargo_atualizar" id="ipt_cargo_atualizar">
+                            <option value="">Cargo</option>
+                            <option value="Gerente">Gerente</option>
+                            <option value="Analista">Analista</option>
+                            <option value="Operacional">Operacional</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button onclick="atualizar_funcionario()">Atualizar</button>
+                        <span style="display:none; text-align: center;" id="atualizar_vazio">Prencher todos os
+                            campos</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="column-3">
+                <div class="card" style="gap: 11.5vh;">
+                    <h6>Remover Funcionario</h6>
+                    <div>
+                        <p id="texto_email_remover">Email</p>
+                        <input type="text" id="ipt_email_remover" placeholder="Email" oninput="digitando()">
+                        <span id="erro_email_remover" style="display: none;">E-mail invalido deve conter: 1(@) e
+                            1(.)</span>
+                        <p id="texto_Deletarsenha">Senha</p>
+                    <input type="text" id="ipt_Deletarsenha" placeholder="Senha" oninput="digitando()">
+                    <span style="display:none; text-align: center;" id="cadastrar_vazio">Prencher todos os campos</span>
+                    <p id="texto_DeletarConfirmarsenha">Senha Confirmar</p>
+                    <input type="text" id="ipt_DeletarConfirmarsenha" placeholder="Senha" oninput="digitando()">
+                    <span style="display:none; text-align: center;" id="cadastrar_vazio">Prencher todos os campos</span>
+                    </div>
+                    <div>
+                        <button onclick="remover_funcionario()">Remover</button>
+                        <span style="display:none; text-align: center;" id="remover_vazio">Prencher todos os
+                            campos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="container-funcionarios " id="section_cargos" style="display: none;">
+            <div class="column-1">
+                <div class="card">
+                    <h6>Cadastrar Cargo</h6>
+                    <p>Nome</p>
+                    <input type="text" id="ipt_nome_cargo" placeholder="Nome">
+                    <p>Permissões</p>
+                    <label style="color: black;">
+                        Acesso à dashbord
+
+                        <input type="checkbox" name="permissoes" id="ck_dash" value="1" style="margin: 0;">
+                    </label>
+
+                    <label style="color: black;">Gerenciar Armazéns
+                        <input type="checkbox" name="permissoes" id="ck_armazem" value="2">
+                    </label>
+
+                    <label style="color: black;">Gerenciar Funcionarios
+                        <input type="checkbox" name="permissoes" id="ck_funcionarios" value="3">
+                    </label>
+
+                    <label style="color: black;">Gerar Relatorios
+
+                        <input type="checkbox" name="permissoes" id="ck_relatorios" value="4">
+                    </label>
+
+                    <button onclick="cadastrar_cargo()" style="margin-top: 3vh;">Cadastrar</button>
+                    <span style="display:none; text-align: center;" id="cadastrar_vazio">Prencher todos os campos</span>
+                </div>
+            </div>
+            <div class="column-2">
+                <div class="card" style="gap:8vh;">
+                    <h6 style="padding-bottom: vh;">Atualizar Cargo</h6>
+                    <div>
+                        <select name="cargo_atualizar" id="ipt_cargo_atualizar_cargo">
+                        </select>
+                        <p>Novo nome</p>
+
+                        <input type="text" id="ipt_nome_cargo_atualizar" placeholder="Nome">
+                        <p>Permissões</p>
+                        <label style="color: black;">
+                            Acesso à dashbord
+
+                            <input type="checkbox" name="permissoes" id="ck_dash2" value="1" style="margin: 0;">
+                        </label>
+
+                        <label style="color: black;">Gerenciar Armazéns
+                            <input type="checkbox" name="permissoes" id="ck_armazem2" value="2">
+                        </label>
+
+                        <label style="color: black;">Gerenciar Funcionarios
+                            <input type="checkbox" name="permissoes" id="ck_funcionarios2" value="3">
+                        </label>
+
+                        <label style="color: black;">Gerar Relatorios
+
+                            <input type="checkbox" name="permissoes" id="ck_relatorios2" value="4">
+                        </label>
+
+                    </div>
+                    <div>
+                        <button onclick="atualizar_cargo()">Atualizar</button>
+                        <span style="display:none; text-align: center;" id="atualizar_vazio_cargo">Prencher todos os
+                            campos</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="column-3">
+                <div class="card" style="gap: 11.5vh;">
+                    <h6>Remover Cargo</h6>
+                    <div>
+                        <select name="cargo" id="ipt_cargo_remover_cargo">
+                            
+                        </select>
+                        <p>Senha</p>
+                        <input type="text" id="ipt_senha_arm" placeholder="Senha">
+
+                        <p>Confirmar Senha</p>
+                        <input type="text" id="ipt_conf_arm" placeholder="Confirmar Senha">
+                        
+                    </div>
+                    <div>
+                        <button onclick="remover_cargo()">Remover</button>
+                        <span style="display:none; text-align: center;" id="remover_vazio">Prencher todos os
+                            campos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    </div>
+    <div class="div_fechar_alerta" onclick="fechar_alerta()" style="display: none;" id="div_sair_alerta">
+    </div>
+    <div class="alerta_lofhel" style="display: none;" id="alerta_grupo3">
+        <div>
+            <img src="../deshbord/imagens-deshbord/logotipo01.png" id="logotipo_alerta">
+            <img src="../deshbord/imagens-deshbord/chevron-back-circle.png" id="icone_fechar_alerta" alt=""
+                onclick="fechar_alerta()">
+        </div>
+        <p id="alerta_titulo">
+            Cadastro realizado
+        </p>
+        <p id="alerta_sub">
+            com sucesso
+        </p>
+
+    </div>
+    <script src="../deshbord/JS/deshbord.js"></script>
+</body>
+
+</html>

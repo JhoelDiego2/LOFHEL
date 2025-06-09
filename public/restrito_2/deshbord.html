@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOFHEL - Deshbord</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/geral.css">
+    <link rel="stylesheet" href="css/deshbord.css">
+    <script src="../js/sessao.js"></script>
+</head>
+
+<body onload="validarSessao()">
+    <div class=" side-bar">
+        <div class="nav">
+            <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
+
+            <p>Olá, <span class="b_usuario">Fernanda Caramico </span>, seja bem vindo(a)
+                <span id="b_cargo"></span>
+            </p>
+
+            <div class="nav-list">
+                <div id="atual">
+                    <a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Inicio</a>
+                </div>
+                <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png"
+                            alt="icone">Perfil</a>
+                </div>
+                <div><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
+                            alt="icone">Funcionarios</a>
+                </div>
+                <div><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a>
+                </div>
+                <div><a href="https://lofhel.atlassian.net/servicedesk/customer/portal/2" target="_blank"><img
+                            src="../deshbord/imagens-deshbord/body.png" alt="icone">Suporte</a>
+                </div>
+                <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
+                            alt="icone">sair</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="header">
+            <div class="topo">
+                <div class="column-1">
+                    <p id="title">Análise de dados - <span id="b_nome_fantasia">Vinícola Dom
+                            Aurélio</span></p>
+                    <div class="sub">
+
+                        <div class="column-1">
+                            <select name="armazem" id="armazem_atual" onclick="trocar1()"">
+                                        <!-- <option value=" geral">Geral</option>
+                                <option value="armazem1" ">Armazém1</option>
+                                        <option value=" armazem2">Armazém2</option>
+                                <option value="armazem3">Armazém3</option>
+                                <option value="armazem3">Armazém4</option>
+                                <option value="armazem3">Armazém5</option> -->
+                            </select>
+                        </div>
+                        <div class="column-2">
+                            <input type="date" name="Atual" id="Atualdia">
+                        </div>
+                    </div>
+                </div>
+                <div class="column-2">
+                    <div>
+                        <img src="../deshbord/imagens-deshbord/person-circle.png" alt="picture"
+                            style="padding-right: 10px;">
+                        <p class="b_usuario"> Fernanda Caramico </p>
+                        <img src="../deshbord/imagens-deshbord/notifications.png" alt="" id="icone_notificacoes"
+                            onclick="abrir_notificacoes()">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-topo card_dois">
+            <div class="card pouco_texto card_grande">
+                <p>Total de armazéns</p>
+                <h2 id="b_total_armazem">0</h2>
+            </div>
+            <div class="card_laterais">
+                <div class="card pouco_texto amarelo">
+                    <h2 id="b_alertas_hoje">0</h2>
+                    <p>Armazéns na faixa alerta</p>
+                </div>
+                <div class="card pouco_texto vermelho">
+                    <h2 id="b_alertas_semana">0</h2>
+                    <p>Armazéns na faixa critica</p>
+                </div>
+                <div class="card pouco_texto azul">
+                    <h2 id="b_total_critico">0</h2>
+                    <p>Total de alertas hoje</p>
+                </div>
+                <div class="card pouco_texto azul ">
+                    <h2 id="b_total_alerta">0</h2>
+                    <p>Total de alertas na semana</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+
+
+            <div class="column-1">
+                <div class="grafico donut container-notification-history" id="espaco_donut">
+                    <h4 class="info-history graf_tit" style="padding: 0;">Distribuição de Status dos Sensores (%)</h4>
+                    <div id="contem_grafico_redondo">
+                        <canvas id="status_sensores"> </canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="column-2">
+                <div class="container-notification-history caixa_dois">
+                    <div class="info-history">
+                        <h4>últimos Alertas</h4>
+
+                    </div>
+                    <div class="container-history" id="containerHistoricoAlertas" style="overflow-y: auto;">
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="column-3">
+
+                <div class="notificacoes" id="notificacao_caixa" style="display: none; z-index: 10;">
+                    <h4>Ultimas notificacoes <span><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
+                                alt="" id="icone_fechar" onclick="fechar_notificacoes()"></span> </h4>
+                    <div class="notificacao">
+                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <p>Armazém 1 <br> <span>Temperatura acima do
+                                recomendado</span></p>
+                    </div>
+                    <div class="notificacao">
+                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <p>Armazém 2<br> <span>Temperatura acima do
+                                recomendado</span></p>
+                    </div>
+                    <div class="notificacao">
+                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <p>Armazém 3 <br><span>Temperatura acima do
+                                recomendado</span></p>
+                    </div>
+                    <div class="notificacao">
+                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <p>Armazém 4 <br><span>Temperatura acima do
+                                recomendado</span></p>
+                    </div>
+                    <div class="notificacao">
+                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <p>Armazém 5 <br><span>Temperatura acima do
+                                recomendado</span></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="./JS/armazens-deshbord.js"></script>
+<script>
+
+    function trocar1() {
+        var select = armazem_atual.value
+        sessionStorage.ARMAZEM_SELECIONADO = select
+        if (select != 'geral') {
+            window.location.href = 'deshbord-armazem1.html'
+        }
+    }
+
+
+    var notificacao_aberta = false
+    // abrir as notificaoes
+    function abrir_notificacoes() {
+        if (notificacao_aberta == false) {
+            notificacao_caixa.style = "display: 1 "
+            notificacao_aberta = true
+        } else {
+            notificacao_caixa.style = "display: none "
+            notificacao_aberta = false
+
+        }
+
+
+    }
+    function fechar_notificacoes() {
+        notificacao_caixa.style = "display:none"
+    }
+
+
+</script>

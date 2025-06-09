@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOFHEL - Dashboard - Armazém 1</title>
+    <link rel="icon" href="../public/assets/Design%20sem%20nome%20(20).png">
+    <link rel="stylesheet" href="css/geral.css">
+    <link rel="stylesheet" href="css/individuais.css">
+</head>
+
+<body>
+    <div class="side-bar">
+        <div class="nav">
+            <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="Logo" style="width: 200px;">
+            <p>Olá Fernanda Caramico, seja bem-vinda</p>
+
+            <div class="nav-list">
+                <div><a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Início</a></div>
+                <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png" alt="icone">Perfil</a></div>
+                <div><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png" alt="icone">Funcionários</a></div>
+                <div id="atual"><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a></div>
+                <div><a href="suporte-bob.html"><img src="../deshbord/imagens-deshbord/body.png" alt="icone">Suporte-BobIA</a></div>
+                <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png" alt="icone">Sair</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="header">
+            <div class="topo">
+                <div class="column-1">
+                    <p id="title">Armazéns - Vinícola</p>
+                </div>
+                <div class="column-2">
+                    <div>
+                        <img src="../deshbord/imagens-deshbord/person-circle.png" alt="Foto de perfil" style="padding-right: 10px;">
+                        <p id="b_usuario">Fernanda Caramico</p>
+                    </div>
+                    <div>
+                        <img src="../deshbord/imagens-deshbord/notifications.png" alt="Notificações">
+                    </div>
+                </div>
+            </div>
+
+            <div class="sub">
+                <div class="column-1">
+                    <p>Gestão</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-funcionarios container-armazem">
+            <div class="column-1">
+                <div class="card card-armazem">
+                    <h6>Cadastro de armazém</h6>
+                    <div>
+                        <p>Nome</p>
+                        <input type="text" id="ipt_nome" placeholder="Nome" oninput="digitando()">
+
+                        <p>Grupo do Vinho</p>
+                        <select id="select_grupo" onchange="digitando()">
+                            <option value="">Grupo do Vinho</option>
+                            <option value="gelado" id="ipt_gelado">Gelado</option>
+                            <option value="frio" id="ipt_frio">Frio</option>
+                            <option value="temp_adega" id="ipt_adega">Temperatura Adega</option>
+                            <option value="fresco" id="ipt_fresco">Fresco</option>
+                        </select>
+
+
+                        <button onclick="cadastrar_armazem()">Cadastrar</button>
+                        <span id="cad_armazem_vazio" style="display: none;">Preencher os campos vazios</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column-2">
+                <div class="card">
+                    <h6>Remover armazém</h6>
+                    <div>
+                        <p>Armazém</p>
+                        <select id="ipt_armazem_remover" onchange="digitando()">
+                            <option value="">Armazém</option>
+                            <option value="armazem1">Armazém 1</option>
+                            <option value="armazem2">Armazém 2</option>
+                            <option value="armazem3">Armazém 3</option>
+                            <option value="armazem4">Armazém 4</option>
+                            <option value="armazem5">Armazém 5</option>
+                        </select>
+
+                        <p>Senha</p>
+                        <input type="text" id="ipt_senha_remover" placeholder="Senha" oninput="digitando()">
+
+                        <p>Confirmar Senha</p>
+                        <input type="text" id="ipt_confirmacao_remover" placeholder="Confirmar senha" oninput="digitando()">
+
+                        <button onclick="remover_armazem()">Remover</button>
+                        <span id="remover_armazem_vazio" style="display: none;">Preencher todos os campos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../deshbord/JS/deshbord.js"></script>
+</body>
+</html>
