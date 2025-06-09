@@ -224,52 +224,52 @@ function remover_funcionario() {
 //      }*/
 
 // }
-// // function cadastrar_armazem() {
-// //     var select = select_grupo.value
-// //     // var temperatura = ipt_temp_ideal.value
-// //     //  var umidade = ipt_umidade_ideal.value
-// //     var nome_armazem = ipt_nome.value
-// //     var grupo = select_grupo.value/*BLZ */
+function cadastrar_armazem() {
+    var select = select_grupo.value
+    // var temperatura = ipt_temp_ideal.value
+    //  var umidade = ipt_umidade_ideal.value
+    var nome_armazem = ipt_nome.value
+    var grupo = select_grupo.value/*BLZ */
 
 
 
-// //     if (select == '' || /*temperatura == '' || umidade == '' */ nome_armazem == '' || grupo == '') {
-// //         cad_armazem_vazio.style = "display=1"
-// //     }
-// //     else {
-// //         fetch("/usuarios/cadastrar_armazem", {
-// //             method: "POST",
-// //             headers: {
-// //                 "Content-Type": "application/json",
-// //             },
-// //             body: JSON.stringify({
+    if (select == '' || /*temperatura == '' || umidade == '' */ nome_armazem == '' || grupo == '') {
+        cad_armazem_vazio.style = "display=1"
+    }
+    else {
+        fetch("/usuarios/cadastrar_armazem", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
 
-// //                 selecionarServer: select,
-// //                 armazemNomeServer: nome_armazem,
-// //                 grupoServer: grupo
-// //             }),
-// //         })
-// //             .then(function (resultado_representante) {
-// //                 console.log("resultado_representante: ", resultado_representante);
+                selecionarServer: select,
+                armazemNomeServer: nome_armazem,
+                grupoServer: grupo
+            }),
+        })
+            .then(function (resultado_representante) {
+                console.log("resultado_representante: ", resultado_representante);
 
-// //                 if (resultado_representante.ok) {
+                if (resultado_representante.ok) {
 
 
-// //                     setTimeout(() => {
-// //                         window.location = "dashbord.html"; /*antes: login.html */
-// //                     }, "2000");
+                    setTimeout(() => {
+                        window.location = "dashbord.html"; /*antes: login.html */
+                    }, "2000");
 
-// //                 } else {
-// //                     throw "Houve um erro ao tentar realizar o cadastro!";
-// //                 }
-// //             })
-// //             .catch(function (resultado_representante) {
-// //                 console.log(`#ERRO: ${resultado_representante}`);
-// //             });
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resultado_representante) {
+                console.log(`#ERRO: ${resultado_representante}`);
+            });
 
-// //         return false;
-// //     }
-// // }
+        return false;
+    }
+}
 
 function remover_armazem() {
     var armazem_remover = ipt_armazem_remover.value

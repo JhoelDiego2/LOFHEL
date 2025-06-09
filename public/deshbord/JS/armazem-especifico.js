@@ -611,32 +611,36 @@ const armazem_visivel = sessionStorage.ARMAZEM_SELECIONADO;
 
 
 function exibir_select() {
-    const select_arm = document.getElementById('armazem_atual');
+    const select_arm = document.getElementById('armazem_atual_2');
     const armazem = JSON.parse(sessionStorage.ARMAZENS || '[]');
-
+    console.log(select_arm)
+    console.log(armazem)
     select_arm.innerHTML = '<option value="geral">Geral</option>'; // adiciona 'geral'
 
+    var txt = ''
     for (let i = 0; i < armazem.length; i++) {
-        select_arm.innerHTML += `
+        txt += `
             <option value="${armazem[i].idArmazem}">
                 ${armazem[i].nomeArmazem}
             </option>
         `;
     }
-
+    alert(txt)
+    select_arm.innerHTML += txt
+    alert()
     // Define o armazém visível no select
-    if (armazem_visivel) {
-        select_arm.value = armazem_visivel;
-    } else {
-        select_arm.value = `1`; // ou define algum padrão
-    }
+    // if (armazem_visivel) {
+    //     select_arm.value = armazem_visivel;
+    // } else {
+    //     select_arm.value = `1`; // ou define algum padrão
+    // }
 }
 
 window.addEventListener('load', function () {
     exibir_select();
     obter_alertas_geral();
 
-    const select = document.getElementById("armazem_atual");
+    const select = document.getElementById("armazem_atual_2");
     select.value = armazem_visivel
     // ✅ Carrega o gráfico logo que a página abre, se já houver um selecionado
     const valorSelecionado = select.value;
