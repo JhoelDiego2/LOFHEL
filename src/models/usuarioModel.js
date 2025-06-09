@@ -55,7 +55,7 @@ function cadastrarCompleto(nomeFantasia, razaoSocial, cnpj, nomeFuncionario, ema
 function cadastrar_funcionario(nomeFuncionario, email, telefone, fkCargo, senha) {
     var instrucaoFuncionario = `
         INSERT INTO Funcionario (nomeFuncionario, email, telefone, fkCargo, senha) VALUES 
-        ('${nomeFuncionario}', '${email}', '${telefone}', ${fkCargo}', ${senha}');
+        ('${nomeFuncionario}', '${email}', '${telefone}', ${fkCargo}, '${senha}');
     `
     return database.executar(instrucaoFuncionario);
 }
@@ -64,14 +64,14 @@ function atualizar_funcionario(params) {
     
 }
 
-function deletar_funcionario(email, senha) {
+function deletar_funcionario(email, idUsuario, senha) {
 
     var instrucaoSQL =
-        `SELECT senha FROM Funcionario WHERE idUsuario = ${idUsuario};`
+        `SELECT senha FROM Funcionario WHERE idFuncionario = ${idUsuario};`
     return database.executar(instrucaoSQL).then((resultadoSelect) => {
         if (resultadoSelect[0].senha == senha) {
             var instrucao2 =
-                `DELETE FROM Funcionario WHERE email = '${email}' AND idFuncionario > 1;`
+                `DELETE FROM Funcionario WHERE email = '${email}' AND idFuncionario >= 1;`
                 return database.executar(instrucao2);
         }
     })

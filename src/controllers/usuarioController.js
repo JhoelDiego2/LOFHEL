@@ -68,7 +68,7 @@ async function cadastrar_vinicola(req, res) {
 
 function cadastrar_funcionario(req, res) {
 
-    var nomeFuncionario = req.body.nomeServer;
+    var nomeFuncionario = req.body.nomeFuncionarioServer;
     var email = req.body.emailServer;
     var telefone = req.body.telefoneServer;
     var fkCargo = req.body.cargoServer;
@@ -120,7 +120,7 @@ function deletar_funcionario(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar_funcionario(email, idFuncionario, senha)
+        usuarioModel.deletar_funcionario(email, idFuncionario, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
