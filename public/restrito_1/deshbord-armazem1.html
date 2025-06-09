@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOFHEL - Deshbord</title>
-    <link rel="stylesheet" href="/css/geral.css">
+    <link rel="stylesheet" href="css/geral.css">
     <link rel="stylesheet" href="css/deshbord.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
     <script src="../js/sessao.js"></script>
 </head>
 
-<body style="overflow-y: visible;">
+<body onload="validarSessao()">
     <div class="side-bar">
         <div class="nav">
             <img src="imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
@@ -24,8 +24,6 @@
             <div class="nav-list">
                 <div id="atual">
                     <a href="deshbord.html"><img src="imagens-deshbord/house.png" alt="icone">Inicio</a>
-                </div>
-                <div><a href="perfil.html"><img src="imagens-deshbord/person-circle.png" alt="icone">Perfil</a>
                 </div>
                 <div><a href="funcionarios.html"><img src="imagens-deshbord/people.png" alt="icone">Funcionarios</a>
                 </div>
@@ -59,8 +57,8 @@
                     <div class="data-hora" id="data-hora"></div>
                     <div>
                         <p class="b_usuario"> Fernanda Caramico </p>
-                        <img src="imagens-deshbord/notifications.png" alt="" id="icone_notificacoes"
-                            style="background-color: black;" onclick="abrir_notificacoes()">
+                        <img src="https://img.freepik.com/vetores-premium/icone-de-avisos-de-notificacao_1076610-18996.jpg?semt=ais_hybrid&w=740" style="width: 30px; height: 30px;" alt="" id="icone_notificacoes"
+                            onclick="abrir_notificacoes()">
                     </div>
                 </div>
             </div>
@@ -96,12 +94,12 @@
                     <h4 class="titulo_card titulo_desh">Distribuição de Status dos Sensores (%)</h4>
                     <canvas id="status_sensores" style="width: 20vw; height: 22vh;"> </canvas>
                 </div>
-                <div class="container-notification-history" id="parametros">
+                <div class="container-notification-history" id="parametros" style="overflow: visible; height: 100vh; "">
                     <div class="info-history">
                         <p style="text-align: center; width: 100%;">Legenda Parametros</p>
                     </div>
-                    <div class="container-history">
-                        <div class="history">
+                    <div class="container-history"  style="overflow: visible; height: 100vh;">
+                        <div class="history" >
                             <img src="imagens-deshbord/alert-critico.png" alt="">
                             <div class="data-history">
                                 <p class="titulo_params">Alerta Crítico</p>

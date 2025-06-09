@@ -3,8 +3,8 @@
 /*  font-family: "Playfair Display", serif;*/
 /*font-family: "Italiana", sans-serif;*/
 :root {
-    --preto: #15191C;
-    --azul: #1D232A;
+    --preto: rgb(78, 50, 50);
+    --azul: #fdfaf7;
     --cinza: #95999C;
 }
 
@@ -38,7 +38,7 @@ a {
 
 body {
     background-color: var(--azul);
-    color: white;
+    color: rgb(0, 0, 0);
     display: flex;
     overflow: hidden;
 }
@@ -52,6 +52,7 @@ body {
     width: 204px;
     background-color: var(--preto);
     min-height: 100vh;
+    color: white;
 }
 
 #atual {

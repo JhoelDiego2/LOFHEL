@@ -181,3 +181,7 @@ label{
     text-align: start;
     margin-top: 10px;
 }
+option{
+    background-color: white;
+    color: black;
+}

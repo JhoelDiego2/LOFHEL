@@ -55,7 +55,7 @@ function cadastrar_funcionario() {
             },
             body: JSON.stringify({
                 nomeFuncionarioServer: nome,
-                emailServer : email,
+                emailServer: email,
                 telefoneServer: telefone,
                 cargoServer: cargo,
                 senhaServer: senha
@@ -152,17 +152,17 @@ function remover_funcionario() {
     // //     vaido = false
     // }
     if (valido == true) {
-     
-        
+
+
         fetch("/usuarios/deletar_funcionario", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                emailServer : email_remover,
+                emailServer: email_remover,
                 senhaServer: senha,
-                idFuncionarioServer : idFuncionario
+                idFuncionarioServer: idFuncionario
             }),
         })
             .then(function (resultado_cargo) {
@@ -229,15 +229,15 @@ function cadastrar_armazem() {
     // var temperatura = ipt_temp_ideal.value
     //  var umidade = ipt_umidade_ideal.value
     var nome_armazem = ipt_nome.value
-    var grupo = select_grupo.value/*BLZ */
+    var fkVinicola = sessionStorage.ID_VINICOLA
 
 
 
-    if (select == '' || /*temperatura == '' || umidade == '' */ nome_armazem == '' || grupo == '') {
+    if (select == '' || nome_armazem == '') {
         cad_armazem_vazio.style = "display=1"
     }
     else {
-        fetch("/usuarios/cadastrar_armazem", {
+        fetch("/armazem/cadastroArmazem", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -246,7 +246,7 @@ function cadastrar_armazem() {
 
                 selecionarServer: select,
                 armazemNomeServer: nome_armazem,
-                grupoServer: grupo
+                fkVinicolaServer: fkVinicola
             }),
         })
             .then(function (resultado_representante) {
@@ -255,9 +255,7 @@ function cadastrar_armazem() {
                 if (resultado_representante.ok) {
 
 
-                    setTimeout(() => {
-                        window.location = "dashbord.html"; /*antes: login.html */
-                    }, "2000");
+                    alert('Cadastro de armazém realizado com sucesso!')
 
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
@@ -275,16 +273,43 @@ function remover_armazem() {
     var armazem_remover = ipt_armazem_remover.value
     var remover_arm_senha = ipt_senha_remover.value
     var remover_arm_confirmacao = ipt_confirmacao_remover.value
-    if (remover_arm_senha == remover_arm_confirmacao) {
-        armazem_remover == 'armazem1' ? (arm1.style = "display:none", ipt_armazem_remover.value = '') : null
-        armazem_remover == 'armazem2' ? (arm2.style = "display:none", ipt_armazem_remover.value = '') : null
-        armazem_remover == 'armazem3' ? (arm3.style = "display:none", ipt_armazem_remover.value = '') : null
-        armazem_remover == 'armazem4' ? (arm4.style = "display:none", ipt_armazem_remover.value = '') : null
-        armazem_remover == 'armazem5' ? (arm5.style = "display:none", ipt_armazem_remover.value = '') : null
-    }
-    if (armazem_remover == '' || remover_arm_senha == '' || remover_arm_confirmacao == '') {
-        remover_armazem_vazio.style = "display:1"
-    }
+    var idFuncionario = sessionStorage.ID_USUARIO
+    if (remover_arm_senha != remover_arm_confirmacao) {
+        alert('Senhas não coincidem')
+    } else
+        if (armazem_remover == '' || remover_arm_senha == '' || remover_arm_confirmacao == '') {
+            remover_armazem_vazio.style = "display:1"
+        } else {
+            fetch("/armazem/removerArmazem", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+
+                    fkArmazemServer: armazem_remover,
+                    senha: remover_arm_senha, 
+                    idFuncionario:idFuncionario
+                }),
+            })
+                .then(function (resultado_representante) {
+                    console.log("resultado_representante: ", resultado_representante);
+
+                    if (resultado_representante.ok) {
+
+
+                        alert('Cadastro de armazém realizado com sucesso!')
+
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resultado_representante) {
+                    console.log(`#ERRO: ${resultado_representante}`);
+                });
+
+            return false;
+        }
 }
 
 
@@ -390,7 +415,6 @@ function exibir_select(fkVinicola) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 }
-const fkVinicola = sessionStorage.ID_VINICOLA
 window.addEventListener('load', exibir_select(fkVinicola))
 
 function atualizar_cargo() {

@@ -14,28 +14,26 @@
 <body onload="validarSessao()">
     <div class=" side-bar">
         <div class="nav">
-            <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
+            <img src="imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
 
             <p>Olá, <span class="b_usuario">Fernanda Caramico </span>, seja bem vindo(a)
-                <span id="b_cargo"></span>
+                <span id="b_cargo">Fernanda Caramico</span>
             </p>
 
             <div class="nav-list">
                 <div id="atual">
-                    <a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Inicio</a>
+                    <a href="deshbord.html"><img src="imagens-deshbord/house.png" alt="icone">Inicio</a>
                 </div>
-                <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png"
-                            alt="icone">Perfil</a>
-                </div>
-                <div><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
+
+                <div><a href="funcionarios.html"><img src="imagens-deshbord/people.png"
                             alt="icone">Funcionarios</a>
                 </div>
-                <div><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a>
+                <div><a href="armazens.html"><img src="imagens-deshbord/cube.png" alt="icone">Armazéns</a>
                 </div>
                 <div><a href="https://lofhel.atlassian.net/servicedesk/customer/portal/2" target="_blank"><img
-                            src="../deshbord/imagens-deshbord/body.png" alt="icone">Suporte</a>
+                            src="imagens-deshbord/body.png" alt="icone">Suporte</a>
                 </div>
-                <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
+                <div><a href="../inicio.html"><img src="imagens-deshbord/chevron-back-circle.png"
                             alt="icone">sair</a>
                 </div>
             </div>
@@ -50,7 +48,7 @@
                     <div class="sub">
 
                         <div class="column-1">
-                            <select name="armazem" id="armazem_atual" onclick="trocar1()"">
+                            <select name="armazem" id="armazem_atual" onclick="trocar1()"" style="color: black;" >
                                         <!-- <option value=" geral">Geral</option>
                                 <option value="armazem1" ">Armazém1</option>
                                         <option value=" armazem2">Armazém2</option>
@@ -60,16 +58,16 @@
                             </select>
                         </div>
                         <div class="column-2">
-                            <input type="date" name="Atual" id="Atualdia">
+                            <!-- <input type="date" name="Atual" id="Atualdia"> -->
                         </div>
                     </div>
                 </div>
                 <div class="column-2">
                     <div>
-                        <img src="../deshbord/imagens-deshbord/person-circle.png" alt="picture"
+                        <img src="imagens-deshbord/person-circle.png" alt="picture"
                             style="padding-right: 10px;">
                         <p class="b_usuario"> Fernanda Caramico </p>
-                        <img src="../deshbord/imagens-deshbord/notifications.png" alt="" id="icone_notificacoes"
+                        <img src="https://img.freepik.com/vetores-premium/icone-de-avisos-de-notificacao_1076610-18996.jpg?semt=ais_hybrid&w=740" style="width: 30px; height: 30px;" alt="" id="icone_notificacoes"
                             onclick="abrir_notificacoes()">
                     </div>
                 </div>
@@ -107,7 +105,7 @@
                 <div class="grafico donut container-notification-history" id="espaco_donut">
                     <h4 class="info-history graf_tit" style="padding: 0;">Distribuição de Status dos Sensores (%)</h4>
                     <div id="contem_grafico_redondo">
-                        <canvas id="status_sensores"> </canvas>
+                        <canvas id="status_sensores" style="width: 34vw; height: 40vh;"> </canvas>
                     </div>
                 </div>
             </div>
@@ -127,30 +125,30 @@
             <div class="column-3">
 
                 <div class="notificacoes" id="notificacao_caixa" style="display: none; z-index: 10;">
-                    <h4>Ultimas notificacoes <span><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
+                    <h4>Ultimas notificacoes <span><img src="imagens-deshbord/chevron-back-circle.png"
                                 alt="" id="icone_fechar" onclick="fechar_notificacoes()"></span> </h4>
                     <div class="notificacao">
-                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <img src="imagens-deshbord/notifications.png">
                         <p>Armazém 1 <br> <span>Temperatura acima do
                                 recomendado</span></p>
                     </div>
                     <div class="notificacao">
-                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <img src="imagens-deshbord/notifications.png">
                         <p>Armazém 2<br> <span>Temperatura acima do
                                 recomendado</span></p>
                     </div>
                     <div class="notificacao">
-                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <img src="imagens-deshbord/notifications.png">
                         <p>Armazém 3 <br><span>Temperatura acima do
                                 recomendado</span></p>
                     </div>
                     <div class="notificacao">
-                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <img src="imagens-deshbord/notifications.png">
                         <p>Armazém 4 <br><span>Temperatura acima do
                                 recomendado</span></p>
                     </div>
                     <div class="notificacao">
-                        <img src="../deshbord/imagens-deshbord/notifications.png">
+                        <img src="imagens-deshbord/notifications.png">
                         <p>Armazém 5 <br><span>Temperatura acima do
                                 recomendado</span></p>
                     </div>

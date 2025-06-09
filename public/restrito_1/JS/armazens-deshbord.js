@@ -9,11 +9,11 @@ function obterArmazens() {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 sessionStorage.ARMAZENS = JSON.stringify(resposta);
                 select_arm.innerHTML = ''
-                select_arm.innerHTML += '<option value="geral">Geral</option>'
+                select_arm.innerHTML += '<option value="geral" style="color:black; background-color: white">Geral</option>'
                 document.getElementById('b_total_armazem').innerHTML = resposta.length
                 for (let i = 0; i < resposta.length; i++) {
                     select_arm.innerHTML += `
-                        <option value="${resposta[i].idArmazem}">${resposta[i].nomeArmazem}</option>
+                        <option value="${resposta[i].idArmazem}" style="color:black; background-color: white"  >${resposta[i].nomeArmazem}</option>
                         `
                 }
                 select_arm.value = 'geral'
@@ -38,7 +38,7 @@ function pegar_alertas_gerais() {
 
                     var icone = "";
                     if (ocorrencia.statusAlerta === "Crítico") {
-                        icone = "./assets/alert-critico.png";
+                        icone = "../imagens-deshbord/alert-critico.png";
                     } else if (ocorrencia.statusAlerta === "Atenção") {
                         icone = "https://cdn-icons-png.flaticon.com/512/257/257195.png";
                     } else {
@@ -134,6 +134,8 @@ function plotarGrafico(resposta) {
         data: data_status,
         options: {
             responsive: false,
+            cutout: '40%', // ← aqui você define o "raio interno"
+            radius: '90%',// tamanho externo
             plugins: {
                 legend: {
                     position: 'right', // Coloca a legenda embaixo do gráfico
@@ -166,12 +168,12 @@ function alertas_hoje(fkVinicola) {
 
             response.json().then(function (resposta) {
                 document.getElementById('b_alertas_hoje').innerHTML = resposta[0].alertas_hoje
-                setTimeout(()=> alertas_hoje(fkVinicola), 1000)
+                setTimeout(() => alertas_hoje(fkVinicola), 1000)
 
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
-                setTimeout(()=> alertas_hoje(fkVinicola), 1000)
+            setTimeout(() => alertas_hoje(fkVinicola), 1000)
 
         }
     })
@@ -187,12 +189,12 @@ function alertas_semana(fkVinicola) {
             response.json().then(function (resposta) {
                 document.getElementById('b_alertas_semana').innerHTML = resposta[0].alertas_semana
 
-                setTimeout(()=> alertas_semana(fkVinicola), 1000)
+                setTimeout(() => alertas_semana(fkVinicola), 1000)
 
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
-                setTimeout(()=> alertas_semana(fkVinicola), 1000)
+            setTimeout(() => alertas_semana(fkVinicola), 1000)
 
         }
     })
@@ -208,12 +210,12 @@ function total_critico(fkVinicola) {
             response.json().then(function (resposta) {
                 document.getElementById('b_total_critico').innerHTML = resposta[0].total_critico
 
-                setTimeout(()=> total_critico(fkVinicola), 1000)
+                setTimeout(() => total_critico(fkVinicola), 1000)
 
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
-                setTimeout(()=> total_critico(fkVinicola), 1000)
+            setTimeout(() => total_critico(fkVinicola), 1000)
 
         }
     })
@@ -229,12 +231,12 @@ function total_alerta(fkVinicola) {
             response.json().then(function (resposta) {
                 document.getElementById('b_total_alerta').innerHTML = resposta[0].total_alerta
 
-                setTimeout(()=> total_alerta(fkVinicola), 1000)
+                setTimeout(() => total_alerta(fkVinicola), 1000)
 
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
-                setTimeout(()=> total_alerta(fkVinicola), 1000)
+            setTimeout(() => total_alerta(fkVinicola), 1000)
 
         }
     })
