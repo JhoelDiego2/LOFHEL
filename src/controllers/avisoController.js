@@ -24,6 +24,29 @@ function status_sensores(req, res) {
             }
         );
 }
+function status_sensores_geral(req, res) {
+
+    avisoModel.status_sensores_geral()
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!");
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "Houve um erro ao buscar os avisos: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
 function pegar_parametros(req, res) {
     var fkArmazem = req.params.fkArmazem;
@@ -127,4 +150,5 @@ module.exports = {
     pegar_alertas_gerais,
     pegar_alertas_especifico,
     kpi_alerta,
+    status_sensores_geral,
 }

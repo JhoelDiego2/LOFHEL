@@ -68,10 +68,85 @@ function buscarMedidasEmTempoReal(req, res) {
     });
 }
 
+function alertas_hoje(req, res) {
+
+    var fkVinicola = req.params.fkVinicola;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.alertas_hoje(fkVinicola).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+function alertas_semana(req, res) {
+
+    var fkVinicola = req.params.fkVinicola;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.alertas_semana(fkVinicola).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+function total_critico(req, res) {
+
+    var fkVinicola = req.params.fkVinicola;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.total_critico(fkVinicola).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+function total_alerta(req, res) {
+
+    var fkVinicola = req.params.fkVinicola;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.total_alerta(fkVinicola).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
-
+    buscarMedidasEmTempoReal, 
+    alertas_hoje, 
+    alertas_semana, 
+    total_critico, 
+    total_alerta, 
 }

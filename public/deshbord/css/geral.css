@@ -144,3 +144,89 @@ body {
 
     }
     /*alerta-personalisado_fim*/
+
+.card_dois{
+    height: 35vh;
+    display: flex;
+    align-items: center;
+    gap: 4vw;
+    padding: 0vh 10px;
+}
+.card_dois .card{
+    width: 18vw;
+    position: relative;
+    height: 60vh;
+}
+.card_dois .pouco_texto{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 30px;
+    text-align: start;
+}
+.card_dois .card_grande{
+    height: 24vh;
+    width:40vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+.card_laterais{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 30px;
+
+}
+.card_laterais .card{
+    height: 13vh;
+    padding: 0vh 30px;
+    width: 23vw;
+}
+#espaco_donut{
+    width: 35vw;
+}
+.card_laterais .card p{
+    font-size: 25px;
+}
+.verde::before{
+    content: '';
+    width: 6px;
+    background-color: rgb(30, 148, 6);
+    height: 100%;
+    position: absolute;
+    left: -1px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.amarelo::before{
+    content: '';
+    width: 6px;
+    background-color: rgb(211, 172, 1);
+    height: 100%;
+    position: absolute;
+    left: -1px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.vermelho::before{
+    content: '';
+    width: 6px;
+    background-color: rgb(148, 6, 6);
+    height: 100%;
+    position: absolute;
+    left: -1px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.azul::before{
+    content: '';
+    width: 6px;
+    background-color: rgb(7, 135, 209);
+    height: 100%;
+    position: absolute;
+    left: -1px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}

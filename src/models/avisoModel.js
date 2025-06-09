@@ -14,6 +14,21 @@ function status_sensores(fkArmazem) {
     return database.executar(instrucaoSql);
 }
 
+function status_sensores_geral() {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucaoSql = `
+SELECT 
+    COUNT(s.idSensor) AS total_sensores,
+    SUM(CASE WHEN s.statusSensor = 'Ativo' THEN 1 ELSE 0 END) AS total_sensor_ativo,
+    SUM(CASE WHEN s.statusSensor = 'Inativo' THEN 1 ELSE 0 END) AS total_sensor_inativo,
+    ROUND(SUM(CASE WHEN s.statusSensor = 'Ativo' THEN 1 ELSE 0 END) / COUNT(s.idSensor) * 100, 2) AS porcentagem_ativo,
+    ROUND(SUM(CASE WHEN s.statusSensor = 'Inativo' THEN 1 ELSE 0 END) / COUNT(s.idSensor) * 100, 2) AS porcentagem_inativo
+FROM Sensor AS s;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function pegar_parametros(fkArmazem) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegar_parametros()");
     var instrucaoSql = `
@@ -27,7 +42,12 @@ function pegar_parametros(fkArmazem) {
 function pegar_alertas_gerais() {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegar_alertas_gerais()");
     var instrucaoSql = `
-       select nomeArmazem, statusAlerta, DATE_FORMAT(inicioAlerta,'%d/%m/%y %H:%i:%s') as inicioAlerta, minutosEmAlerta  from vw_AlertasPersistentes;
+SELECT nomeArmazem, statusAlerta, DATE_FORMAT(dataHora,'%d/%m/%y %H:%i:%s') as inicioAlerta,
+       temperatura, umidade, nivelAlertaUmidade, nivelAlertaTemperatura
+FROM vw_AlertaEmTempoReal2
+WHERE statusAlerta <> 'Normal' COLLATE utf8mb4_unicode_ci
+ORDER BY dataHora DESC
+LIMIT 10;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -77,4 +97,5 @@ module.exports = {
     pegar_alertas_especifico,
     min_total_alerta_hoje, 
     total_alertas_na_semana, 
+    status_sensores_geral,
 }
