@@ -86,9 +86,10 @@ CREATE TABLE Armazem (
 -- Tabela de Sensor
 CREATE TABLE Sensor (
     idSensor INT PRIMARY KEY AUTO_INCREMENT,
-    nomeSerial CHAR(12) NOT NULL UNIQUE, 
     fkArmazem INT NOT NULL,
+    statusSensor VARCHAR(30) DEFAULT 'Ativo'
     CONSTRAINT fkArmazemSensor FOREIGN KEY (fkArmazem) REFERENCES Armazem(idArmazem)
+    CONSTRAINT ckStatusSensor CHECK (statusSensor in ('Ativo', 'Inativo'))
 );
 
 -- Tabela de Registro
@@ -161,24 +162,26 @@ create view vw_informacoes_login as
             group by idFuncionario;
 select * from vw_informacoes_login;
 
+select * from Funcionario;
+select * from Cargo;
 INSERT INTO Funcionario values
-(1, 'Maria', 'maria@gmail.com', 'Urubu100$', null, '11946787175', 1);
+(default, 'Maria', 'maria_teste2@gmail.com', 'Urubu100$', null, '11946787175', 18, 12);
 describe Funcionario;
 
 select * from Sensor;
 
-CREATE VIEW vw_AlertaEmTempoReal AS
+CREATE OR REPLACE VIEW  vw_AlertaEmTempoReal AS
 	SELECT 
+		a.fkVinicola, 
 		r.idRegistro,
 		r.dataHora,
 		r.temperatura,
 		r.umidade,
-		s.nomeSerial AS sensor,
 		a.nomeArmazem,
 		gv.classe AS tipoVinho,
 		s.fkArmazem,
 			CASE 
-				WHEN r.temperatura > gv.temperaturaMax THEN 'Temperatura Acima'
+				WHEN r.temperatura > gv.temperaturaMax  THEN 'Temperatura Acima'
 				WHEN r.temperatura < gv.temperaturaMin THEN 'Temperatura Abaixo'
 				WHEN r.umidade > gv.umidadeMax THEN 'Umidade Acima'
 				WHEN r.umidade < gv.umidadeMin THEN 'Umidade Abaixo'
@@ -192,17 +195,21 @@ JOIN GrupoVinho gv ON a.fkGrupoVinho = gv.idGrupoVinho;
 
 select * from vw_AlertaEmTempoReal;
 
-CREATE VIEW vw_AlertasPersistentes AS
-	SELECT 
-		fkArmazem,
-		sensor,
-		statusAlerta,
-		MIN(dataHora) AS inicioAlerta,
-		TIMESTAMPDIFF(MINUTE, MIN(dataHora), NOW()) AS minutosEmAlerta
-	FROM vw_AlertaEmTempoReal
-	WHERE statusAlerta <> 'Normal'
-	GROUP BY sensor, statusAlerta;
+
+CREATE OR REPLACE VIEW vw_AlertasPersistentes AS
+SELECT 
+    fkVinicola, 
+    fkArmazem,
+    sensor,
+    statusAlerta,
+    MIN(dataHora) AS inicioAlerta,
+    TIMESTAMPDIFF(MINUTE, MIN(dataHora), NOW()) AS minutosEmAlerta
+FROM vw_AlertaEmTempoReal
+WHERE statusAlerta <> 'Normal' COLLATE utf8mb4_unicode_ci
+GROUP BY fkVinicola, fkArmazem, sensor, statusAlerta;
 select * from vw_AlertasPersistentes;
+
+
 
   select ((sum(minutosEmAlerta))/60) as min_fora_hoje,
   count(inicioAlerta) as total_alertas_hoje 
@@ -221,6 +228,7 @@ WHERE inicioAlerta >= CURDATE()
   AND inicioAlerta < CURDATE() + INTERVAL 1 DAY
   AND fkArmazem = 4;
 select * from vw_AlertasPersistentes;
+select count(distinct fkArmazem);
 
 -- op 1
 SELECT 
@@ -245,3 +253,105 @@ WHERE statusAlerta <> 'Normal'
   AND fkArmazem = 4
 ORDER BY dataHora;
 
+CREATE OR REPLACE VIEW vw_AlertaEmTempoReal2 AS
+SELECT 
+    r.idRegistro,
+    r.dataHora,
+    r.temperatura,
+    r.umidade,
+    a.nomeArmazem,
+    gv.classe AS tipoVinho,
+    s.fkArmazem,
+    a.fkVinicola,
+
+    CASE 
+        WHEN r.temperatura > gv.temperaturaMax THEN 'Temperatura Acima'
+        WHEN r.temperatura < gv.temperaturaMin THEN 'Temperatura Abaixo'
+        WHEN r.umidade > gv.umidadeMax THEN 'Umidade Acima'
+        WHEN r.umidade < gv.umidadeMin THEN 'Umidade Abaixo'
+        ELSE 'Normal'
+    END AS statusAlerta,
+
+    CASE gv.classe
+        WHEN 'Vinho Gelado' THEN
+            CASE
+                WHEN r.temperatura < 3 OR r.temperatura > 7 THEN 'Crítico'
+                WHEN (r.temperatura >= 3 AND r.temperatura < 4) OR (r.temperatura > 6 AND r.temperatura <= 7) THEN 'Alerta'
+                WHEN r.temperatura >= 4 AND r.temperatura <= 6 THEN 'Ideal'
+                ELSE 'Crítico'
+            END
+        WHEN 'Vinho Frio' THEN
+            CASE
+                WHEN r.temperatura < 7 OR r.temperatura > 13 THEN 'Crítico'
+                WHEN (r.temperatura >= 7 AND r.temperatura < 8.5) OR (r.temperatura > 11.5 AND r.temperatura <= 13) THEN 'Alerta'
+                WHEN r.temperatura >= 8.5 AND r.temperatura <= 11.5 THEN 'Ideal'
+                ELSE 'Crítico'
+            END
+        WHEN 'Adega' THEN
+            CASE
+                WHEN r.temperatura < 13 OR r.temperatura > 16 THEN 'Crítico'
+                WHEN (r.temperatura >= 13 AND r.temperatura < 13.75) OR (r.temperatura > 15.25 AND r.temperatura <= 16) THEN 'Alerta'
+                WHEN r.temperatura >= 13.75 AND r.temperatura <= 15.25 THEN 'Ideal'
+                ELSE 'Crítico'
+            END
+        WHEN 'Vinho Fresco' THEN
+            CASE
+                WHEN r.temperatura < 16 OR r.temperatura > 20 THEN 'Crítico'
+                WHEN (r.temperatura >= 16 AND r.temperatura < 17) OR (r.temperatura > 19 AND r.temperatura <= 20) THEN 'Alerta'
+                WHEN r.temperatura >= 17 AND r.temperatura <= 19 THEN 'Ideal'
+                ELSE 'Crítico'
+            END
+        ELSE 'Crítico'
+    END AS nivelAlertaTemperatura,
+
+    CASE
+        WHEN r.umidade < 60 OR r.umidade > 80 THEN 'Crítico'
+        WHEN (r.umidade >= 60 AND r.umidade < 65) OR (r.umidade > 75 AND r.umidade <= 80) THEN 'Alerta'
+        WHEN r.umidade >= 65 AND r.umidade <= 75 THEN 'Ideal'
+        ELSE 'Crítico'
+    END AS nivelAlertaUmidade
+
+FROM Registro r
+JOIN Sensor s ON r.fkSensor = s.idSensor
+JOIN Armazem a ON s.fkArmazem = a.idArmazem
+JOIN GrupoVinho gv ON a.fkGrupoVinho = gv.idGrupoVinho;
+select * from vw_AlertaEmTempoReal2;
+
+
+
+select * from Funcionario;
+delete from Vinicola where idVinicola = 12;
+update Funcionario set fkVinicola = 18 where idFuncionario >= 1;
+
+SELECT COUNT(*) AS alertas_hoje
+FROM vw_AlertasPersistentes
+WHERE DATE(inicioAlerta) = CURDATE() and fkVinicola = 18;
+
+SELECT COUNT(*) AS alertas_semana
+FROM vw_AlertasPersistentes
+WHERE YEARWEEK(inicioAlerta, 1) = YEARWEEK(CURDATE(), 1)
+  AND fkVinicola = 18;
+  
+select count(*) as total_critico from vw_AlertaEmTempoReal2 where (nivelAlertaTemperatura = 'Critico' or nivelAlertaUmidade = 'Critico' ) and fkVinicola = 18;
+select count(*) as total_alerta from vw_AlertaEmTempoReal2 where (nivelAlertaTemperatura = 'Alerta' or nivelAlertaUmidade = 'Alerta' ) and fkVinicola = 18;
+
+select * from Armazem;
+select * from Registro;
+select * from Sensor;
+INSERT INTO Registro (temperatura, umidade, dataHora, fkSensor)
+VALUES
+  (10, 66, '2025-06-09 00:00:01', 1),
+  (10, 66, '2025-06-09 00:00:02', 1),
+  (10, 66, '2025-06-09 00:00:3', 1);
+
+  INSERT INTO Registro (temperatura, umidade, dataHora, fkSensor)
+VALUES
+  (5, 60, '2025-06-07 08:00:10', 1),
+  (5, 59, '2025-06-07 09:00:10', 1),
+  (5, 58, '2025-06-07 10:00:10', 1),
+  (5, 63, '2025-06-07 08:30:10', 1),
+  (5, 62, '2025-06-07 09:30:10', 1),
+  (5, 61, '2025-06-07 10:30:10', 1),
+  (5, 65, '2025-06-07 08:15:10', 1),
+  (5, 64, '2025-06-07 09:15:10', 1),
+  (5, 63, '2025-06-07 10:15:10', 1);

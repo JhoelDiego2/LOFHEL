@@ -8,21 +8,23 @@
     <link rel="icon" href="../public/assets/Design%20sem%20nome%20(20).png">
     <link rel="stylesheet" href="css/geral.css">
     <link rel="stylesheet" href="css/individuais.css">
+    <script src="../js/sessao.js"></script>
 </head>
 
-<body>
+<body onload="validarSessao()">
     <div class="side-bar">
         <div class="nav">
-            <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="Logo" style="width: 200px;">
-            <p>Olá Fernanda Caramico, seja bem-vinda</p>
+            <img src="imagens-deshbord/logotipo01.png" alt="Logo" style="width: 200px;">
+            <p>Olá, <span class="b_usuario">Fernanda Caramico </span>, seja bem vindo(a)
+                <span id="b_cargo"></span>
+            </p>
 
             <div class="nav-list">
-                <div><a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Início</a></div>
-                <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png" alt="icone">Perfil</a></div>
-                <div><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png" alt="icone">Funcionários</a></div>
-                <div id="atual"><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a></div>
-                <div><a href="suporte-bob.html"><img src="../deshbord/imagens-deshbord/body.png" alt="icone">Suporte-BobIA</a></div>
-                <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png" alt="icone">Sair</a></div>
+                <div><a href="deshbord.html"><img src="imagens-deshbord/house.png" alt="icone">Início</a></div>
+                <div><a href="funcionarios.html"><img src="imagens-deshbord/people.png" alt="icone">Funcionários</a></div>
+                <div id="atual"><a href="armazens.html"><img src="imagens-deshbord/cube.png" alt="icone">Armazéns</a></div>
+                <div><a href="suporte-bob.html"><img src="imagens-deshbord/body.png" alt="icone">Suporte-BobIA</a></div>
+                <div><a href="../inicio.html"><img src="imagens-deshbord/chevron-back-circle.png" alt="icone">Sair</a></div>
             </div>
         </div>
     </div>
@@ -31,15 +33,16 @@
         <div class="header">
             <div class="topo">
                 <div class="column-1">
-                    <p id="title">Armazéns - Vinícola</p>
+                    <p id="title">Armazens - <span id="b_nome_fantasia">Vinícola Dom
+                            Aurélio</span></p>
                 </div>
                 <div class="column-2">
                     <div>
-                        <img src="../deshbord/imagens-deshbord/person-circle.png" alt="Foto de perfil" style="padding-right: 10px;">
+                        <img src="imagens-deshbord/person-circle.png" alt="Foto de perfil" style="padding-right: 10px;">
                         <p id="b_usuario">Fernanda Caramico</p>
                     </div>
                     <div>
-                        <img src="../deshbord/imagens-deshbord/notifications.png" alt="Notificações">
+                        <!-- <img src="imagens-deshbord/notifications.png" alt="Notificações"> -->
                     </div>
                 </div>
             </div>
@@ -53,56 +56,73 @@
 
         <div class="container-funcionarios container-armazem">
             <div class="column-1">
-                <div class="card card-armazem">
+                <div class="card card-armazem" style="gap: 11.5vh;">
                     <h6>Cadastro de armazém</h6>
                     <div>
                         <p>Nome</p>
-                        <input type="text" id="ipt_nome" placeholder="Nome" oninput="digitando()">
+                        <input type="text" id="ipt_nome" placeholder="Nome" >
 
                         <p>Grupo do Vinho</p>
-                        <select id="select_grupo" onchange="digitando()">
-                            <option value="">Grupo do Vinho</option>
-                            <option value="gelado" id="ipt_gelado">Gelado</option>
-                            <option value="frio" id="ipt_frio">Frio</option>
-                            <option value="temp_adega" id="ipt_adega">Temperatura Adega</option>
-                            <option value="fresco" id="ipt_fresco">Fresco</option>
+                        <select id="select_grupo" onchange="digitando()" >
+                            <option value="" >Grupo do Vinho</option>
+                            <option value="1" id="ipt_gelado">Gelado</option>
+                            <option value="2" id="ipt_frio">Frio</option>
+                            <option value="3" id="ipt_adega">Temperatura Adega</option>
+                            <option value="4" id="ipt_fresco">Fresco</option>
                         </select>
 
+                    </div>
 
                         <button onclick="cadastrar_armazem()">Cadastrar</button>
                         <span id="cad_armazem_vazio" style="display: none;">Preencher os campos vazios</span>
-                    </div>
                 </div>
             </div>
 
             <div class="column-2">
-                <div class="card">
+                <div class="card" style="gap: 7vh;">
                     <h6>Remover armazém</h6>
                     <div>
                         <p>Armazém</p>
                         <select id="ipt_armazem_remover" onchange="digitando()">
                             <option value="">Armazém</option>
-                            <option value="armazem1">Armazém 1</option>
-                            <option value="armazem2">Armazém 2</option>
-                            <option value="armazem3">Armazém 3</option>
-                            <option value="armazem4">Armazém 4</option>
-                            <option value="armazem5">Armazém 5</option>
+
                         </select>
 
                         <p>Senha</p>
-                        <input type="text" id="ipt_senha_remover" placeholder="Senha" oninput="digitando()">
+                        <input type="text" id="ipt_senha_remover" placeholder="Senha" >
 
                         <p>Confirmar Senha</p>
-                        <input type="text" id="ipt_confirmacao_remover" placeholder="Confirmar senha" oninput="digitando()">
+                        <input type="text" id="ipt_confirmacao_remover" placeholder="Confirmar senha" >
+                    </div>
 
                         <button onclick="remover_armazem()">Remover</button>
                         <span id="remover_armazem_vazio" style="display: none;">Preencher todos os campos</span>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="../deshbord/JS/deshbord.js"></script>
 </body>
 </html>
+<script>
+    function exibir_select_cad() {
+    const select_arm = document.getElementById('ipt_armazem_remover');
+    const armazem = JSON.parse(sessionStorage.ARMAZENS || '[]');
+    console.log(select_arm)
+    console.log(armazem)
+    select_arm.innerHTML = '<option value="" style="color:black; background-color: white" >Armazém</option>'; // adiciona 'geral'
+
+    var txt = ''
+    for (let i = 0; i < armazem.length; i++) {
+        txt += `
+            <option value="${armazem[i].idArmazem}" style="color:black; background-color: white" >
+                ${armazem[i].nomeArmazem}
+            </option>
+        `;
+    }
+    select_arm.innerHTML += txt
+}
+window.addEventListener('load', exibir_select_cad)
+
+</script>
+    <script src="JS/deshbord.js"></script>

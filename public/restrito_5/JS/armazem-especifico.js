@@ -82,19 +82,19 @@ function pegar_parametros(fkArmazem) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                minimo_alerta = resposta[0].temperaturaMin
-                maximo_alerta = resposta[0].temperaturaMax
-                minimo_critico = resposta[0].temperaturaMax
-                maximo_critico = resposta[0].temperaturaMax
-                minimo_ideal = resposta[0].temperaturaMax
-                maximo_ideal = resposta[0].temperaturaMax
+                minimo_alerta = resposta[0].temperaturaMin - 1,5
+                maximo_alerta = resposta[0].temperaturaMax + 1,5
+                minimo_critico = resposta[0].temperaturaMin -2
+                maximo_critico = resposta[0].temperaturaMax + 2
+                minimo_ideal = resposta[0].temperaturaMin + 1
+                maximo_ideal = resposta[0].temperaturaMax + 1
                 document.getElementById('temp_parametro_alerta').innerHTML = `
                     Temperatura: 
                                 < ${minimo_alerta} °C ou> ${maximo_alerta} °C
                 `
                 document.getElementById('temp_parametro_critico').innerHTML = `
                     Temperatura: 
-                                < ${minimo_critico} °C ou> ${minimo_critico} °C
+                                < ${minimo_critico} °C ou> ${maximo_critico} °C
                 `
                 document.getElementById('temp_parametro_ideal').innerHTML = `
                     Temperatura: 
@@ -615,19 +615,17 @@ function exibir_select() {
     const armazem = JSON.parse(sessionStorage.ARMAZENS || '[]');
     console.log(select_arm)
     console.log(armazem)
-    select_arm.innerHTML = '<option value="geral">Geral</option>'; // adiciona 'geral'
+    select_arm.innerHTML = '<option value="geral" style="color:black; background-color: white" >Geral</option>'; // adiciona 'geral'
 
     var txt = ''
     for (let i = 0; i < armazem.length; i++) {
         txt += `
-            <option value="${armazem[i].idArmazem}">
+            <option value="${armazem[i].idArmazem}" style="color:black; background-color: white" >
                 ${armazem[i].nomeArmazem}
             </option>
         `;
     }
-    alert(txt)
     select_arm.innerHTML += txt
-    alert()
     // Define o armazém visível no select
     // if (armazem_visivel) {
     //     select_arm.value = armazem_visivel;

@@ -172,10 +172,29 @@
                     sessionStorage.NOME_FANTASIA_VINICOLA = json.nomeFantasia;
                     sessionStorage.NOME_CARGO_USUARIO = json.nomeCargo;
                     sessionStorage.PERMISSOES_USUARIO = json.fkPermissoes;
-                    setTimeout(function () {
-                        window.location = "./deshbord/deshbord.html";
-                    }, 1000); // apenas para exibir o loading
 
+                    const permissoes = json.fkPermissoes
+                        .split(',')               // Ex: '1,2,3,4' -> ['1','2','3','4']
+                        .map(p => parseInt(p))    // -> [1,2,3,4]
+                        .sort((a, b) => a - b);   // -> [1,2,3,4] (garante consistência)
+
+                    const rotas = {
+                        '1,2,3,4': "restrito_1/deshbord.html",
+                        '1,2,3': "restrito_1/deshbord.html", // <-- ADICIONE ESTA LINHA
+                        '1,3,4': "restrito_2/deshbord.html",
+                        '1,2,4': "restrito_3/deshbord.html",
+                        '2,3': "restrito_4/deshbord.html",
+                        '5': "restrito_5/deshbord.html",
+                    };
+
+                    const chave = permissoes.join(','); // Transforma array em string para buscar no objeto
+                    const destino = rotas[chave];
+
+                    if (destino) {
+                        setTimeout(() => window.location = destino, 1000); // Redireciona após 1s
+                    } else {
+                        console.warn("Permissões não encontradas:", chave);
+                    }
                 });
 
             } else {
@@ -184,7 +203,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                   // finalizarAguardar(texto);
+                    // finalizarAguardar(texto);
                 });
             }
 

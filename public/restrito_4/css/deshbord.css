@@ -148,7 +148,7 @@ option {
 }
 
 #notificacao_caixa {
-    position: absolute;
+    position: fixed;
     top: 5vh;
     right: 10vh;
     border-radius: 10px;

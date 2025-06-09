@@ -46,9 +46,9 @@ function cadastrar(req, res) {
 
 function cadastroArmazem(req, res) {
   var nomeArmazem = req.body.armazemNomeServer;
-  var fkVinicola = req.body.fkVinicola;
-  var fkGrupoVinho = req.body.grupoServer;
-  /*Não tem o campo descrição mais*/
+  var fkVinicola = req.body.fkVinicolaServer;
+  var fkGrupoVinho = req.body.selecionarServer;
+
 
   if (nomeArmazem == undefined) {
     res.status(400).send("nomeArmazem está undefined!");
@@ -73,11 +73,39 @@ function cadastroArmazem(req, res) {
   }
 }
 
+function removerArmazem(req, res) {
+  var fkArmazem = req.body.fkArmazemServer;
+  var senha = req.body.senha;
+  var idFuncionario = req.body.idFuncionario;
+
+
+  if (fkArmazem == undefined) {
+    res.status(400).send("fkArmazem está undefined!");
+  } else if (senha == undefined) {
+    res.status(400).send("fkVinicola está undefined!");
+  }else {
+
+    armazemModel.removerArmazem(fkArmazem, senha, idFuncionario)
+      .then((resultado) => {
+        res.status(201).json(resultado);
+      }
+      ).catch((erro) => {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o cadastro! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
 
 
 
 module.exports = {
   buscarArmazemEmpresa,
   cadastrar,
-  cadastroArmazem
+  cadastroArmazem, 
+  removerArmazem
 }
