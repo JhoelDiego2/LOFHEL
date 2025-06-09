@@ -407,3 +407,16 @@ option {
     font-size: 2rem;
     cursor: pointer;
 }
+.column-2 .caixa_dois{
+    height: 1vh;
+}
+.container .column-2{
+    height: 48vh;
+}
+.container .column-1{
+    height: 48vh;
+}
+#espaco_donut{
+    height: 48vh;
+    position: relative;
+}

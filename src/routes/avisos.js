@@ -6,6 +6,9 @@ var avisoController = require("../controllers/avisoController");
 router.get("/status_sensores/:ifkArmazem", function (req, res) {
     avisoController.status_sensores(req, res);
 });
+router.get("/status_sensores_geral", function (req, res) {
+    avisoController.status_sensores_geral(req, res);
+});
 
 router.get("/pegar_parametros/:fkArmazem", function (req, res) {
     avisoController.pegar_parametros(req, res);

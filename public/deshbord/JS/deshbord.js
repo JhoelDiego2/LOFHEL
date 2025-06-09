@@ -131,7 +131,6 @@ function remover_funcionario() {
 /*FIM DE VERIFICAÇÕES DA ABA CADASTRO DE FUNCIONARIOS--------------------------------------------------------------------------------------------------------------------**/
 /*COMECO VERIFICAÇÕES DSA ABA CADASTRO DE ARMAZEMS-------------------------------------------------------------------------------------------------------------------------------- */
 
-<<<<<<< HEAD
 // function digitando() {
 //     var select = select_grupo.value
 //     //var temperatura = ipt_temp_ideal.value
@@ -191,68 +190,6 @@ function remover_funcionario() {
 // //                 console.log("resultado_representante: ", resultado_representante);
 
 // //                 if (resultado_representante.ok) {
-=======
-function digitando() {
-    var select = select_grupo.value
-    //var temperatura = ipt_temp_ideal.value
-   // var umidade = ipt_umidade_ideal.value
-    ipt_nome.value != '' ? (texto_nome.style = "color:black", ipt_nome.style = " border-bottom-color: #0B0B0B") : null
-    //ipt_temp_ideal.value != '' ? (texto_temp_ideal.style = "color:black", ipt_temp_ideal.style = " border-bottom-color: #0B0B0B") : null
-   // ipt_umidade_ideal.value != '' ? (texto_umidade_ideal.style = "color:black", ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B") : null
-    ipt_armazem_remover.value != '' ? (texto_armazem_remover.style = "color:black", ipt_armazem_remover.style = " border-bottom-color: #0B0B0B") : null
-    ipt_senha_remover.value != '' ? (texto_senha_remover.style = "color:black", ipt_senha_remover.style = " border-bottom-color: #0B0B0B") : null
-    ipt_confirmacao_remover.value != '' ? (texto_confirmacao_remover.style = "color:black", ipt_confirmacao_remover.style = " border-bottom-color: #0B0B0B") : null
-    if (select != '') {
-        texto_select.style = "color:black"
-        select_grupo.style = " border-bottom-color: #0B0B0B"
-        // ipt_umidade_ideal.value = "55"
-       // ipt_umidade_ideal.placeholder = "55 (sugestão)"
-       // texto_umidade_ideal.style = "color: black"
-        //ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B"
-        //texto_temp_ideal.style = "color: black"
-       // ipt_temp_ideal.style = " border-bottom-color: #0B0B0B"
-    }
-   /* if (temperatura != '') {
-        texto_temp_ideal.style = "color: black"
-        ipt_temp_ideal.style = " border-bottom-color: #0B0B0B"
-    }
-    if (umidade != '') {
-        texto_umidade_ideal.style = "color: black"
-        ipt_umidade_ideal.style = " border-bottom-color: #0B0B0B"
-    }*/
-   
-}
-function cadastrar_armazem() {
-    var select = select_grupo.value
-   // var temperatura = ipt_temp_ideal.value
-  //  var umidade = ipt_umidade_ideal.value
-    var nome_armazem = ipt_nome.value;
-    var fkVinicola = sessionStorage.ID_VINICOLA;
-
-    if (select == '' || /*temperatura == '' || umidade == '' */ nome_armazem == '' || fkVinicola == '') {
-        cad_armazem_vazio.style="display=1"
-    }
-    else {
-         fetch("/usuarios/cadastrar_armazem", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-
-                            selecionar: select,
-                            armazemNomeServer: nome_armazem,
-                            grupoServer: fkVinicola
-                        }),
-                    })
-                        .then(function (resultado_representante) {
-                            console.log("resultado_representante: ", resultado_representante);
-
-                            if (resultado_representante.ok) {
-                                setTimeout(() => {
-                                    window.location = "dashbord.html"; /*antes: login.html */
-                                }, "2000");
->>>>>>> 9765f0014e90844780763a701a9ac3cd310431cf
 
 
 // //                     setTimeout(() => {
