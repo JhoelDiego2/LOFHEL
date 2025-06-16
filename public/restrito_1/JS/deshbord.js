@@ -171,7 +171,7 @@ function remover_funcionario() {
                 if (resultado_cargo.ok) {
                     var fkVinicola = sessionStorage.ID_VINICOLA
                     exibir_select(fkVinicola)
-                    alert('deu')
+                    alert('Funcionario deletado com sucesso')
                     alerta_grupo3.style = "display:1"
                     div_sair_alerta.style = "display:1"
                     erro_telefone.style = "display:none"
@@ -298,7 +298,7 @@ function remover_armazem() {
                     if (resultado_representante.ok) {
 
 
-                        alert('Cadastro de armazém realizado com sucesso!')
+                        alert('Remoção de armazém realizado com sucesso!')
 
                     } else {
                         throw "Houve um erro ao tentar realizar o cadastro!";
@@ -365,7 +365,7 @@ function cadastrar_cargo() {
                 if (resultado_cargo.ok) {
                     var fkVinicola = sessionStorage.ID_VINICOLA
                     exibir_select(fkVinicola)
-                    alert('deu')
+                    alert('Cargo cadastrado com sucesso')
 
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
@@ -502,7 +502,7 @@ function remover_cargo() {
                 if (resultado_cargo.ok) {
                     var fkVinicola = sessionStorage.ID_VINICOLA
                     exibir_select(fkVinicola)
-                    alert('deu')
+                    alert('Cargo removido com sucesso')
 
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
