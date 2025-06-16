@@ -12,8 +12,8 @@ void setup() {
 }
 
 void loop() {
-  int umidade = sensorDHT.readHumidity() + 20; // variável que recebe os valores da umidade 
-  float temperatura = sensorDHT.readTemperature() - 10; // variável que recebe os valores da temperatura
+  int umidade = sensorDHT.readHumidity() - 35; // variável que recebe os valores da umidade 
+  float temperatura = sensorDHT.readTemperature() - 15; // variável que recebe os valores da temperatura
 
   if (isnan(temperatura) || isnan(umidade)) {
     Serial.println("Erro ao ler os dados do sensor");
@@ -27,6 +27,6 @@ void loop() {
     Serial.println(temperatura);
   }
 
-  delay(500); // delay de 0.5s para captura de dados
+  delay(4000); // delay de 0.5s para captura de dados
 
 }

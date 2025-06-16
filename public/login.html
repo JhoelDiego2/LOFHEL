@@ -14,10 +14,10 @@
     <div class="container">
         <div class="left-content">
             <div class="buttonback">
-                <a href="inicio.html"><img src="assets/back button.png" alt="backbutton"></a>
+                <a href="index.html"><img src="assets/back button.png" alt="backbutton"></a>
             </div>
             <div class="position-logotipo">
-                <a href="inicio.html">
+                <a href="index.html">
                     <img class="size-logotipo" src="assets/logotipo01.png" alt="logotipo01">
                 </a>
             </div>
@@ -174,24 +174,24 @@
                     sessionStorage.PERMISSOES_USUARIO = json.fkPermissoes;
 
                     const permissoes = json.fkPermissoes
-                        .split(',')               // Ex: '1,2,3,4' -> ['1','2','3','4']
-                        .map(p => parseInt(p))    // -> [1,2,3,4]
-                        .sort((a, b) => a - b);   // -> [1,2,3,4] (garante consistência)
+                        .split(',')              
+                        .map(p => parseInt(p))   
+                        .sort((a, b) => a - b);  
 
                     const rotas = {
                         '1,2,3,4': "restrito_1/deshbord.html",
-                        '1,2,3': "restrito_1/deshbord.html", // <-- ADICIONE ESTA LINHA
+                        '1,2,3': "restrito_1/deshbord.html", 
                         '1,3,4': "restrito_2/deshbord.html",
                         '1,2,4': "restrito_3/deshbord.html",
                         '2,3': "restrito_4/deshbord.html",
-                        '5': "restrito_5/deshbord.html",
+                        '5': "restrito_5/suporte-bob.html",
                     };
 
-                    const chave = permissoes.join(','); // Transforma array em string para buscar no objeto
+                    const chave = permissoes.join(',');
                     const destino = rotas[chave];
 
                     if (destino) {
-                        setTimeout(() => window.location = destino, 1000); // Redireciona após 1s
+                        setTimeout(() => window.location = destino, 1000); 
                     } else {
                         console.warn("Permissões não encontradas:", chave);
                     }
@@ -203,7 +203,6 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    // finalizarAguardar(texto);
                 });
             }
 

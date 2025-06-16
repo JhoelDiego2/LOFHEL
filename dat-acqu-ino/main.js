@@ -22,7 +22,7 @@ const serial = async (
     let poolBancoDados = mysql.createPool(
         {
             // se o banco estiver na sua propia maquina é recomendavél usar o localhost do que os numeros que aparecem no workbank
-            host: '10.18.32.87',
+            host: '10.18.32.42',
             user: 'aluno',
             password: 'Sptech#2024',
             database: 'Lofhel',
@@ -64,28 +64,17 @@ const serial = async (
 
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
-            const min = 2;
-            const max = 13;
+            const min = 1;
+            const max = 3;
             const intervalo = max - min;
 
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
                 'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?, ?)',
-                [(umidade * Number((Math.random() * intervalo + min).toFixed())), (temperatura  * Number((Math.random() * intervalo + min).toFixed(2))), 1]
+                [umidade, (temperatura  * Number((Math.random() * intervalo + min).toFixed(2))), 1]
             );
-            await poolBancoDados.execute(
-                'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?, ?)',
-                 [(umidade * Number((Math.random() * intervalo + min).toFixed())), (temperatura  * Number((Math.random() * intervalo + min).toFixed(2))), 2]
-            );
-            await poolBancoDados.execute(
-                'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?, ?)',
-                 [(umidade * Number((Math.random() * intervalo + min).toFixed())), (temperatura  * Number((Math.random() * intervalo + min).toFixed(2))), 3]
-            );
-            await poolBancoDados.execute(
-                'INSERT INTO Registro (umidade, temperatura, fkSensor) VALUES (?, ?, ?)',
-                [(umidade * Number((Math.random() * intervalo + min).toFixed())), (temperatura  * Number((Math.random() * intervalo + min).toFixed(2))), 4]
-            );
-            console.log("valores inseridos no banco: ", umidadeComVariacao + ", " + temperatura);
+
+            console.log("valores inseridos no banco: ", umidade+ ", " + (temperatura  * Number((Math.random() * intervalo + min).toFixed(2))));
 
         }
 

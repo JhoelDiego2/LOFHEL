@@ -7,7 +7,7 @@ const genAI = new GoogleGenAI({
 });
 
 var conversa = [];
-var inicio = `A Lofhel tem como objetivo desenvolver...`; // Seu texto original completo aqui
+var inicio = `Responda em um paragrafo:`; // Seu texto original completo aqui
 conversa.push(inicio);
 
 exports.publicar = async (req, res) => {

@@ -348,7 +348,7 @@ function plotarGrafico(resultado_medidas, resultado_sensores, fkArmazem) {
         datasets: [{
             label: 'Umidade',
             data: [],
-            fill: true,
+            fill: false,
             borderColor: 'rgb(158, 73, 99)',
             backgroundColor: 'rgba(168, 44, 81, 0.42)',
             tension: 0.4,
