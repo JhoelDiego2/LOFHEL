@@ -165,8 +165,8 @@ function exibirConversa() {
                 <p class="nome_mensagem">${isUser ? nome : 'Bob IA'}</p>
                 <p class="mensagem_counteudo">${message.text}</p>
                 <p class="data_mensagem">
-                    ${message.time.toLocaleDateString("pt-BR")} - 
-                    ${message.time.toLocaleTimeString("pt-BR", {hour: '2-digit', minute:'2-digit'})}
+                    ${message.time} - 
+                    ${message.time}
                 </p>
             </div>
         </div>`;
